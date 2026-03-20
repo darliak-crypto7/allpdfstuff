@@ -456,10 +456,21 @@
 <script src="https://js.stripe.com/v3/"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-window.addEventListener('load', function() {
-const {createClient}=supabase;
-const sb=createClient('https://pzimfguaqqcktokwwdeq.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB6aW1mZ3VhcXFja3Rva3d3ZGVxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM3OTQ4MTEsImV4cCI6MjA4OTM3MDgxMX0.OoxZQ4J0xltJYsa6T7Z0IlCueZGHgvEF97EJDO3LUaY');
-let _stripe=null;
+// ── Globals accessible to onclick= handlers ──
+let sb = null;
+let _stripe = null;
+let user = null;
+let tool = 'compress';
+const PRO = ['pdf-to-word','pdf-to-excel'];
+
+// ── Init libraries once DOM + scripts are ready ──
+document.addEventListener('DOMContentLoaded', function() {
+  const {createClient} = supabase;
+  sb = createClient('https://pzimfguaqqcktokwwdeq.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB6aW1mZ3VhcXFja3Rva3d3ZGVxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM3OTQ4MTEsImV4cCI6MjA4OTM3MDgxMX0.OoxZQ4J0xltJYsa6T7Z0IlCueZGHgvEF97EJDO3LUaY');
+  sb.auth.onAuthStateChange((_,s)=>{user=s?.user||null;rNav();});
+  sb.auth.getSession().then(({data:{session}})=>{user=session?.user||null;rNav();});
+  document.getElementById('ov').addEventListener('click',e=>{if(e.target===document.getElementById('ov'))closeModal();});
+});
 function getStripe(){
   if(!_stripe){
     if(typeof Stripe==='undefined'){toast('err','❌ Payment system not loaded. Please refresh.');return null;}
@@ -468,11 +479,7 @@ function getStripe(){
   return _stripe;
 }
 
-let user=null,tool='compress';
-const PRO=['pdf-to-word','pdf-to-excel'];
 
-sb.auth.onAuthStateChange((_,s)=>{user=s?.user||null;rNav();});
-sb.auth.getSession().then(({data:{session}})=>{user=session?.user||null;rNav();});
 
 function rNav(){
   const el=document.getElementById('navAuth');
@@ -485,7 +492,6 @@ document.addEventListener('click',e=>{if(!e.target.closest('.u-menu'))document.g
 function openModal(t){document.getElementById('ov').classList.add('open');sw(t);}
 function closeModal(){document.getElementById('ov').classList.remove('open');}
 function sw(t){document.getElementById('lpane').style.display=t==='login'?'block':'none';document.getElementById('spane').style.display=t==='signup'?'block':'none';}
-document.getElementById('ov').addEventListener('click',e=>{if(e.target===document.getElementById('ov'))closeModal();});
 
 function sa(id,msg){const el=document.getElementById(id);el.textContent=msg;el.style.display='block';}
 function ha(...ids){ids.forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='none';});}
@@ -569,7 +575,6 @@ async function handleSub(p){if(!user){openModal('signup');return;}toast('ok','�
 
 function toast(type,msg){const el=document.getElementById('tst');document.getElementById('tmsg').textContent=msg;el.className='toast '+type+' show';setTimeout(()=>el.classList.remove('show'),3500);}
 
-});
 </script>
 </body>
 </html>
