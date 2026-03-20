@@ -296,23 +296,30 @@
   <div class="up-inner">
     <div class="sec-eye" style="justify-content:center">Use a tool</div>
     <h2 class="sec-h" style="text-align:center;margin-bottom:10px">Drop your file &amp; <em>go</em></h2>
-    <p class="sec-sub" style="text-align:center;margin:0 auto 36px">Select a tool, upload your file, download the result.</p>
-    <div class="pills" id="pills">
-      <button class="pill on" data-tool="compress" onclick="selectTool('compress')">🗜️ Compress</button>
-      <button class="pill" data-tool="merge" onclick="selectTool('merge')">🔗 Merge</button>
-      <button class="pill" data-tool="split" onclick="selectTool('split')">✂️ Split</button>
-      <button class="pill" data-tool="pdf-to-jpg" onclick="selectTool('pdf-to-jpg')">🖼️ PDF→JPG</button>
-      <button class="pill" data-tool="word-to-pdf" onclick="selectTool('word-to-pdf')">📄 Word→PDF</button>
-      <button class="pill" data-tool="rotate" onclick="selectTool('rotate')">🔄 Rotate</button>
-      <button class="pill" data-tool="pdf-to-word" onclick="selectTool('pdf-to-word')">📝 PDF→Word ✦Pro</button>
-      <button class="pill" data-tool="pdf-to-excel" onclick="selectTool('pdf-to-excel')">📊 PDF→Excel ✦Pro</button>
+    <p class="sec-sub" style="text-align:center;margin:0 auto 36px">Upload your file first — then pick what to do with it.</p>
+
+    <!-- Tool picker shown AFTER file is dropped -->
+    <div id="toolPicker" style="display:none;background:var(--bg);border:1px solid var(--bdr);border-radius:20px;padding:28px;margin-bottom:24px;box-shadow:var(--shadow-lg)">
+      <p style="font-family:var(--serif);font-size:1.3rem;font-weight:600;font-style:italic;margin-bottom:18px;text-align:center">What do you want to do with <span id="pickerFileName" style="color:var(--or)">your file</span>?</p>
+      <div style="display:flex;flex-wrap:wrap;gap:9px;justify-content:center">
+        <button class="pill" onclick="pickAndGo('compress')">🗜️ Compress</button>
+        <button class="pill" onclick="pickAndGo('merge')">🔗 Merge</button>
+        <button class="pill" onclick="pickAndGo('split')">✂️ Split</button>
+        <button class="pill" onclick="pickAndGo('pdf-to-jpg')">🖼️ Convert to JPG</button>
+        <button class="pill" onclick="pickAndGo('word-to-pdf')">📄 Word to PDF</button>
+        <button class="pill" onclick="pickAndGo('rotate')">🔄 Rotate</button>
+        <button class="pill" onclick="pickAndGo('pdf-to-word')">📝 PDF to Word ✦Pro</button>
+        <button class="pill" onclick="pickAndGo('pdf-to-excel')">📊 PDF to Excel ✦Pro</button>
+      </div>
+      <p style="text-align:center;margin-top:16px;font-size:.8rem;color:var(--mut)">Wrong file? <a href="#" onclick="cancelPick();return false;" style="color:var(--or);text-decoration:none">Choose a different file</a></p>
     </div>
+
     <div class="drop" id="dropZ" onclick="document.getElementById('fileInput').click()" ondragover="onOver(event)" ondragleave="onLeave()" ondrop="onDrop(event)">
       <div class="drop-ico">📂</div>
-      <h3 id="dropT">Click to upload your PDF</h3>
-      <p id="dropD">or drag &amp; drop your file here<br/><small style="font-size:.76rem;color:var(--mut)">Max 10 MB free · 100 MB Pro</small></p>
+      <h3 id="dropT">Drop your file here to get started</h3>
+      <p id="dropD">or click to browse your files<br/><small style="font-size:.76rem;color:var(--mut)">Supports PDF, DOC, DOCX · Max 10 MB free · 100 MB Pro</small></p>
       <button class="btn-pill" style="pointer-events:none">Choose File</button>
-      <input type="file" id="fileInput" accept=".pdf" onchange="onSel(event)" />
+      <input type="file" id="fileInput" accept=".pdf,.doc,.docx" onchange="onSel(event)" />
     </div>
     <div class="proc" id="procW">
       <div class="spin"></div>
@@ -419,8 +426,8 @@
       <p>The fastest, simplest way to work with PDFs online. Professional tools for everyone, right in your browser.</p>
     </div>
     <div class="ft-col"><h4>Tools</h4><ul><li><a href="#upload">Compress PDF</a></li><li><a href="#upload">Merge PDF</a></li><li><a href="#upload">Split PDF</a></li><li><a href="#upload">PDF to Word</a></li><li><a href="#upload">PDF to JPG</a></li></ul></div>
-    <div class="ft-col"><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#">Blog</a></li><li><a href="#">Contact</a></li></ul></div>
-    <div class="ft-col"><h4>Legal</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li><li><a href="#">Cookie Policy</a></li><li><a href="#">GDPR</a></li></ul></div>
+    <div class="ft-col"><h4>Company</h4><ul><li><a href="pages/about.html">About</a></li><li><a href="#pricing">Pricing</a></li><li><a href="pages/blog.html">Blog</a></li><li><a href="pages/contact.html">Contact</a></li></ul></div>
+    <div class="ft-col"><h4>Legal</h4><ul><li><a href="pages/privacy.html">Privacy Policy</a></li><li><a href="pages/terms.html">Terms of Service</a></li><li><a href="pages/cookies.html">Cookie Policy</a></li><li><a href="#">GDPR</a></li></ul></div>
   </div>
   <div class="ft-bot"><span>© 2026 AllPDFStuff.com — All rights reserved</span><span>🔒 Files auto-deleted after 1 hour</span></div>
 </footer>
@@ -527,10 +534,54 @@ function sh(id){const el=document.getElementById(id);el.style.display='block';}
 function hd(id){document.getElementById(id).style.display='none';}
 function shf(id){document.getElementById(id).style.display='flex';}
 
+// Pending file waiting for tool selection
+let pendingFile = null;
+
 function onOver(e){e.preventDefault();document.getElementById('dropZ').classList.add('over');}
 function onLeave(){document.getElementById('dropZ').classList.remove('over');}
-function onDrop(e){e.preventDefault();document.getElementById('dropZ').classList.remove('over');const f=e.dataTransfer.files[0];if(f)go(f);}
-function onSel(e){const f=e.target.files[0];if(f)go(f);}
+function onDrop(e){
+  e.preventDefault();
+  document.getElementById('dropZ').classList.remove('over');
+  const f=e.dataTransfer.files[0];
+  if(f) showPicker(f);
+}
+function onSel(e){
+  const f=e.target.files[0];
+  if(f) showPicker(f);
+}
+
+// Show the tool picker after file is selected
+function showPicker(file){
+  pendingFile = file;
+  // Show filename truncated
+  const name = file.name.length > 30 ? file.name.substring(0,27)+'...' : file.name;
+  document.getElementById('pickerFileName').textContent = name;
+  // Hide drop zone, show picker
+  document.getElementById('dropZ').style.display = 'none';
+  document.getElementById('toolPicker').style.display = 'block';
+  document.getElementById('procW').style.display = 'none';
+  document.getElementById('resW').style.display = 'none';
+}
+
+// User picks a tool from the picker
+function pickAndGo(t){
+  tool = t;
+  document.getElementById('toolPicker').style.display = 'none';
+  if(pendingFile) go(pendingFile);
+}
+
+// Cancel - go back to drop zone
+function cancelPick(){
+  pendingFile = null;
+  document.getElementById('toolPicker').style.display = 'none';
+  document.getElementById('dropZ').style.display = 'block';
+  document.getElementById('fileInput').value = '';
+}
+
+// Legacy selectTool kept for tool cards
+function selectTool(t){
+  tool = t;
+}
 
 function chkLimit(){const k='pdfu_'+new Date().toDateString(),n=parseInt(localStorage.getItem(k)||'0');if(!user&&n>=5)return false;localStorage.setItem(k,n+1);return true;}
 
@@ -570,7 +621,7 @@ async function api(file,t){
   return{url:URL.createObjectURL(blob),fn:file.name.replace(/\.[^/.]+$/,'')+'.'+ext};
 }
 
-function resetUp(){sh('dropZ');hd('procW');hd('resW');document.getElementById('fileInput').value='';}
+function resetUp(){pendingFile=null;document.getElementById('dropZ').style.display='block';document.getElementById('toolPicker').style.display='none';hd('procW');hd('resW');document.getElementById('fileInput').value='';}
 async function handleSub(p){if(!user){openModal('signup');return;}toast('ok','💳 Stripe checkout — connect backend to go live!');}
 
 function toast(type,msg){const el=document.getElementById('tst');document.getElementById('tmsg').textContent=msg;el.className='toast '+type+' show';setTimeout(()=>el.classList.remove('show'),3500);}
