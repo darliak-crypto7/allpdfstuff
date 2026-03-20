@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Privacy Policy — AllPDFStuff</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Satoshi:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#faf8f4;--bg2:#f3efe8;--bg3:#ede8df;--or:#e8620a;--or2:#f97316;--txt:#1a1714;--mut:#8a8070;--mut2:#6b6055;--bdr:rgba(0,0,0,0.08);--serif:'Cormorant Garamond',Georgia,serif;--sans:'Satoshi',system-ui,sans-serif;--shadow:0 1px 3px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.06)}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:16px;line-height:1.7;overflow-x:hidden}
+    nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(250,248,244,.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--bdr)}
+    .logo{font-family:var(--serif);font-size:1.4rem;font-weight:600;color:var(--txt);text-decoration:none}
+    .logo em{font-style:italic;color:var(--or)}
+    .nav-links{display:flex;gap:32px;list-style:none}
+    .nav-links a{font-size:.85rem;font-weight:500;color:var(--mut2);text-decoration:none;transition:color .2s}
+    .nav-links a:hover{color:var(--txt)}
+    .btn-pill{background:var(--or);color:#fff;border:none;padding:9px 22px;border-radius:100px;font-family:var(--sans);font-size:.83rem;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:all .2s}
+    .btn-pill:hover{background:var(--or2);transform:translateY(-1px)}
+    /* PAGE LAYOUT */
+    .page-hero{padding:140px 48px 60px;background:var(--bg2);border-bottom:1px solid var(--bdr)}
+    .page-hero .eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--or);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+    .page-hero .eyebrow::before{content:'';display:block;width:24px;height:1px;background:var(--or)}
+    .page-hero h1{font-family:var(--serif);font-size:clamp(2.5rem,5vw,4.5rem);font-weight:600;letter-spacing:-.03em;line-height:1.05;margin-bottom:16px}
+    .page-hero h1 em{font-style:italic;color:var(--or)}
+    .page-hero p{color:var(--mut2);font-size:.95rem;max-width:520px;line-height:1.7}
+    .page-hero .meta{font-size:.8rem;color:var(--mut);margin-top:16px;padding-top:16px;border-top:1px solid var(--bdr)}
+    .content-wrap{max-width:820px;margin:0 auto;padding:72px 48px 100px}
+    /* LEGAL CONTENT STYLES */
+    .legal h2{font-family:var(--serif);font-size:1.7rem;font-weight:600;letter-spacing:-.02em;margin:48px 0 14px;padding-bottom:10px;border-bottom:1px solid var(--bdr)}
+    .legal h2:first-child{margin-top:0}
+    .legal h3{font-family:var(--serif);font-size:1.2rem;font-weight:600;margin:28px 0 10px;color:var(--or)}
+    .legal p{margin-bottom:14px;color:var(--mut2);font-size:.95rem}
+    .legal ul,.legal ol{margin:12px 0 18px 24px;color:var(--mut2);font-size:.95rem}
+    .legal li{margin-bottom:7px;line-height:1.65}
+    .legal a{color:var(--or);text-decoration:none}
+    .legal a:hover{text-decoration:underline}
+    .legal .highlight-box{background:var(--bg2);border:1px solid var(--bdr);border-left:3px solid var(--or);border-radius:0 12px 12px 0;padding:18px 22px;margin:20px 0;font-size:.9rem;color:var(--txt2)}
+    .legal table{width:100%;border-collapse:collapse;margin:18px 0;font-size:.88rem}
+    .legal table th{background:var(--bg3);padding:10px 14px;text-align:left;font-weight:600;font-size:.8rem;letter-spacing:.04em;text-transform:uppercase;color:var(--mut2);border:1px solid var(--bdr)}
+    .legal table td{padding:10px 14px;border:1px solid var(--bdr);vertical-align:top;color:var(--mut2)}
+    /* FOOTER */
+    footer{background:var(--bg);border-top:1px solid var(--bdr);padding:48px 48px 28px}
+    .ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid var(--bdr)}
+    .ft-logo{font-family:var(--serif);font-size:1.4rem;font-weight:600;text-decoration:none;color:var(--txt);margin-bottom:10px;display:block}
+    .ft-logo em{font-style:italic;color:var(--or)}
+    .ft-brand p{color:var(--mut);font-size:.84rem;line-height:1.7;max-width:230px}
+    .ft-col h4{font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin-bottom:14px}
+    .ft-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+    .ft-col a{color:var(--mut2);text-decoration:none;font-size:.84rem;transition:color .2s}
+    .ft-col a:hover{color:var(--or)}
+    .ft-bot{display:flex;justify-content:space-between;align-items:center;padding-top:24px;color:var(--mut);font-size:.77rem;flex-wrap:wrap;gap:10px}
+    @media(max-width:768px){nav{padding:14px 20px}.nav-links{display:none}.page-hero{padding:100px 22px 48px}.content-wrap{padding:48px 22px 72px}footer{padding:40px 22px 22px}.ft-top{grid-template-columns:1fr;gap:28px}.ft-bot{flex-direction:column;text-align:center}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="logo">All<em>PDF</em>Stuff</a>
+  <ul class="nav-links">
+    <li><a href="../index.html#tools">Tools</a></li>
+    <li><a href="../index.html#pricing">Pricing</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="../index.html" class="btn-pill">← Back to Tools</a>
+</nav>
+
+<div class="page-hero">
+  <div class="eyebrow">Legal</div>
+  <h1>Privacy <em>Policy</em></h1>
+  <p>We are committed to protecting your personal data. This policy explains how we collect, use, and safeguard your information.</p>
+  <div class="meta">Last updated: 20 March 2026 &nbsp;·&nbsp; Effective date: 20 March 2026 &nbsp;·&nbsp; Version 1.0</div>
+</div>
+
+<div class="content-wrap">
+  <div class="legal">
+
+    <div class="highlight-box">
+      <strong>Summary:</strong> We process your uploaded files solely to perform the requested PDF operation. Files are automatically and permanently deleted from our servers within 1 hour. We do not sell your data. We do not use your file contents for training AI or any other purpose.
+    </div>
+
+    <h2>1. Who We Are</h2>
+    <p>AllPDFStuff ("we", "us", "our") operates the website <strong>allpdfstuff.com</strong>, an online PDF processing service that provides tools to convert, compress, merge, split, rotate, and edit PDF documents.</p>
+    <p>For the purposes of applicable data protection law including the General Data Protection Regulation (GDPR), the California Consumer Privacy Act (CCPA), and the Personal Data Protection Act (PDPA), we are the data controller of your personal information.</p>
+    <p><strong>Contact:</strong> For any privacy-related queries, please contact us via our <a href="contact.html">Contact page</a>.</p>
+
+    <h2>2. Information We Collect</h2>
+    <h3>2.1 Information You Provide Directly</h3>
+    <ul>
+      <li><strong>Account information:</strong> When you create an account, we collect your name and email address.</li>
+      <li><strong>Payment information:</strong> When you subscribe to a paid plan, payment is processed by Stripe. We do not store your full card details — only a payment reference token.</li>
+      <li><strong>Uploaded files:</strong> Files you upload for processing are temporarily stored on secure servers for the duration of the processing task only.</li>
+      <li><strong>Communications:</strong> If you contact us via email or our contact form, we retain that correspondence.</li>
+    </ul>
+    <h3>2.2 Information Collected Automatically</h3>
+    <ul>
+      <li><strong>Usage data:</strong> Pages visited, tools used, time and duration of visits, browser type, operating system, and referring URL.</li>
+      <li><strong>IP address:</strong> Collected for security, fraud prevention, and approximate geolocation (country/region level only).</li>
+      <li><strong>Cookies and similar technologies:</strong> See our <a href="cookies.html">Cookie Policy</a> for full details.</li>
+    </ul>
+
+    <h2>3. How We Use Your Information</h2>
+    <table>
+      <tr><th>Purpose</th><th>Legal Basis</th></tr>
+      <tr><td>Processing your uploaded files and delivering results</td><td>Contract performance</td></tr>
+      <tr><td>Creating and managing your account</td><td>Contract performance</td></tr>
+      <tr><td>Processing subscription payments</td><td>Contract performance</td></tr>
+      <tr><td>Sending transactional emails (receipts, password resets)</td><td>Contract performance</td></tr>
+      <tr><td>Improving our services and fixing bugs</td><td>Legitimate interests</td></tr>
+      <tr><td>Security monitoring and fraud prevention</td><td>Legitimate interests</td></tr>
+      <tr><td>Complying with legal obligations</td><td>Legal obligation</td></tr>
+      <tr><td>Sending marketing emails (only with consent)</td><td>Consent</td></tr>
+    </table>
+
+    <h2>4. File Processing & Data Retention</h2>
+    <div class="highlight-box">
+      <strong>Your uploaded files are automatically and permanently deleted within 1 hour of processing.</strong> We do not access, read, analyse, share, or retain the content of your files for any purpose other than performing the requested operation.
+    </div>
+    <p>Other data retention periods:</p>
+    <ul>
+      <li><strong>Account data:</strong> Retained while your account is active and for 30 days after deletion request.</li>
+      <li><strong>Payment records:</strong> Retained for 7 years to comply with financial regulations.</li>
+      <li><strong>Usage logs:</strong> Retained for up to 90 days for security and debugging purposes.</li>
+      <li><strong>Contact form messages:</strong> Retained for up to 2 years.</li>
+    </ul>
+
+    <h2>5. Sharing Your Information</h2>
+    <p>We do not sell, rent, or trade your personal information. We may share information with:</p>
+    <ul>
+      <li><strong>Service providers:</strong> Supabase (database/authentication), Stripe (payments), iLovePDF API (PDF processing), Vercel (hosting). Each operates under their own privacy policies and data processing agreements.</li>
+      <li><strong>Legal authorities:</strong> When required by law, court order, or to protect the rights and safety of our users or the public.</li>
+      <li><strong>Business transfers:</strong> In the event of a merger, acquisition, or sale of assets, your data may be transferred. We will notify you before this occurs.</li>
+    </ul>
+
+    <h2>6. International Data Transfers</h2>
+    <p>Our service providers may process data outside your country of residence. Where we transfer data outside the European Economic Area (EEA), we ensure appropriate safeguards are in place, including Standard Contractual Clauses (SCCs) approved by the European Commission.</p>
+
+    <h2>7. Your Rights</h2>
+    <p>Depending on your location, you may have the following rights regarding your personal data:</p>
+    <ul>
+      <li><strong>Right of access:</strong> Request a copy of the personal data we hold about you.</li>
+      <li><strong>Right to rectification:</strong> Request correction of inaccurate or incomplete data.</li>
+      <li><strong>Right to erasure ("right to be forgotten"):</strong> Request deletion of your personal data.</li>
+      <li><strong>Right to restriction:</strong> Request that we limit processing of your data.</li>
+      <li><strong>Right to data portability:</strong> Receive your data in a machine-readable format.</li>
+      <li><strong>Right to object:</strong> Object to processing based on legitimate interests or for direct marketing.</li>
+      <li><strong>Right to withdraw consent:</strong> Where processing is based on consent, you may withdraw it at any time.</li>
+      <li><strong>CCPA rights (California residents):</strong> Right to know, right to delete, right to opt-out of sale (we do not sell data), and right to non-discrimination.</li>
+    </ul>
+    <p>To exercise any of these rights, please contact us via our <a href="contact.html">Contact page</a>. We will respond within 30 days.</p>
+
+    <h2>8. Security</h2>
+    <p>We implement industry-standard security measures including:</p>
+    <ul>
+      <li>HTTPS/TLS encryption for all data in transit</li>
+      <li>Encrypted storage for all personal data at rest</li>
+      <li>Strict access controls — only authorised personnel can access systems</li>
+      <li>Regular security audits and vulnerability assessments</li>
+      <li>Automatic file deletion to minimise data exposure</li>
+    </ul>
+    <p>No system is 100% secure. If you discover a security vulnerability, please contact us responsibly via our <a href="contact.html">Contact page</a>.</p>
+
+    <h2>9. Cookies</h2>
+    <p>We use cookies and similar tracking technologies. Please see our dedicated <a href="cookies.html">Cookie Policy</a> for full details on what cookies we use, why, and how to control them.</p>
+
+    <h2>10. Children's Privacy</h2>
+    <p>Our service is not directed to children under the age of 13 (or 16 in the EU/UK). We do not knowingly collect personal data from children. If you believe a child has provided us with their personal data, please contact us immediately and we will delete the information.</p>
+
+    <h2>11. Third-Party Links</h2>
+    <p>Our website may contain links to third-party websites. We are not responsible for the privacy practices of those websites and encourage you to review their privacy policies.</p>
+
+    <h2>12. Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. When we make material changes, we will notify you by email (if you have an account) and/or by prominently posting a notice on our website. The "Last updated" date at the top of this page reflects the most recent revision.</p>
+    <p>Continued use of our service after changes take effect constitutes acceptance of the revised policy.</p>
+
+    <h2>13. How to Contact Us</h2>
+    <p>For any privacy-related questions, requests, or complaints, please use our <a href="contact.html">Contact page</a>.</p>
+    <p>If you are in the EU/EEA and are not satisfied with our response, you have the right to lodge a complaint with your local data protection supervisory authority.</p>
+
+  </div>
+</div>
+
+<footer>
+  <div class="ft-top">
+    <div class="ft-brand">
+      <a href="../index.html" class="ft-logo">All<em>PDF</em>Stuff</a>
+      <p>The fastest, simplest way to work with PDFs online. Professional tools for everyone.</p>
+    </div>
+    <div class="ft-col"><h4>Tools</h4><ul><li><a href="../index.html#upload">Compress PDF</a></li><li><a href="../index.html#upload">Merge PDF</a></li><li><a href="../index.html#upload">Split PDF</a></li><li><a href="../index.html#upload">PDF to Word</a></li></ul></div>
+    <div class="ft-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="../index.html#pricing">Pricing</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="ft-col"><h4>Legal</h4><ul><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li><li><a href="cookies.html">Cookie Policy</a></li></ul></div>
+  </div>
+  <div class="ft-bot"><span>© 2026 AllPDFStuff.com — All rights reserved</span><span>🔒 Files auto-deleted after 1 hour</span></div>
+</footer>
+</body>
+</html>
