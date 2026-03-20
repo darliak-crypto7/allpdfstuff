@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>About — AllPDFStuff</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,500;1,600;1,700&family=Satoshi:wght@300;400;500;700;900&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#faf8f4;--bg2:#f3efe8;--bg3:#ede8df;--or:#e8620a;--or2:#f97316;--txt:#1a1714;--txt2:#3d3830;--mut:#8a8070;--mut2:#6b6055;--bdr:rgba(0,0,0,0.08);--obdr:rgba(232,98,10,0.25);--oglow:rgba(232,98,10,0.08);--serif:'Cormorant Garamond',Georgia,serif;--sans:'Satoshi',system-ui,sans-serif;--shadow:0 1px 3px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.06);--shadow-lg:0 8px 32px rgba(0,0,0,.1)}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:16px;line-height:1.7;overflow-x:hidden}
+    nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(250,248,244,.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--bdr)}
+    .logo{font-family:var(--serif);font-size:1.4rem;font-weight:600;color:var(--txt);text-decoration:none}.logo em{font-style:italic;color:var(--or)}
+    .nav-links{display:flex;gap:32px;list-style:none}
+    .nav-links a{font-size:.85rem;font-weight:500;color:var(--mut2);text-decoration:none;transition:color .2s}.nav-links a:hover{color:var(--txt)}
+    .btn-pill{background:var(--or);color:#fff;border:none;padding:9px 22px;border-radius:100px;font-family:var(--sans);font-size:.83rem;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:all .2s}.btn-pill:hover{background:var(--or2);transform:translateY(-1px)}
+    /* HERO */
+    .page-hero{min-height:60vh;display:flex;flex-direction:column;justify-content:flex-end;padding:140px 48px 72px;background:var(--bg2);border-bottom:1px solid var(--bdr);position:relative;overflow:hidden}
+    .hero-ghost{position:absolute;top:40%;left:50%;transform:translate(-50%,-50%);font-family:var(--serif);font-size:clamp(120px,18vw,260px);font-weight:700;font-style:italic;color:rgba(232,98,10,.045);white-space:nowrap;pointer-events:none;user-select:none;letter-spacing:-.04em;line-height:1}
+    .eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--or);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+    .eyebrow::before{content:'';display:block;width:24px;height:1px;background:var(--or)}
+    .page-hero h1{font-family:var(--serif);font-size:clamp(2.8rem,6vw,6rem);font-weight:600;letter-spacing:-.03em;line-height:1.02;margin-bottom:28px}
+    .page-hero h1 em{font-style:italic;color:var(--or)}
+    .page-hero .lead{color:var(--mut2);font-size:1.1rem;max-width:540px;line-height:1.75}
+    /* SECTIONS */
+    .about-section{padding:88px 48px;max-width:1100px;margin:0 auto}
+    .about-section.alt{background:var(--bg2);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);max-width:none;padding:88px 48px}
+    .about-section.alt .inner{max-width:1100px;margin:0 auto}
+    .sec-eye{font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--or);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+    .sec-eye::after{content:'';flex:1;height:1px;background:var(--bdr);max-width:60px}
+    .sec-h{font-family:var(--serif);font-size:clamp(2rem,4vw,3.5rem);font-weight:600;letter-spacing:-.03em;line-height:1.05;margin-bottom:20px}
+    .sec-h em{font-style:italic;color:var(--or)}
+    .sec-body{color:var(--mut2);font-size:.97rem;max-width:640px;line-height:1.8}
+    .sec-body p{margin-bottom:16px}
+    .sec-body strong{color:var(--txt);font-weight:600}
+    /* TWO COL */
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+    .two-col.flip .text-side{order:2}
+    .two-col.flip .visual-side{order:1}
+    /* STAT BAND */
+    .stat-band{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--bdr);border:1px solid var(--bdr);border-radius:20px;overflow:hidden;margin-top:64px}
+    .stat-item{background:var(--bg);padding:36px 28px;text-align:center}
+    .stat-big{font-family:var(--serif);font-size:3rem;font-weight:600;font-style:italic;color:var(--or);line-height:1;letter-spacing:-.03em}
+    .stat-label{font-size:.8rem;color:var(--mut2);margin-top:6px;letter-spacing:.03em}
+    /* VALUES */
+    .values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bdr);border:1px solid var(--bdr);border-radius:20px;overflow:hidden;margin-top:48px}
+    .value-card{background:var(--bg);padding:36px 32px}
+    .value-ico{font-size:2rem;margin-bottom:14px;display:block}
+    .value-card h3{font-family:var(--serif);font-size:1.3rem;font-weight:600;margin-bottom:10px;letter-spacing:-.01em}
+    .value-card p{font-size:.87rem;color:var(--mut2);line-height:1.65}
+    /* FOUNDER */
+    .founder-card{background:var(--bg);border:1px solid var(--bdr);border-radius:24px;padding:48px;display:flex;gap:40px;align-items:flex-start;box-shadow:var(--shadow)}
+    .founder-avatar{width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,var(--or),var(--or2));display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:2.8rem;font-weight:700;color:#fff;flex-shrink:0;font-style:italic}
+    .founder-info h3{font-family:var(--serif);font-size:1.8rem;font-weight:600;margin-bottom:4px;letter-spacing:-.02em}
+    .founder-info .role{font-size:.82rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--or);margin-bottom:16px}
+    .founder-info p{color:var(--mut2);font-size:.95rem;line-height:1.75;margin-bottom:12px}
+    /* CTA */
+    .about-cta{margin:0 48px 72px;border-radius:26px;background:linear-gradient(135deg,#fff8f2,#fdf4ec,#fff8f2);border:1px solid var(--obdr);padding:72px 64px;display:flex;align-items:center;justify-content:space-between;gap:36px;flex-wrap:wrap;box-shadow:var(--shadow-lg)}
+    .about-cta h2{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,3rem);font-weight:600;font-style:italic;letter-spacing:-.03em;line-height:1.1;margin-bottom:12px}
+    .about-cta p{color:var(--mut2);font-size:.93rem;max-width:420px;line-height:1.65}
+    /* FOOTER */
+    footer{background:var(--bg);border-top:1px solid var(--bdr);padding:48px 48px 28px}
+    .ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid var(--bdr)}
+    .ft-logo{font-family:var(--serif);font-size:1.4rem;font-weight:600;text-decoration:none;color:var(--txt);margin-bottom:10px;display:block}.ft-logo em{font-style:italic;color:var(--or)}
+    .ft-brand p{color:var(--mut);font-size:.84rem;line-height:1.7;max-width:230px}
+    .ft-col h4{font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin-bottom:14px}
+    .ft-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+    .ft-col a{color:var(--mut2);text-decoration:none;font-size:.84rem;transition:color .2s}.ft-col a:hover{color:var(--or)}
+    .ft-bot{display:flex;justify-content:space-between;align-items:center;padding-top:24px;color:var(--mut);font-size:.77rem;flex-wrap:wrap;gap:10px}
+    @media(max-width:1024px){.two-col{grid-template-columns:1fr;gap:36px}.stat-band{grid-template-columns:repeat(2,1fr)}.values-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:768px){nav{padding:14px 20px}.nav-links{display:none}.page-hero{padding:100px 22px 52px}.about-section{padding:60px 22px}.about-cta{margin:0 22px 56px;padding:48px 28px}.founder-card{flex-direction:column;padding:32px}.stat-band{grid-template-columns:1fr 1fr}.values-grid{grid-template-columns:1fr}footer{padding:40px 22px 22px}.ft-top{grid-template-columns:1fr;gap:28px}.ft-bot{flex-direction:column;text-align:center}}
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">All<em>PDF</em>Stuff</a>
+  <ul class="nav-links"><li><a href="../index.html#tools">Tools</a></li><li><a href="../index.html#pricing">Pricing</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul>
+  <a href="index.html" class="btn-pill">← Back to Tools</a>
+</nav>
+
+<!-- ═══════════════════════════════════════
+     HERO SECTION
+     ✏️ EDIT: Change the headline and intro paragraph below
+     ═══════════════════════════════════════ -->
+<div class="page-hero">
+  <div class="hero-ghost">About</div>
+  <div class="eyebrow">Our Story</div>
+  <h1>Built for people who<br/>work with <em>PDFs every day</em></h1>
+  <!-- ✏️ EDIT THIS PARAGRAPH — replace with your own story -->
+  <p class="lead">AllPDFStuff was created because working with PDFs shouldn't require expensive software or a computer science degree. We built the tools we wished existed.</p>
+</div>
+
+<!-- ═══════════════════════════════════════
+     OUR STORY SECTION
+     ✏️ EDIT: Replace this text with your real story
+     ═══════════════════════════════════════ -->
+<div class="about-section">
+  <div class="two-col">
+    <div class="text-side">
+      <div class="sec-eye">Our Mission</div>
+      <h2 class="sec-h">Making PDF tools<br/><em>accessible to everyone</em></h2>
+      <div class="sec-body">
+        <!-- ✏️ EDIT: Replace with your real story paragraphs -->
+        <p><strong>We started AllPDFStuff with one simple belief:</strong> powerful document tools should be available to everyone, not just those who can afford expensive software subscriptions.</p>
+        <p>Every day, millions of people need to compress a file to send via email, convert a document, or merge reports together — tasks that should take seconds, not require a $400/year Adobe subscription.</p>
+        <p>We built AllPDFStuff to solve exactly that. Fast, professional-grade PDF tools that work right in your browser, with a fair pricing model that starts completely free.</p>
+      </div>
+    </div>
+    <div class="visual-side">
+      <!-- ✏️ EDIT: You can replace this decorative element with a real photo -->
+      <div style="background:linear-gradient(135deg,var(--bg2),var(--bg3));border:1px solid var(--bdr);border-radius:24px;padding:48px;text-align:center;aspect-ratio:1">
+        <div style="font-family:var(--serif);font-size:6rem;font-weight:700;font-style:italic;color:var(--or);opacity:.6;line-height:1">PDF</div>
+        <div style="font-family:var(--serif);font-size:1.4rem;font-weight:600;color:var(--mut2);margin-top:12px;font-style:italic">made simple.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       STATS — ✏️ EDIT: Update these numbers
+       ═══════════════════════════════════ -->
+  <div class="stat-band">
+    <div class="stat-item"><div class="stat-big">30+</div><div class="stat-label">PDF Tools</div></div>
+    <div class="stat-item"><div class="stat-big">Free</div><div class="stat-label">To get started</div></div>
+    <div class="stat-item"><div class="stat-big">1hr</div><div class="stat-label">Auto file deletion</div></div>
+    <div class="stat-item"><div class="stat-big">100%</div><div class="stat-label">Browser based</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     VALUES SECTION
+     ✏️ EDIT: Change the values/principles below
+     ═══════════════════════════════════════ -->
+<div class="about-section alt">
+  <div class="inner">
+    <div class="sec-eye">What we stand for</div>
+    <h2 class="sec-h">Our <em>values</em></h2>
+    <div class="values-grid">
+      <!-- ✏️ EDIT each value card below -->
+      <div class="value-card">
+        <span class="value-ico">🔒</span>
+        <h3>Privacy First</h3>
+        <p>Your files are yours. We process them, delete them within 1 hour, and never look inside them. No exceptions.</p>
+      </div>
+      <div class="value-card">
+        <span class="value-ico">⚡</span>
+        <h3>Speed & Simplicity</h3>
+        <p>No downloads, no sign-ups for free tools, no learning curve. Drop your file, get your result. Done.</p>
+      </div>
+      <div class="value-card">
+        <span class="value-ico">💚</span>
+        <h3>Fair Pricing</h3>
+        <p>Generous free tier. Affordable paid plans. No tricks, no dark patterns. Honest value for your money.</p>
+      </div>
+      <div class="value-card">
+        <span class="value-ico">🌍</span>
+        <h3>Built for Everyone</h3>
+        <p>Students, freelancers, small businesses, large enterprises — our tools work for everyone, everywhere.</p>
+      </div>
+      <div class="value-card">
+        <span class="value-ico">🛠️</span>
+        <h3>Always Improving</h3>
+        <p>We ship improvements every week based on user feedback. Your experience gets better constantly.</p>
+      </div>
+      <div class="value-card">
+        <span class="value-ico">🤝</span>
+        <h3>Honest & Transparent</h3>
+        <p>No hidden fees. No surprise charges. No selling your data. What you see is exactly what you get.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     FOUNDER SECTION
+     ✏️ EDIT: Replace ALL of this with your own info
+     ═══════════════════════════════════════ -->
+<div class="about-section">
+  <div class="sec-eye">The team</div>
+  <h2 class="sec-h">Meet the <em>founder</em></h2>
+
+  <div class="founder-card">
+    <!-- ✏️ EDIT: Change the initial letter in the avatar to your first name initial -->
+    <div class="founder-avatar">Y</div>
+    <div class="founder-info">
+      <!-- ✏️ EDIT: Replace "Your Name" with your actual name -->
+      <h3>Your Name Here</h3>
+      <!-- ✏️ EDIT: Replace with your title/role -->
+      <div class="role">Founder & CEO</div>
+      <!-- ✏️ EDIT: Replace these paragraphs with YOUR story — who you are, why you built this, your background -->
+      <p><strong>Write your personal story here.</strong> Tell people who you are, where you come from, and what inspired you to build AllPDFStuff.</p>
+      <p>For example: "I spent 10 years working in [your industry] and got frustrated with [the problem]. So I built AllPDFStuff to solve it — and apparently a lot of other people had the same frustration!"</p>
+      <p>Be authentic. People connect with real stories. Tell them about your background, your passion, and your vision for where AllPDFStuff is going.</p>
+      <!-- ✏️ EDIT: Add your real contact or social links -->
+      <div style="display:flex;gap:12px;margin-top:20px;flex-wrap:wrap">
+        <a href="contact.html" style="font-size:.83rem;color:var(--or);font-weight:600;text-decoration:none;border:1px solid var(--obdr);padding:7px 16px;border-radius:100px;transition:all .2s" onmouseover="this.style.background='var(--oglow)'" onmouseout="this.style.background='transparent'">📧 Contact Me</a>
+        <!-- ✏️ EDIT: Add your LinkedIn, Twitter, etc. -->
+        <!-- <a href="https://linkedin.com/in/yourprofile" style="..." target="_blank">LinkedIn</a> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="about-cta">
+  <div>
+    <!-- ✏️ EDIT: Customise this CTA message -->
+    <h2>Ready to try AllPDFStuff?</h2>
+    <p>Start for free — no credit card required. All the tools you need to work with PDFs, right in your browser.</p>
+  </div>
+  <a href="index.html" class="btn-pill" style="font-size:.95rem;padding:13px 28px;flex-shrink:0">Try it free →</a>
+</div>
+
+<footer>
+  <div class="ft-top">
+    <div class="ft-brand"><a href="index.html" class="ft-logo">All<em>PDF</em>Stuff</a><p>The fastest, simplest way to work with PDFs online. Professional tools for everyone.</p></div>
+    <div class="ft-col"><h4>Tools</h4><ul><li><a href="../index.html#upload">Compress PDF</a></li><li><a href="../index.html#upload">Merge PDF</a></li><li><a href="../index.html#upload">Split PDF</a></li><li><a href="../index.html#upload">PDF to Word</a></li></ul></div>
+    <div class="ft-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="../index.html#pricing">Pricing</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="ft-col"><h4>Legal</h4><ul><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li><li><a href="cookies.html">Cookie Policy</a></li></ul></div>
+  </div>
+  <div class="ft-bot"><span>© 2026 AllPDFStuff.com — All rights reserved</span><span>🔒 Files auto-deleted after 1 hour</span></div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Cookie Policy — AllPDFStuff</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Satoshi:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#faf8f4;--bg2:#f3efe8;--bg3:#ede8df;--or:#e8620a;--or2:#f97316;--txt:#1a1714;--txt2:#3d3830;--mut:#8a8070;--mut2:#6b6055;--bdr:rgba(0,0,0,0.08);--serif:'Cormorant Garamond',Georgia,serif;--sans:'Satoshi',system-ui,sans-serif;--shadow:0 1px 3px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.06)}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:16px;line-height:1.7;overflow-x:hidden}
+    nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(250,248,244,.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--bdr)}
+    .logo{font-family:var(--serif);font-size:1.4rem;font-weight:600;color:var(--txt);text-decoration:none}.logo em{font-style:italic;color:var(--or)}
+    .nav-links{display:flex;gap:32px;list-style:none}
+    .nav-links a{font-size:.85rem;font-weight:500;color:var(--mut2);text-decoration:none;transition:color .2s}.nav-links a:hover{color:var(--txt)}
+    .btn-pill{background:var(--or);color:#fff;border:none;padding:9px 22px;border-radius:100px;font-family:var(--sans);font-size:.83rem;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:all .2s}.btn-pill:hover{background:var(--or2);transform:translateY(-1px)}
+    .page-hero{padding:140px 48px 60px;background:var(--bg2);border-bottom:1px solid var(--bdr)}
+    .page-hero .eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--or);margin-bottom:16px;display:flex;align-items:center;gap:10px}.page-hero .eyebrow::before{content:'';display:block;width:24px;height:1px;background:var(--or)}
+    .page-hero h1{font-family:var(--serif);font-size:clamp(2.5rem,5vw,4.5rem);font-weight:600;letter-spacing:-.03em;line-height:1.05;margin-bottom:16px}.page-hero h1 em{font-style:italic;color:var(--or)}
+    .page-hero p{color:var(--mut2);font-size:.95rem;max-width:520px;line-height:1.7}
+    .page-hero .meta{font-size:.8rem;color:var(--mut);margin-top:16px;padding-top:16px;border-top:1px solid var(--bdr)}
+    .content-wrap{max-width:820px;margin:0 auto;padding:72px 48px 100px}
+    .legal h2{font-family:var(--serif);font-size:1.7rem;font-weight:600;letter-spacing:-.02em;margin:48px 0 14px;padding-bottom:10px;border-bottom:1px solid var(--bdr)}.legal h2:first-child{margin-top:0}
+    .legal h3{font-family:var(--serif);font-size:1.2rem;font-weight:600;margin:28px 0 10px;color:var(--or)}
+    .legal p{margin-bottom:14px;color:var(--mut2);font-size:.95rem}
+    .legal ul,.legal ol{margin:12px 0 18px 24px;color:var(--mut2);font-size:.95rem}.legal li{margin-bottom:7px;line-height:1.65}
+    .legal a{color:var(--or);text-decoration:none}.legal a:hover{text-decoration:underline}
+    .legal .highlight-box{background:var(--bg2);border:1px solid var(--bdr);border-left:3px solid var(--or);border-radius:0 12px 12px 0;padding:18px 22px;margin:20px 0;font-size:.9rem;color:var(--txt2)}
+    .legal table{width:100%;border-collapse:collapse;margin:18px 0;font-size:.88rem}
+    .legal table th{background:var(--bg3);padding:10px 14px;text-align:left;font-weight:600;font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;color:var(--mut2);border:1px solid var(--bdr)}
+    .legal table td{padding:10px 14px;border:1px solid var(--bdr);vertical-align:top;color:var(--mut2)}
+    .cookie-type{display:inline-block;padding:3px 10px;border-radius:100px;font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+    .essential{background:rgba(74,222,128,.1);color:#2d7a4a;border:1px solid rgba(74,222,128,.2)}
+    .functional{background:rgba(59,130,246,.1);color:#1d4ed8;border:1px solid rgba(59,130,246,.2)}
+    .analytics{background:rgba(234,179,8,.1);color:#854d0e;border:1px solid rgba(234,179,8,.2)}
+    footer{background:var(--bg);border-top:1px solid var(--bdr);padding:48px 48px 28px}
+    .ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid var(--bdr)}
+    .ft-logo{font-family:var(--serif);font-size:1.4rem;font-weight:600;text-decoration:none;color:var(--txt);margin-bottom:10px;display:block}.ft-logo em{font-style:italic;color:var(--or)}
+    .ft-brand p{color:var(--mut);font-size:.84rem;line-height:1.7;max-width:230px}
+    .ft-col h4{font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin-bottom:14px}
+    .ft-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+    .ft-col a{color:var(--mut2);text-decoration:none;font-size:.84rem;transition:color .2s}.ft-col a:hover{color:var(--or)}
+    .ft-bot{display:flex;justify-content:space-between;align-items:center;padding-top:24px;color:var(--mut);font-size:.77rem;flex-wrap:wrap;gap:10px}
+    @media(max-width:768px){nav{padding:14px 20px}.nav-links{display:none}.page-hero{padding:100px 22px 48px}.content-wrap{padding:48px 22px 72px}footer{padding:40px 22px 22px}.ft-top{grid-template-columns:1fr;gap:28px}.ft-bot{flex-direction:column;text-align:center}}
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">All<em>PDF</em>Stuff</a>
+  <ul class="nav-links"><li><a href="../index.html#tools">Tools</a></li><li><a href="../index.html#pricing">Pricing</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul>
+  <a href="index.html" class="btn-pill">← Back to Tools</a>
+</nav>
+<div class="page-hero">
+  <div class="eyebrow">Legal</div>
+  <h1>Cookie <em>Policy</em></h1>
+  <p>This policy explains what cookies are, what cookies we use, and how you can control them.</p>
+  <div class="meta">Last updated: 20 March 2026 &nbsp;·&nbsp; Effective date: 20 March 2026</div>
+</div>
+<div class="content-wrap">
+  <div class="legal">
+    <div class="highlight-box"><strong>In plain English:</strong> We use only essential cookies needed to run the site (e.g. keeping you logged in), and basic anonymous analytics. We do not use advertising cookies or sell your browsing data to anyone.</div>
+
+    <h2>1. What Are Cookies?</h2>
+    <p>Cookies are small text files that are placed on your device (computer, tablet, or phone) when you visit a website. They are widely used to make websites work more efficiently and to provide information to website owners.</p>
+    <p>Cookies can be "session cookies" (deleted when you close your browser) or "persistent cookies" (which remain on your device for a set period or until you delete them). They can also be "first-party cookies" (set by us) or "third-party cookies" (set by other companies).</p>
+
+    <h2>2. How We Use Cookies</h2>
+    <p>We use cookies for the following purposes:</p>
+
+    <h3>2.1 Strictly Necessary Cookies</h3>
+    <p><span class="cookie-type essential">Essential</span></p>
+    <p>These cookies are required for the website to function. Without them, the service cannot be provided. They do not require your consent.</p>
+    <table>
+      <tr><th>Cookie Name</th><th>Purpose</th><th>Duration</th></tr>
+      <tr><td>sb-access-token</td><td>Keeps you logged in to your account (set by Supabase)</td><td>Session / 1 hour</td></tr>
+      <tr><td>sb-refresh-token</td><td>Refreshes your login session securely</td><td>30 days</td></tr>
+      <tr><td>pdfu_[date]</td><td>Tracks daily free usage limit (stored in localStorage)</td><td>1 day</td></tr>
+    </table>
+
+    <h3>2.2 Functional Cookies</h3>
+    <p><span class="cookie-type functional">Functional</span></p>
+    <p>These cookies remember your preferences to improve your experience. They are only set with your consent.</p>
+    <table>
+      <tr><th>Cookie Name</th><th>Purpose</th><th>Duration</th></tr>
+      <tr><td>aps_theme</td><td>Remembers your display preferences</td><td>1 year</td></tr>
+      <tr><td>aps_lang</td><td>Remembers your language preference</td><td>1 year</td></tr>
+    </table>
+
+    <h3>2.3 Analytics Cookies</h3>
+    <p><span class="cookie-type analytics">Analytics</span></p>
+    <p>These cookies help us understand how visitors use our website so we can improve it. All data is anonymised and aggregated. They are only set with your consent.</p>
+    <table>
+      <tr><th>Cookie Name</th><th>Provider</th><th>Purpose</th><th>Duration</th></tr>
+      <tr><td>_ga, _ga_*</td><td>Google Analytics (if enabled)</td><td>Anonymous usage statistics — pages visited, tools used, time on site</td><td>Up to 2 years</td></tr>
+    </table>
+    <p>Note: We use privacy-friendly analytics settings. IP addresses are anonymised before storage. We do not use analytics data to build personal profiles.</p>
+
+    <h2>3. Third-Party Cookies</h2>
+    <p>Some features of our service rely on third-party providers who may also set cookies:</p>
+    <ul>
+      <li><strong>Stripe:</strong> Sets cookies to enable secure payment processing. See <a href="https://stripe.com/cookies-policy/legal" target="_blank">Stripe's cookie policy</a>.</li>
+      <li><strong>Supabase:</strong> Sets authentication tokens. See <a href="https://supabase.com/privacy" target="_blank">Supabase's privacy policy</a>.</li>
+    </ul>
+
+    <h2>4. How to Control Cookies</h2>
+    <h3>4.1 Browser Settings</h3>
+    <p>You can control and/or delete cookies through your browser settings. Most browsers allow you to:</p>
+    <ul>
+      <li>View cookies stored on your device</li>
+      <li>Delete some or all cookies</li>
+      <li>Block cookies from specific websites</li>
+      <li>Block all third-party cookies</li>
+      <li>Set preferences for cookie notifications</li>
+    </ul>
+    <p>Instructions for common browsers: <a href="https://support.google.com/chrome/answer/95647" target="_blank">Chrome</a> · <a href="https://support.mozilla.org/en-US/kb/cookies-information-websites-store-on-your-computer" target="_blank">Firefox</a> · <a href="https://support.apple.com/guide/safari/manage-cookies-sfri11471/mac" target="_blank">Safari</a> · <a href="https://support.microsoft.com/en-us/windows/microsoft-edge-browsing-data-and-privacy-bb8174ba-9d73-dcf2-9b4a-c582b4e640dd" target="_blank">Edge</a></p>
+    <p><strong>Note:</strong> Disabling essential cookies will prevent the service from working correctly. You may not be able to log in or use premium features.</p>
+    <h3>4.2 Opt-Out of Analytics</h3>
+    <p>You can opt out of Google Analytics across all websites by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank">Google Analytics Opt-out Browser Add-on</a>.</p>
+
+    <h2>5. Do Not Track</h2>
+    <p>Some browsers have a "Do Not Track" feature. Our website currently does not respond to Do Not Track signals, but we keep usage of tracking to an absolute minimum regardless.</p>
+
+    <h2>6. Changes to This Policy</h2>
+    <p>We may update this Cookie Policy from time to time. The "Last updated" date at the top of this page reflects the most recent revision. We will notify you of significant changes.</p>
+
+    <h2>7. Contact Us</h2>
+    <p>If you have questions about our use of cookies, please contact us via our <a href="contact.html">Contact page</a>.</p>
+  </div>
+</div>
+<footer>
+  <div class="ft-top">
+    <div class="ft-brand"><a href="index.html" class="ft-logo">All<em>PDF</em>Stuff</a><p>The fastest, simplest way to work with PDFs online. Professional tools for everyone.</p></div>
+    <div class="ft-col"><h4>Tools</h4><ul><li><a href="../index.html#upload">Compress PDF</a></li><li><a href="../index.html#upload">Merge PDF</a></li><li><a href="../index.html#upload">Split PDF</a></li><li><a href="../index.html#upload">PDF to Word</a></li></ul></div>
+    <div class="ft-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="../index.html#pricing">Pricing</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="ft-col"><h4>Legal</h4><ul><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li><li><a href="cookies.html">Cookie Policy</a></li></ul></div>
+  </div>
+  <div class="ft-bot"><span>© 2026 AllPDFStuff.com — All rights reserved</span><span>🔒 Files auto-deleted after 1 hour</span></div>
+</footer>
+</body>
+</html>

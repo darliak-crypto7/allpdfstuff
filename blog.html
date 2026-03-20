@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Blog — AllPDFStuff</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,500;1,600;1,700&family=Satoshi:wght@300;400;500;700;900&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#faf8f4;--bg2:#f3efe8;--bg3:#ede8df;--or:#e8620a;--or2:#f97316;--txt:#1a1714;--txt2:#3d3830;--mut:#8a8070;--mut2:#6b6055;--bdr:rgba(0,0,0,0.08);--obdr:rgba(232,98,10,0.25);--oglow:rgba(232,98,10,0.08);--serif:'Cormorant Garamond',Georgia,serif;--sans:'Satoshi',system-ui,sans-serif;--shadow:0 1px 3px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.06);--shadow-lg:0 8px 32px rgba(0,0,0,.1)}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:16px;line-height:1.7;overflow-x:hidden}
+    nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(250,248,244,.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--bdr)}
+    .logo{font-family:var(--serif);font-size:1.4rem;font-weight:600;color:var(--txt);text-decoration:none}.logo em{font-style:italic;color:var(--or)}
+    .nav-links{display:flex;gap:32px;list-style:none}
+    .nav-links a{font-size:.85rem;font-weight:500;color:var(--mut2);text-decoration:none;transition:color .2s}.nav-links a:hover{color:var(--txt)}
+    .btn-pill{background:var(--or);color:#fff;border:none;padding:9px 22px;border-radius:100px;font-family:var(--sans);font-size:.83rem;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:all .2s}.btn-pill:hover{background:var(--or2);transform:translateY(-1px)}
+    .page-hero{padding:140px 48px 72px;background:var(--bg2);border-bottom:1px solid var(--bdr)}
+    .eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--or);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+    .eyebrow::before{content:'';display:block;width:24px;height:1px;background:var(--or)}
+    .page-hero h1{font-family:var(--serif);font-size:clamp(2.8rem,6vw,6rem);font-weight:600;letter-spacing:-.03em;line-height:1.0;margin-bottom:20px}
+    .page-hero h1 em{font-style:italic;color:var(--or)}
+    .page-hero .lead{color:var(--mut2);font-size:1rem;max-width:480px;line-height:1.75}
+    /* BLOG GRID */
+    .blog-wrap{max-width:1200px;margin:0 auto;padding:80px 48px 100px}
+    .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+    /* BLOG CARD */
+    .post-card{background:var(--bg);border:1px solid var(--bdr);border-radius:20px;overflow:hidden;transition:all .25s;cursor:pointer;text-decoration:none;color:inherit;display:flex;flex-direction:column;box-shadow:var(--shadow)}
+    .post-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--obdr)}
+    .post-thumb{height:200px;background:linear-gradient(135deg,var(--bg2),var(--bg3));display:flex;align-items:center;justify-content:center;font-size:3.5rem;border-bottom:1px solid var(--bdr);position:relative;overflow:hidden}
+    .post-thumb .thumb-text{font-family:var(--serif);font-size:5rem;font-weight:700;font-style:italic;color:rgba(232,98,10,.12);position:absolute;bottom:-10px;right:10px;line-height:1;pointer-events:none;user-select:none}
+    .post-body{padding:28px;flex:1;display:flex;flex-direction:column}
+    .post-meta{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+    .post-tag{font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:3px 10px;border-radius:100px;background:var(--oglow);color:var(--or);border:1px solid var(--obdr)}
+    .post-date{font-size:.78rem;color:var(--mut);font-weight:500}
+    .post-card h2{font-family:var(--serif);font-size:1.35rem;font-weight:600;letter-spacing:-.01em;line-height:1.25;margin-bottom:10px}
+    .post-excerpt{font-size:.87rem;color:var(--mut2);line-height:1.65;flex:1;margin-bottom:20px}
+    .read-more{font-size:.82rem;font-weight:700;color:var(--or);letter-spacing:.02em;display:flex;align-items:center;gap:6px;transition:gap .2s}
+    .post-card:hover .read-more{gap:10px}
+    /* FEATURED POST */
+    .post-card.featured{grid-column:span 2}
+    .post-card.featured .post-thumb{height:280px}
+    .post-card.featured h2{font-size:1.75rem}
+    /* EMPTY STATE */
+    .empty-state{grid-column:span 3;text-align:center;padding:80px 40px;background:var(--bg2);border:1px dashed var(--bdr);border-radius:20px}
+    .empty-state h3{font-family:var(--serif);font-size:1.6rem;font-weight:600;font-style:italic;margin-bottom:10px}
+    .empty-state p{color:var(--mut2);font-size:.9rem;max-width:400px;margin:0 auto}
+    /* NEWSLETTER */
+    .newsletter-band{background:var(--bg2);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);padding:72px 48px;text-align:center}
+    .newsletter-band h2{font-family:var(--serif);font-size:2.2rem;font-weight:600;font-style:italic;letter-spacing:-.02em;margin-bottom:10px}
+    .newsletter-band p{color:var(--mut2);font-size:.93rem;margin-bottom:28px}
+    .newsletter-form{display:flex;gap:10px;max-width:420px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+    .newsletter-form input{flex:1;min-width:200px;background:var(--bg);border:1px solid var(--bdr);color:var(--txt);padding:11px 16px;border-radius:100px;font-family:var(--sans);font-size:.9rem;outline:none;transition:border-color .2s}
+    .newsletter-form input:focus{border-color:var(--or)}
+    /* FOOTER */
+    footer{background:var(--bg);border-top:1px solid var(--bdr);padding:48px 48px 28px}
+    .ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid var(--bdr)}
+    .ft-logo{font-family:var(--serif);font-size:1.4rem;font-weight:600;text-decoration:none;color:var(--txt);margin-bottom:10px;display:block}.ft-logo em{font-style:italic;color:var(--or)}
+    .ft-brand p{color:var(--mut);font-size:.84rem;line-height:1.7;max-width:230px}
+    .ft-col h4{font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin-bottom:14px}
+    .ft-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+    .ft-col a{color:var(--mut2);text-decoration:none;font-size:.84rem;transition:color .2s}.ft-col a:hover{color:var(--or)}
+    .ft-bot{display:flex;justify-content:space-between;align-items:center;padding-top:24px;color:var(--mut);font-size:.77rem;flex-wrap:wrap;gap:10px}
+    @media(max-width:1024px){.blog-grid{grid-template-columns:1fr 1fr}.post-card.featured{grid-column:span 2}}
+    @media(max-width:768px){nav{padding:14px 20px}.nav-links{display:none}.page-hero{padding:100px 22px 52px}.blog-wrap{padding:52px 22px 72px}.blog-grid{grid-template-columns:1fr}.post-card.featured{grid-column:span 1}.empty-state{grid-column:span 1}footer{padding:40px 22px 22px}.ft-top{grid-template-columns:1fr;gap:28px}.ft-bot{flex-direction:column;text-align:center}}
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">All<em>PDF</em>Stuff</a>
+  <ul class="nav-links"><li><a href="../index.html#tools">Tools</a></li><li><a href="../index.html#pricing">Pricing</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul>
+  <a href="index.html" class="btn-pill">← Back to Tools</a>
+</nav>
+
+<!-- ═══════════════════════════════════════
+     HERO — ✏️ EDIT: Change title/tagline
+     ═══════════════════════════════════════ -->
+<div class="page-hero">
+  <div class="eyebrow">Blog</div>
+  <h1>Tips, guides &amp;<br/><em>PDF insights</em></h1>
+  <!-- ✏️ EDIT: Change this tagline -->
+  <p class="lead">Practical guides to help you work smarter with PDF documents. From quick tips to deep dives.</p>
+</div>
+
+<div class="blog-wrap">
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       HOW TO ADD A NEW BLOG POST:
+       
+       1. Copy one of the <a class="post-card"> blocks below
+       2. Paste it inside the <div class="blog-grid"> section
+       3. Edit the emoji icon, tag, date, title, and excerpt
+       4. Change href="blog-post-1.html" to your post's filename
+       5. Save and upload to GitHub
+       
+       To make a post FEATURED (bigger), add class="featured" to the card.
+       Only use one featured post at a time.
+       ═══════════════════════════════════════════════════════════════ -->
+
+  <div class="blog-grid">
+
+    <!-- ✏️ SAMPLE POST 1 — edit or delete this -->
+    <a class="post-card featured" href="blog-post-1.html">
+      <div class="post-thumb">
+        📄
+        <div class="thumb-text">PDF</div>
+      </div>
+      <div class="post-body">
+        <div class="post-meta">
+          <span class="post-tag">Guide</span>
+          <!-- ✏️ EDIT: Change the date -->
+          <span class="post-date">20 March 2026</span>
+        </div>
+        <!-- ✏️ EDIT: Change the title -->
+        <h2>How to Compress a PDF Without Losing Quality</h2>
+        <!-- ✏️ EDIT: Change the excerpt -->
+        <p class="post-excerpt">Large PDF files can be a nightmare to email or upload. In this guide, we walk you through the best methods to reduce PDF file size while keeping your document looking sharp.</p>
+        <span class="read-more">Read article →</span>
+      </div>
+    </a>
+
+    <!-- ✏️ SAMPLE POST 2 — edit or delete this -->
+    <a class="post-card" href="blog-post-2.html">
+      <div class="post-thumb">
+        🔗
+        <div class="thumb-text">Merge</div>
+      </div>
+      <div class="post-body">
+        <div class="post-meta">
+          <span class="post-tag">Tips</span>
+          <span class="post-date">15 March 2026</span>
+        </div>
+        <h2>5 Ways to Merge PDFs Like a Pro</h2>
+        <p class="post-excerpt">Whether you're combining invoices, reports, or contracts — merging PDFs is a daily task for most office workers. Here are 5 fast methods.</p>
+        <span class="read-more">Read article →</span>
+      </div>
+    </a>
+
+    <!-- ✏️ SAMPLE POST 3 — edit or delete this -->
+    <a class="post-card" href="blog-post-3.html">
+      <div class="post-thumb">
+        📊
+        <div class="thumb-text">Excel</div>
+      </div>
+      <div class="post-body">
+        <div class="post-meta">
+          <span class="post-tag">Tutorial</span>
+          <span class="post-date">10 March 2026</span>
+        </div>
+        <h2>PDF to Excel: Extract Tables Perfectly Every Time</h2>
+        <p class="post-excerpt">Converting PDF tables to editable Excel spreadsheets used to require expensive software. Not anymore. Here's how to do it in seconds.</p>
+        <span class="read-more">Read article →</span>
+      </div>
+    </a>
+
+    <!-- ✏️ ADD MORE POSTS HERE by copying the block above -->
+    <!-- ════════════════════════════════════════════════
+    <a class="post-card" href="your-new-post.html">
+      <div class="post-thumb">
+        🔄
+        <div class="thumb-text">Rotate</div>
+      </div>
+      <div class="post-body">
+        <div class="post-meta">
+          <span class="post-tag">Your Category</span>
+          <span class="post-date">Your Date</span>
+        </div>
+        <h2>Your Post Title Here</h2>
+        <p class="post-excerpt">Your post excerpt goes here — 2-3 sentences that summarise what the reader will learn.</p>
+        <span class="read-more">Read article →</span>
+      </div>
+    </a>
+    ════════════════════════════════════════════════ -->
+
+  </div>
+</div>
+
+<!-- NEWSLETTER SIGNUP -->
+<div class="newsletter-band">
+  <h2>Get PDF tips in your inbox</h2>
+  <!-- ✏️ EDIT: Update newsletter copy -->
+  <p>Join our newsletter for monthly PDF tips, guides, and feature updates. No spam, unsubscribe anytime.</p>
+  <div class="newsletter-form">
+    <input type="email" placeholder="your@email.com" />
+    <!-- ✏️ Connect this to your email service (Mailchimp, ConvertKit, etc.) -->
+    <button class="btn-pill" type="button">Subscribe →</button>
+  </div>
+</div>
+
+<footer>
+  <div class="ft-top">
+    <div class="ft-brand"><a href="index.html" class="ft-logo">All<em>PDF</em>Stuff</a><p>The fastest, simplest way to work with PDFs online. Professional tools for everyone.</p></div>
+    <div class="ft-col"><h4>Tools</h4><ul><li><a href="../index.html#upload">Compress PDF</a></li><li><a href="../index.html#upload">Merge PDF</a></li><li><a href="../index.html#upload">Split PDF</a></li><li><a href="../index.html#upload">PDF to Word</a></li></ul></div>
+    <div class="ft-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="../index.html#pricing">Pricing</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="ft-col"><h4>Legal</h4><ul><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li><li><a href="cookies.html">Cookie Policy</a></li></ul></div>
+  </div>
+  <div class="ft-bot"><span>© 2026 AllPDFStuff.com — All rights reserved</span><span>🔒 Files auto-deleted after 1 hour</span></div>
+</footer>
+</body>
+</html>

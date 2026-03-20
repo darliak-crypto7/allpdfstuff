@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Contact — AllPDFStuff</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,500;1,600;1,700&family=Satoshi:wght@300;400;500;700;900&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#faf8f4;--bg2:#f3efe8;--bg3:#ede8df;--or:#e8620a;--or2:#f97316;--txt:#1a1714;--txt2:#3d3830;--mut:#8a8070;--mut2:#6b6055;--bdr:rgba(0,0,0,0.08);--obdr:rgba(232,98,10,0.25);--oglow:rgba(232,98,10,0.08);--serif:'Cormorant Garamond',Georgia,serif;--sans:'Satoshi',system-ui,sans-serif;--shadow:0 1px 3px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.06);--shadow-lg:0 8px 32px rgba(0,0,0,.1)}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:16px;line-height:1.7;overflow-x:hidden}
+    nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(250,248,244,.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--bdr)}
+    .logo{font-family:var(--serif);font-size:1.4rem;font-weight:600;color:var(--txt);text-decoration:none}.logo em{font-style:italic;color:var(--or)}
+    .nav-links{display:flex;gap:32px;list-style:none}
+    .nav-links a{font-size:.85rem;font-weight:500;color:var(--mut2);text-decoration:none;transition:color .2s}.nav-links a:hover{color:var(--txt)}
+    .btn-pill{background:var(--or);color:#fff;border:none;padding:9px 22px;border-radius:100px;font-family:var(--sans);font-size:.83rem;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:all .2s}.btn-pill:hover{background:var(--or2);transform:translateY(-1px)}
+    /* HERO */
+    .page-hero{padding:140px 48px 72px;background:var(--bg2);border-bottom:1px solid var(--bdr);position:relative;overflow:hidden}
+    .hero-ghost{position:absolute;top:40%;left:50%;transform:translate(-50%,-50%);font-family:var(--serif);font-size:clamp(100px,16vw,220px);font-weight:700;font-style:italic;color:rgba(232,98,10,.04);white-space:nowrap;pointer-events:none;user-select:none;letter-spacing:-.04em;line-height:1}
+    .eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--or);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+    .eyebrow::before{content:'';display:block;width:24px;height:1px;background:var(--or)}
+    .page-hero h1{font-family:var(--serif);font-size:clamp(2.8rem,6vw,6rem);font-weight:600;letter-spacing:-.03em;line-height:1.0;margin-bottom:20px;position:relative;z-index:1}
+    .page-hero h1 em{font-style:italic;color:var(--or)}
+    .page-hero .lead{color:var(--mut2);font-size:1rem;max-width:480px;line-height:1.75;position:relative;z-index:1}
+    /* CONTACT LAYOUT */
+    .contact-wrap{max-width:1100px;margin:0 auto;padding:80px 48px 100px;display:grid;grid-template-columns:1fr 1.6fr;gap:72px;align-items:start}
+    /* CONTACT INFO SIDE */
+    .contact-info h2{font-family:var(--serif);font-size:2rem;font-weight:600;letter-spacing:-.02em;margin-bottom:16px}
+    .contact-info h2 em{font-style:italic;color:var(--or)}
+    .contact-info > p{color:var(--mut2);font-size:.93rem;line-height:1.75;margin-bottom:32px}
+    .info-card{background:var(--bg);border:1px solid var(--bdr);border-radius:16px;padding:22px;margin-bottom:14px;display:flex;align-items:flex-start;gap:16px;box-shadow:var(--shadow)}
+    .info-ico{width:44px;height:44px;background:var(--bg2);border:1px solid var(--bdr);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+    .info-card h4{font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin-bottom:4px}
+    .info-card p,.info-card a{font-size:.92rem;color:var(--txt2);text-decoration:none;line-height:1.5}
+    .info-card a:hover{color:var(--or)}
+    .response-note{background:linear-gradient(135deg,#fff8f2,#fdf4ec);border:1px solid var(--obdr);border-radius:14px;padding:18px 20px;margin-top:24px;font-size:.87rem;color:var(--mut2)}
+    .response-note strong{color:var(--txt);display:block;margin-bottom:4px}
+    /* CONTACT FORM */
+    .contact-form{background:var(--bg);border:1px solid var(--bdr);border-radius:24px;padding:44px;box-shadow:var(--shadow-lg)}
+    .contact-form h3{font-family:var(--serif);font-size:1.6rem;font-weight:600;font-style:italic;margin-bottom:6px;letter-spacing:-.02em}
+    .contact-form .form-sub{color:var(--mut2);font-size:.87rem;margin-bottom:28px}
+    .fld{margin-bottom:18px}
+    .fld label{display:block;font-size:.8rem;font-weight:600;color:var(--mut2);margin-bottom:6px;letter-spacing:.02em}
+    .fld input,.fld textarea,.fld select{width:100%;background:var(--bg2);border:1px solid var(--bdr);color:var(--txt);padding:12px 16px;border-radius:12px;font-family:var(--sans);font-size:.93rem;outline:none;transition:all .2s}
+    .fld input:focus,.fld textarea:focus,.fld select:focus{border-color:var(--or);background:var(--bg)}
+    .fld textarea{resize:vertical;min-height:130px;line-height:1.6}
+    .fld select{cursor:pointer;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a8070' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+    .two-fld{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .submit-btn{width:100%;background:var(--or);color:#fff;border:none;padding:14px;border-radius:100px;font-family:var(--sans);font-size:.95rem;font-weight:700;cursor:pointer;transition:all .2s;margin-top:6px;letter-spacing:.02em}
+    .submit-btn:hover{background:var(--or2);transform:translateY(-1px);box-shadow:0 8px 24px rgba(232,98,10,.3)}
+    .submit-btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
+    .form-note{font-size:.76rem;color:var(--mut);text-align:center;margin-top:12px;line-height:1.55}
+    .form-note a{color:var(--or);text-decoration:none}
+    /* SUCCESS STATE */
+    .success-state{display:none;text-align:center;padding:48px 20px}
+    .success-ico{font-size:3.5rem;margin-bottom:16px}
+    .success-state h3{font-family:var(--serif);font-size:1.8rem;font-weight:600;font-style:italic;margin-bottom:10px}
+    .success-state p{color:var(--mut2);font-size:.93rem;max-width:320px;margin:0 auto 24px}
+    /* FOOTER */
+    footer{background:var(--bg);border-top:1px solid var(--bdr);padding:48px 48px 28px}
+    .ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid var(--bdr)}
+    .ft-logo{font-family:var(--serif);font-size:1.4rem;font-weight:600;text-decoration:none;color:var(--txt);margin-bottom:10px;display:block}.ft-logo em{font-style:italic;color:var(--or)}
+    .ft-brand p{color:var(--mut);font-size:.84rem;line-height:1.7;max-width:230px}
+    .ft-col h4{font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin-bottom:14px}
+    .ft-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+    .ft-col a{color:var(--mut2);text-decoration:none;font-size:.84rem;transition:color .2s}.ft-col a:hover{color:var(--or)}
+    .ft-bot{display:flex;justify-content:space-between;align-items:center;padding-top:24px;color:var(--mut);font-size:.77rem;flex-wrap:wrap;gap:10px}
+    @media(max-width:900px){.contact-wrap{grid-template-columns:1fr;gap:40px}}
+    @media(max-width:768px){nav{padding:14px 20px}.nav-links{display:none}.page-hero{padding:100px 22px 52px}.contact-wrap{padding:52px 22px 72px}.two-fld{grid-template-columns:1fr}.contact-form{padding:28px}footer{padding:40px 22px 22px}.ft-top{grid-template-columns:1fr;gap:28px}.ft-bot{flex-direction:column;text-align:center}}
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">All<em>PDF</em>Stuff</a>
+  <ul class="nav-links"><li><a href="../index.html#tools">Tools</a></li><li><a href="../index.html#pricing">Pricing</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul>
+  <a href="index.html" class="btn-pill">← Back to Tools</a>
+</nav>
+
+<!-- ═══════════════════════════════════════
+     HERO — ✏️ EDIT: Change headline/tagline
+     ═══════════════════════════════════════ -->
+<div class="page-hero">
+  <div class="hero-ghost">Hello</div>
+  <div class="eyebrow">Get in Touch</div>
+  <h1>We'd love to<br/><em>hear from you</em></h1>
+  <!-- ✏️ EDIT: Change this tagline -->
+  <p class="lead">Have a question, a feature request, or just want to say hi? Send us a message and we'll get back to you.</p>
+</div>
+
+<div class="contact-wrap">
+
+  <!-- ═══════════════════════════════════════
+       CONTACT INFO — ✏️ EDIT all details below
+       ═══════════════════════════════════════ -->
+  <div class="contact-info">
+    <h2>Let's <em>talk</em></h2>
+    <!-- ✏️ EDIT: Change this paragraph -->
+    <p>We're a small team and we read every message. Whether it's a support question, billing issue, or product feedback — we're here.</p>
+
+    <!-- ✏️ EDIT: Update email address -->
+    <div class="info-card">
+      <div class="info-ico">📧</div>
+      <div>
+        <h4>Email</h4>
+        <!-- ✏️ EDIT: Replace with your real email -->
+        <a href="/cdn-cgi/l/email-protection#8ee6ebe2e2e1ceefe2e2feeae8fdfafbe8e8a0ede1e3"><span class="__cf_email__" data-cfemail="3d55585151527d5c51514d595b4e49485b5b135e5250">[email&#160;protected]</span></a>
+      </div>
+    </div>
+
+    <!-- ✏️ EDIT: Update or remove location -->
+    <div class="info-card">
+      <div class="info-ico">🌍</div>
+      <div>
+        <h4>Location</h4>
+        <!-- ✏️ EDIT: Replace with your real location, or remove this card -->
+        <p>Based online — serving customers worldwide</p>
+      </div>
+    </div>
+
+    <!-- ✏️ EDIT: Add/remove social links -->
+    <div class="info-card">
+      <div class="info-ico">💬</div>
+      <div>
+        <h4>Social</h4>
+        <p>
+          <!-- ✏️ EDIT: Add your real social links -->
+          <!-- <a href="https://twitter.com/yourhandle" target="_blank">Twitter / X</a> · -->
+          <!-- <a href="https://linkedin.com/company/yourpage" target="_blank">LinkedIn</a> -->
+          Coming soon
+        </p>
+      </div>
+    </div>
+
+    <div class="response-note">
+      <!-- ✏️ EDIT: Update response time -->
+      <strong>⏱️ Response time</strong>
+      We aim to reply to all messages within 24–48 hours on business days.
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       CONTACT FORM
+       
+       HOW TO MAKE THIS FORM WORK:
+       1. Go to formspree.io and create a free account
+       2. Create a new form and get your Form ID
+       3. Replace "YOUR_FORM_ID" in the action below with your real ID
+          e.g. action="https://formspree.io/f/xyzabcde"
+       4. That's it! Formspree will email you on every submission.
+       Free plan: 50 submissions/month
+       ═══════════════════════════════════════ -->
+  <div class="contact-form">
+    <div id="formSection">
+      <h3>Send us a message</h3>
+      <p class="form-sub">Fill in the form below and we'll get back to you as soon as possible.</p>
+
+      <!-- ✏️ REPLACE YOUR_FORM_ID with your Formspree form ID -->
+      <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" onsubmit="handleSubmit(event)">
+
+        <div class="two-fld">
+          <div class="fld">
+            <label for="fname">First name *</label>
+            <input type="text" id="fname" name="first_name" placeholder="Your first name" required/>
+          </div>
+          <div class="fld">
+            <label for="lname">Last name</label>
+            <input type="text" id="lname" name="last_name" placeholder="Your last name"/>
+          </div>
+        </div>
+
+        <div class="fld">
+          <label for="email">Email address *</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required/>
+        </div>
+
+        <!-- ✏️ EDIT: Customise these topic options to match your business -->
+        <div class="fld">
+          <label for="topic">Topic</label>
+          <select id="topic" name="topic">
+            <option value="">Select a topic...</option>
+            <option value="general">General enquiry</option>
+            <option value="support">Technical support</option>
+            <option value="billing">Billing &amp; subscriptions</option>
+            <option value="feature">Feature request</option>
+            <option value="privacy">Privacy &amp; data</option>
+            <option value="partnership">Partnership or press</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="fld">
+          <label for="message">Message *</label>
+          <textarea id="message" name="message" placeholder="Tell us how we can help..." required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">Send Message →</button>
+
+        <p class="form-note">
+          By submitting this form you agree to our <a href="privacy.html">Privacy Policy</a>.
+          We will only use your information to respond to your enquiry.
+        </p>
+      </form>
+    </div>
+
+    <!-- SUCCESS MESSAGE (shown after form submission) -->
+    <div class="success-state" id="successState">
+      <div class="success-ico">✅</div>
+      <h3>Message sent!</h3>
+      <p>Thanks for reaching out. We'll get back to you within 24–48 hours.</p>
+      <button class="btn-pill" onclick="resetForm()" style="margin:0 auto">Send another message</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="ft-top">
+    <div class="ft-brand"><a href="index.html" class="ft-logo">All<em>PDF</em>Stuff</a><p>The fastest, simplest way to work with PDFs online. Professional tools for everyone.</p></div>
+    <div class="ft-col"><h4>Tools</h4><ul><li><a href="../index.html#upload">Compress PDF</a></li><li><a href="../index.html#upload">Merge PDF</a></li><li><a href="../index.html#upload">Split PDF</a></li><li><a href="../index.html#upload">PDF to Word</a></li></ul></div>
+    <div class="ft-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="../index.html#pricing">Pricing</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="ft-col"><h4>Legal</h4><ul><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li><li><a href="cookies.html">Cookie Policy</a></li></ul></div>
+  </div>
+  <div class="ft-bot"><span>© 2026 AllPDFStuff.com — All rights reserved</span><span>🔒 Files auto-deleted after 1 hour</span></div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+async function handleSubmit(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  const form = document.getElementById('contactForm');
+  const data = new FormData(form);
+  try {
+    const res = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+    if (res.ok) {
+      document.getElementById('formSection').style.display = 'none';
+      document.getElementById('successState').style.display = 'block';
+    } else {
+      btn.disabled = false;
+      btn.textContent = 'Send Message →';
+      alert('Something went wrong. Please try again or email us directly.');
+    }
+  } catch(err) {
+    btn.disabled = false;
+    btn.textContent = 'Send Message →';
+    alert('Something went wrong. Please try again or email us directly.');
+  }
+}
+function resetForm() {
+  document.getElementById('contactForm').reset();
+  document.getElementById('formSection').st
