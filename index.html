@@ -611,14 +611,19 @@ async function api(file,t){
   const body={task,tool:at,files:[{server_filename,filename:file.name}]};
   if(t==='pdf-to-word')body.outputformat='docx';
   if(t==='pdf-to-excel')body.outputformat='xlsx';
-  if(t==='rotate')body.rotate=90;
+  if(t==='word-to-pdf')body.outputformat='pdf';
+  if(t==='rotate'){body.rotate=90;body.direction='right';}
+  if(t==='pdf-to-jpg'){body.pdfjpg_mode='pages';}
   const pr=await fetch(`https://${server}/v1/process`,{method:'POST',headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify(body)});
   if(!pr.ok)throw new Error('Processing failed');
   const dl=await fetch(`https://${server}/v1/download/${task}`,{headers:{'Authorization':'Bearer '+token}});
   if(!dl.ok)throw new Error('Download failed');
   const blob=await dl.blob();
-  const ext={'pdf-to-word':'docx','pdf-to-excel':'xlsx','pdf-to-jpg':'zip'}[t]||'pdf';
-  return{url:URL.createObjectURL(blob),fn:file.name.replace(/\.[^/.]+$/,'')+'.'+ext};
+  const extMap={'pdf-to-word':'docx','pdf-to-excel':'xlsx','pdf-to-jpg':'zip','split':'zip','merge':'pdf','compress':'pdf','rotate':'pdf','word-to-pdf':'pdf'};
+  const ext=extMap[t]||'pdf';
+  const mimeMap={'docx':'application/vnd.openxmlformats-officedocument.wordprocessingml.document','xlsx':'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet','zip':'application/zip','pdf':'application/pdf'};
+  const typedBlob=new Blob([blob],{type:mimeMap[ext]||'application/octet-stream'});
+  return{url:URL.createObjectURL(typedBlob),fn:file.name.replace(/\.[^/.]+$/,'')+'.'+ext};
 }
 
 function resetUp(){pendingFile=null;document.getElementById('dropZ').style.display='block';document.getElementById('toolPicker').style.display='none';hd('procW');hd('resW');document.getElementById('fileInput').value='';}
