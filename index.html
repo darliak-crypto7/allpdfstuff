@@ -490,7 +490,7 @@ function getStripe(){
 
 function rNav(){
   const el=document.getElementById('navAuth');
-  if(user){const i=(user.email||'U')[0].toUpperCase();el.innerHTML=`<div class="u-menu"><div class="u-av" onclick="tDrop()">${i}</div><div class="u-drop" id="uDrop"><a href="#">👤 My Account</a><a href="#pricing">⭐ Upgrade</a><div class="udiv"></div><button onclick="doLogout()">🚪 Sign out</button></div></div>`;}
+  if(user){const i=(user.email||'U')[0].toUpperCase();el.innerHTML=`<div class="u-menu"><div class="u-av" onclick="tDrop()">${i}</div><div class="u-drop" id="uDrop"><a href="account.html">👤 My Account</a><a href="#pricing">⭐ Upgrade</a><div class="udiv"></div><button onclick="doLogout()">🚪 Sign out</button></div></div>`;}
   else el.innerHTML=`<button class="btn-ghost" onclick="openModal('login')">Sign in</button><a href="#pricing" class="btn-pill">Get Pro →</a>`;
 }
 function tDrop(){document.getElementById('uDrop')?.classList.toggle('open');}
