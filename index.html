@@ -303,7 +303,7 @@
       <p style="font-family:var(--serif);font-size:1.3rem;font-weight:600;font-style:italic;margin-bottom:18px;text-align:center">What do you want to do with <span id="pickerFileName" style="color:var(--or)">your file</span>?</p>
       <div style="display:flex;flex-wrap:wrap;gap:9px;justify-content:center">
         <button class="pill" onclick="pickAndGo('compress')">🗜️ Compress</button>
-        <button class="pill" onclick="pickAndGo('merge')">🔗 Merge</button>
+        <button class="pill" onclick="pickAndGo('merge')">🔗 Merge PDFs</button>
         <button class="pill" onclick="pickAndGo('split')">✂️ Split</button>
         <button class="pill" onclick="pickAndGo('pdf-to-jpg')">🖼️ Convert to JPG</button>
         <button class="pill" onclick="pickAndGo('word-to-pdf')">📄 Word to PDF</button>
@@ -317,9 +317,9 @@
     <div class="drop" id="dropZ" onclick="document.getElementById('fileInput').click()" ondragover="onOver(event)" ondragleave="onLeave()" ondrop="onDrop(event)">
       <div class="drop-ico">📂</div>
       <h3 id="dropT">Drop your file here to get started</h3>
-      <p id="dropD">or click to browse your files<br/><small style="font-size:.76rem;color:var(--mut)">Supports PDF, DOC, DOCX · Max 10 MB free · 100 MB Pro</small></p>
+      <p id="dropD">or click to browse · <strong>drop multiple files to merge</strong><br/><small style="font-size:.76rem;color:var(--mut)">Supports PDF, DOC, DOCX · Max 10 MB free · 100 MB Pro</small></p>
       <button class="btn-pill" style="pointer-events:none">Choose File</button>
-      <input type="file" id="fileInput" accept=".pdf,.doc,.docx" onchange="onSel(event)" />
+      <input type="file" id="fileInput" accept=".pdf,.doc,.docx" onchange="onSel(event)" multiple />
     </div>
     <div class="proc" id="procW">
       <div class="spin"></div>
@@ -542,21 +542,28 @@ function onLeave(){document.getElementById('dropZ').classList.remove('over');}
 function onDrop(e){
   e.preventDefault();
   document.getElementById('dropZ').classList.remove('over');
-  const f=e.dataTransfer.files[0];
-  if(f) showPicker(f);
+  const files=Array.from(e.dataTransfer.files);
+  if(files.length>0) showPicker(files);
 }
 function onSel(e){
-  const f=e.target.files[0];
-  if(f) showPicker(f);
+  const files=Array.from(e.target.files);
+  if(files.length>0) showPicker(files);
 }
 
 // Show the tool picker after file is selected
-function showPicker(file){
-  pendingFile = file;
-  // Show filename truncated
-  const name = file.name.length > 30 ? file.name.substring(0,27)+'...' : file.name;
+function showPicker(files){
+  // Accept either single file or array
+  if(!Array.isArray(files)) files=[files];
+  pendingFile = files;
+  const count = files.length;
+  const name = count>1 ? count+' files selected' : (files[0].name.length>30 ? files[0].name.substring(0,27)+'...' : files[0].name);
   document.getElementById('pickerFileName').textContent = name;
-  // Hide drop zone, show picker
+  // If multiple files dropped, auto-select merge
+  if(count>1){
+    document.querySelectorAll('#toolPicker .pill').forEach(b=>b.classList.remove('on'));
+    const mergeBtn=document.querySelector('#toolPicker .pill[onclick*="merge"]');
+    if(mergeBtn)mergeBtn.classList.add('on');
+  }
   document.getElementById('dropZ').style.display = 'none';
   document.getElementById('toolPicker').style.display = 'block';
   document.getElementById('procW').style.display = 'none';
@@ -567,7 +574,11 @@ function showPicker(file){
 function pickAndGo(t){
   tool = t;
   document.getElementById('toolPicker').style.display = 'none';
-  if(pendingFile) go(pendingFile);
+  if(pendingFile){
+    const files=Array.isArray(pendingFile)?pendingFile:[pendingFile];
+    if(t==='merge') go(files[0], files);
+    else go(files[0]);
+  }
 }
 
 // Cancel - go back to drop zone
@@ -585,14 +596,20 @@ function selectTool(t){
 
 function chkLimit(){const k='pdfu_'+new Date().toDateString(),n=parseInt(localStorage.getItem(k)||'0');if(!user&&n>=5)return false;localStorage.setItem(k,n+1);return true;}
 
-async function go(file){
+async function go(file, allFiles){
   if(PRO.includes(tool)&&!user){toast('err','⭐ Pro account required');openModal('signup');return;}
   if(!chkLimit()){toast('err','📋 Daily limit reached — sign up!');openModal('signup');return;}
   const max=user?100*1024*1024:10*1024*1024;
   if(file.size>max){toast('err',user?'❌ Max 100 MB':'❌ Max 10 MB free — upgrade to Pro');return;}
+  // For merge, need at least 2 files
+  if(tool==='merge'&&(!allFiles||allFiles.length<2)){
+    toast('err','❌ Merge needs 2+ PDF files — please drop multiple files at once');
+    sh('dropZ');hd('procW');hd('resW');
+    return;
+  }
   hd('dropZ');shf('procW');hd('resW');
   try{
-    const r=await api(file,tool);
+    const r=await api(file,tool,allFiles);
     hd('procW');shf('resW');
     document.getElementById('dlBtn').href=r.url;
     document.getElementById('dlBtn').download=r.fn;
@@ -600,33 +617,61 @@ async function go(file){
   }catch(err){hd('procW');sh('dropZ');toast('err','❌ '+(err.message||'Processing failed'));}
 }
 
-async function api(file,t){
+async function api(file,t,allFiles){
   const PUB='project_public_c3a9e8f2fc9c20c33b807c9d9f7d1402_tcQsF71c39ce96546f15007dffd2d86e6d2dd';
   const map={compress:'compress',merge:'merge',split:'split','pdf-to-jpg':'imagepdf','word-to-pdf':'officepdf',rotate:'rotate','pdf-to-word':'pdfoffice','pdf-to-excel':'pdfoffice'};
   const at=map[t]||'compress';
-  const{token}=await(await fetch('https://api.ilovepdf.com/v1/auth',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({public_key:PUB})})).json();
-  const{server,task}=await(await fetch(`https://api.ilovepdf.com/v1/start/${at}`,{headers:{'Authorization':'Bearer '+token}})).json();
-  const fd=new FormData();fd.append('task',task);fd.append('file',file);
-  const{server_filename}=await(await fetch(`https://${server}/v1/upload`,{method:'POST',headers:{'Authorization':'Bearer '+token},body:fd})).json();
-  const body={task,tool:at,files:[{server_filename,filename:file.name}]};
-  if(t==='pdf-to-word')body.outputformat='docx';
+
+  // Step 1: Auth
+  const authResp=await fetch('https://api.ilovepdf.com/v1/auth',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({public_key:PUB})});
+  const authData=await authResp.json();
+  if(!authData.token)throw new Error('Auth failed: '+JSON.stringify(authData));
+  const token=authData.token;
+
+  // Step 2: Start task
+  const startResp=await fetch('https://api.ilovepdf.com/v1/start/'+at,{headers:{'Authorization':'Bearer '+token}});
+  const startData=await startResp.json();
+  if(!startData.task)throw new Error('Start failed: '+JSON.stringify(startData));
+  const {server,task}=startData;
+
+  // Step 3: Upload file(s)
+  const filesToUpload=(t==='merge'&&allFiles&&allFiles.length>1)?allFiles:[file];
+  const uploadedFiles=[];
+  for(const f of filesToUpload){
+    const fd=new FormData();
+    fd.append('task',task);
+    fd.append('file',f,f.name);
+    const upResp=await fetch('https://'+server+'/v1/upload',{method:'POST',headers:{'Authorization':'Bearer '+token},body:fd});
+    const upData=await upResp.json();
+    if(!upData.server_filename)throw new Error('Upload failed: '+JSON.stringify(upData));
+    uploadedFiles.push({server_filename:upData.server_filename,filename:f.name});
+  }
+
+  // Step 4: Process
+  const body={task:task,files:uploadedFiles};
+  if(t==='pdf-to-word'||t==='pdfoffice')body.outputformat='docx';
   if(t==='pdf-to-excel')body.outputformat='xlsx';
   if(t==='word-to-pdf')body.outputformat='pdf';
-  if(t==='rotate'){body.rotate=90;body.direction='right';}
-  if(t==='pdf-to-jpg'){body.pdfjpg_mode='pages';}
-  const pr=await fetch(`https://${server}/v1/process`,{method:'POST',headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify(body)});
-  if(!pr.ok)throw new Error('Processing failed');
-  const dl=await fetch(`https://${server}/v1/download/${task}`,{headers:{'Authorization':'Bearer '+token}});
-  if(!dl.ok)throw new Error('Download failed');
-  const blob=await dl.blob();
+  if(t==='rotate')body.rotate=90;
+  if(t==='pdf-to-jpg')body.pdfjpg_mode='pages';
+  const prResp=await fetch('https://'+server+'/v1/process',{method:'POST',headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify(body)});
+  if(!prResp.ok){const e=await prResp.text();throw new Error('Process failed: '+e);}
+
+  // Step 5: Download
+  const dlResp=await fetch('https://'+server+'/v1/download/'+task,{headers:{'Authorization':'Bearer '+token}});
+  if(!dlResp.ok)throw new Error('Download failed: '+dlResp.status);
+  const blob=await dlResp.blob();
+
+  // Step 6: Return correct file type
   const extMap={'pdf-to-word':'docx','pdf-to-excel':'xlsx','pdf-to-jpg':'zip','split':'zip','merge':'pdf','compress':'pdf','rotate':'pdf','word-to-pdf':'pdf'};
   const ext=extMap[t]||'pdf';
-  const mimeMap={'docx':'application/vnd.openxmlformats-officedocument.wordprocessingml.document','xlsx':'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet','zip':'application/zip','pdf':'application/pdf'};
+  const mimeMap={docx:'application/vnd.openxmlformats-officedocument.wordprocessingml.document',xlsx:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',zip:'application/zip',pdf:'application/pdf'};
   const typedBlob=new Blob([blob],{type:mimeMap[ext]||'application/octet-stream'});
-  return{url:URL.createObjectURL(typedBlob),fn:file.name.replace(/\.[^/.]+$/,'')+'.'+ext};
+  const baseName=file.name.replace(/\.[^/.]+$/,'');
+  return{url:URL.createObjectURL(typedBlob),fn:baseName+'.'+ext};
 }
 
-function resetUp(){pendingFile=null;document.getElementById('dropZ').style.display='block';document.getElementById('toolPicker').style.display='none';hd('procW');hd('resW');document.getElementById('fileInput').value='';}
+function resetUp(){pendingFile=null;document.getElementById('dropZ').style.display='block';document.getElementById('toolPicker').style.display='none';hd('procW');hd('resW');document.getElementById('fileInput').value='';document.getElementById('dropT').textContent='Drop your file here to get started';}
 async function handleSub(p){if(!user){openModal('signup');return;}toast('ok','💳 Stripe checkout — connect backend to go live!');}
 
 function toast(type,msg){const el=document.getElementById('tst');document.getElementById('tmsg').textContent=msg;el.className='toast '+type+' show';setTimeout(()=>el.classList.remove('show'),3500);}
