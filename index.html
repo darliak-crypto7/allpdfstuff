@@ -282,7 +282,7 @@
       <div class="t-desc">Convert PDFs to fully editable Word documents with formatting intact.</div>
       <div class="t-foot"><span class="tag tag-p">Pro</span><div class="t-arr">↗</div></div>
     </a>
-    <a href="#upload" class="t-card" onclick="selectTool('pdf-to-excel')">
+    <a href="#upload" class="t-card" onclick="toast('err','📊 PDF to Excel — coming soon!');return false;">
       <div class="t-num">08</div><div class="t-ico">📊</div>
       <div class="t-name">PDF to Excel</div>
       <div class="t-desc">Extract tables and data from PDFs into editable Excel spreadsheets.</div>
@@ -309,7 +309,7 @@
         <button class="pill" onclick="pickAndGo('word-to-pdf')">📄 Word to PDF</button>
         <button class="pill" onclick="pickAndGo('rotate')">🔄 Rotate</button>
         <button class="pill" onclick="pickAndGo('pdf-to-word')">📝 PDF to Word ✦Pro</button>
-        <button class="pill" onclick="pickAndGo('pdf-to-excel')">📊 PDF to Excel ✦Pro</button>
+        <button class="pill" onclick="toast('err','📊 PDF to Excel — coming soon!')">📊 PDF to Excel ✦Soon</button>
       </div>
       <p style="text-align:center;margin-top:16px;font-size:.8rem;color:var(--mut)">Wrong file? <a href="#" onclick="cancelPick();return false;" style="color:var(--or);text-decoration:none">Choose a different file</a></p>
     </div>
@@ -468,7 +468,7 @@ let sb = null;
 let _stripe = null;
 let user = null;
 let tool = 'compress';
-const PRO = ['pdf-to-word','pdf-to-excel'];
+const PRO = ['pdf-to-word'];
 
 // ── Init libraries once DOM + scripts are ready ──
 document.addEventListener('DOMContentLoaded', function() {
@@ -572,6 +572,10 @@ function showPicker(files){
 
 // User picks a tool from the picker
 function pickAndGo(t){
+  if(t==='pdf-to-excel'){
+    toast('err','📊 PDF to Excel coming soon! Try PDF to Word instead.');
+    return;
+  }
   tool = t;
   document.getElementById('toolPicker').style.display = 'none';
   if(pendingFile){
@@ -650,7 +654,7 @@ async function api(file,t,allFiles){
   // Step 4: Process
   const body={task:task,files:uploadedFiles};
   if(t==='pdf-to-word'||t==='pdfoffice')body.outputformat='docx';
-  if(t==='pdf-to-excel')body.outputformat='xlsx';
+  // pdftables always outputs xlsx natively
   if(t==='word-to-pdf')body.outputformat='pdf';
   if(t==='rotate')body.rotate=90;
   if(t==='pdf-to-jpg')body.pdfjpg_mode='pages';
