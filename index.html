@@ -106,14 +106,14 @@
     /* HOW */
     .how-wrap{background:var(--bg2);border-top:1px solid var(--bdr);padding:96px 48px}
     .how-inner{max-width:1200px;margin:0 auto}
-    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:60px;background:var(--bdr);border:1px solid var(--bdr);border-radius:20px;overflow:hidden}
+    .steps{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;margin-top:60px;background:var(--bdr);border:1px solid var(--bdr);border-radius:20px;overflow:hidden}
     .step{background:var(--bg2);padding:50px 38px}    .step-n{font-family:var(--serif);font-size:4.2rem;font-weight:600;font-style:italic;color:var(--or);line-height:1;opacity:.35;margin-bottom:26px;letter-spacing:-.04em}
     .step h3{font-family:var(--serif);font-size:1.45rem;font-weight:600;margin-bottom:11px;letter-spacing:-.01em}
     .step p{color:var(--mut2);font-size:.87rem;line-height:1.65}
 
     /* PRICING */
     .pr-wrap{padding:110px 48px;max-width:1180px;margin:0 auto}
-    .pr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:60px}
+    .pr-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:60px}
     .pc{background:var(--bg);border:1px solid var(--bdr);border-radius:20px;padding:42px 34px;position:relative;transition:all .2s;box-shadow:var(--shadow)}
     .pc:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
     .pc.feat{border-color:var(--obdr);background:linear-gradient(145deg,rgba(232,98,10,.04),var(--bg))}
@@ -182,8 +182,8 @@
     @keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
     @keyframes scUp{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
 
-    @media(max-width:1024px){.tools-grid{grid-template-columns:repeat(2,1fr)}.pr-grid{grid-template-columns:1fr;max-width:420px;margin-left:auto;margin-right:auto}.steps{grid-template-columns:1fr}.ft-top{grid-template-columns:1fr 1fr}}
-    @media(max-width:768px){nav{padding:15px 22px}.nav-links{display:none}.hero{padding:0 22px 52px}.sec,.pr-wrap{padding:76px 22px}.how-wrap,.up-wrap{padding:76px 22px}.tools-grid{grid-template-columns:1fr}.cta{margin:0 22px 56px;padding:48px 28px}.cta::before{display:none}footer{padding:52px 22px 28px}.ft-top{grid-template-columns:1fr;gap:32px}.ft-bot{flex-direction:column;text-align:center}}
+    @media(max-width:1024px){.tools-grid{grid-template-columns:repeat(2,1fr)}.pr-grid{grid-template-columns:repeat(2,1fr);max-width:700px;margin-left:auto;margin-right:auto}.steps{grid-template-columns:1fr}.ft-top{grid-template-columns:1fr 1fr}}
+    @media(max-width:768px){nav{padding:15px 22px}.nav-links{display:none}.hero{padding:0 22px 52px}.sec,.pr-wrap{padding:76px 22px}.pr-grid{grid-template-columns:1fr!important;max-width:420px}.how-wrap,.up-wrap{padding:76px 22px}.tools-grid{grid-template-columns:1fr}.cta{margin:0 22px 56px;padding:48px 28px}.cta::before{display:none}footer{padding:52px 22px 28px}.ft-top{grid-template-columns:1fr;gap:32px}.ft-bot{flex-direction:column;text-align:center}}
   </style>
 </head>
 <body>
@@ -238,7 +238,7 @@
 <div class="sec" id="tools">
   <div class="sec-eye">All tools</div>
   <h2 class="sec-h">Everything PDF,<br/><em>in one place</em></h2>
-  <p class="sec-sub">Professional-grade tools for everyone — from casual users to full business teams.</p>
+  <p class="sec-sub">Professional-grade tools for everyone — simple, fast and free to get started.</p>
   <div class="tools-grid">
     <a href="#upload" class="t-card" onclick="selectTool('compress')">
       <div class="t-num">01</div><div class="t-ico">🗜️</div>
@@ -396,13 +396,13 @@
       <div class="pc-per">per month · cancel anytime</div>
       <ul class="pc-list">
         <li class="y"><span class="ck">✓</span>Everything in Pro</li>
-        <li class="y"><span class="ck">✓</span>Up to 5 team members</li>
-        <li class="y"><span class="ck">✓</span>API access</li>
         <li class="y"><span class="ck">✓</span>500 MB file size</li>
-        <li class="y"><span class="ck">✓</span>Dedicated support</li>
-        <li class="y"><span class="ck">✓</span>Custom branding</li>
-        <li class="y"><span class="ck">✓</span>Usage analytics</li>
-        <li class="y"><span class="ck">✓</span>Invoice billing</li>
+        <li class="y"><span class="ck">✓</span>Priority email support</li>
+        <li class="y"><span class="ck">✓</span>Bulk processing</li>
+        <li class="y"><span class="ck">✓</span>No watermarks</li>
+        <li class="y"><span class="ck">✓</span>Early access to new tools</li>
+        <li><span class="cx">✗</span>API access (coming soon)</li>
+        <li><span class="cx">✗</span>Team accounts (coming soon)</li>
       </ul>
       <button class="btn-ghost" style="width:100%;padding:12px" onclick="handleSub('business')">Get Business →</button>
     </div>
@@ -413,7 +413,7 @@
 <div class="cta">
   <div class="cta-l">
     <h2>Ready to simplify<br/>your PDF workflow?</h2>
-    <p>Join thousands of users who process their documents with AllPDFStuff every day. Start free — no credit card needed.</p>
+    <p>Fast, simple PDF tools right in your browser. No software to install, no credit card needed — just upload and go.</p>
   </div>
   <button class="btn-pill" style="font-size:.97rem;padding:14px 32px;flex-shrink:0" onclick="openModal('signup')">Create free account →</button>
 </div>
