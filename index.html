@@ -598,11 +598,24 @@ function selectTool(t){
   tool = t;
 }
 
-function chkLimit(){const k='pdfu_'+new Date().toDateString(),n=parseInt(localStorage.getItem(k)||'0');if(!user&&n>=5)return false;localStorage.setItem(k,n+1);return true;}
+function isPro(){return user&&(user.user_metadata?.plan==='pro'||user.user_metadata?.plan==='business');}
+function chkLimit(){
+  if(isPro())return true; // Pro/Business = unlimited
+  const k='pdfu_'+new Date().toDateString();
+  const n=parseInt(localStorage.getItem(k)||'0');
+  if(n>=5)return false; // Block at 5 for free users (guests + free accounts)
+  return true; // Don't increment here — only increment on SUCCESS
+}
+function incLimit(){
+  if(isPro())return;
+  const k='pdfu_'+new Date().toDateString();
+  const n=parseInt(localStorage.getItem(k)||'0');
+  localStorage.setItem(k,n+1);
+}
 
 async function go(file, allFiles){
   if(PRO.includes(tool)&&!user){toast('err','⭐ Pro account required');openModal('signup');return;}
-  if(!chkLimit()){toast('err','📋 Daily limit reached — sign up!');openModal('signup');return;}
+  if(!chkLimit()){toast('err','📋 Daily limit (5/day) reached — sign up for free or upgrade to Pro!');openModal('signup');return;}
   const max=user?100*1024*1024:10*1024*1024;
   if(file.size>max){toast('err',user?'❌ Max 100 MB':'❌ Max 10 MB free — upgrade to Pro');return;}
   // For merge, need at least 2 files
@@ -617,6 +630,7 @@ async function go(file, allFiles){
     hd('procW');shf('resW');
     document.getElementById('dlBtn').href=r.url;
     document.getElementById('dlBtn').download=r.fn;
+    incLimit(); // Only count successful tasks
     toast('ok','✅ Done!');
   }catch(err){hd('procW');sh('dropZ');toast('err','❌ '+(err.message||'Processing failed'));}
 }
@@ -652,11 +666,13 @@ async function api(file,t,allFiles){
   }
 
   // Step 4: Process
+  // For rotate: rotation goes inside each file object per iLovePDF API spec
+  if(t==='rotate'){
+    uploadedFiles.forEach(f=>f.rotate=90);
+  }
   const body={task:task,files:uploadedFiles};
   if(t==='pdf-to-word'||t==='pdfoffice')body.outputformat='docx';
-  // pdftables always outputs xlsx natively
   if(t==='word-to-pdf')body.outputformat='pdf';
-  if(t==='rotate')body.rotate=90;
   if(t==='pdf-to-jpg')body.pdfjpg_mode='pages';
   const prResp=await fetch('https://'+server+'/v1/process',{method:'POST',headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify(body)});
   if(!prResp.ok){const e=await prResp.text();throw new Error('Process failed: '+e);}
