@@ -654,7 +654,7 @@ async function api(file,t,allFiles){
   // Build files array — add rotate value inline for rotate tool
   const processFiles = uploadedFiles.map(f => {
     const obj = {server_filename: f.server_filename, filename: f.filename};
-    if(t==='rotate') obj.rotate = 90;
+    if(t==='rotate') obj.rotate = '90';
     return obj;
   });
   // Build process body
@@ -662,7 +662,6 @@ async function api(file,t,allFiles){
   if(t==='pdf-to-word') body.outputformat='docx';
   if(t==='word-to-pdf') body.outputformat='pdf';
   if(t==='pdf-to-jpg') body.pdfjpg_mode='pages';
-  console.log('PROCESS BODY:', JSON.stringify(body));
   const prResp=await fetch('https://'+server+'/v1/process',{method:'POST',headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify(body)});
   if(!prResp.ok){const e=await prResp.text();throw new Error('Process failed: '+e);}
 
