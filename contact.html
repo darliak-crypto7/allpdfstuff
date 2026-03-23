@@ -105,7 +105,8 @@
       <div>
         <h4>Email</h4>
         <!-- ✏️ EDIT: Replace with your real email -->
-        <span style="color:var(--or);font-weight:500;font-size:.93rem">support@allpdfstuff.com</span>
+        <a href="mailto:support@allpdfstuff.com" style="color:var(--or);font-weight:500;font-size:.93rem;text-decoration:none">support@allpdfstuff.com</a>
+        <p style="font-size:.78rem;color:var(--mut);margin-top:3px">We'll get back to you within 1–2 business days</p>
         <p style="font-size:.78rem;color:var(--mut);margin-top:3px">Use the form below to get in touch</p>
       </div>
     </div>
@@ -246,10 +247,4 @@ async function handleSubmit(e) {
     }
   } catch(err) {
     btn.disabled = false;
-    btn.textContent = 'Send Message →';
-    alert('Something went wrong. Please try again or email us directly.');
-  }
-}
-function resetForm() {
-  document.getElementById('contactForm').reset();
-  document.getElementById('formSection').st
+    b
