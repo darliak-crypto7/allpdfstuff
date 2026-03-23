@@ -651,12 +651,13 @@ async function api(file,t,allFiles){
   }
 
   // Step 4: Process
-  // For rotate: rotation goes inside each file object per iLovePDF API spec
+  // Rotate: set rotation on each file object (iLovePDF API spec)
   if(t==='rotate'){
-    uploadedFiles.forEach(f=>f.rotate=90);
+    uploadedFiles.forEach(f=>{f.rotate=90;});
   }
+  // Build process body — NO 'tool' field here, only task + files + options
   const body={task:task,files:uploadedFiles};
-  if(t==='pdf-to-word'||t==='pdfoffice')body.outputformat='docx';
+  if(t==='pdf-to-word')body.outputformat='docx';
   if(t==='word-to-pdf')body.outputformat='pdf';
   if(t==='pdf-to-jpg')body.pdfjpg_mode='pages';
   const prResp=await fetch('https://'+server+'/v1/process',{method:'POST',headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify(body)});
