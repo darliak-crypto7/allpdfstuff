@@ -466,7 +466,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function getStripe(){
   if(!_stripe){
     if(typeof Stripe==='undefined'){toast('err','❌ Payment system not loaded. Please refresh.');return null;}
-    _stripe=Stripe('pk_test_51TByghR5iy3nHwiEGDMvK2NsfWyySJoHJiB9mPTCWzAIzTCawZPpQaPA61LL0VxWNe952NVF0kPUyqgbx0gXGO6X00UzaoASur');
+    _stripe=Stripe('pk_live_51TBygSJEuTHMKBHAkY5CekZDzRCpWHy16X8jJ1FPGHimrLwFxNnKxjt7tB6RtOgGT6WdEEw7uXhopoO0oI85D7AK00M2ZM839H');
   }
   return _stripe;
 }
@@ -677,7 +677,13 @@ async function api(file,t,allFiles){
 }
 
 function resetUp(){pendingFile=null;document.getElementById('dropZ').style.display='block';document.getElementById('toolPicker').style.display='none';hd('procW');hd('resW');document.getElementById('fileInput').value='';document.getElementById('dropT').textContent='Drop your file here to get started';}
-async function handleSub(p){if(!user){openModal('signup');return;}toast('ok','💳 Stripe checkout — connect backend to go live!');}
+async function handleSub(p){
+  if(!user){openModal('signup');return;}
+  // Redirect to Stripe Payment Link
+  if(p==='pro'){
+    window.location.href='https://buy.stripe.com/4gM00kf9Igxo2798NX1ck00';
+  }
+}
 
 function toast(type,msg){const el=document.getElementById('tst');document.getElementById('tmsg').textContent=msg;el.className='toast '+type+' show';setTimeout(()=>el.classList.remove('show'),3500);}
 
