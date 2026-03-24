@@ -312,10 +312,10 @@
       <div class="t-desc">Convert images to PDF — JPG, PNG, TIFF and more.</div>
       <div class="t-foot"><span class="tag tag-p">Pro</span><div class="t-arr">↗</div></div>
     </a>
-    <a href="#upload" class="t-card" onclick="selectTool('edit-pdf')">
-      <div class="t-num">13</div><div class="t-ico">✏️</div>
-      <div class="t-name">Edit PDF</div>
-      <div class="t-desc">Add text, images and shapes to a PDF document.</div>
+    <a href="#upload" class="t-card" onclick="selectTool('page-numbers')">
+      <div class="t-num">13</div><div class="t-ico">🔢</div>
+      <div class="t-name">Page Numbers</div>
+      <div class="t-desc">Insert page numbers into your PDF in your preferred style.</div>
       <div class="t-foot"><span class="tag tag-p">Pro</span><div class="t-arr">↗</div></div>
     </a>
     <a href="#upload" class="t-card" onclick="selectTool('ocr-pdf')">
@@ -356,7 +356,7 @@
         <button class="pill" onclick="pickAndGo('resize-image')">📐 Resize Image ✦Pro</button>
         <button class="pill" onclick="pickAndGo('rotate-image')">🔃 Rotate Image ✦Pro</button>
         <button class="pill" onclick="pickAndGo('convert-image')">🖼️ Image to PDF ✦Pro</button>
-        <button class="pill" onclick="pickAndGo('edit-pdf')">✏️ Edit PDF ✦Pro</button>
+        <button class="pill" onclick="pickAndGo('page-numbers')">🔢 Page Numbers ✦Pro</button>
         <button class="pill" onclick="pickAndGo('ocr-pdf')">🔍 OCR PDF ✦Pro</button>
         <button class="pill" onclick="pickAndGo('watermark')">💧 Watermark PDF ✦Pro</button>
       </div>
@@ -572,7 +572,7 @@ function selectTool(t){
   tool=t;
   document.querySelectorAll('.pill').forEach(b=>b.classList.toggle('on',b.dataset.tool===t));
   const lbl={compress:'Click to upload your PDF to compress',merge:'Click to upload PDFs to merge',split:'Click to upload your PDF to split','pdf-to-jpg':'Click to upload your PDF to convert to JPG','word-to-pdf':'Click to upload your Word document',rotate:'Click to upload your PDF to rotate','extract-text':'Click to upload your PDF to extract text',
-       'edit-pdf':'Click to upload your PDF to edit',
+       'page-numbers':'Click to upload your PDF to add page numbers',
        'ocr-pdf':'Click to upload your scanned PDF',
        watermark:'Click to upload your PDF to watermark',
        'remove-watermark':'Click to upload your PDF to remove watermark',
@@ -633,7 +633,7 @@ function pickAndGo(t){
   }
   if(t==='split'&&!user){toast('err','⭐ Sign in free to split PDFs!');openModal('signup');return;}
   if(t==='pdf-to-jpg'&&!isPro()){toast('err','⭐ PDF to JPG requires a Pro account');openModal('signup');return;}
-  if(['extract-text','repair','unlock','resize-image','rotate-image','convert-image','edit-pdf','ocr-pdf','watermark','remove-watermark'].includes(t)&&!isPro()){
+  if(['extract-text','repair','unlock','resize-image','rotate-image','convert-image','page-numbers','ocr-pdf','watermark'].includes(t)&&!isPro()){
     toast('err','⭐ Pro account required for this tool');openModal('signup');return;
   }
 
@@ -704,7 +704,7 @@ async function go(file, allFiles){
 
 async function api(file,t,allFiles){
   const PUB='project_public_c3a9e8f2fc9c20c33b807c9d9f7d1402_tcQsF71c39ce96546f15007dffd2d86e6d2dd';
-  const map={compress:'compress',merge:'merge',split:'split','pdf-to-jpg':'pdfjpg','word-to-pdf':'officepdf',rotate:'rotate','extract-text':'extract',repair:'repair',unlock:'unlockpdf','resize-image':'resizeimg','rotate-image':'rotateimg','convert-image':'imagepdf','edit-pdf':'editpdf','ocr-pdf':'ocr',watermark:'watermark','remove-watermark':'watermark'};
+  const map={compress:'compress',merge:'merge',split:'split','pdf-to-jpg':'pdfjpg','word-to-pdf':'officepdf',rotate:'rotate','extract-text':'extract',repair:'repair',unlock:'unlockpdf','resize-image':'resizeimg','rotate-image':'rotateimg','convert-image':'imagepdf','page-numbers':'pagenumber','ocr-pdf':'ocr',watermark:'watermark','remove-watermark':'watermark'};
   const at=map[t]||'compress';
 
   // Step 1: Auth
@@ -744,7 +744,7 @@ async function api(file,t,allFiles){
   if(t==='pdf-to-word') body.outputformat='docx';
   if(t==='word-to-pdf') body.outputformat='pdf';
   if(t==='pdf-to-jpg') body.pdfjpg_mode='pages';
-  if(t==='watermark') body.text='CONFIDENTIAL';
+  if(t==='watermark'){body.mode='text';body.text=window._watermarkText||'CONFIDENTIAL';body.font_size=40;body.font_color='#FF0000';body.transparency=50;body.vertical_position='middle';body.horizontal_position='center';}
   if(t==='ocr-pdf') body.language='eng';
   const prResp=await fetch('https://'+server+'/v1/process',{method:'POST',headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify(body)});
   if(!prResp.ok){const e=await prResp.text();throw new Error('Process failed: '+e);}
@@ -755,7 +755,7 @@ async function api(file,t,allFiles){
   const blob=await dlResp.blob();
 
   // Step 6: Return correct file type
-  const extMap={'extract-text':'txt','repair':'pdf','unlock':'pdf','resize-image':'jpg','rotate-image':'jpg','convert-image':'pdf','edit-pdf':'pdf','ocr-pdf':'pdf',watermark:'pdf','remove-watermark':'pdf','pdf-to-excel':'xlsx','pdf-to-jpg':'zip','split':'zip','merge':'pdf','compress':'pdf','rotate':'pdf','word-to-pdf':'pdf'};
+  const extMap={'extract-text':'txt','repair':'pdf','unlock':'pdf','resize-image':'jpg','rotate-image':'jpg','convert-image':'pdf','page-numbers':'pdf','ocr-pdf':'pdf',watermark:'pdf','remove-watermark':'pdf','pdf-to-excel':'xlsx','pdf-to-jpg':'zip','split':'zip','merge':'pdf','compress':'pdf','rotate':'pdf','word-to-pdf':'pdf'};
   const ext=extMap[t]||'pdf';
   const mimeMap={txt:'text/plain',jpg:'image/jpeg',docx:'application/vnd.openxmlformats-officedocument.wordprocessingml.document',xlsx:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',zip:'application/zip',pdf:'application/pdf'};
   const typedBlob=new Blob([blob],{type:mimeMap[ext]||'application/octet-stream'});
