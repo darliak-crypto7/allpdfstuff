@@ -704,7 +704,7 @@ async function go(file, allFiles){
 
 async function api(file,t,allFiles){
   const PUB='project_public_c3a9e8f2fc9c20c33b807c9d9f7d1402_tcQsF71c39ce96546f15007dffd2d86e6d2dd';
-  const map={compress:'compress',merge:'merge',split:'split','pdf-to-jpg':'pdfjpg','word-to-pdf':'officepdf',rotate:'rotate','extract-text':'extract',repair:'repair',unlock:'unlockpdf','resize-image':'resizeimg','rotate-image':'rotateimg','convert-image':'imagepdf','page-numbers':'pagenumber','ocr-pdf':'ocr',watermark:'watermark','remove-watermark':'watermark'};
+  const map={compress:'compress',merge:'merge',split:'split','pdf-to-jpg':'pdfjpg','word-to-pdf':'officepdf',rotate:'rotate','extract-text':'extract',repair:'repair',unlock:'unlockpdf','resize-image':'resizeimg','rotate-image':'rotateimg','convert-image':'imagepdf','page-numbers':'pagenumber','ocr-pdf':'pdfocr',watermark:'watermark','remove-watermark':'watermark'};
   const at=map[t]||'compress';
 
   // Step 1: Auth
