@@ -584,7 +584,12 @@ function selectTool(t){
   tool = t;
 }
 
-function isPro(){return user&&(user.user_metadata?.plan==='pro'||user.user_metadata?.plan==='business');}
+function isPro(){
+  if(!user) return false;
+  // Admin account always has Pro access
+  if(user.email==='darliak7@gmail.com') return true;
+  return user.user_metadata?.plan==='pro'||user.user_metadata?.plan==='business';
+}
 function chkLimit(){
   if(isPro())return true; // Pro/Business = unlimited
   const k='pdfu_'+new Date().toDateString();
