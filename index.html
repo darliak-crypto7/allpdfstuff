@@ -641,13 +641,15 @@ async function api(file,t,allFiles){
   const filesToUpload=(t==='merge'&&allFiles&&allFiles.length>1)?allFiles:[file];
   const uploadedFiles=[];
   for(const f of filesToUpload){
+    // Sanitize filename — iLovePDF 500s on long or special-char filenames
+    const safeName = f.name.replace(/[^a-zA-Z0-9._-]/g,'_').substring(0,50) || 'document.pdf';
     const fd=new FormData();
     fd.append('task',task);
-    fd.append('file',f,f.name);
+    fd.append('file',f,safeName);
     const upResp=await fetch('https://'+server+'/v1/upload',{method:'POST',headers:{'Authorization':'Bearer '+token},body:fd});
     const upData=await upResp.json();
     if(!upData.server_filename)throw new Error('Upload failed: '+JSON.stringify(upData));
-    uploadedFiles.push({server_filename:upData.server_filename,filename:f.name});
+    uploadedFiles.push({server_filename:upData.server_filename,filename:safeName});
   }
 
   // Step 4: Process
