@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<div class="t-badge pro">Pro</div><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -229,8 +229,8 @@
 <!-- MARQUEE -->
 <div class="mq-wrap">
   <div class="mq-track">
-    <span>Compress PDF</span><span>·</span><span>Merge PDF</span><span>·</span><span><b>Free to start</b></span><span>·</span><span>PDF to Word</span><span>·</span><span>PDF to JPG</span><span>·</span><span><b>Secure &amp; private</b></span><span>·</span><span>Split PDF</span><span>·</span><span>Word to PDF</span><span>·</span><span><b>No software needed</b></span><span>·</span><span>Rotate PDF</span><span>·</span><span>PDF to Excel</span><span>·</span><span><b>Files deleted in 1hr</b></span><span>·</span>
-    <span>Compress PDF</span><span>·</span><span>Merge PDF</span><span>·</span><span><b>Free to start</b></span><span>·</span><span>PDF to Word</span><span>·</span><span>PDF to JPG</span><span>·</span><span><b>Secure &amp; private</b></span><span>·</span><span>Split PDF</span><span>·</span><span>Word to PDF</span><span>·</span><span><b>No software needed</b></span><span>·</span><span>Rotate PDF</span><span>·</span><span>PDF to Excel</span><span>·</span><span><b>Files deleted in 1hr</b></span><span>·</span>
+    <span>Compress PDF</span><span>·</span><span>Merge PDF</span><span>·</span><span><b>Free to start</b></span><span>·</span><span>PDF to Word</span><span>·</span><span>PDF to JPG</span><span>·</span><span><b>Secure &amp; private</b></span><span>·</span><span>Split PDF ✦Pro</span><span>·</span><span>Word to PDF</span><span>·</span><span><b>No software needed</b></span><span>·</span><span>Rotate PDF</span><span>·</span><span>PDF to Excel</span><span>·</span><span><b>Files deleted in 1hr</b></span><span>·</span>
+    <span>Compress PDF</span><span>·</span><span>Merge PDF</span><span>·</span><span><b>Free to start</b></span><span>·</span><span>PDF to Word</span><span>·</span><span>PDF to JPG</span><span>·</span><span><b>Secure &amp; private</b></span><span>·</span><span>Split PDF ✦Pro</span><span>·</span><span>Word to PDF</span><span>·</span><span><b>No software needed</b></span><span>·</span><span>Rotate PDF</span><span>·</span><span>PDF to Excel</span><span>·</span><span><b>Files deleted in 1hr</b></span><span>·</span>
   </div>
 </div>
 
@@ -256,7 +256,7 @@
       <div class="t-num">03</div><div class="t-ico">✂️</div>
       <div class="t-name">Split PDF</div>
       <div class="t-desc">Extract pages or divide your PDF into multiple separate files.</div>
-      <div class="t-foot"><span class="tag tag-f">Free</span><div class="t-arr">↗</div></div>
+      <div class="t-foot"><span class="tag tag-p">Pro</span><div class="t-arr">↗</div></div>
     </a>
     <a href="#upload" class="t-card" onclick="selectTool('pdf-to-jpg')">
       <div class="t-num">04</div><div class="t-ico">🖼️</div>
@@ -304,7 +304,7 @@
       <div style="display:flex;flex-wrap:wrap;gap:9px;justify-content:center">
         <button class="pill" onclick="pickAndGo('compress')">🗜️ Compress</button>
         <button class="pill" onclick="pickAndGo('merge')">🔗 Merge PDFs</button>
-        <button class="pill" onclick="pickAndGo('split')">✂️ Split</button>
+        <button class="pill" onclick="pickAndGo('split')">✂️ Split ✦Pro</button>
         <button class="pill" onclick="pickAndGo('pdf-to-jpg')">🖼️ Convert to JPG</button>
         <button class="pill" onclick="pickAndGo('word-to-pdf')">📄 Word to PDF</button>
         <button class="pill" onclick="pickAndGo('rotate')">🔄 Rotate</button>
@@ -364,12 +364,12 @@
       <ul class="pc-list">
         <li class="y"><span class="ck">✓</span>5 tasks per day</li>
         <li class="y"><span class="ck">✓</span>Up to 10 MB per file</li>
-        <li class="y"><span class="ck">✓</span>Compress, Merge, Split</li>
+        <li class="y"><span class="ck">✓</span>Compress &amp; Merge PDF</li>
         <li class="y"><span class="ck">✓</span>PDF to JPG &amp; Rotate</li>
         <li class="y"><span class="ck">✓</span>Word to PDF</li>
-        <li><span class="cx">✗</span>PDF to Word / Excel</li>
+        <li><span class="cx">✗</span>Split PDF</li>
+        <li><span class="cx">✗</span>PDF to Word</li>
         <li><span class="cx">✗</span>100 MB file limit</li>
-        <li><span class="cx">✗</span>Batch processing</li>
       </ul>
       <button class="btn-ghost" style="width:100%;padding:12px" onclick="openModal('signup')">Get Started Free</button>
     </div>
@@ -382,8 +382,8 @@
         <li class="y"><span class="ck">✓</span>Unlimited tasks</li>
         <li class="y"><span class="ck">✓</span>Up to 100 MB per file</li>
         <li class="y"><span class="ck">✓</span>All free tools included</li>
-        <li class="y"><span class="ck">✓</span>PDF to Word &amp; Excel</li>
-        <li class="y"><span class="ck">✓</span>Batch processing</li>
+        <li class="y"><span class="ck">✓</span>Split PDF</li>
+        <li class="y"><span class="ck">✓</span>PDF to Word</li>
         <li class="y"><span class="ck">✓</span>Priority processing</li>
         <li class="y"><span class="ck">✓</span>No watermarks</li>
         <li class="y"><span class="ck">✓</span>Email support</li>
@@ -561,6 +561,7 @@ function pickAndGo(t){
     toast('err','📊 PDF to Excel coming soon! Try PDF to Word instead.');
     return;
   }
+  if(t==='split'&&!user){toast('err','⭐ Sign in free to split PDFs!');openModal('signup');return;}
   tool = t;
   document.getElementById('toolPicker').style.display = 'none';
   if(pendingFile){
