@@ -629,7 +629,7 @@ async function go(file, allFiles){
 
 async function api(file,t,allFiles){
   const PUB='project_public_c3a9e8f2fc9c20c33b807c9d9f7d1402_tcQsF71c39ce96546f15007dffd2d86e6d2dd';
-  const map={compress:'compress',merge:'merge',split:'split','pdf-to-jpg':'pdfjpg','word-to-pdf':'officepdf',rotate:'rotate','pdf-to-word':'pdfoffice','pdf-to-excel':'pdfoffice'};
+  const map={compress:'compress',merge:'merge',split:'split','pdf-to-jpg':'pdfjpg','word-to-pdf':'officepdf',rotate:'rotate','pdf-to-word':'pdftodocx','pdf-to-excel':'pdftodocx'};
   const at=map[t]||'compress';
 
   // Step 1: Auth
