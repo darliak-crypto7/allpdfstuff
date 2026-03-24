@@ -453,7 +453,7 @@ let sb = null;
 let _stripe = null;
 let user = null;
 let tool = 'compress';
-const PRO = ['pdf-to-word'];
+const PRO = []; // pdf-to-word available to all logged-in users
 
 // ── Init libraries once DOM + scripts are ready ──
 document.addEventListener('DOMContentLoaded', function() {
@@ -599,7 +599,7 @@ function incLimit(){
 }
 
 async function go(file, allFiles){
-  if(PRO.includes(tool)&&!user){toast('err','⭐ Pro account required');openModal('signup');return;}
+  if(tool==='pdf-to-word'&&!user){toast('err','⭐ Sign in to use PDF to Word — it\'s free with an account!');openModal('login');return;}
   if(!chkLimit()){toast('err','📋 Daily limit (5/day) reached — sign up for free or upgrade to Pro!');openModal('signup');return;}
   const max=user?100*1024*1024:10*1024*1024;
   if(file.size>max){toast('err',user?'❌ Max 100 MB':'❌ Max 10 MB free — upgrade to Pro');return;}
