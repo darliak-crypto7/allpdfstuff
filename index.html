@@ -652,12 +652,16 @@ async function api(file,t,allFiles){
     uploadedFiles.push({server_filename:upData.server_filename,filename:safeName});
   }
 
-  // Step 4: Process
-  const body={task:task,files:uploadedFiles};
+  // Step 4: Process — build clean files array with tool-specific params
+  const processFiles=uploadedFiles.map(f=>{
+    const obj={server_filename:f.server_filename,filename:f.filename};
+    if(t==='rotate') obj.rotate=90;
+    return obj;
+  });
+  const body={task:task,tool:at,files:processFiles};
   if(t==='pdf-to-word') body.outputformat='docx';
   if(t==='word-to-pdf') body.outputformat='pdf';
   if(t==='pdf-to-jpg') body.pdfjpg_mode='pages';
-  if(t==='rotate') body.files=uploadedFiles.map(f=>({server_filename:f.server_filename,filename:f.filename,rotate:90}));
   const prResp=await fetch('https://'+server+'/v1/process',{method:'POST',headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify(body)});
   if(!prResp.ok){const e=await prResp.text();throw new Error('Process failed: '+e);}
 
