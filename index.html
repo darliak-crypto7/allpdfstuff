@@ -218,7 +218,7 @@
       </div>
     </div>
     <div class="hero-stats">
-      <div><div class="stat-n">30+</div><div class="stat-l">PDF Tools</div></div>
+      <div><div class="stat-n">15+</div><div class="stat-l">PDF Tools</div></div>
       <div><div class="stat-n">100%</div><div class="stat-l">Browser-based</div></div>
       <div><div class="stat-n">Free</div><div class="stat-l">To get started</div></div>
       <div><div class="stat-n">1hr</div><div class="stat-l">Auto file deletion</div></div>
@@ -229,8 +229,8 @@
 <!-- MARQUEE -->
 <div class="mq-wrap">
   <div class="mq-track">
-    <span>Compress PDF</span><span>·</span><span>Merge PDF</span><span>·</span><span><b>Free to start</b></span><span>·</span><span>PDF to Word</span><span>·</span><span>PDF to JPG ✦Pro</span><span>·</span><span><b>Secure &amp; private</b></span><span>·</span><span>Split PDF ✦Pro</span><span>·</span><span>Word to PDF</span><span>·</span><span><b>No software needed</b></span><span>·</span><span>Rotate PDF</span><span>·</span><span>PDF to Excel</span><span>·</span><span><b>Files deleted in 1hr</b></span><span>·</span>
-    <span>Compress PDF</span><span>·</span><span>Merge PDF</span><span>·</span><span><b>Free to start</b></span><span>·</span><span>PDF to Word</span><span>·</span><span>PDF to JPG ✦Pro</span><span>·</span><span><b>Secure &amp; private</b></span><span>·</span><span>Split PDF ✦Pro</span><span>·</span><span>Word to PDF</span><span>·</span><span><b>No software needed</b></span><span>·</span><span>Rotate PDF</span><span>·</span><span>PDF to Excel</span><span>·</span><span><b>Files deleted in 1hr</b></span><span>·</span>
+    <span>Compress PDF</span><span>·</span><span>Merge PDF</span><span>·</span><span><b>Free to start</b></span><span>·</span><span>Extract Text</span><span>·</span><span>PDF to JPG ✦Pro</span><span>·</span><span><b>Secure &amp; private</b></span><span>·</span><span>Split PDF ✦Pro</span><span>·</span><span>Edit PDF</span><span>·</span><span>OCR PDF</span><span>·</span><span>Watermark PDF</span><span>·</span><span>Word to PDF</span><span>·</span><span><b>No software needed</b></span><span>·</span><span>Rotate PDF</span><span>·</span><span>PDF to Excel</span><span>·</span><span><b>Files deleted in 1hr</b></span><span>·</span>
+    <span>Compress PDF</span><span>·</span><span>Merge PDF</span><span>·</span><span><b>Free to start</b></span><span>·</span><span>Extract Text</span><span>·</span><span>PDF to JPG ✦Pro</span><span>·</span><span><b>Secure &amp; private</b></span><span>·</span><span>Split PDF ✦Pro</span><span>·</span><span>Edit PDF</span><span>·</span><span>OCR PDF</span><span>·</span><span>Watermark PDF</span><span>·</span><span>Word to PDF</span><span>·</span><span><b>No software needed</b></span><span>·</span><span>Rotate PDF</span><span>·</span><span>PDF to Excel</span><span>·</span><span><b>Files deleted in 1hr</b></span><span>·</span>
   </div>
 </div>
 
@@ -243,7 +243,7 @@
     <a href="#upload" class="t-card" onclick="selectTool('compress')">
       <div class="t-num">01</div><div class="t-ico">🗜️</div>
       <div class="t-name">Compress PDF</div>
-      <div class="t-desc">Shrink file size without losing quality. Perfect for email attachments and uploads.</div>
+      <div class="t-desc">Shrink file size without losing quality. Perfect for email attachments.</div>
       <div class="t-foot"><span class="tag tag-f">Free</span><div class="t-arr">↗</div></div>
     </a>
     <a href="#upload" class="t-card" onclick="selectTool('merge')">
@@ -276,16 +276,58 @@
       <div class="t-desc">Fix page orientation on any PDF with a single click.</div>
       <div class="t-foot"><span class="tag tag-f">Free</span><div class="t-arr">↗</div></div>
     </a>
-    <a href="#upload" class="t-card" onclick="selectTool('pdf-to-word')">
-      <div class="t-num">07</div><div class="t-ico">📝</div>
-      <div class="t-name">PDF to Word</div>
-      <div class="t-desc">Convert PDFs to fully editable Word documents with formatting intact.</div>
+    <a href="#upload" class="t-card" onclick="selectTool('extract-text')">
+      <div class="t-num">07</div><div class="t-ico">📃</div>
+      <div class="t-name">Extract Text</div>
+      <div class="t-desc">Extract all text from a PDF and save it as a TXT file.</div>
       <div class="t-foot"><span class="tag tag-p">Pro</span><div class="t-arr">↗</div></div>
     </a>
-    <a href="#upload" class="t-card" onclick="toast('err','📊 PDF to Excel — coming soon!');return false;">
-      <div class="t-num">08</div><div class="t-ico">📊</div>
-      <div class="t-name">PDF to Excel</div>
-      <div class="t-desc">Extract tables and data from PDFs into editable Excel spreadsheets.</div>
+    <a href="#upload" class="t-card" onclick="selectTool('repair')">
+      <div class="t-num">08</div><div class="t-ico">🔧</div>
+      <div class="t-name">Repair PDF</div>
+      <div class="t-desc">Repair a corrupted or broken PDF file instantly.</div>
+      <div class="t-foot"><span class="tag tag-p">Pro</span><div class="t-arr">↗</div></div>
+    </a>
+    <a href="#upload" class="t-card" onclick="selectTool('unlock')">
+      <div class="t-num">09</div><div class="t-ico">🔓</div>
+      <div class="t-name">Unlock PDF</div>
+      <div class="t-desc">Remove PDF password security for reading and editing.</div>
+      <div class="t-foot"><span class="tag tag-p">Pro</span><div class="t-arr">↗</div></div>
+    </a>
+    <a href="#upload" class="t-card" onclick="selectTool('resize-image')">
+      <div class="t-num">10</div><div class="t-ico">📐</div>
+      <div class="t-name">Resize Image</div>
+      <div class="t-desc">Resize JPG, PNG and other images to any dimension.</div>
+      <div class="t-foot"><span class="tag tag-p">Pro</span><div class="t-arr">↗</div></div>
+    </a>
+    <a href="#upload" class="t-card" onclick="selectTool('rotate-image')">
+      <div class="t-num">11</div><div class="t-ico">🔃</div>
+      <div class="t-name">Rotate Image</div>
+      <div class="t-desc">Rotate JPG, PNG and other images to any angle.</div>
+      <div class="t-foot"><span class="tag tag-p">Pro</span><div class="t-arr">↗</div></div>
+    </a>
+    <a href="#upload" class="t-card" onclick="selectTool('convert-image')">
+      <div class="t-num">12</div><div class="t-ico">🖼️</div>
+      <div class="t-name">Convert Image</div>
+      <div class="t-desc">Convert images to PDF — JPG, PNG, TIFF and more.</div>
+      <div class="t-foot"><span class="tag tag-p">Pro</span><div class="t-arr">↗</div></div>
+    </a>
+    <a href="#upload" class="t-card" onclick="selectTool('edit-pdf')">
+      <div class="t-num">13</div><div class="t-ico">✏️</div>
+      <div class="t-name">Edit PDF</div>
+      <div class="t-desc">Add text, images and shapes to a PDF document.</div>
+      <div class="t-foot"><span class="tag tag-p">Pro</span><div class="t-arr">↗</div></div>
+    </a>
+    <a href="#upload" class="t-card" onclick="selectTool('ocr-pdf')">
+      <div class="t-num">14</div><div class="t-ico">🔍</div>
+      <div class="t-name">OCR PDF</div>
+      <div class="t-desc">Convert a scanned PDF into a searchable, editable PDF.</div>
+      <div class="t-foot"><span class="tag tag-p">Pro</span><div class="t-arr">↗</div></div>
+    </a>
+    <a href="#upload" class="t-card" onclick="selectTool('watermark')">
+      <div class="t-num">15</div><div class="t-ico">💧</div>
+      <div class="t-name">Watermark PDF</div>
+      <div class="t-desc">Insert a text or image-based watermark to PDF documents.</div>
       <div class="t-foot"><span class="tag tag-p">Pro</span><div class="t-arr">↗</div></div>
     </a>
   </div>
@@ -305,11 +347,18 @@
         <button class="pill" onclick="pickAndGo('compress')">🗜️ Compress</button>
         <button class="pill" onclick="pickAndGo('merge')">🔗 Merge PDFs</button>
         <button class="pill" onclick="pickAndGo('split')">✂️ Split ✦Pro</button>
-        <button class="pill" onclick="pickAndGo('pdf-to-jpg')">🖼️ Convert to JPG ✦Pro</button>
+        <button class="pill" onclick="pickAndGo('pdf-to-jpg')">🖼️ PDF to JPG ✦Pro</button>
         <button class="pill" onclick="pickAndGo('word-to-pdf')">📄 Word to PDF</button>
         <button class="pill" onclick="pickAndGo('rotate')">🔄 Rotate</button>
-        <button class="pill" onclick="pickAndGo('pdf-to-word')">📝 PDF to Word ✦Pro</button>
-        <button class="pill" onclick="toast('err','📊 PDF to Excel — coming soon!')">📊 PDF to Excel ✦Soon</button>
+        <button class="pill" onclick="pickAndGo('extract-text')">📃 Extract Text ✦Pro</button>
+        <button class="pill" onclick="pickAndGo('repair')">🔧 Repair PDF ✦Pro</button>
+        <button class="pill" onclick="pickAndGo('unlock')">🔓 Unlock PDF ✦Pro</button>
+        <button class="pill" onclick="pickAndGo('resize-image')">📐 Resize Image ✦Pro</button>
+        <button class="pill" onclick="pickAndGo('rotate-image')">🔃 Rotate Image ✦Pro</button>
+        <button class="pill" onclick="pickAndGo('convert-image')">🖼️ Image to PDF ✦Pro</button>
+        <button class="pill" onclick="pickAndGo('edit-pdf')">✏️ Edit PDF ✦Pro</button>
+        <button class="pill" onclick="pickAndGo('ocr-pdf')">🔍 OCR PDF ✦Pro</button>
+        <button class="pill" onclick="pickAndGo('watermark')">💧 Watermark PDF ✦Pro</button>
       </div>
       <p style="text-align:center;margin-top:16px;font-size:.8rem;color:var(--mut)">Wrong file? <a href="#" onclick="cancelPick();return false;" style="color:var(--or);text-decoration:none">Choose a different file</a></p>
     </div>
@@ -344,7 +393,7 @@
     <div class="sec-eye">Simple process</div>
     <h2 class="sec-h">Three steps.<br/><em>That's it.</em></h2>
     <div class="steps">
-      <div class="step"><div class="step-n">01</div><h3>Choose your tool</h3><p>Pick from 30+ PDF tools — compress, convert, merge, split and more. Free tools need no account at all.</p></div>
+      <div class="step"><div class="step-n">01</div><h3>Choose your tool</h3><p>Pick from 15+ PDF tools — compress, convert, merge, split and more. Free tools need no account at all.</p></div>
       <div class="step"><div class="step-n">02</div><h3>Upload your file</h3><p>Drag and drop or click to select. Files up to 10 MB are free. Upgrade to Pro for 100 MB files.</p></div>
       <div class="step"><div class="step-n">03</div><h3>Download instantly</h3><p>Your file is processed in seconds. Download right away. All files are auto-deleted after 1 hour.</p></div>
     </div>
@@ -369,7 +418,7 @@
         <li class="y"><span class="ck">✓</span>Word to PDF</li>
         <li><span class="cx">✗</span>PDF to JPG</li>
         <li><span class="cx">✗</span>Split PDF</li>
-        <li><span class="cx">✗</span>PDF to Word</li>
+        <li><span class="cx">✗</span>Extract Text</li>
         <li><span class="cx">✗</span>100 MB file limit</li>
       </ul>
       <button class="btn-ghost" style="width:100%;padding:12px" onclick="openModal('signup')">Get Started Free</button>
@@ -383,9 +432,10 @@
         <li class="y"><span class="ck">✓</span>Unlimited tasks</li>
         <li class="y"><span class="ck">✓</span>Up to 100 MB per file</li>
         <li class="y"><span class="ck">✓</span>All free tools included</li>
+        <li class="y"><span class="ck">✓</span>Edit, OCR &amp; Watermark PDF</li>
         <li class="y"><span class="ck">✓</span>PDF to JPG</li>
         <li class="y"><span class="ck">✓</span>Split PDF</li>
-        <li class="y"><span class="ck">✓</span>PDF to Word</li>
+        <li class="y"><span class="ck">✓</span>Extract Text (PDF to TXT)</li>
         <li class="y"><span class="ck">✓</span>Priority processing</li>
         <li class="y"><span class="ck">✓</span>No watermarks</li>
         <li class="y"><span class="ck">✓</span>Email support</li>
@@ -412,7 +462,7 @@
       <a href="/" class="ft-logo">All<em>PDF</em>Stuff</a>
       <p>The fastest, simplest way to work with PDFs online. Professional tools for everyone, right in your browser.</p>
     </div>
-    <div class="ft-col"><h4>Tools</h4><ul><li><a href="#upload">Compress PDF</a></li><li><a href="#upload">Merge PDF</a></li><li><a href="#upload">Split PDF</a></li><li><a href="#upload">PDF to Word</a></li><li><a href="#upload">PDF to JPG</a></li></ul></div>
+    <div class="ft-col"><h4>Tools</h4><ul><li><a href="#upload">Compress PDF</a></li><li><a href="#upload">Merge PDF</a></li><li><a href="#upload">Split PDF</a></li><li><a href="#upload">Extract Text</a></li><li><a href="#upload">PDF to JPG</a></li></ul></div>
     <div class="ft-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="#pricing">Pricing</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
     <div class="ft-col"><h4>Legal</h4><ul><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li><li><a href="cookies.html">Cookie Policy</a></li><li><a href="#">GDPR</a></li></ul></div>
   </div>
@@ -521,9 +571,18 @@ async function doLogout(){await sb.auth.signOut();toast('ok','👋 Signed out');
 function selectTool(t){
   tool=t;
   document.querySelectorAll('.pill').forEach(b=>b.classList.toggle('on',b.dataset.tool===t));
-  const lbl={compress:'Click to upload your PDF to compress',merge:'Click to upload PDFs to merge',split:'Click to upload your PDF to split','pdf-to-jpg':'Click to upload your PDF to convert to JPG','word-to-pdf':'Click to upload your Word document',rotate:'Click to upload your PDF to rotate','pdf-to-word':'Click to upload your PDF → Word','pdf-to-excel':'Click to upload your PDF → Excel'};
+  const lbl={compress:'Click to upload your PDF to compress',merge:'Click to upload PDFs to merge',split:'Click to upload your PDF to split','pdf-to-jpg':'Click to upload your PDF to convert to JPG','word-to-pdf':'Click to upload your Word document',rotate:'Click to upload your PDF to rotate','extract-text':'Click to upload your PDF to extract text',
+       'edit-pdf':'Click to upload your PDF to edit',
+       'ocr-pdf':'Click to upload your scanned PDF',
+       watermark:'Click to upload your PDF to watermark',
+       'remove-watermark':'Click to upload your PDF to remove watermark',
+       repair:'Click to upload your damaged PDF to repair',
+       unlock:'Click to upload your password-protected PDF',
+       'resize-image':'Click to upload your image to resize',
+       'rotate-image':'Click to upload your image to rotate',
+       'convert-image':'Click to upload your image to convert to PDF','pdf-to-excel':'Click to upload your PDF → Excel'};
   document.getElementById('dropT').textContent=lbl[t]||'Click to upload';
-  document.getElementById('fileInput').accept=t==='word-to-pdf'?'.doc,.docx':'.pdf';
+  document.getElementById('fileInput').accept=['resize-image','rotate-image','convert-image'].includes(t)?'.jpg,.jpeg,.png,.tiff,.gif,.bmp':'.pdf';
   sh('dropZ');hd('procW');hd('resW');
 }
 function sh(id){const el=document.getElementById(id);el.style.display='block';}
@@ -574,6 +633,10 @@ function pickAndGo(t){
   }
   if(t==='split'&&!user){toast('err','⭐ Sign in free to split PDFs!');openModal('signup');return;}
   if(t==='pdf-to-jpg'&&!isPro()){toast('err','⭐ PDF to JPG requires a Pro account');openModal('signup');return;}
+  if(['extract-text','repair','unlock','resize-image','rotate-image','convert-image','edit-pdf','ocr-pdf','watermark','remove-watermark'].includes(t)&&!isPro()){
+    toast('err','⭐ Pro account required for this tool');openModal('signup');return;
+  }
+
   tool = t;
   document.getElementById('toolPicker').style.display = 'none';
   if(pendingFile){
@@ -618,7 +681,7 @@ function incLimit(){
 }
 
 async function go(file, allFiles){
-  if(tool==='pdf-to-word'&&!user){toast('err','⭐ Sign in to use PDF to Word — it\'s free with an account!');openModal('login');return;}
+  if(tool==='pdf-to-word'&&!user){}
   if(!chkLimit()){toast('err','📋 Daily limit (5/day) reached — sign up for free or upgrade to Pro!');openModal('signup');return;}
   const max=user?100*1024*1024:10*1024*1024;
   if(file.size>max){toast('err',user?'❌ Max 100 MB':'❌ Max 10 MB free — upgrade to Pro');return;}
@@ -641,7 +704,7 @@ async function go(file, allFiles){
 
 async function api(file,t,allFiles){
   const PUB='project_public_c3a9e8f2fc9c20c33b807c9d9f7d1402_tcQsF71c39ce96546f15007dffd2d86e6d2dd';
-  const map={compress:'compress',merge:'merge',split:'split','pdf-to-jpg':'pdfjpg','word-to-pdf':'officepdf',rotate:'rotate','pdf-to-word':'pdftodocx','pdf-to-excel':'pdftodocx'};
+  const map={compress:'compress',merge:'merge',split:'split','pdf-to-jpg':'pdfjpg','word-to-pdf':'officepdf',rotate:'rotate','extract-text':'extract',repair:'repair',unlock:'unlockpdf','resize-image':'resizeimg','rotate-image':'rotateimg','convert-image':'imagepdf','edit-pdf':'editpdf','ocr-pdf':'ocr',watermark:'watermark','remove-watermark':'watermark'};
   const at=map[t]||'compress';
 
   // Step 1: Auth
@@ -681,6 +744,8 @@ async function api(file,t,allFiles){
   if(t==='pdf-to-word') body.outputformat='docx';
   if(t==='word-to-pdf') body.outputformat='pdf';
   if(t==='pdf-to-jpg') body.pdfjpg_mode='pages';
+  if(t==='watermark') body.text='CONFIDENTIAL';
+  if(t==='ocr-pdf') body.language='eng';
   const prResp=await fetch('https://'+server+'/v1/process',{method:'POST',headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify(body)});
   if(!prResp.ok){const e=await prResp.text();throw new Error('Process failed: '+e);}
 
@@ -690,9 +755,9 @@ async function api(file,t,allFiles){
   const blob=await dlResp.blob();
 
   // Step 6: Return correct file type
-  const extMap={'pdf-to-word':'docx','pdf-to-excel':'xlsx','pdf-to-jpg':'zip','split':'zip','merge':'pdf','compress':'pdf','rotate':'pdf','word-to-pdf':'pdf'};
+  const extMap={'extract-text':'txt','repair':'pdf','unlock':'pdf','resize-image':'jpg','rotate-image':'jpg','convert-image':'pdf','edit-pdf':'pdf','ocr-pdf':'pdf',watermark:'pdf','remove-watermark':'pdf','pdf-to-excel':'xlsx','pdf-to-jpg':'zip','split':'zip','merge':'pdf','compress':'pdf','rotate':'pdf','word-to-pdf':'pdf'};
   const ext=extMap[t]||'pdf';
-  const mimeMap={docx:'application/vnd.openxmlformats-officedocument.wordprocessingml.document',xlsx:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',zip:'application/zip',pdf:'application/pdf'};
+  const mimeMap={txt:'text/plain',jpg:'image/jpeg',docx:'application/vnd.openxmlformats-officedocument.wordprocessingml.document',xlsx:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',zip:'application/zip',pdf:'application/pdf'};
   const typedBlob=new Blob([blob],{type:mimeMap[ext]||'application/octet-stream'});
   const baseName=file.name.replace(/\.[^/.]+$/,'');
   return{url:URL.createObjectURL(typedBlob),fn:baseName+'.'+ext};
