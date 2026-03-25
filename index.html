@@ -686,6 +686,25 @@ function pickAndGo(t){
     toast('err','⭐ Pro account required for this tool');openModal('signup');return;
   }
 
+  // Watermark needs text input — show panel instead of processing immediately
+  if(t==='watermark'){
+    tool = t;
+    document.getElementById('toolPicker').style.display='none';
+    document.getElementById('watermarkPanel').style.display='block';
+    const f=pendingFile?(Array.isArray(pendingFile)?pendingFile[0]:pendingFile):null;
+    const fn=f?f.name:'your file';
+    document.getElementById('wmFileName').textContent=fn.length>30?fn.substring(0,27)+'...':fn;
+    return;
+  }
+  // Watermark — show text input panel first
+  if(t==='watermark'){
+    tool=t;
+    document.getElementById('toolPicker').style.display='none';
+    document.getElementById('watermarkPanel').style.display='block';
+    const f=Array.isArray(pendingFile)?pendingFile[0]:pendingFile;
+    if(f) document.getElementById('wmFileName').textContent=f.name.length>30?f.name.substring(0,27)+'...':f.name;
+    return;
+  }
   tool = t;
   document.getElementById('toolPicker').style.display = 'none';
   if(pendingFile){
