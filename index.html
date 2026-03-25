@@ -363,6 +363,35 @@
       <p style="text-align:center;margin-top:16px;font-size:.8rem;color:var(--mut)">Wrong file? <a href="#" onclick="cancelPick();return false;" style="color:var(--or);text-decoration:none">Choose a different file</a></p>
     </div>
 
+    <!-- WATERMARK PANEL -->
+    <div id="watermarkPanel" style="display:none;background:var(--bg);border:1px solid var(--bdr);border-radius:20px;padding:28px;margin-bottom:24px;box-shadow:var(--shadow-lg)">
+      <p style="font-family:var(--serif);font-size:1.3rem;font-weight:600;font-style:italic;margin-bottom:18px;text-align:center">💧 Add Watermark to <span style="color:var(--or)" id="wmFileName">your file</span></p>
+      <div style="max-width:420px;margin:0 auto">
+        <div style="margin-bottom:14px">
+          <label style="display:block;font-size:.8rem;font-weight:600;color:var(--mut2);margin-bottom:6px;letter-spacing:.02em">WATERMARK TEXT</label>
+          <input id="wmText" type="text" value="CONFIDENTIAL" placeholder="e.g. CONFIDENTIAL, DRAFT, SAMPLE" style="width:100%;background:var(--bg2);border:1px solid var(--bdr);color:var(--txt);padding:12px 15px;border-radius:11px;font-family:var(--sans);font-size:.95rem;outline:none;box-sizing:border-box"/>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">
+          <div>
+            <label style="display:block;font-size:.8rem;font-weight:600;color:var(--mut2);margin-bottom:6px;letter-spacing:.02em">TEXT COLOUR</label>
+            <input id="wmColor" type="color" value="#FF0000" style="width:100%;height:42px;border:1px solid var(--bdr);border-radius:11px;background:var(--bg2);cursor:pointer;padding:4px"/>
+          </div>
+          <div>
+            <label style="display:block;font-size:.8rem;font-weight:600;color:var(--mut2);margin-bottom:6px;letter-spacing:.02em">FONT SIZE</label>
+            <input id="wmSize" type="number" value="40" min="10" max="100" style="width:100%;background:var(--bg2);border:1px solid var(--bdr);color:var(--txt);padding:12px 15px;border-radius:11px;font-family:var(--sans);font-size:.95rem;outline:none;box-sizing:border-box"/>
+          </div>
+        </div>
+        <div style="margin-bottom:20px">
+          <label style="display:block;font-size:.8rem;font-weight:600;color:var(--mut2);margin-bottom:6px;letter-spacing:.02em">OPACITY: <span id="wmOpacityVal">50</span>%</label>
+          <input id="wmOpacity" type="range" min="10" max="90" value="50" oninput="document.getElementById('wmOpacityVal').textContent=this.value" style="width:100%;accent-color:var(--or)"/>
+        </div>
+        <div style="display:flex;gap:10px">
+          <button onclick="applyWatermark()" style="flex:1;background:var(--or);color:#fff;border:none;padding:13px;border-radius:100px;font-family:var(--sans);font-size:.9rem;font-weight:700;cursor:pointer">💧 Apply Watermark</button>
+          <button onclick="cancelWatermark()" style="background:var(--bg2);color:var(--txt);border:1px solid var(--bdr);padding:13px 20px;border-radius:100px;font-family:var(--sans);font-size:.9rem;cursor:pointer">Cancel</button>
+        </div>
+      </div>
+    </div>
+
     <div class="drop" id="dropZ" onclick="document.getElementById('fileInput').click()" ondragover="onOver(event)" ondragleave="onLeave()" ondrop="onDrop(event)">
       <div class="drop-ico">📂</div>
       <h3 id="dropT">Drop your file here to get started</h3>
@@ -626,6 +655,26 @@ function showPicker(files){
 }
 
 // User picks a tool from the picker
+function cancelWatermark(){
+  document.getElementById('watermarkPanel').style.display='none';
+  document.getElementById('dropZ').style.display='block';
+  pendingFile=null;
+}
+
+function applyWatermark(){
+  const txt = document.getElementById('wmText').value.trim();
+  if(!txt){toast('err','❌ Please enter watermark text');return;}
+  window._watermarkText = txt;
+  window._watermarkColor = document.getElementById('wmColor').value;
+  window._watermarkSize = parseInt(document.getElementById('wmSize').value)||40;
+  window._watermarkOpacity = parseInt(document.getElementById('wmOpacity').value)||50;
+  document.getElementById('watermarkPanel').style.display='none';
+  if(pendingFile){
+    const files=Array.isArray(pendingFile)?pendingFile:[pendingFile];
+    go(files[0]);
+  }
+}
+
 function pickAndGo(t){
   if(t==='pdf-to-excel'){
     toast('err','📊 PDF to Excel coming soon! Try PDF to Word instead.');
@@ -650,6 +699,7 @@ function pickAndGo(t){
 function cancelPick(){
   pendingFile = null;
   document.getElementById('toolPicker').style.display = 'none';
+  document.getElementById('watermarkPanel').style.display = 'none';
   document.getElementById('dropZ').style.display = 'block';
   document.getElementById('fileInput').value = '';
 }
@@ -744,7 +794,7 @@ async function api(file,t,allFiles){
   if(t==='pdf-to-word') body.outputformat='docx';
   if(t==='word-to-pdf') body.outputformat='pdf';
   if(t==='pdf-to-jpg') body.pdfjpg_mode='pages';
-  if(t==='watermark'){body.mode='text';body.text=window._watermarkText||'CONFIDENTIAL';body.font_size=40;body.font_color='#FF0000';body.transparency=50;body.vertical_position='middle';body.horizontal_position='center';}
+  if(t==='watermark'){body.mode='text';body.text=window._watermarkText||'CONFIDENTIAL';body.font_size=window._watermarkSize||40;body.font_color=window._watermarkColor||'#FF0000';body.transparency=window._watermarkOpacity||50;body.vertical_position='middle';body.horizontal_position='center';}
   if(t==='ocr-pdf') body.language='eng';
   const prResp=await fetch('https://'+server+'/v1/process',{method:'POST',headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify(body)});
   if(!prResp.ok){const e=await prResp.text();throw new Error('Process failed: '+e);}
