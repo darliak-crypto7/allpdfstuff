@@ -417,29 +417,29 @@
   <h2 class="sec-h">What do you think of<br/><em>AllPDFStuff?</em></h2>
   <p class="sec-sub">We'd love to hear your feedback. Leave a review and help others discover us.</p>
 
+  <!-- Approved reviews display -->
   <div id="reviewsList" style="margin-bottom:48px"></div>
 
-  <!-- Submit a review form -->
+  <!-- Submit form -->
   <div style="background:var(--bg);border:1px solid var(--bdr);border-radius:20px;padding:42px;max-width:620px;margin:0 auto;box-shadow:var(--shadow)">
     <h3 style="font-family:var(--serif);font-size:1.6rem;font-weight:600;font-style:italic;margin-bottom:6px;letter-spacing:-.02em">Leave a Review</h3>
     <p style="color:var(--mut2);font-size:.86rem;margin-bottom:28px">Share your experience with AllPDFStuff</p>
 
-    <!-- Star rating picker -->
     <div style="margin-bottom:18px">
       <label style="display:block;font-size:.8rem;font-weight:700;color:var(--mut2);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px">YOUR RATING</label>
       <div id="starPicker" style="display:flex;gap:6px;font-size:2rem;cursor:pointer">
-        <span data-v="1" onclick="setStars(1)" style="color:var(--bdr);transition:color .15s">★</span>
-        <span data-v="2" onclick="setStars(2)" style="color:var(--bdr);transition:color .15s">★</span>
-        <span data-v="3" onclick="setStars(3)" style="color:var(--bdr);transition:color .15s">★</span>
-        <span data-v="4" onclick="setStars(4)" style="color:var(--bdr);transition:color .15s">★</span>
-        <span data-v="5" onclick="setStars(5)" style="color:var(--bdr);transition:color .15s">★</span>
+        <span onclick="setStars(1)" style="color:rgba(0,0,0,0.08);transition:color .15s">★</span>
+        <span onclick="setStars(2)" style="color:rgba(0,0,0,0.08);transition:color .15s">★</span>
+        <span onclick="setStars(3)" style="color:rgba(0,0,0,0.08);transition:color .15s">★</span>
+        <span onclick="setStars(4)" style="color:rgba(0,0,0,0.08);transition:color .15s">★</span>
+        <span onclick="setStars(5)" style="color:rgba(0,0,0,0.08);transition:color .15s">★</span>
       </div>
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
       <div>
         <label style="display:block;font-size:.8rem;font-weight:700;color:var(--mut2);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px">YOUR NAME</label>
-        <input id="rvName" type="text" placeholder="e.g. " style="width:100%;background:var(--bg2);border:1px solid var(--bdr);color:var(--txt);padding:11px 14px;border-radius:11px;font-family:var(--sans);font-size:.9rem;outline:none;box-sizing:border-box"/>
+        <input id="rvName" type="text" placeholder="e.g. Sarah M." style="width:100%;background:var(--bg2);border:1px solid var(--bdr);color:var(--txt);padding:11px 14px;border-radius:11px;font-family:var(--sans);font-size:.9rem;outline:none;box-sizing:border-box"/>
       </div>
       <div>
         <label style="display:block;font-size:.8rem;font-weight:700;color:var(--mut2);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px">ROLE / LOCATION <span style="font-weight:400;text-transform:none">(optional)</span></label>
@@ -458,7 +458,9 @@
 </section>
 
 <script>
+// ── REVIEWS ──────────────────────────────────────────
 let _stars = 0;
+
 function setStars(n){
   _stars = n;
   document.querySelectorAll('#starPicker span').forEach((s,i)=>{
@@ -466,46 +468,90 @@ function setStars(n){
   });
 }
 
+// Load and display approved reviews
+async function loadReviews(){
+  const list = document.getElementById('reviewsList');
+  if(!sb) return;
+  try {
+    const { data, error } = await sb
+      .from('reviews')
+      .select('name,role,rating,review,created_at')
+      .eq('approved', true)
+      .order('created_at', { ascending: false });
+
+    if(error || !data || data.length === 0){
+      list.innerHTML = '';
+      return;
+    }
+
+    list.innerHTML = `
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin-bottom:12px">
+        ${data.map(r => `
+          <div class="rev-card">
+            <div class="rev-stars">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</div>
+            <p class="rev-text">${r.review}</p>
+            <div class="rev-author">
+              <div class="rev-av">${r.name.charAt(0).toUpperCase()}</div>
+              <div>
+                <div class="rev-name">${r.name}</div>
+                ${r.role ? `<div class="rev-role">${r.role}</div>` : ''}
+              </div>
+            </div>
+          </div>
+        `).join('')}
+      </div>`;
+  } catch(e){ list.innerHTML = ''; }
+}
+
+// Submit a new review to Supabase
 async function submitReview(){
-  const name = document.getElementById('rvName').value.trim();
-  const role = document.getElementById('rvRole').value.trim();
-  const text = document.getElementById('rvText').value.trim();
-  const msg  = document.getElementById('rvMsg');
+  const name   = document.getElementById('rvName').value.trim();
+  const role   = document.getElementById('rvRole').value.trim();
+  const text   = document.getElementById('rvText').value.trim();
+  const msg    = document.getElementById('rvMsg');
 
   if(!_stars){ toast('err','❌ Please select a star rating'); return; }
-  if(!name){  toast('err','❌ Please enter your name'); return; }
-  if(!text){  toast('err','❌ Please write your review'); return; }
-
-  const stars = '★'.repeat(_stars) + '☆'.repeat(5-_stars);
-  const body = `Name: ${name}\nRole: ${role||'—'}\nRating: ${stars}\nReview: ${text}`;
+  if(!name)  { toast('err','❌ Please enter your name');     return; }
+  if(!text)  { toast('err','❌ Please write your review');   return; }
 
   try {
-    const res = await fetch('https://formspree.io/f/mvzwnjzr', {
-      method:'POST',
-      headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body: JSON.stringify({subject:'New Review — AllPDFStuff', message: body, name, rating: _stars, review: text, role})
-    });
-    if(res.ok){
-      msg.style.display='block';
-      msg.style.background='rgba(74,222,128,.08)';
-      msg.style.border='1px solid rgba(74,222,128,.2)';
-      msg.style.color='#4ade80';
-      msg.textContent='✅ Thank you for your review! We really appreciate it.';
-      document.getElementById('rvName').value='';
-      document.getElementById('rvRole').value='';
-      document.getElementById('rvText').value='';
-      setStars(0);
-    } else {
-      throw new Error('Failed');
-    }
+    const { error } = await sb.from('reviews').insert([{
+      name,
+      role: role || null,
+      rating: _stars,
+      review: text,
+      approved: false
+    }]);
+
+    if(error) throw error;
+
+    msg.style.display    = 'block';
+    msg.style.background = 'rgba(74,222,128,.08)';
+    msg.style.border     = '1px solid rgba(74,222,128,.2)';
+    msg.style.color      = '#4ade80';
+    msg.textContent      = '✅ Thank you! Your review has been submitted and is pending approval.';
+
+    // Clear form
+    document.getElementById('rvName').value = '';
+    document.getElementById('rvRole').value = '';
+    document.getElementById('rvText').value = '';
+    setStars(0);
+
   } catch(e){
-    msg.style.display='block';
-    msg.style.background='rgba(248,113,113,.08)';
-    msg.style.border='1px solid rgba(248,113,113,.2)';
-    msg.style.color='#f87171';
-    msg.textContent='❌ Something went wrong. Please try again.';
+    msg.style.display    = 'block';
+    msg.style.background = 'rgba(248,113,113,.08)';
+    msg.style.border     = '1px solid rgba(248,113,113,.2)';
+    msg.style.color      = '#f87171';
+    msg.textContent      = '❌ Something went wrong. Please try again.';
   }
 }
+
+// Load reviews once Supabase is ready
+document.addEventListener('DOMContentLoaded', () => {
+  const checkSb = setInterval(() => {
+    if(sb){ clearInterval(checkSb); loadReviews(); }
+  }, 200);
+});
 </script>
 
 <!-- PRICING -->
