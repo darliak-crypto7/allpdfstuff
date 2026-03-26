@@ -104,87 +104,19 @@
     @keyframes spin{to{transform:rotate(360deg)}}
 
     /* HOW */
-    .how-wrap{background:var(--bg2);border-top:1px solid var(--bdr);padding:96px 48px}
-    .how-inner{max-width:1200px;margin:0 auto}
-    .steps{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;margin-top:60px;background:var(--bdr);border:1px solid var(--bdr);border-radius:20px;overflow:hidden}
-    .step{background:var(--bg2);padding:50px 38px}    .step-n{font-family:var(--serif);font-size:4.2rem;font-weight:600;font-style:italic;color:var(--or);line-height:1;opacity:.35;margin-bottom:26px;letter-spacing:-.04em}
-    .step h3{font-family:var(--serif);font-size:1.45rem;font-weight:600;margin-bottom:11px;letter-spacing:-.01em}
-    .step p{color:var(--mut2);font-size:.87rem;line-height:1.65}
-
-    /* PRICING */
-    .pr-wrap{padding:110px 48px;max-width:1180px;margin:0 auto}
-    .pr-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:60px}
-    .pc{background:var(--bg);border:1px solid var(--bdr);border-radius:20px;padding:42px 34px;position:relative;transition:all .2s;box-shadow:var(--shadow)}
-    .pc:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
-    .pc.feat{border-color:var(--obdr);background:linear-gradient(145deg,rgba(232,98,10,.04),var(--bg))}
-    .feat-lbl{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--or);color:#000;font-size:.7rem;font-weight:700;padding:3px 16px;border-radius:100px;letter-spacing:.06em;white-space:nowrap;text-transform:uppercase}
-    .pc-tier{font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mut2);margin-bottom:14px}
-    .pc-price{font-family:var(--serif);font-size:4.2rem;font-weight:600;font-style:italic;letter-spacing:-.04em;line-height:1;margin-bottom:4px}
-    .pc-price sup{font-size:1.5rem;vertical-align:top;margin-top:.5rem;font-style:normal}
-    .pc-per{color:var(--mut);font-size:.83rem;margin-bottom:32px}
-    .pc-list{list-style:none;margin-bottom:32px}
-    .pc-list li{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid var(--bdr);font-size:.87rem;color:var(--mut2)}
-    .pc-list li:last-child{border-bottom:none}
-    .pc-list li.y{color:var(--txt)}
-    .ck{color:var(--or);flex-shrink:0}.cx{color:var(--mut);flex-shrink:0}
-
-    /* CTA */
-    .cta{margin:0 48px 72px;border-radius:26px;background:linear-gradient(135deg,#fff8f2,#fdf4ec,#fff8f2);border:1px solid var(--obdr);padding:76px 68px;display:flex;align-items:center;justify-content:space-between;gap:36px;position:relative;overflow:hidden;flex-wrap:wrap;box-shadow:var(--shadow-lg)}
-    .cta::before{content:'PDF';position:absolute;right:-30px;top:50%;transform:translateY(-50%);font-family:var(--serif);font-size:200px;font-weight:700;font-style:italic;color:rgba(232,98,10,.07);pointer-events:none;letter-spacing:-.05em;line-height:1;user-select:none}
-    .cta-l h2{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,3.2rem);font-weight:600;font-style:italic;letter-spacing:-.03em;line-height:1.1;margin-bottom:12px}
-    .cta-l p{color:var(--mut2);font-size:.93rem;max-width:400px;line-height:1.65}
-
-    /* FOOTER */
-    footer{background:var(--bg);border-top:1px solid var(--bdr);padding:68px 48px 34px}
-    .ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:52px;padding-bottom:52px;border-bottom:1px solid var(--bdr)}
-    .ft-logo{font-family:var(--serif);font-size:1.45rem;font-weight:600;text-decoration:none;color:var(--txt);margin-bottom:14px;display:block}
-    .ft-logo em{font-style:italic;color:var(--or)}
-    .ft-brand p{color:var(--mut);font-size:.86rem;line-height:1.7;max-width:250px}
-    .ft-col h4{font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin-bottom:18px}
-    .ft-col ul{list-style:none;display:flex;flex-direction:column;gap:11px}
-    .ft-col a{color:var(--mut2);text-decoration:none;font-size:.86rem;transition:color .2s}
-    .ft-col a:hover{color:var(--or)}
-    .ft-bot{display:flex;justify-content:space-between;align-items:center;padding-top:28px;color:var(--mut);font-size:.78rem;flex-wrap:wrap;gap:10px}
-
-    /* MODAL */
-    .overlay{position:fixed;inset:0;background:rgba(26,23,20,.6);backdrop-filter:blur(12px);z-index:2000;display:none;align-items:center;justify-content:center}
-    .overlay.open{display:flex}
-    .modal{background:var(--bg);border:1px solid var(--bdr);border-radius:26px;padding:50px 42px;width:100%;max-width:430px;position:relative;animation:scUp .22s ease;box-shadow:var(--shadow-lg)}
-    .mx{position:absolute;top:16px;right:16px;background:none;border:none;color:var(--mut);font-size:1.5rem;cursor:pointer;line-height:1;padding:4px 9px;border-radius:8px;transition:color .2s}
-    .mx:hover{color:var(--txt)}
-    .modal h2{font-family:var(--serif);font-size:2rem;font-weight:600;font-style:italic;margin-bottom:5px;letter-spacing:-.02em}
-    .modal>.sub{color:var(--mut2);font-size:.88rem;margin-bottom:28px}
-    .fld{margin-bottom:14px}
-    .fld label{display:block;font-size:.8rem;font-weight:600;color:var(--mut2);margin-bottom:5px;letter-spacing:.02em}
-    .fld input{width:100%;background:var(--bg2);border:1px solid var(--bdr);color:var(--txt);padding:12px 15px;border-radius:11px;font-family:var(--sans);font-size:.93rem;outline:none;transition:border-color .2s}
-    .fld input:focus{border-color:var(--or);background:var(--bg)}
-    .al{padding:10px 14px;border-radius:9px;font-size:.83rem;margin-bottom:12px;display:none}
-    .al-ok{background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2);color:#4ade80}
-    .al-err{background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.2);color:#f87171}
-    .m-note{text-align:center;margin-top:16px;font-size:.83rem;color:var(--mut)}
-    .m-note a{color:var(--or);text-decoration:none}
-
-    /* USER */
-    .u-menu{position:relative}
-    .u-av{width:36px;height:36px;background:var(--or);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.88rem;color:#000;cursor:pointer}
-    .u-drop{position:absolute;top:calc(100% + 10px);right:0;background:var(--bg);border:1px solid var(--bdr);border-radius:13px;padding:6px;min-width:170px;display:none;z-index:300;box-shadow:var(--shadow-lg)}
-    .u-drop.open{display:block}
-    .u-drop a,.u-drop button{display:flex;align-items:center;gap:7px;padding:9px 11px;border-radius:7px;text-decoration:none;color:var(--txt);font-size:.83rem;background:none;border:none;width:100%;cursor:pointer;font-family:var(--sans);transition:background .15s}
-    .u-drop a:hover,.u-drop button:hover{background:var(--bg2)}
-    .udiv{height:1px;background:var(--bdr);margin:4px 0}
-
-    /* TOAST */
-    .toast{position:fixed;bottom:22px;right:22px;background:var(--bg);border:1px solid var(--bdr);border-radius:13px;padding:13px 18px;font-size:.86rem;z-index:9999;display:flex;align-items:center;gap:9px;transform:translateY(68px);opacity:0;transition:all .3s;max-width:310px;box-shadow:var(--shadow-lg)}
-    .toast.show{transform:translateY(0);opacity:1}
-    .toast.ok{border-color:rgba(74,222,128,.22)}
-    .toast.err{border-color:rgba(248,113,113,.22)}
-
-    @keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
-    @keyframes scUp{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
-
-    @media(max-width:1024px){.tools-grid{grid-template-columns:repeat(2,1fr)}.pr-grid{grid-template-columns:repeat(2,1fr);max-width:700px;margin-left:auto;margin-right:auto}.steps{grid-template-columns:1fr}.ft-top{grid-template-columns:1fr 1fr}}
-    @media(max-width:768px){nav{padding:15px 22px}.nav-links{display:none}.hero{padding:0 22px 52px}.sec,.pr-wrap{padding:76px 22px}.pr-grid{grid-template-columns:1fr!important;max-width:420px}.how-wrap,.up-wrap{padding:76px 22px}.tools-grid{grid-template-columns:1fr}.cta{margin:0 22px 56px;padding:48px 28px}.cta::before{display:none}footer{padding:52px 22px 28px}.ft-top{grid-template-columns:1fr;gap:32px}.ft-bot{flex-direction:column;text-align:center}}
-  
+    .how-wrap{background:var(--bg2);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);padding:110px 48px}
+    .how-inner{max-width:1100px;margin:0 auto}
+    .how-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:72px;position:relative}
+    .how-steps::before{content:'';position:absolute;top:52px;left:calc(16.66% + 26px);right:calc(16.66% + 26px);height:1px;background:linear-gradient(90deg,var(--or),var(--or2));z-index:0;opacity:.25}
+    .how-step{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 28px;position:relative;z-index:1}
+    .how-icon-wrap{width:104px;height:104px;border-radius:50%;background:var(--bg);border:1px solid var(--bdr);display:flex;align-items:center;justify-content:center;margin-bottom:32px;position:relative;box-shadow:var(--shadow-lg);transition:transform .25s,box-shadow .25s}
+    .how-step:hover .how-icon-wrap{transform:translateY(-6px);box-shadow:0 16px 48px rgba(232,98,10,.15)}
+    .how-step-num{position:absolute;top:-8px;right:-8px;width:28px;height:28px;background:var(--or);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;color:#fff;font-family:var(--sans)}
+    .how-icon{font-size:2.4rem}
+    .how-step h3{font-family:var(--serif);font-size:1.35rem;font-weight:600;letter-spacing:-.01em;margin-bottom:12px;line-height:1.2}
+    .how-step p{color:var(--mut2);font-size:.86rem;line-height:1.7;max-width:240px}
+    .how-tag{display:inline-block;margin-top:16px;font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:4px 13px;border-radius:100px;background:var(--oglow);color:var(--or);border:1px solid var(--obdr)}
+    @media(max-width:768px){.how-wrap{padding:76px 22px}.how-steps{grid-template-columns:1fr;gap:48px}.how-steps::before{display:none}.how-step{flex-direction:row;text-align:left;gap:24px;align-items:flex-start}.how-icon-wrap{width:72px;height:72px;flex-shrink:0;margin-bottom:0}.how-icon{font-size:1.7rem}.how-step p{max-width:none}}
 /* REVIEWS */
 .rev-wrap{padding:110px 48px;max-width:1280px;margin:0 auto}
 .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:60px}
@@ -439,12 +371,41 @@
 <!-- HOW -->
 <div class="how-wrap" id="how">
   <div class="how-inner">
-    <div class="sec-eye">Simple process</div>
-    <h2 class="sec-h">Three steps.<br/><em>That's it.</em></h2>
-    <div class="steps">
-      <div class="step"><div class="step-n">01</div><h3>Choose your tool</h3><p>Pick from 15+ PDF tools — compress, convert, merge, split and more. Free tools need no account at all.</p></div>
-      <div class="step"><div class="step-n">02</div><h3>Upload your file</h3><p>Drag and drop or click to select. Files up to 10 MB are free. Upgrade to Pro for 100 MB files.</p></div>
-      <div class="step"><div class="step-n">03</div><h3>Download instantly</h3><p>Your file is processed in seconds. Download right away. All files are auto-deleted after 1 hour.</p></div>
+    <div class="sec-eye">How it works</div>
+    <h2 class="sec-h" style="text-align:center">Three steps.<br/><em>That's all it takes.</em></h2>
+
+    <div class="how-steps">
+
+      <div class="how-step">
+        <div class="how-icon-wrap">
+          <span class="how-step-num">1</span>
+          <span class="how-icon">🎯</span>
+        </div>
+        <h3>Pick your tool</h3>
+        <p>Choose from 15+ PDF tools — compress, merge, split, convert and more. Free tools work instantly with no account.</p>
+        <span class="how-tag">No sign-up needed</span>
+      </div>
+
+      <div class="how-step">
+        <div class="how-icon-wrap">
+          <span class="how-step-num">2</span>
+          <span class="how-icon">📂</span>
+        </div>
+        <h3>Drop your file</h3>
+        <p>Drag and drop or click to browse. Files up to 10 MB are free. Upgrade to Pro for files up to 100 MB.</p>
+        <span class="how-tag">Works in your browser</span>
+      </div>
+
+      <div class="how-step">
+        <div class="how-icon-wrap">
+          <span class="how-step-num">3</span>
+          <span class="how-icon">⚡</span>
+        </div>
+        <h3>Download instantly</h3>
+        <p>Your file is processed in seconds. Download it right away. All files are automatically deleted after 1 hour.</p>
+        <span class="how-tag">Auto-deleted in 1hr</span>
+      </div>
+
     </div>
   </div>
 </div>
@@ -583,7 +544,7 @@ async function submitReview(){
         <li class="y"><span class="ck">✓</span>PDF to JPG</li>
         <li class="y"><span class="ck">✓</span>Split PDF</li>
         <li class="y"><span class="ck">✓</span>Extract Text (PDF to TXT)</li>
-        <li class="y"><span class="ck">✓</span>Priority processing</li>
+        
         <li class="y"><span class="ck">✓</span>No watermarks</li>
         
       </ul>
