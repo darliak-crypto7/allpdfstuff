@@ -294,16 +294,16 @@
       <div class="t-desc">Remove PDF password security for reading and editing.</div>
       <div class="t-foot"><span class="tag tag-p">Pro</span><div class="t-arr">↗</div></div>
     </a>
-    <a href="#upload" class="t-card" onclick="selectTool('resize-image')">
-      <div class="t-num">10</div><div class="t-ico">📐</div>
-      <div class="t-name">Resize Image</div>
-      <div class="t-desc">Resize JPG, PNG and other images to any dimension.</div>
+    <a href="#upload" class="t-card" onclick="selectTool('protect-pdf')">
+      <div class="t-num">10</div><div class="t-ico">🔒</div>
+      <div class="t-name">Protect PDF</div>
+      <div class="t-desc">Encrypt your PDF with a password to prevent unauthorised access.</div>
       <div class="t-foot"><span class="tag tag-p">Pro</span><div class="t-arr">↗</div></div>
     </a>
-    <a href="#upload" class="t-card" onclick="selectTool('rotate-image')">
-      <div class="t-num">11</div><div class="t-ico">🔃</div>
-      <div class="t-name">Rotate Image</div>
-      <div class="t-desc">Rotate JPG, PNG and other images to any angle.</div>
+    <a href="#upload" class="t-card" onclick="selectTool('pdf-to-pdfa')">
+      <div class="t-num">11</div><div class="t-ico">📋</div>
+      <div class="t-name">PDF to PDF/A</div>
+      <div class="t-desc">Convert PDF to PDF/A format for long-term archiving and compliance.</div>
       <div class="t-foot"><span class="tag tag-p">Pro</span><div class="t-arr">↗</div></div>
     </a>
     <a href="#upload" class="t-card" onclick="selectTool('convert-image')">
@@ -353,8 +353,8 @@
         <button class="pill" onclick="pickAndGo('extract-text')">📃 Extract Text ✦Pro</button>
         <button class="pill" onclick="pickAndGo('repair')">🔧 Repair PDF ✦Pro</button>
         <button class="pill" onclick="pickAndGo('unlock')">🔓 Unlock PDF ✦Pro</button>
-        <button class="pill" onclick="pickAndGo('resize-image')">📐 Resize Image ✦Pro</button>
-        <button class="pill" onclick="pickAndGo('rotate-image')">🔃 Rotate Image ✦Pro</button>
+        <button class="pill" onclick="pickAndGo('protect-pdf')">🔒 Protect PDF ✦Pro</button>
+        <button class="pill" onclick="pickAndGo('pdf-to-pdfa')">📋 PDF to PDF/A ✦Pro</button>
         <button class="pill" onclick="pickAndGo('convert-image')">🖼️ Image to PDF ✦Pro</button>
         <button class="pill" onclick="pickAndGo('page-numbers')">🔢 Page Numbers ✦Pro</button>
         <button class="pill" onclick="pickAndGo('ocr-pdf')">🔍 OCR PDF ✦Pro</button>
@@ -607,11 +607,11 @@ function selectTool(t){
        'remove-watermark':'Click to upload your PDF to remove watermark',
        repair:'Click to upload your damaged PDF to repair',
        unlock:'Click to upload your password-protected PDF',
-       'resize-image':'Click to upload your image to resize',
-       'rotate-image':'Click to upload your image to rotate',
+       'protect-pdf':'Click to upload your PDF to password protect',
+       'pdf-to-pdfa':'Click to upload your PDF to convert to PDF/A',
        'convert-image':'Click to upload your image to convert to PDF','pdf-to-excel':'Click to upload your PDF → Excel'};
   document.getElementById('dropT').textContent=lbl[t]||'Click to upload';
-  document.getElementById('fileInput').accept=['resize-image','rotate-image','convert-image'].includes(t)?'.jpg,.jpeg,.png,.tiff,.gif,.bmp':'.pdf';
+  document.getElementById('fileInput').accept=t==='convert-image'?'.jpg,.jpeg,.png,.tiff,.gif,.bmp':'.pdf';
   sh('dropZ');hd('procW');hd('resW');
 }
 function sh(id){const el=document.getElementById(id);el.style.display='block';}
@@ -682,10 +682,25 @@ function pickAndGo(t){
   }
   if(t==='split'&&!user){toast('err','⭐ Sign in free to split PDFs!');openModal('signup');return;}
   if(t==='pdf-to-jpg'&&!isPro()){toast('err','⭐ PDF to JPG requires a Pro account');openModal('signup');return;}
-  if(['extract-text','repair','unlock','resize-image','rotate-image','convert-image','page-numbers','ocr-pdf','watermark'].includes(t)&&!isPro()){
+  if(['extract-text','repair','unlock','protect-pdf','pdf-to-pdfa','convert-image','page-numbers','ocr-pdf','watermark'].includes(t)&&!isPro()){
     toast('err','⭐ Pro account required for this tool');openModal('signup');return;
   }
 
+  // Protect PDF needs a password
+  if(t==='protect-pdf'){
+    const pw=prompt('Set a password for this PDF:','');
+    if(!pw) return;
+    tool=t;
+    document.getElementById('toolPicker').style.display='none';
+    if(pendingFile){
+      const files=Array.isArray(pendingFile)?pendingFile:[pendingFile];
+      const f=files[0];
+      // store password temporarily on the go call
+      window._protectPw=pw;
+      go(f);
+    }
+    return;
+  }
   // Watermark needs text input — show panel instead of processing immediately
   if(t==='watermark'){
     tool = t;
@@ -764,9 +779,8 @@ async function go(file, allFiles){
 
 async function api(file,t,allFiles){
   const PUB='project_public_c3a9e8f2fc9c20c33b807c9d9f7d1402_tcQsF71c39ce96546f15007dffd2d86e6d2dd';
-  const IMAGE_TOOLS=['resize-image','rotate-image','convert-image'];
-  const BASE=IMAGE_TOOLS.includes(t)?'https://api.iloveimg.com':'https://api.ilovepdf.com';
-  const map={compress:'compress',merge:'merge',split:'split','pdf-to-jpg':'pdfjpg','word-to-pdf':'officepdf',rotate:'rotate','extract-text':'extract',repair:'repair',unlock:'unlock','resize-image':'resize','rotate-image':'rotate','convert-image':'imagepdf','page-numbers':'pagenumber','ocr-pdf':'pdfocr',watermark:'watermark','remove-watermark':'watermark'};
+  const BASE='https://api.ilovepdf.com';
+  const map={compress:'compress',merge:'merge',split:'split','pdf-to-jpg':'pdfjpg','word-to-pdf':'officepdf',rotate:'rotate','extract-text':'extract',repair:'repair',unlock:'unlock','protect-pdf':'protect','pdf-to-pdfa':'pdfa','convert-image':'imagepdf','page-numbers':'pagenumber','ocr-pdf':'pdfocr',watermark:'watermark','remove-watermark':'watermark'};
   const at=map[t]||'compress';
 
   // Step 1: Auth
@@ -806,8 +820,8 @@ async function api(file,t,allFiles){
   if(t==='pdf-to-word') body.outputformat='docx';
   if(t==='word-to-pdf') body.outputformat='pdf';
   if(t==='pdf-to-jpg') body.pdfjpg_mode='pages';
-  if(t==='resize-image'){body.resize_mode='percentage';body.percentage=50;}
-  if(t==='rotate-image'){body.rotate=90;}
+  if(t==='protect-pdf'){body.password=window._protectPw||'password';body.encryption_level=128;}
+  if(t==='pdf-to-pdfa'){body.conformance='pdfa-1b';}
   if(t==='watermark'){body.mode='text';body.text=window._watermarkText||'CONFIDENTIAL';body.font_size=window._watermarkSize||40;body.font_color=window._watermarkColor||'#FF0000';body.transparency=window._watermarkOpacity||50;body.vertical_position='middle';body.horizontal_position='center';}
   if(t==='ocr-pdf') body.language='eng';
   if(t==='page-numbers'){body.facing_pages=false;body.vertical_position='bottom';body.horizontal_position='center';body.font_size=14;body.font_color='#000000';}
@@ -820,7 +834,7 @@ async function api(file,t,allFiles){
   const blob=await dlResp.blob();
 
   // Step 6: Return correct file type
-  const extMap={'extract-text':'txt','repair':'pdf','unlock':'pdf','resize-image':'jpg','rotate-image':'jpg','convert-image':'pdf','page-numbers':'pdf','ocr-pdf':'pdf',watermark:'pdf','remove-watermark':'pdf','pdf-to-excel':'xlsx','pdf-to-jpg':'zip','split':'zip','merge':'pdf','compress':'pdf','rotate':'pdf','word-to-pdf':'pdf'};
+  const extMap={'extract-text':'txt','repair':'pdf','unlock':'pdf','protect-pdf':'pdf','pdf-to-pdfa':'pdf','convert-image':'pdf','page-numbers':'pdf','ocr-pdf':'pdf',watermark:'pdf','remove-watermark':'pdf','pdf-to-excel':'xlsx','pdf-to-jpg':'zip','split':'zip','merge':'pdf','compress':'pdf','rotate':'pdf','word-to-pdf':'pdf'};
   const ext=extMap[t]||'pdf';
   const mimeMap={txt:'text/plain',jpg:'image/jpeg',docx:'application/vnd.openxmlformats-officedocument.wordprocessingml.document',xlsx:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',zip:'application/zip',pdf:'application/pdf'};
   const typedBlob=new Blob([blob],{type:mimeMap[ext]||'application/octet-stream'});
