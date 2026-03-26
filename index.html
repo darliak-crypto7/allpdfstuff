@@ -7,7 +7,7 @@
   <meta name="description" content="Convert, merge, split, compress and edit PDF files online. Fast, secure, and easy to use." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Satoshi:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{
@@ -17,7 +17,7 @@
       --txt:#1a1714;--txt2:#3d3830;--mut:#8a8070;--mut2:#6b6055;
       --bdr:rgba(0,0,0,0.08);--obdr:rgba(232,98,10,0.25);--oglow:rgba(232,98,10,0.08);
       --serif:'Cormorant Garamond',Georgia,serif;
-      --sans:'Satoshi',system-ui,sans-serif;
+      --sans:'Inter',system-ui,sans-serif;
       --shadow:0 1px 3px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.06);
       --shadow-lg:0 8px 32px rgba(0,0,0,.1);
     }
@@ -136,6 +136,28 @@
 .rev-divider{width:1px;height:56px;background:var(--bdr)}
 @media(max-width:1024px){.rev-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:768px){.rev-wrap{padding:76px 22px}.rev-grid{grid-template-columns:1fr}.rev-summary{padding:28px 22px;gap:28px}.rev-divider{display:none}}
+
+    /* PRICING */
+    .pr-wrap{padding:110px 48px;max-width:1180px;margin:0 auto}
+    .pr-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:60px;max-width:860px;margin-left:auto;margin-right:auto}
+    .pc{background:var(--bg);border:1px solid var(--bdr);border-radius:20px;padding:42px 34px;position:relative;transition:all .2s;box-shadow:var(--shadow)}
+    .pc:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+    .pc.feat{border-color:var(--obdr);background:linear-gradient(145deg,rgba(232,98,10,.04),var(--bg))}
+    .feat-lbl{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--or);color:#000;font-size:.7rem;font-weight:700;padding:3px 16px;border-radius:100px;letter-spacing:.06em;white-space:nowrap;text-transform:uppercase}
+    .pc-tier{font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mut2);margin-bottom:14px}
+    .pc-price{font-family:var(--serif);font-size:4.2rem;font-weight:600;font-style:italic;letter-spacing:-.04em;line-height:1;margin-bottom:4px}
+    .pc-price sup{font-size:1.5rem;vertical-align:top;margin-top:.5rem;font-style:normal}
+    .pc-per{color:var(--mut);font-size:.83rem;margin-bottom:32px}
+    .pc-list{list-style:none;margin-bottom:32px}
+    .pc-list li{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid var(--bdr);font-size:.87rem;color:var(--mut2)}
+    .pc-list li:last-child{border-bottom:none}
+    .pc-list li.y{color:var(--txt)}
+    .ck{color:var(--or);flex-shrink:0}.cx{color:var(--mut);flex-shrink:0}
+    /* CTA */
+    .cta{margin:0 48px 72px;border-radius:26px;background:linear-gradient(135deg,#fff8f2,#fdf4ec,#fff8f2);border:1px solid var(--obdr);padding:76px 68px;display:flex;align-items:center;justify-content:space-between;gap:36px;position:relative;overflow:hidden;flex-wrap:wrap;box-shadow:var(--shadow-lg)}
+    .cta::before{content:'PDF';position:absolute;right:-30px;top:50%;transform:translateY(-50%);font-family:var(--serif);font-size:200px;font-weight:700;font-style:italic;color:rgba(232,98,10,.07);pointer-events:none;letter-spacing:-.05em;line-height:1;user-select:none}
+    .cta-l h2{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,3.2rem);font-weight:600;font-style:italic;letter-spacing:-.03em;line-height:1.1;margin-bottom:12px}
+    .cta-l p{color:var(--mut2);font-size:.93rem;max-width:400px;line-height:1.65}
 </style>
 </head>
 <body>
