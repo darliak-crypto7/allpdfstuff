@@ -184,7 +184,27 @@
 
     @media(max-width:1024px){.tools-grid{grid-template-columns:repeat(2,1fr)}.pr-grid{grid-template-columns:repeat(2,1fr);max-width:700px;margin-left:auto;margin-right:auto}.steps{grid-template-columns:1fr}.ft-top{grid-template-columns:1fr 1fr}}
     @media(max-width:768px){nav{padding:15px 22px}.nav-links{display:none}.hero{padding:0 22px 52px}.sec,.pr-wrap{padding:76px 22px}.pr-grid{grid-template-columns:1fr!important;max-width:420px}.how-wrap,.up-wrap{padding:76px 22px}.tools-grid{grid-template-columns:1fr}.cta{margin:0 22px 56px;padding:48px 28px}.cta::before{display:none}footer{padding:52px 22px 28px}.ft-top{grid-template-columns:1fr;gap:32px}.ft-bot{flex-direction:column;text-align:center}}
-  </style>
+  
+/* REVIEWS */
+.rev-wrap{padding:110px 48px;max-width:1280px;margin:0 auto}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:60px}
+.rev-card{background:var(--bg);border:1px solid var(--bdr);border-radius:20px;padding:36px 32px;display:flex;flex-direction:column;gap:16px;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s}
+.rev-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.rev-stars{display:flex;gap:4px;color:#f59e0b;font-size:1.1rem}
+.rev-text{font-family:var(--serif);font-size:1.08rem;font-style:italic;color:var(--txt2);line-height:1.7;flex:1}
+.rev-text::before{content:'"';font-size:2rem;color:var(--or);line-height:0;vertical-align:-.5rem;margin-right:2px;font-family:var(--serif)}
+.rev-text::after{content:'"';font-size:2rem;color:var(--or);line-height:0;vertical-align:-.5rem;margin-left:2px;font-family:var(--serif)}
+.rev-author{display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid var(--bdr)}
+.rev-av{width:40px;height:40px;border-radius:50%;background:var(--or);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.95rem;color:#fff;flex-shrink:0}
+.rev-name{font-weight:600;font-size:.88rem;color:var(--txt)}
+.rev-role{font-size:.78rem;color:var(--mut);margin-top:1px}
+.rev-summary{display:flex;align-items:center;gap:52px;margin-top:60px;padding:40px 48px;background:var(--bg2);border:1px solid var(--bdr);border-radius:20px;flex-wrap:wrap;justify-content:center}
+.rev-big-num{font-family:var(--serif);font-size:3.8rem;font-weight:600;font-style:italic;color:var(--or);line-height:1;letter-spacing:-.03em}
+.rev-big-label{font-size:.82rem;color:var(--mut2);margin-top:4px;letter-spacing:.04em}
+.rev-divider{width:1px;height:56px;background:var(--bdr)}
+@media(max-width:1024px){.rev-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){.rev-wrap{padding:76px 22px}.rev-grid{grid-template-columns:1fr}.rev-summary{padding:28px 22px;gap:28px}.rev-divider{display:none}}
+</style>
 </head>
 <body>
 
@@ -429,6 +449,104 @@
   </div>
 </div>
 
+
+<!-- REVIEWS -->
+<section class="rev-wrap">
+  <div class="sec-eye">Customer Reviews</div>
+  <h2 class="sec-h">What do you think of<br/><em>AllPDFStuff?</em></h2>
+  <p class="sec-sub">We'd love to hear your feedback. Leave a review and help others discover us.</p>
+
+  <div id="reviewsList" style="margin-bottom:48px"></div>
+
+  <!-- Submit a review form -->
+  <div style="background:var(--bg);border:1px solid var(--bdr);border-radius:20px;padding:42px;max-width:620px;margin:0 auto;box-shadow:var(--shadow)">
+    <h3 style="font-family:var(--serif);font-size:1.6rem;font-weight:600;font-style:italic;margin-bottom:6px;letter-spacing:-.02em">Leave a Review</h3>
+    <p style="color:var(--mut2);font-size:.86rem;margin-bottom:28px">Share your experience with AllPDFStuff</p>
+
+    <!-- Star rating picker -->
+    <div style="margin-bottom:18px">
+      <label style="display:block;font-size:.8rem;font-weight:700;color:var(--mut2);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px">YOUR RATING</label>
+      <div id="starPicker" style="display:flex;gap:6px;font-size:2rem;cursor:pointer">
+        <span data-v="1" onclick="setStars(1)" style="color:var(--bdr);transition:color .15s">★</span>
+        <span data-v="2" onclick="setStars(2)" style="color:var(--bdr);transition:color .15s">★</span>
+        <span data-v="3" onclick="setStars(3)" style="color:var(--bdr);transition:color .15s">★</span>
+        <span data-v="4" onclick="setStars(4)" style="color:var(--bdr);transition:color .15s">★</span>
+        <span data-v="5" onclick="setStars(5)" style="color:var(--bdr);transition:color .15s">★</span>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+      <div>
+        <label style="display:block;font-size:.8rem;font-weight:700;color:var(--mut2);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px">YOUR NAME</label>
+        <input id="rvName" type="text" placeholder="e.g. " style="width:100%;background:var(--bg2);border:1px solid var(--bdr);color:var(--txt);padding:11px 14px;border-radius:11px;font-family:var(--sans);font-size:.9rem;outline:none;box-sizing:border-box"/>
+      </div>
+      <div>
+        <label style="display:block;font-size:.8rem;font-weight:700;color:var(--mut2);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px">ROLE / LOCATION <span style="font-weight:400;text-transform:none">(optional)</span></label>
+        <input id="rvRole" type="text" placeholder="e.g. Designer, London" style="width:100%;background:var(--bg2);border:1px solid var(--bdr);color:var(--txt);padding:11px 14px;border-radius:11px;font-family:var(--sans);font-size:.9rem;outline:none;box-sizing:border-box"/>
+      </div>
+    </div>
+
+    <div style="margin-bottom:22px">
+      <label style="display:block;font-size:.8rem;font-weight:700;color:var(--mut2);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px">YOUR REVIEW</label>
+      <textarea id="rvText" rows="4" placeholder="Tell us what you think..." style="width:100%;background:var(--bg2);border:1px solid var(--bdr);color:var(--txt);padding:11px 14px;border-radius:11px;font-family:var(--sans);font-size:.9rem;outline:none;resize:vertical;box-sizing:border-box"></textarea>
+    </div>
+
+    <button onclick="submitReview()" style="background:var(--or);color:#fff;border:none;padding:13px 32px;border-radius:100px;font-family:var(--sans);font-size:.9rem;font-weight:700;cursor:pointer;transition:all .2s">Submit Review →</button>
+    <div id="rvMsg" style="display:none;margin-top:14px;padding:11px 14px;border-radius:11px;font-size:.86rem"></div>
+  </div>
+</section>
+
+<script>
+let _stars = 0;
+function setStars(n){
+  _stars = n;
+  document.querySelectorAll('#starPicker span').forEach((s,i)=>{
+    s.style.color = i < n ? '#f59e0b' : 'rgba(0,0,0,0.08)';
+  });
+}
+
+async function submitReview(){
+  const name = document.getElementById('rvName').value.trim();
+  const role = document.getElementById('rvRole').value.trim();
+  const text = document.getElementById('rvText').value.trim();
+  const msg  = document.getElementById('rvMsg');
+
+  if(!_stars){ toast('err','❌ Please select a star rating'); return; }
+  if(!name){  toast('err','❌ Please enter your name'); return; }
+  if(!text){  toast('err','❌ Please write your review'); return; }
+
+  const stars = '★'.repeat(_stars) + '☆'.repeat(5-_stars);
+  const body = `Name: ${name}\nRole: ${role||'—'}\nRating: ${stars}\nReview: ${text}`;
+
+  try {
+    const res = await fetch('https://formspree.io/f/mvzwnjzr', {
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify({subject:'New Review — AllPDFStuff', message: body, name, rating: _stars, review: text, role})
+    });
+    if(res.ok){
+      msg.style.display='block';
+      msg.style.background='rgba(74,222,128,.08)';
+      msg.style.border='1px solid rgba(74,222,128,.2)';
+      msg.style.color='#4ade80';
+      msg.textContent='✅ Thank you for your review! We really appreciate it.';
+      document.getElementById('rvName').value='';
+      document.getElementById('rvRole').value='';
+      document.getElementById('rvText').value='';
+      setStars(0);
+    } else {
+      throw new Error('Failed');
+    }
+  } catch(e){
+    msg.style.display='block';
+    msg.style.background='rgba(248,113,113,.08)';
+    msg.style.border='1px solid rgba(248,113,113,.2)';
+    msg.style.color='#f87171';
+    msg.textContent='❌ Something went wrong. Please try again.';
+  }
+}
+</script>
+
 <!-- PRICING -->
 <div class="pr-wrap" id="pricing">
   <div class="sec-eye">Pricing</div>
@@ -467,7 +585,7 @@
         <li class="y"><span class="ck">✓</span>Extract Text (PDF to TXT)</li>
         <li class="y"><span class="ck">✓</span>Priority processing</li>
         <li class="y"><span class="ck">✓</span>No watermarks</li>
-        <li class="y"><span class="ck">✓</span>Email support</li>
+        
       </ul>
       <button class="btn-pill" style="width:100%;justify-content:center;font-size:.93rem;padding:12px" onclick="handleSub('pro')">Get Pro →</button>
     </div>
