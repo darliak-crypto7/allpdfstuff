@@ -696,15 +696,6 @@ function pickAndGo(t){
     document.getElementById('wmFileName').textContent=fn.length>30?fn.substring(0,27)+'...':fn;
     return;
   }
-  // Watermark — show text input panel first
-  if(t==='watermark'){
-    tool=t;
-    document.getElementById('toolPicker').style.display='none';
-    document.getElementById('watermarkPanel').style.display='block';
-    const f=Array.isArray(pendingFile)?pendingFile[0]:pendingFile;
-    if(f) document.getElementById('wmFileName').textContent=f.name.length>30?f.name.substring(0,27)+'...':f.name;
-    return;
-  }
   tool = t;
   document.getElementById('toolPicker').style.display = 'none';
   if(pendingFile){
@@ -773,17 +764,19 @@ async function go(file, allFiles){
 
 async function api(file,t,allFiles){
   const PUB='project_public_c3a9e8f2fc9c20c33b807c9d9f7d1402_tcQsF71c39ce96546f15007dffd2d86e6d2dd';
-  const map={compress:'compress',merge:'merge',split:'split','pdf-to-jpg':'pdfjpg','word-to-pdf':'officepdf',rotate:'rotate','extract-text':'extract',repair:'repair',unlock:'unlockpdf','resize-image':'resizeimg','rotate-image':'rotateimg','convert-image':'imagepdf','page-numbers':'pagenumber','ocr-pdf':'pdfocr',watermark:'watermark','remove-watermark':'watermark'};
+  const IMAGE_TOOLS=['resize-image','rotate-image','convert-image'];
+  const BASE=IMAGE_TOOLS.includes(t)?'https://api.iloveimg.com':'https://api.ilovepdf.com';
+  const map={compress:'compress',merge:'merge',split:'split','pdf-to-jpg':'pdfjpg','word-to-pdf':'officepdf',rotate:'rotate','extract-text':'extract',repair:'repair',unlock:'unlock','resize-image':'resize','rotate-image':'rotate','convert-image':'imagepdf','page-numbers':'pagenumber','ocr-pdf':'pdfocr',watermark:'watermark','remove-watermark':'watermark'};
   const at=map[t]||'compress';
 
   // Step 1: Auth
-  const authResp=await fetch('https://api.ilovepdf.com/v1/auth',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({public_key:PUB})});
+  const authResp=await fetch(BASE+'/v1/auth',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({public_key:PUB})});
   const authData=await authResp.json();
   if(!authData.token)throw new Error('Auth failed: '+JSON.stringify(authData));
   const token=authData.token;
 
   // Step 2: Start task
-  const startResp=await fetch('https://api.ilovepdf.com/v1/start/'+at,{headers:{'Authorization':'Bearer '+token}});
+  const startResp=await fetch(BASE+'/v1/start/'+at,{headers:{'Authorization':'Bearer '+token}});
   const startData=await startResp.json();
   if(!startData.task)throw new Error('Start failed: '+JSON.stringify(startData));
   const {server,task}=startData;
@@ -813,8 +806,11 @@ async function api(file,t,allFiles){
   if(t==='pdf-to-word') body.outputformat='docx';
   if(t==='word-to-pdf') body.outputformat='pdf';
   if(t==='pdf-to-jpg') body.pdfjpg_mode='pages';
+  if(t==='resize-image'){body.resize_mode='percentage';body.percentage=50;}
+  if(t==='rotate-image'){body.rotate=90;}
   if(t==='watermark'){body.mode='text';body.text=window._watermarkText||'CONFIDENTIAL';body.font_size=window._watermarkSize||40;body.font_color=window._watermarkColor||'#FF0000';body.transparency=window._watermarkOpacity||50;body.vertical_position='middle';body.horizontal_position='center';}
   if(t==='ocr-pdf') body.language='eng';
+  if(t==='page-numbers'){body.facing_pages=false;body.vertical_position='bottom';body.horizontal_position='center';body.font_size=14;body.font_color='#000000';}
   const prResp=await fetch('https://'+server+'/v1/process',{method:'POST',headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify(body)});
   if(!prResp.ok){const e=await prResp.text();throw new Error('Process failed: '+e);}
 
