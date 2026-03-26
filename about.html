@@ -1,130 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Meet the Founder — AllPDFStuff</title>
-  <meta name="description" content="AllPDFStuff was built by someone who just needed it to work. Read Darlia's story."/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Satoshi:wght@300;400;500;700;900&family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --bg:#faf8f4;--bg2:#f3efe8;--bg3:#ede8df;
-      --or:#e8620a;--or2:#f97316;
-      --txt:#1a1714;--txt2:#3d3830;
-      --mut:#8a8070;--mut2:#6b6055;
-      --bdr:rgba(0,0,0,0.08);--obdr:rgba(232,98,10,0.25);--oglow:rgba(232,98,10,0.08);
-      --serif:'Cormorant Garamond',Georgia,serif;
-      --sans:'Satoshi',system-ui,sans-serif;
-      --shadow:0 1px 3px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.06);
-      --shadow-lg:0 8px 32px rgba(0,0,0,.1);
-      --accent-light:#fff3ed;
-    }
-    html{scroll-behavior:smooth}
-    body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:16px;line-height:1.6;overflow-x:hidden}
-
-    /* NAV */
-    nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(250,248,244,.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--bdr)}
-    .logo{font-family:var(--serif);font-size:1.4rem;font-weight:600;color:var(--txt);text-decoration:none}.logo em{font-style:italic;color:var(--or)}
-    .nav-links{display:flex;gap:32px;list-style:none}
-    .nav-links a{font-size:.85rem;font-weight:500;color:var(--mut2);text-decoration:none;transition:color .2s}.nav-links a:hover{color:var(--txt)}
-    .nav-r{display:flex;gap:12px;align-items:center}
-    .btn-ghost{background:transparent;border:1px solid var(--bdr);color:var(--txt);padding:9px 22px;border-radius:100px;font-family:var(--sans);font-size:.83rem;font-weight:500;cursor:pointer;transition:all .2s;text-decoration:none;display:inline-flex;align-items:center}.btn-ghost:hover{border-color:var(--or);color:var(--or)}
-    .btn-pill{background:var(--or);color:#fff;border:none;padding:9px 22px;border-radius:100px;font-family:var(--sans);font-size:.83rem;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:all .2s}.btn-pill:hover{background:var(--or2);transform:translateY(-1px)}
-
-    /* HERO */
-    .page-hero{padding:140px 48px 80px;background:var(--bg2);border-bottom:1px solid var(--bdr);position:relative;overflow:hidden}
-    .hero-ghost{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--serif);font-size:clamp(100px,16vw,220px);font-weight:700;font-style:italic;color:rgba(232,98,10,.045);white-space:nowrap;pointer-events:none;user-select:none;letter-spacing:-.04em;line-height:1}
-    .hero-inner{max-width:760px;position:relative;z-index:1}
-    .hero-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--or);margin-bottom:18px;display:flex;align-items:center;gap:10px}
-    .hero-eyebrow::before{content:'';display:block;width:24px;height:1px;background:var(--or)}
-    .page-hero h1{font-family:var(--serif);font-size:clamp(2.6rem,5.5vw,5.5rem);font-weight:600;letter-spacing:-.03em;line-height:1.05;margin-bottom:22px}
-    .page-hero h1 em{font-style:italic;color:var(--or)}
-    .page-hero .lead{color:var(--mut2);font-size:1rem;max-width:500px;line-height:1.75}
-
-    /* MAIN LAYOUT */
-    .founder-wrap{padding:80px 48px 100px;max-width:1100px;margin:0 auto}
-    .founder-layout{display:grid;grid-template-columns:1fr 360px;gap:72px;align-items:start}
-
-    /* CONTENT */
-    .founder-content{}
-    .section{margin-bottom:2.8rem}
-    .label{font-family:'DM Sans',sans-serif;font-size:.7rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--or);margin-bottom:.9rem;display:flex;align-items:center;gap:10px}
-    .label::after{content:'';flex:1;height:1px;background:var(--bdr);max-width:40px}
-
-    .story-block{display:flex;flex-direction:column;gap:1.1rem}
-    .story-block p{font-family:'DM Sans',sans-serif;font-size:.95rem;line-height:1.85;color:var(--txt2)}
-    .story-block p.lead-quote{font-family:'Lora',serif;font-size:1.12rem;font-style:italic;color:var(--mut2);line-height:1.75}
-    .story-block p em{font-style:italic;color:var(--txt)}
-
-    .highlight-bar{background:var(--accent-light);border-left:3px solid var(--or);border-radius:0 10px 10px 0;padding:1.1rem 1.4rem;margin:2rem 0}
-    .highlight-bar p{font-family:'Lora',serif;font-size:1.02rem;font-style:italic;color:var(--or);line-height:1.65}
-
-    .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:.6rem}
-    .pillar{background:var(--bg2);border:1px solid var(--bdr);border-radius:14px;padding:1.1rem;display:flex;flex-direction:column;gap:7px}
-    .pillar-icon{width:30px;height:30px;border-radius:9px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;margin-bottom:2px}
-    .pillar-title{font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:500;color:var(--txt)}
-    .pillar-desc{font-family:'DM Sans',sans-serif;font-size:.75rem;color:var(--mut2);line-height:1.55}
-
-    .membership-note{font-family:'DM Sans',sans-serif;font-size:.84rem;color:var(--mut2);line-height:1.65;margin-top:1.4rem;padding-top:1.4rem;border-top:1px solid var(--bdr)}
-
-    .closing{font-family:'DM Sans',sans-serif;font-size:.95rem;line-height:1.85;color:var(--txt2)}
-    .closing strong{color:var(--or);font-weight:500}
-
-    .sign-off{margin-top:2.4rem;padding-top:2rem;border-top:1px solid var(--bdr);display:flex;align-items:center;gap:18px}
-    .sign-avatar{width:54px;height:54px;background:linear-gradient(135deg,var(--or),var(--or2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.6rem;font-weight:700;font-style:italic;color:#fff;flex-shrink:0}
-
-    /* ── FOUNDER PHOTO ── */
-    .founder-avatar-large{width:100%;aspect-ratio:1;max-width:220px;margin:0 auto;border-radius:50%;background:linear-gradient(135deg,var(--or),var(--or2));display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:clamp(4rem,10vw,7rem);font-weight:700;font-style:italic;color:#fff;box-shadow:0 12px 40px rgba(232,98,10,.25);border:4px solid rgba(255,255,255,.3);}
-    /* TO ADD YOUR PHOTO LATER:
-       1. Upload your photo to GitHub alongside about.html
-       2. Replace the src="YOUR_PHOTO.jpg" attribute below
-       3. The image will automatically fill the circle */
-    .founder-photo-wrap{margin-bottom:24px}
-    .founder-photo{width:100%;aspect-ratio:1;border-radius:20px;object-fit:cover;object-position:center top;display:block;border:1px solid var(--bdr);box-shadow:var(--shadow)}
-    
-    .sign-name{font-family:'Lora',serif;font-size:1.25rem;font-style:italic;color:var(--txt);line-height:1.2}
-    .sign-role{font-family:'DM Sans',sans-serif;font-size:.75rem;color:var(--mut);letter-spacing:.06em;margin-top:3px}
-
-    /* SIDEBAR */
-    .sidebar-card{background:var(--bg);border:1px solid var(--bdr);border-radius:20px;padding:30px;box-shadow:var(--shadow);margin-bottom:20px}
-    .sidebar-card h3{font-family:var(--serif);font-size:1.1rem;font-weight:600;letter-spacing:-.01em;margin-bottom:18px}
-    .stat-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--bdr)}
-    .stat-row:last-child{border-bottom:none}
-    .stat-row .s-label{font-size:.82rem;color:var(--mut2)}
-    .stat-row .s-val{font-family:var(--serif);font-size:1.1rem;font-weight:600;font-style:italic;color:var(--or)}
-    .quick-links{list-style:none;display:flex;flex-direction:column;gap:8px}
-    .quick-links a{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--bg2);border-radius:10px;text-decoration:none;font-size:.85rem;color:var(--txt2);transition:all .2s;border:1px solid transparent}
-    .quick-links a:hover{border-color:var(--obdr);color:var(--or);background:var(--accent-light)}
-    .quick-links a span{font-size:1.1rem}
-
-    /* CTA */
-    .about-cta{margin:0 48px 80px;border-radius:24px;background:linear-gradient(135deg,#fff8f2,#fdf4ec);border:1px solid var(--obdr);padding:64px 60px;display:flex;align-items:center;justify-content:space-between;gap:36px;flex-wrap:wrap;box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
-    .about-cta::before{content:'PDF';position:absolute;right:-20px;top:50%;transform:translateY(-50%);font-family:var(--serif);font-size:180px;font-weight:700;font-style:italic;color:rgba(232,98,10,.06);pointer-events:none;line-height:1;user-select:none}
-    .about-cta h2{font-family:var(--serif);font-size:clamp(1.7rem,3vw,2.8rem);font-weight:600;font-style:italic;letter-spacing:-.03em;line-height:1.1;margin-bottom:10px}
-    .about-cta p{color:var(--mut2);font-size:.92rem;max-width:400px;line-height:1.65}
-
-    /* FOOTER */
-    footer{background:var(--bg);border-top:1px solid var(--bdr);padding:52px 48px 28px}
-    .ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;padding-bottom:40px;border-bottom:1px solid var(--bdr)}
-    .ft-logo{font-family:var(--serif);font-size:1.4rem;font-weight:600;text-decoration:none;color:var(--txt);margin-bottom:10px;display:block}.ft-logo em{font-style:italic;color:var(--or)}
-    .ft-brand p{color:var(--mut);font-size:.84rem;line-height:1.7;max-width:230px}
-    .ft-col h4{font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin-bottom:14px}
-    .ft-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
-    .ft-col a{color:var(--mut2);text-decoration:none;font-size:.84rem;transition:color .2s}.ft-col a:hover{color:var(--or)}
-    .ft-bot{display:flex;justify-content:space-between;align-items:center;padding-top:24px;color:var(--mut);font-size:.77rem;flex-wrap:wrap;gap:10px}
-
-    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-    .fade-in{animation:fadeUp .6s ease both}
-    .fade-in-2{animation:fadeUp .6s ease .15s both}
-
-    @media(max-width:1024px){.founder-layout{grid-template-columns:1fr}.pillars{grid-template-columns:1fr 1fr}}
-    @media(max-width:768px){nav{padding:14px 20px}.nav-links{display:none}.page-hero{padding:100px 22px 60px}.founder-wrap{padding:52px 22px 72px}.about-cta{margin:0 22px 60px;padding:44px 28px}.about-cta::before{display:none}.pillars{grid-template-columns:1fr}footer{padding:44px 22px 24px}.ft-top{grid-template-columns:1fr;gap:28px}.ft-bot{flex-direction:column;text-align:center}}
-  </style>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Meet the Founder — AllPDFStuff</title>
+<meta name="description" content="AllPDFStuff was built by someone who just needed it to work. Read Darlia's story."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700;900&family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#faf8f4;--bg2:#f3efe8;--bg3:#ede8df;
+  --or:#e8620a;--or2:#f97316;
+  --txt:#1a1714;--txt2:#3d3830;
+  --mut:#8a8070;--mut2:#6b6055;
+  --bdr:rgba(0,0,0,0.08);--obdr:rgba(232,98,10,0.25);--oglow:rgba(232,98,10,0.08);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --shadow:0 1px 3px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.06);
+  --shadow-lg:0 8px 32px rgba(0,0,0,.1);
+  --accent-light:#fff3ed;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:16px;line-height:1.6;overflow-x:hidden}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(250,248,244,.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--bdr)}
+.logo{font-family:var(--serif);font-size:1.4rem;font-weight:600;color:var(--txt);text-decoration:none!important}.logo em{font-style:italic;color:var(--or)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-size:.85rem;font-weight:500;color:var(--mut2);text-decoration:none!important;transition:color .2s}.nav-links a:hover{color:var(--txt)}
+.nav-r{display:flex;gap:12px;align-items:center}
+.btn-ghost{background:transparent;border:1px solid var(--bdr);color:var(--txt);padding:9px 22px;border-radius:100px;font-family:var(--sans);font-size:.83rem;font-weight:500;cursor:pointer;transition:all .2s;text-decoration:none!important;display:inline-flex;align-items:center}.btn-ghost:hover{border-color:var(--or);color:var(--or)}
+.btn-pill{background:var(--or);color:#fff;border:none;padding:9px 22px;border-radius:100px;font-family:var(--sans);font-size:.83rem;font-weight:700;cursor:pointer;text-decoration:none!important;display:inline-flex;align-items:center;gap:6px;transition:all .2s}.btn-pill:hover{background:var(--or2);transform:translateY(-1px)}
+/* HERO */
+.page-hero{padding:140px 48px 80px;background:var(--bg2);border-bottom:1px solid var(--bdr);position:relative;overflow:hidden}
+.hero-ghost{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--serif);font-size:clamp(100px,16vw,220px);font-weight:700;font-style:italic;color:rgba(232,98,10,.045);white-space:nowrap;pointer-events:none;user-select:none;letter-spacing:-.04em;line-height:1}
+.hero-inner{max-width:760px;position:relative;z-index:1}
+.hero-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--or);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.hero-eyebrow::before{content:'';display:block;width:24px;height:1px;background:var(--or)}
+.page-hero h1{font-family:var(--serif);font-size:clamp(2.6rem,5.5vw,5.5rem);font-weight:600;letter-spacing:-.03em;line-height:1.05;margin-bottom:22px}
+.page-hero h1 em{font-style:italic;color:var(--or)}
+.page-hero .lead{color:var(--mut2);font-size:1rem;max-width:500px;line-height:1.75}
+/* MAIN LAYOUT */
+.founder-wrap{padding:80px 48px 100px;max-width:1100px;margin:0 auto}
+.founder-layout{display:grid;grid-template-columns:1fr 360px;gap:72px;align-items:start}
+/* CONTENT */
+.section{margin-bottom:2.8rem}
+.label{font-family:'DM Sans',sans-serif;font-size:.7rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--or);margin-bottom:.9rem;display:flex;align-items:center;gap:10px}
+.label::after{content:'';flex:1;height:1px;background:var(--bdr);max-width:40px}
+.story-block{display:flex;flex-direction:column;gap:1.1rem}
+.story-block p{font-family:'DM Sans',sans-serif;font-size:.95rem;line-height:1.85;color:var(--txt2)}
+.story-block p.lead-quote{font-family:'Lora',serif;font-size:1.12rem;font-style:italic;color:var(--mut2);line-height:1.75}
+.story-block p em{font-style:italic;color:var(--txt)}
+.highlight-bar{background:var(--accent-light);border-left:3px solid var(--or);border-radius:0 10px 10px 0;padding:1.1rem 1.4rem;margin:2rem 0}
+.highlight-bar p{font-family:'Lora',serif;font-size:1.02rem;font-style:italic;color:var(--or);line-height:1.65}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:.6rem}
+.pillar{background:var(--bg2);border:1px solid var(--bdr);border-radius:14px;padding:1.1rem;display:flex;flex-direction:column;gap:7px}
+.pillar-icon{width:30px;height:30px;border-radius:9px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;margin-bottom:2px}
+.pillar-title{font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:500;color:var(--txt)}
+.pillar-desc{font-family:'DM Sans',sans-serif;font-size:.75rem;color:var(--mut2);line-height:1.55}
+.membership-note{font-family:'DM Sans',sans-serif;font-size:.84rem;color:var(--mut2);line-height:1.65;margin-top:1.4rem;padding-top:1.4rem;border-top:1px solid var(--bdr)}
+.closing{font-family:'DM Sans',sans-serif;font-size:.95rem;line-height:1.85;color:var(--txt2)}
+.closing strong{color:var(--or);font-weight:500}
+.sign-off{margin-top:2.4rem;padding-top:2rem;border-top:1px solid var(--bdr);display:flex;align-items:center;gap:18px}
+.sign-avatar{width:54px;height:54px;background:linear-gradient(135deg,var(--or),var(--or2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.6rem;font-weight:700;font-style:italic;color:#fff;flex-shrink:0}
+.founder-avatar-large{width:100%;aspect-ratio:1;max-width:220px;margin:0 auto;border-radius:50%;background:linear-gradient(135deg,var(--or),var(--or2));display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:clamp(4rem,10vw,7rem);font-weight:700;font-style:italic;color:#fff;box-shadow:0 12px 40px rgba(232,98,10,.25);border:4px solid rgba(255,255,255,.3);}
+.founder-photo-wrap{margin-bottom:24px}
+.founder-photo{width:100%;aspect-ratio:1;border-radius:20px;object-fit:cover;object-position:center top;display:block;border:1px solid var(--bdr);box-shadow:var(--shadow)}
+.sign-name{font-family:'Lora',serif;font-size:1.25rem;font-style:italic;color:var(--txt);line-height:1.2}
+.sign-role{font-family:'DM Sans',sans-serif;font-size:.75rem;color:var(--mut);letter-spacing:.06em;margin-top:3px}
+/* SIDEBAR */
+.sidebar-card{background:var(--bg);border:1px solid var(--bdr);border-radius:20px;padding:30px;box-shadow:var(--shadow);margin-bottom:20px}
+.sidebar-card h3{font-family:var(--serif);font-size:1.1rem;font-weight:600;letter-spacing:-.01em;margin-bottom:18px}
+.stat-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--bdr)}
+.stat-row:last-child{border-bottom:none}
+.stat-row .s-label{font-size:.82rem;color:var(--mut2)}
+.stat-row .s-val{font-family:var(--serif);font-size:1.1rem;font-weight:600;font-style:italic;color:var(--or)}
+.quick-links{list-style:none;display:flex;flex-direction:column;gap:8px}
+.quick-links a{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--bg2);border-radius:10px;text-decoration:none!important;font-size:.85rem;color:var(--txt2);transition:all .2s;border:1px solid transparent}
+.quick-links a:hover{border-color:var(--obdr);color:var(--or);background:var(--accent-light)}
+.quick-links a span{font-size:1.1rem}
+/* CTA */
+.about-cta{margin:0 48px 80px;border-radius:24px;background:linear-gradient(135deg,#fff8f2,#fdf4ec);border:1px solid var(--obdr);padding:64px 60px;display:flex;align-items:center;justify-content:space-between;gap:36px;flex-wrap:wrap;box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
+.about-cta::before{content:'PDF';position:absolute;right:-20px;top:50%;transform:translateY(-50%);font-family:var(--serif);font-size:180px;font-weight:700;font-style:italic;color:rgba(232,98,10,.06);pointer-events:none;line-height:1;user-select:none}
+.about-cta h2{font-family:var(--serif);font-size:clamp(1.7rem,3vw,2.8rem);font-weight:600;font-style:italic;letter-spacing:-.03em;line-height:1.1;margin-bottom:10px}
+.about-cta p{color:var(--mut2);font-size:.92rem;max-width:400px;line-height:1.65}
+/* FOOTER */
+footer{background:var(--bg);border-top:1px solid var(--bdr);padding:52px 48px 28px}
+.ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;padding-bottom:40px;border-bottom:1px solid var(--bdr)}
+.ft-logo{font-family:var(--serif);font-size:1.4rem;font-weight:600;text-decoration:none!important;color:var(--txt);margin-bottom:10px;display:block}.ft-logo em{font-style:italic;color:var(--or)}
+.ft-brand p{color:var(--mut);font-size:.84rem;line-height:1.7;max-width:230px}
+.ft-col h4{font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin-bottom:14px}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.ft-col a{color:var(--mut2);text-decoration:none!important;font-size:.84rem;transition:color .2s}.ft-col a:hover{color:var(--or)}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;padding-top:24px;color:var(--mut);font-size:.77rem;flex-wrap:wrap;gap:10px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fade-in{animation:fadeUp .6s ease both}
+.fade-in-2{animation:fadeUp .6s ease .15s both}
+@media(max-width:1024px){.founder-layout{grid-template-columns:1fr}.pillars{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){nav{padding:14px 20px}.nav-links{display:none}.page-hero{padding:100px 22px 60px}.founder-wrap{padding:52px 22px 72px}.about-cta{margin:0 22px 60px;padding:44px 28px}.about-cta::before{display:none}.pillars{grid-template-columns:1fr}footer{padding:44px 22px 24px}.ft-top{grid-template-columns:1fr;gap:28px}.ft-bot{flex-direction:column;text-align:center}}
+</style>
 </head>
 <body>
-
 <nav>
   <a href="index.html" class="logo">All<em>PDF</em>Stuff</a>
   <ul class="nav-links">
@@ -152,10 +128,8 @@
 <!-- CONTENT -->
 <div class="founder-wrap">
   <div class="founder-layout">
-
     <!-- LEFT -->
     <div class="founder-content fade-in">
-
       <div class="section">
         <div class="label">The story</div>
         <div class="story-block">
@@ -164,32 +138,24 @@
           <p>I kept thinking: <em>why isn't there something simpler?</em> Something that just works, without the learning curve, without making me feel like I need a degree in IT just to get things done.</p>
         </div>
       </div>
-
       <div class="highlight-bar">
         <p>"I wanted to build something I was genuinely proud of — and something I would actually use myself."</p>
       </div>
-
       <div class="section">
         <div class="label">What I set out to build</div>
         <div class="pillars">
           <div class="pillar">
-            <div class="pillar-icon">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7L5.5 10.5L12 4" stroke="#e8620a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
+            <div class="pillar-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7L5.5 10.5L12 4" stroke="#e8620a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
             <div class="pillar-title">Simple & clear</div>
             <div class="pillar-desc">No confusing menus. If you can click a button, you can use AllPDFStuff.</div>
           </div>
           <div class="pillar">
-            <div class="pillar-icon">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5" stroke="#e8620a" stroke-width="1.6"/><path d="M7 4.5V7L8.5 8.5" stroke="#e8620a" stroke-width="1.5" stroke-linecap="round"/></svg>
-            </div>
+            <div class="pillar-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5" stroke="#e8620a" stroke-width="1.6"/><path d="M7 4.5V7L8.5 8.5" stroke="#e8620a" stroke-width="1.5" stroke-linecap="round"/></svg></div>
             <div class="pillar-title">Time-friendly</div>
             <div class="pillar-desc">Built for people who are busy. Get in, get it done, get on with your day.</div>
           </div>
           <div class="pillar">
-            <div class="pillar-icon">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2L8.8 5.5H12.5L9.5 7.8L10.8 11.5L7 9L3.2 11.5L4.5 7.8L1.5 5.5H5.2L7 2Z" stroke="#e8620a" stroke-width="1.5" stroke-linejoin="round"/></svg>
-            </div>
+            <div class="pillar-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2L8.8 5.5H12.5L9.5 7.8L10.8 11.5L7 9L3.2 11.5L4.5 7.8L1.5 5.5H5.2L7 2Z" stroke="#e8620a" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
             <div class="pillar-title">Accessible to all</div>
             <div class="pillar-desc">No tech skills needed — if you can use the internet, you can use this.</div>
           </div>
@@ -198,7 +164,6 @@
           There is a small monthly membership fee to help cover running costs and keep the site going. Thank you so much for your support — it genuinely means a lot.
         </div>
       </div>
-
       <div class="section">
         <div class="label">My hope for you</div>
         <p class="closing">I built AllPDFStuff with one simple goal: that <strong>you'd leave feeling like things were easy</strong>. Not just "fine" — actually easy. The kind of easy that makes you smile a little, because for once, the software got out of your way and just helped you.</p>
@@ -206,7 +171,6 @@
         <p class="closing">If you find it useful, I'd love for you to come back. And if there's ever something you wish it could do, I'm all ears — because this tool was born from exactly that kind of wish.</p>
         <p class="closing" style="margin-top:1rem">Thank you for being here. I hope AllPDFStuff makes your day just a little bit easier.</p>
       </div>
-
       <div class="sign-off">
         <div class="sign-avatar">D</div>
         <div>
@@ -214,37 +178,19 @@
           <div class="sign-role">Founder, AllPDFStuff</div>
         </div>
       </div>
-
     </div>
-
     <!-- RIGHT SIDEBAR -->
     <div class="fade-in-2">
-
-      <!-- ════════════════════════════════════════
-           FOUNDER PHOTO
-           TO ADD YOUR PHOTO LATER:
-           1. Upload your photo file to GitHub (same folder as about.html)
-           2. Replace the placeholder div below with:
-              <img src="YOUR-PHOTO-FILENAME.jpg" alt="Darlia, Founder of AllPDFStuff" class="founder-photo"/>
-           3. Commit and deploy — done!
-           ════════════════════════════════════════ -->
-      <!-- ════════════════════════════════════════
-           FOUNDER PHOTO
-           TO ADD YOUR PHOTO LATER:
-           Replace the div below with:
-           <img src="YOUR-PHOTO.jpg" alt="Darlia" class="founder-photo"/>
-           ════════════════════════════════════════ -->
       <div class="founder-photo-wrap">
         <div class="founder-avatar-large">D</div>
       </div>
-
       <div class="sidebar-card">
         <h3>📊 AllPDFStuff by numbers</h3>
-        <div class="stat-row"><span class="s-label">PDF tools available</span><span class="s-val">8+</span></div>
+        <div class="stat-row"><span class="s-label">PDF tools available</span><span class="s-val">15</span></div>
         <div class="stat-row"><span class="s-label">Free daily tasks</span><span class="s-val">5</span></div>
         <div class="stat-row"><span class="s-label">Max file size (Pro)</span><span class="s-val">100 MB</span></div>
         <div class="stat-row"><span class="s-label">Files auto-deleted</span><span class="s-val">1 hour</span></div>
-        <div class="stat-row"><span class="s-label">Account required?</span><span class="s-val">No</span></div>
+        <div class="stat-row"><span class="s-label">Account required?</span><span class="s-val">Yes</span></div>
       </div>
       <div class="sidebar-card">
         <h3>🔗 Quick links</h3>
@@ -256,7 +202,6 @@
         </ul>
       </div>
     </div>
-
   </div>
 </div>
 
@@ -264,9 +209,9 @@
 <div class="about-cta">
   <div>
     <h2>Ready to give it a try?</h2>
-    <p>Start for free — no account needed. Just drop your file and go.</p>
+    <p>Sign up your free account, drop your file and go.</p>
   </div>
-  <a href="index.html#upload" class="btn-pill" style="font-size:.95rem;padding:13px 30px;flex-shrink:0">Try a tool now →</a>
+  <a href="index.html#pricing" class="btn-pill" style="font-size:.95rem;padding:13px 30px;flex-shrink:0">Create free account →</a>
 </div>
 
 <!-- FOOTER -->
@@ -280,7 +225,7 @@
       <li><a href="index.html#upload">Compress PDF</a></li>
       <li><a href="index.html#upload">Merge PDF</a></li>
       <li><a href="index.html#upload">Split PDF</a></li>
-      <li><a href="index.html#upload">PDF to Word</a></li>
+      <li><a href="index.html#upload">Extract Text</a></li>
       <li><a href="index.html#upload">PDF to JPG</a></li>
     </ul></div>
     <div class="ft-col"><h4>Company</h4><ul>
@@ -300,6 +245,5 @@
     <span>🔒 Files auto-deleted after 1 hour</span>
   </div>
 </footer>
-
 </body>
 </html>
