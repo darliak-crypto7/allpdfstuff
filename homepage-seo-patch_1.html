@@ -1,0 +1,73 @@
+<!-- ============================================================
+     ALLPDFSTUFF HOMEPAGE SEO PATCH
+     Instructions: Add the schema block to your <head> in index.html.
+     Then apply the other changes described below.
+     ============================================================ -->
+
+
+<!-- ── 1. ADD THIS TO <head> in index.html (before </head>) ── -->
+
+<title>Free PDF Tools – Compress, Merge, Convert & Edit PDFs Online | AllPDFStuff</title>
+<meta name="description" content="15 free online PDF tools in one place. Compress, merge, split, convert and edit PDF files in your browser. No software, no signup needed. Files deleted in 1 hour.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "AllPDFStuff",
+  "url": "https://www.allpdfstuff.com",
+  "description": "Free online PDF tools to compress, merge, split and convert PDF files. Fast, secure, browser-based.",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.allpdfstuff.com/?s={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "AllPDFStuff",
+  "url": "https://www.allpdfstuff.com",
+  "description": "Browser-based PDF tools for everyone. Compress, merge, split, convert and edit PDF files online.",
+  "sameAs": []
+}
+</script>
+
+
+<!-- ── 2. UPDATE YOUR H1 HEADING in index.html ── -->
+<!--
+FIND:   Work with PDFs the smart way
+        (or similar current H1 text)
+
+REPLACE WITH:
+        Free PDF Tools – Compress, Merge & Convert PDFs Online
+-->
+
+
+<!-- ── 3. UPDATE FOOTER TOOL LINKS in index.html ── -->
+<!--
+FIND AND REPLACE each footer tool link:
+
+  href="#upload"  →  href="/compress-pdf"   (for Compress PDF)
+  href="#upload"  →  href="/merge-pdf"       (for Merge PDF)
+  href="#upload"  →  href="/split-pdf"       (for Split PDF)
+  href="#upload"  →  href="/pdf-to-word"     (for PDF to Word — if present)
+  href="#upload"  →  href="/word-to-pdf"     (for Word to PDF — if present)
+-->
+
+
+<!-- ── 4. UPDATE TOOL CARD LINKS in homepage tool grid ── -->
+<!--
+In the "Everything PDF, in one place" section, update each tool card:
+
+  Compress PDF card  →  href="/compress-pdf"
+  Merge PDF card     →  href="/merge-pdf"
+  Split PDF card     →  href="/split-pdf"
+  Word to PDF card   →  href="/word-to-pdf"
+
+Other tools can keep href="#upload" for now — 
+add individual pages later as you build them out.
+-->
