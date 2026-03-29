@@ -995,17 +995,18 @@ function isPro(){
   return user.user_metadata?.plan==='pro'||user.user_metadata?.plan==='business';
 }
 function chkLimit(){
-  if(isPro())return true; // Pro/Business = unlimited
-  const k='pdfu_'+new Date().toDateString();
+  const d=new Date();
+  const k='pdfu_'+d.getFullYear()+'_'+(d.getMonth()+1);
   const n=parseInt(localStorage.getItem(k)||'0');
-  if(n>=5)return false; // Block at 5 for free users (guests + free accounts)
-  return true; // Don't increment here — only increment on SUCCESS
+  if(isPro()) return n<50; // Pro = 50 tasks per month
+  return n<5; // Free = 5 tasks per month
 }
 function incLimit(){
-  if(isPro())return;
-  const k='pdfu_'+new Date().toDateString();
+  const d=new Date();
+  const k='pdfu_'+d.getFullYear()+'_'+(d.getMonth()+1);
   const n=parseInt(localStorage.getItem(k)||'0');
   localStorage.setItem(k,n+1);
+  rNav(); // Refresh the task counter in the dropdown immediately after each task
 }
 
 async function go(file, allFiles){
