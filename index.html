@@ -747,6 +747,10 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="fld"><label>Full name</label><input type="text" id="snm" placeholder="Your name"/></div>
       <div class="fld"><label>Email</label><input type="email" id="sem" placeholder="you@example.com"/></div>
       <div class="fld"><label>Password</label><input type="password" id="spw" placeholder="Min. 8 characters"/></div>
+      <div style="display:flex;align-items:flex-start;gap:10px;margin:12px 0 4px">
+        <input type="checkbox" id="smarketing" style="margin-top:3px;accent-color:var(--or);width:15px;height:15px;flex-shrink:0;cursor:pointer"/>
+        <label for="smarketing" style="font-size:.8rem;color:var(--mut2);line-height:1.5;cursor:pointer">Yes, I'd like to receive updates about new features and tips from AllPDFStuff. You can unsubscribe at any time.</label>
+      </div>
       <button class="btn-pill" style="width:100%;justify-content:center;font-size:.93rem;padding:12px;margin-top:8px" onclick="doSignup()">Create Free Account</button>
       <div class="m-note">Already have an account? <a href="#" onclick="sw('login')">Sign in</a></div>
     </div>
@@ -826,9 +830,10 @@ async function doLogin(){
 async function doSignup(){
   ha('sok','serr');
   const name=document.getElementById('snm').value.trim(),email=document.getElementById('sem').value.trim(),pass=document.getElementById('spw').value;
+  const marketing=document.getElementById('smarketing').checked;
   if(!name||!email||!pass){sa('serr','Please fill in all fields.');return;}
   if(pass.length<8){sa('serr','Password must be at least 8 characters.');return;}
-  const{error}=await sb.auth.signUp({email,password:pass,options:{data:{full_name:name}}});
+  const{error}=await sb.auth.signUp({email,password:pass,options:{data:{full_name:name,marketing_consent:marketing,marketing_consent_date:new Date().toISOString()}}});
   if(error)sa('serr',error.message);
   else{sa('sok','Account created! Check your email.');toast('ok','🎉 Account created!');}
 }
