@@ -8,6 +8,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23e8620a'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-size='18' font-family='Georgia,serif' font-style='italic' font-weight='700' fill='white'>P</text></svg>" />
+
+  <!-- Google Analytics GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{
@@ -203,7 +215,17 @@
     @keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
     @keyframes scUp{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
     @media(max-width:1024px){.tools-grid{grid-template-columns:repeat(2,1fr)}.pr-grid{grid-template-columns:repeat(2,1fr);max-width:700px;margin-left:auto;margin-right:auto}.steps{grid-template-columns:1fr}.ft-top{grid-template-columns:1fr 1fr}}
-    @media(max-width:768px){nav{padding:15px 22px}.nav-links{display:none}.hero{padding:0 22px 52px}.sec,.pr-wrap{padding:76px 22px}.pr-grid{grid-template-columns:1fr!important;max-width:420px}.how-wrap,.up-wrap{padding:76px 22px}.tools-grid{grid-template-columns:1fr}.cta{margin:0 22px 56px;padding:48px 28px}.cta::before{display:none}footer{padding:52px 22px 28px}.ft-top{grid-template-columns:1fr;gap:32px}.ft-bot{flex-direction:column;text-align:center}}
+    /* HAMBURGER MENU */
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+    .hamburger span{display:block;width:22px;height:2px;background:var(--txt);border-radius:2px;transition:all .3s}
+    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .hamburger.open span:nth-child(2){opacity:0}
+    .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    .mob-menu{display:none;position:fixed;top:65px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--bdr);padding:18px 22px;z-index:499;flex-direction:column;gap:4px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+    .mob-menu.open{display:flex}
+    .mob-menu a{font-size:.95rem;font-weight:500;color:var(--txt2);text-decoration:none;padding:10px 0;border-bottom:1px solid var(--bdr)}
+    .mob-menu a:last-child{border-bottom:none}
+    @media(max-width:768px){nav{padding:15px 22px}.nav-links{display:none}.hamburger{display:flex}.hero{padding:0 22px 52px}.sec,.pr-wrap{padding:76px 22px}.pr-grid{grid-template-columns:1fr!important;max-width:420px}.how-wrap,.up-wrap{padding:76px 22px}.tools-grid{grid-template-columns:1fr}.cta{margin:0 22px 56px;padding:48px 28px}.cta::before{display:none}footer{padding:52px 22px 28px}.ft-top{grid-template-columns:1fr;gap:32px}.ft-bot{flex-direction:column;text-align:center}}
 </style>
 </head>
 <body>
@@ -218,6 +240,20 @@
   <div class="nav-r" id="navAuth">
     <button class="btn-ghost" onclick="openModal('login')">Sign in</button>
     <a href="#pricing" class="btn-pill">Get Pro →</a>
+  </div>
+  <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mob-menu" id="mobMenu">
+  <a href="#tools" onclick="closeMobileMenu()">Tools</a>
+  <a href="#pricing" onclick="closeMobileMenu()">Pricing</a>
+  <a href="#how" onclick="closeMobileMenu()">How it works</a>
+  <a href="#" onclick="closeMobileMenu();openModal('login')">Sign in</a>
+  <a href="#pricing" onclick="closeMobileMenu()" style="color:var(--or);font-weight:700">Get Pro →</a>
+</div>
   </div>
 </nav>
 
@@ -490,7 +526,7 @@
       <div class="pc-price"><sup>$</sup>0</div>
       <div class="pc-per">forever — no credit card</div>
       <ul class="pc-list">
-        <li class="y"><span class="ck">✓</span>5 tasks per month</li>
+        <li class="y"><span class="ck">✓</span>5 tasks per day</li>
         <li class="y"><span class="ck">✓</span>Up to 10 MB per file</li>
         <li class="y"><span class="ck">✓</span>Compress &amp; Merge PDF</li>
         <li class="y"><span class="ck">✓</span>Rotate PDF</li>
@@ -508,7 +544,7 @@
       <div class="pc-price"><sup>$</sup>9<span style="font-size:1.5rem;font-style:normal;letter-spacing:0">.99</span></div>
       <div class="pc-per">per month · cancel anytime</div>
       <ul class="pc-list">
-        <li class="y"><span class="ck">✓</span>50 tasks per month</li>
+        <li class="y"><span class="ck">✓</span>Unlimited tasks</li>
         <li class="y"><span class="ck">✓</span>Up to 100 MB per file</li>
         <li class="y"><span class="ck">✓</span>All free tools included</li>
         <li class="y"><span class="ck">✓</span>Edit, OCR &amp; Watermark PDF</li>
@@ -750,7 +786,16 @@ function getStripe(){
 
 function rNav(){
   const el=document.getElementById('navAuth');
-  if(user){const i=(user.email||'U')[0].toUpperCase();el.innerHTML=`<div class="u-menu"><div class="u-av" onclick="tDrop()">${i}</div><div class="u-drop" id="uDrop"><a href="account.html">👤 My Account</a><a href="#pricing">⭐ Upgrade</a><div class="udiv"></div><button onclick="doLogout()">🚪 Sign out</button></div></div>`;}
+  if(user){
+    const i=(user.email||'U')[0].toUpperCase();
+    const d=new Date();
+    const k='pdfu_'+d.getFullYear()+'_'+(d.getMonth()+1);
+    const used=parseInt(localStorage.getItem(k)||'0');
+    const pro=isPro();
+    const limit=pro?50:5;
+    const remaining=Math.max(0,limit-used);
+    el.innerHTML=`<div class="u-menu"><div class="u-av" onclick="tDrop()">${i}</div><div class="u-drop" id="uDrop"><div style="padding:9px 11px;font-size:.78rem;color:var(--mut);border-bottom:1px solid var(--bdr);margin-bottom:4px">${remaining} task${remaining!==1?'s':''} left this month</div><a href="account.html">👤 My Account</a><a href="#pricing">⭐ Upgrade</a><div class="udiv"></div><button onclick="doLogout()">🚪 Sign out</button></div></div>`;
+  }
   else el.innerHTML=`<button class="btn-ghost" onclick="openModal('login')">Sign in</button><a href="#pricing" class="btn-pill">Get Pro →</a>`;
 }
 function tDrop(){document.getElementById('uDrop')?.classList.toggle('open');}
@@ -935,22 +980,22 @@ function isPro(){
   return user.user_metadata?.plan==='pro'||user.user_metadata?.plan==='business';
 }
 function chkLimit(){
-  const d=new Date();
-  const k='pdfu_'+d.getFullYear()+'_'+(d.getMonth()+1);
+  if(isPro())return true; // Pro/Business = unlimited
+  const k='pdfu_'+new Date().toDateString();
   const n=parseInt(localStorage.getItem(k)||'0');
-  if(isPro()) return n<50; // Pro = 50 tasks per month
-  return n<5; // Free = 5 tasks per month
+  if(n>=5)return false; // Block at 5 for free users (guests + free accounts)
+  return true; // Don't increment here — only increment on SUCCESS
 }
 function incLimit(){
-  const d=new Date();
-  const k='pdfu_'+d.getFullYear()+'_'+(d.getMonth()+1);
+  if(isPro())return;
+  const k='pdfu_'+new Date().toDateString();
   const n=parseInt(localStorage.getItem(k)||'0');
   localStorage.setItem(k,n+1);
 }
 
 async function go(file, allFiles){
   if(tool==='pdf-to-word'&&!user){}
-  if(!chkLimit()){toast('err',isPro()?'📋 Monthly limit (50/month) reached — resets next month!':'📋 Monthly limit (5/month) reached — upgrade to Pro for 50 tasks/month!');openModal('signup');return;}
+  if(!chkLimit()){toast('err','📋 Daily limit (5/day) reached — sign up for free or upgrade to Pro!');openModal('signup');return;}
   const max=user?100*1024*1024:10*1024*1024;
   if(file.size>max){toast('err',user?'❌ Max 100 MB':'❌ Max 10 MB free — upgrade to Pro');return;}
   // For merge, need at least 2 files
@@ -1044,6 +1089,14 @@ async function handleSub(p){
   }
 }
 
+function toggleMobileMenu(){
+  document.getElementById('hamburger').classList.toggle('open');
+  document.getElementById('mobMenu').classList.toggle('open');
+}
+function closeMobileMenu(){
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('mobMenu').classList.remove('open');
+}
 function toast(type,msg){const el=document.getElementById('tst');document.getElementById('tmsg').textContent=msg;el.className='toast '+type+' show';setTimeout(()=>el.classList.remove('show'),3500);}
 
 </script>
