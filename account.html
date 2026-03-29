@@ -5,7 +5,8 @@
   <title>My Account — AllPDFStuff</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Satoshi:wght@300;400;500;700;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23e8620a'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-size='18' font-family='Georgia,serif' font-style='italic' font-weight='700' fill='white'>P</text></svg>" />
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -15,39 +16,29 @@
       --mut:#8a8070;--mut2:#6b6055;--bdr:rgba(0,0,0,0.08);
       --obdr:rgba(232,98,10,0.25);--oglow:rgba(232,98,10,0.08);
       --serif:'Cormorant Garamond',Georgia,serif;
-      --sans:'Satoshi',system-ui,sans-serif;
+      --sans:'Inter',system-ui,sans-serif;
       --shadow:0 1px 3px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.06);
       --shadow-lg:0 8px 32px rgba(0,0,0,.1);
     }
     html{scroll-behavior:smooth}
     body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:16px;line-height:1.6;overflow-x:hidden}
-
-    /* NAV */
     nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(250,248,244,.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--bdr)}
     .logo{font-family:var(--serif);font-size:1.4rem;font-weight:600;color:var(--txt);text-decoration:none}.logo em{font-style:italic;color:var(--or)}
     .nav-links{display:flex;gap:32px;list-style:none}
     .nav-links a{font-size:.85rem;font-weight:500;color:var(--mut2);text-decoration:none;transition:color .2s}.nav-links a:hover{color:var(--txt)}
     .nav-r{display:flex;align-items:center;gap:12px}
     .btn-pill{background:var(--or);color:#fff;border:none;padding:9px 22px;border-radius:100px;font-family:var(--sans);font-size:.83rem;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:all .2s}.btn-pill:hover{background:var(--or2);transform:translateY(-1px)}
-    .btn-ghost{background:transparent;border:1px solid var(--bdr);color:var(--txt);padding:9px 22px;border-radius:100px;font-family:var(--sans);font-size:.83rem;font-weight:500;cursor:pointer;transition:all .2s}.btn-ghost:hover{border-color:var(--or);color:var(--or)}
-
-    /* LOADING STATE */
+    .btn-ghost{background:transparent;border:1px solid var(--bdr);color:var(--txt);padding:9px 22px;border-radius:100px;font-family:var(--sans);font-size:.83rem;font-weight:500;cursor:pointer;transition:all .2s;text-decoration:none}.btn-ghost:hover{border-color:var(--or);color:var(--or)}
     .loading-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px}
     .spin{width:44px;height:44px;border:3px solid var(--bdr);border-top-color:var(--or);border-radius:50%;animation:spin .9s linear infinite}
     @keyframes spin{to{transform:rotate(360deg)}}
     .loading-screen p{color:var(--mut2);font-size:.9rem}
-
-    /* NOT LOGGED IN */
     .auth-gate{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;display:none}
     .auth-card{background:var(--bg);border:1px solid var(--bdr);border-radius:24px;padding:52px 44px;max-width:400px;width:100%;text-align:center;box-shadow:var(--shadow-lg)}
     .auth-card .lock-ico{font-size:3rem;margin-bottom:16px}
     .auth-card h2{font-family:var(--serif);font-size:1.8rem;font-weight:600;font-style:italic;margin-bottom:8px}
     .auth-card p{color:var(--mut2);font-size:.9rem;margin-bottom:28px;line-height:1.65}
-
-    /* DASHBOARD */
     .dashboard{display:none;padding:100px 48px 80px;max-width:1100px;margin:0 auto}
-
-    /* HERO BAR */
     .dash-hero{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:48px;padding-bottom:36px;border-bottom:1px solid var(--bdr);flex-wrap:wrap}
     .dash-user{display:flex;align-items:center;gap:20px}
     .dash-avatar{width:64px;height:64px;background:linear-gradient(135deg,var(--or),var(--or2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.8rem;font-weight:700;font-style:italic;color:#fff;flex-shrink:0}
@@ -57,37 +48,24 @@
     .plan-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:100px;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
     .plan-free{background:rgba(0,0,0,.06);color:var(--mut2);border:1px solid var(--bdr)}
     .plan-pro{background:var(--oglow);color:var(--or);border:1px solid var(--obdr)}
-    .plan-business{background:rgba(139,92,246,.1);color:#7c3aed;border:1px solid rgba(139,92,246,.2)}
-
-    /* STATS GRID */
-    .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:36px}
+    .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:36px}
     .stat-card{background:var(--bg);border:1px solid var(--bdr);border-radius:18px;padding:24px;box-shadow:var(--shadow)}
     .stat-card .s-label{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin-bottom:10px}
     .stat-card .s-val{font-family:var(--serif);font-size:2.4rem;font-weight:600;font-style:italic;color:var(--or);line-height:1;letter-spacing:-.02em}
     .stat-card .s-sub{font-size:.78rem;color:var(--mut2);margin-top:6px}
     .stat-card .s-bar{height:6px;background:var(--bg3);border-radius:100px;margin-top:12px;overflow:hidden}
     .stat-card .s-fill{height:100%;background:var(--or);border-radius:100px;transition:width .8s ease}
-
-    /* CONTENT GRID */
     .content-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:24px;margin-bottom:24px}
-
-    /* CARDS */
     .dash-card{background:var(--bg);border:1px solid var(--bdr);border-radius:20px;padding:32px;box-shadow:var(--shadow)}
     .dash-card h3{font-family:var(--serif);font-size:1.2rem;font-weight:600;letter-spacing:-.01em;margin-bottom:20px;display:flex;align-items:center;gap:10px}
-    .dash-card h3 .card-ico{font-size:1.1rem}
-
-    /* PLAN CARD */
     .plan-card{background:linear-gradient(135deg,#fff8f2,#fdf4ec);border:1px solid var(--obdr);border-radius:20px;padding:32px;box-shadow:var(--shadow)}
     .plan-card h3{font-family:var(--serif);font-size:1.2rem;font-weight:600;margin-bottom:20px;display:flex;align-items:center;gap:10px}
-    .current-plan{margin-bottom:20px}
     .plan-name{font-family:var(--serif);font-size:2rem;font-weight:600;font-style:italic;color:var(--or);line-height:1;margin-bottom:6px}
     .plan-desc{font-size:.85rem;color:var(--mut2);line-height:1.6}
     .plan-features{list-style:none;margin:16px 0 20px}
     .plan-features li{display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--txt2);padding:6px 0;border-bottom:1px solid rgba(0,0,0,.05)}
     .plan-features li:last-child{border-bottom:none}
     .plan-features li .chk{color:var(--or);font-size:.9rem;flex-shrink:0}
-
-    /* PROFILE FORM */
     .profile-field{margin-bottom:16px}
     .profile-field label{display:block;font-size:.78rem;font-weight:600;color:var(--mut);margin-bottom:5px;letter-spacing:.04em;text-transform:uppercase}
     .profile-field input{width:100%;background:var(--bg2);border:1px solid var(--bdr);color:var(--txt);padding:11px 14px;border-radius:11px;font-family:var(--sans);font-size:.92rem;outline:none;transition:border-color .2s}
@@ -96,38 +74,20 @@
     .save-btn{background:var(--or);color:#fff;border:none;padding:11px 24px;border-radius:100px;font-family:var(--sans);font-size:.85rem;font-weight:700;cursor:pointer;transition:all .2s}
     .save-btn:hover{background:var(--or2);transform:translateY(-1px)}
     .save-msg{font-size:.82rem;color:#4ade80;margin-left:12px;display:none}
-
-    /* ACTIVITY LIST */
-    .activity-list{list-style:none}
-    .activity-item{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--bdr)}
-    .activity-item:last-child{border-bottom:none}
-    .act-ico{width:36px;height:36px;border-radius:10px;background:var(--bg2);border:1px solid var(--bdr);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
-    .act-info{flex:1}
-    .act-info .act-name{font-size:.87rem;font-weight:600;color:var(--txt2)}
-    .act-info .act-time{font-size:.77rem;color:var(--mut)}
-    .act-status{font-size:.72rem;font-weight:700;padding:3px 9px;border-radius:100px;background:rgba(74,222,128,.1);color:#4ade80;border:1px solid rgba(74,222,128,.2)}
-
-    /* DANGER ZONE */
     .danger-zone{border:1px solid rgba(248,113,113,.2);border-radius:20px;padding:24px;background:rgba(248,113,113,.03);margin-top:24px}
     .danger-zone h3{font-family:var(--serif);font-size:1.1rem;font-weight:600;color:#ef4444;margin-bottom:8px}
     .danger-zone p{font-size:.85rem;color:var(--mut2);margin-bottom:16px;line-height:1.6}
     .btn-danger{background:transparent;border:1px solid rgba(248,113,113,.4);color:#ef4444;padding:9px 20px;border-radius:100px;font-family:var(--sans);font-size:.83rem;font-weight:600;cursor:pointer;transition:all .2s}
     .btn-danger:hover{background:rgba(248,113,113,.08)}
-
-    /* TOAST */
     .toast{position:fixed;bottom:22px;right:22px;background:var(--bg);border:1px solid var(--bdr);border-radius:13px;padding:13px 18px;font-size:.86rem;z-index:9999;display:flex;align-items:center;gap:9px;transform:translateY(68px);opacity:0;transition:all .3s;max-width:310px;box-shadow:var(--shadow-lg)}
     .toast.show{transform:translateY(0);opacity:1}
     .toast.ok{border-color:rgba(74,222,128,.22)}
     .toast.err{border-color:rgba(248,113,113,.22)}
-
-    /* FOOTER */
     footer{background:var(--bg);border-top:1px solid var(--bdr);padding:36px 48px 24px;margin-top:48px}
     .ft-bot{display:flex;justify-content:space-between;align-items:center;color:var(--mut);font-size:.78rem;flex-wrap:wrap;gap:10px}
     .ft-bot a{color:var(--mut);text-decoration:none}.ft-bot a:hover{color:var(--or)}
-
     @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
     .fade-in{animation:fadeUp .5s ease both}
-
     @media(max-width:1024px){.stats-grid{grid-template-columns:repeat(2,1fr)}.content-grid{grid-template-columns:1fr}}
     @media(max-width:768px){nav{padding:14px 20px}.nav-links{display:none}.dashboard{padding:80px 20px 60px}.stats-grid{grid-template-columns:1fr 1fr}.dash-hero{flex-direction:column;align-items:flex-start}footer{padding:28px 20px 20px}.ft-bot{flex-direction:column;text-align:center}}
   </style>
@@ -176,27 +136,22 @@
     </div>
     <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
       <span class="plan-badge plan-free" id="planBadge">Free Plan</span>
-      <a href="index.html#pricing" class="btn-pill" style="font-size:.82rem;padding:8px 18px">⭐ Upgrade to Pro</a>
+      <a href="index.html#pricing" class="btn-pill" id="upgradeNavBtn" style="font-size:.82rem;padding:8px 18px">⭐ Upgrade to Pro</a>
     </div>
   </div>
 
-  <!-- STATS -->
+  <!-- STATS — 3 cards, no "Tasks Today" (files deleted after 1hr) -->
   <div class="stats-grid fade-in">
     <div class="stat-card">
-      <div class="s-label">Tasks Today</div>
-      <div class="s-val" id="tasksToday">0</div>
-      <div class="s-sub" id="tasksLimit">of 5 free tasks used</div>
+      <div class="s-label">Tasks This Month</div>
+      <div class="s-val" id="tasksUsed">0</div>
+      <div class="s-sub" id="tasksLimit">of 5 tasks used this month</div>
       <div class="s-bar"><div class="s-fill" id="tasksFill" style="width:0%"></div></div>
     </div>
     <div class="stat-card">
       <div class="s-label">Member Since</div>
       <div class="s-val" id="memberSince">—</div>
       <div class="s-sub">Account created</div>
-    </div>
-    <div class="stat-card">
-      <div class="s-label">Current Plan</div>
-      <div class="s-val" id="planName">Free</div>
-      <div class="s-sub">Active subscription</div>
     </div>
     <div class="stat-card">
       <div class="s-label">File Size Limit</div>
@@ -210,7 +165,7 @@
 
     <!-- PROFILE -->
     <div class="dash-card fade-in">
-      <h3><span class="card-ico">👤</span> Profile Settings</h3>
+      <h3><span>👤</span> Profile Settings</h3>
       <div class="profile-field">
         <label>Full Name</label>
         <input type="text" id="profileName" placeholder="Your full name"/>
@@ -231,29 +186,21 @@
 
     <!-- PLAN -->
     <div class="plan-card fade-in">
-      <h3><span class="card-ico">⭐</span> Your Plan</h3>
-      <div class="current-plan">
+      <h3><span>⭐</span> Your Plan</h3>
+      <div style="margin-bottom:20px">
         <div class="plan-name" id="planDisplay">Free</div>
-        <div class="plan-desc" id="planDescText">You're on the free plan. Upgrade to Pro for unlimited tasks, larger files, and more.</div>
+        <div class="plan-desc" id="planDescText">You're on the free plan. Upgrade to Pro for more tasks, larger files, and all tools.</div>
       </div>
       <ul class="plan-features" id="planFeatures">
-        <li><span class="chk">✓</span>5 tasks per day</li>
+        <li><span class="chk">✓</span>5 tasks per month</li>
         <li><span class="chk">✓</span>Up to 10 MB per file</li>
-        <li><span class="chk">✓</span>Compress, Merge, Split, JPG, Rotate</li>
-        <li><span class="chk" style="color:var(--mut)">✗</span>PDF to Word / Excel</li>
-        <li><span class="chk" style="color:var(--mut)">✗</span>100 MB files & batch processing</li>
+        <li><span class="chk">✓</span>Compress, Merge, Rotate, Word to PDF</li>
+        <li><span class="chk" style="color:var(--mut)">✗</span>Pro tools (OCR, Split, Unlock…)</li>
+        <li><span class="chk" style="color:var(--mut)">✗</span>100 MB file limit</li>
       </ul>
       <a href="index.html#pricing" class="btn-pill" style="justify-content:center;width:100%;font-size:.88rem" id="upgradeBtn">⭐ Upgrade to Pro — $9.99/mo</a>
     </div>
 
-  </div>
-
-  <!-- RECENT ACTIVITY -->
-  <div class="dash-card fade-in" style="margin-bottom:24px">
-    <h3><span class="card-ico">📋</span> Recent Activity</h3>
-    <ul class="activity-list" id="activityList">
-      <!-- populated by JS -->
-    </ul>
   </div>
 
   <!-- DANGER ZONE -->
@@ -287,7 +234,6 @@ const sb = createClient(
 
 let currentUser = null;
 
-// ── INIT ──
 document.addEventListener('DOMContentLoaded', async () => {
   const { data: { session } } = await sb.auth.getSession();
   if (session?.user) {
@@ -299,15 +245,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 });
 
-// ── SHOW DASHBOARD ──
 function showDashboard(user) {
   document.getElementById('loadingScreen').style.display = 'none';
   document.getElementById('dashboard').style.display = 'block';
 
-  // Avatar & name
+  // Name & avatar
   const name = user.user_metadata?.full_name || user.email?.split('@')[0] || 'Friend';
-  const initial = name[0].toUpperCase();
-  document.getElementById('avatarLetter').textContent = initial;
+  document.getElementById('avatarLetter').textContent = name[0].toUpperCase();
   document.getElementById('welcomeName').innerHTML = `Welcome back, <em>${name.split(' ')[0]}</em>`;
   document.getElementById('userEmail').textContent = user.email;
 
@@ -320,106 +264,68 @@ function showDashboard(user) {
   const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   document.getElementById('memberSince').textContent = months[created.getMonth()] + ' ' + created.getFullYear();
 
-  // Tasks today
-  const today = new Date().toDateString();
-  const used = parseInt(localStorage.getItem('pdfu_' + today) || '0');
-  document.getElementById('tasksToday').textContent = used;
-  document.getElementById('tasksLimit').textContent = `of 5 free tasks used today`;
-  document.getElementById('tasksFill').style.width = Math.min((used / 5) * 100, 100) + '%';
+  // Tasks this month — use same monthly key as index.html
+  const d = new Date();
+  const k = 'pdfu_' + d.getFullYear() + '_' + (d.getMonth() + 1);
+  const used = parseInt(localStorage.getItem(k) || '0');
 
-  // Plan (free by default — update when Stripe is connected)
   const plan = user.user_metadata?.plan || 'free';
-  updatePlanDisplay(plan);
+  const isPro = plan === 'pro' || plan === 'business';
+  const limit = isPro ? 50 : 5;
+  const remaining = Math.max(0, limit - used);
 
-  // Activity
-  renderActivity(used);
+  document.getElementById('tasksUsed').textContent = used;
+  document.getElementById('tasksLimit').textContent = `of ${limit} tasks used this month — ${remaining} remaining`;
+  document.getElementById('tasksFill').style.width = Math.min((used / limit) * 100, 100) + '%';
+
+  // File limit
+  document.getElementById('fileLimit').textContent = isPro ? '100MB' : '10MB';
+
+  // Plan display
+  updatePlanDisplay(plan);
 }
 
-// ── PLAN DISPLAY ──
 function updatePlanDisplay(plan) {
   const badge = document.getElementById('planBadge');
-  const planName = document.getElementById('planName');
   const planDisplay = document.getElementById('planDisplay');
   const planDesc = document.getElementById('planDescText');
   const upgradeBtn = document.getElementById('upgradeBtn');
-  const fileLimit = document.getElementById('fileLimit');
+  const upgradeNavBtn = document.getElementById('upgradeNavBtn');
 
-  if (plan === 'pro') {
+  if (plan === 'pro' || plan === 'business') {
     badge.className = 'plan-badge plan-pro';
     badge.textContent = '⭐ Pro Plan';
-    planName.textContent = 'Pro';
     planDisplay.textContent = 'Pro';
-    fileLimit.textContent = '100MB';
-    document.getElementById('tasksLimit').textContent = 'Unlimited tasks';
-    document.getElementById('tasksFill').style.width = '30%';
-    planDesc.textContent = "You're on Pro — enjoy unlimited tasks, 100MB files, PDF to Word & Excel, and priority processing.";
+    planDesc.textContent = "You're on Pro — enjoy 50 tasks/month, 100MB files, and all 15 PDF tools.";
     document.getElementById('planFeatures').innerHTML = `
-      <li><span class="chk">✓</span>Unlimited tasks per day</li>
+      <li><span class="chk">✓</span>50 tasks per month</li>
       <li><span class="chk">✓</span>Up to 100 MB per file</li>
-      <li><span class="chk">✓</span>All tools including PDF to Word & Excel</li>
-      <li><span class="chk">✓</span>Priority processing</li>
-      <li><span class="chk">✓</span>No watermarks</li>`;
+      <li><span class="chk">✓</span>All 15 PDF tools unlocked</li>
+      <li><span class="chk">✓</span>OCR, Split, Unlock, Watermark & more</li>
+      <li><span class="chk">✓</span>Priority processing</li>`;
     upgradeBtn.textContent = '✅ Pro Plan Active';
     upgradeBtn.style.background = 'var(--bg3)';
     upgradeBtn.style.color = 'var(--mut2)';
     upgradeBtn.style.pointerEvents = 'none';
-  } else if (plan === 'business') {
-    badge.className = 'plan-badge plan-business';
-    badge.textContent = '💼 Business Plan';
-    planName.textContent = 'Business';
-    planDisplay.textContent = 'Business';
-    fileLimit.textContent = '500MB';
+    upgradeNavBtn.style.display = 'none'; // Hide upgrade button in header for Pro users
   } else {
     badge.className = 'plan-badge plan-free';
     badge.textContent = 'Free Plan';
-    planName.textContent = 'Free';
     planDisplay.textContent = 'Free';
-    fileLimit.textContent = '10MB';
+    planDesc.textContent = "You're on the free plan. Upgrade to Pro for 50 tasks/month, larger files, and all tools.";
   }
 }
 
-// ── RECENT ACTIVITY ──
-function renderActivity(tasksUsed) {
-  const list = document.getElementById('activityList');
-  const tools = ['🗜️ Compress PDF','🔗 Merge PDF','🖼️ PDF to JPG','✂️ Split PDF','🔄 Rotate PDF'];
-  const times = ['Just now', '2 hours ago', 'Yesterday', '2 days ago', '3 days ago'];
-
-  if (tasksUsed === 0) {
-    list.innerHTML = `<li style="padding:20px 0;text-align:center;color:var(--mut);font-size:.88rem">No activity yet — <a href="index.html#upload" style="color:var(--or)">try a PDF tool!</a></li>`;
-    return;
-  }
-
-  // Show recent tasks from localStorage
-  let html = '';
-  for (let i = 0; i < Math.min(tasksUsed, 5); i++) {
-    const tool = tools[i % tools.length];
-    const time = times[i];
-    html += `<li class="activity-item">
-      <div class="act-ico">${tool.split(' ')[0]}</div>
-      <div class="act-info">
-        <div class="act-name">${tool.split(' ').slice(1).join(' ')}</div>
-        <div class="act-time">${time}</div>
-      </div>
-      <span class="act-status">Done</span>
-    </li>`;
-  }
-  list.innerHTML = html;
-}
-
-// ── SAVE PROFILE ──
 async function saveProfile() {
   const name = document.getElementById('profileName').value.trim();
   const password = document.getElementById('profilePassword').value;
-
   const updates = {};
   if (name) updates.data = { full_name: name };
   if (password) {
     if (password.length < 8) { toast('err', '❌ Password must be at least 8 characters'); return; }
     updates.password = password;
   }
-
   if (Object.keys(updates).length === 0) { toast('err', '❌ Nothing to update'); return; }
-
   const { error } = await sb.auth.updateUser(updates);
   if (error) {
     toast('err', '❌ ' + error.message);
@@ -428,7 +334,6 @@ async function saveProfile() {
     document.getElementById('profilePassword').value = '';
     setTimeout(() => document.getElementById('saveMsg').style.display = 'none', 3000);
     toast('ok', '✅ Profile updated!');
-    // Update welcome name
     if (name) {
       document.getElementById('welcomeName').innerHTML = `Welcome back, <em>${name.split(' ')[0]}</em>`;
       document.getElementById('avatarLetter').textContent = name[0].toUpperCase();
@@ -436,13 +341,11 @@ async function saveProfile() {
   }
 }
 
-// ── SIGN OUT ──
 async function handleSignOut() {
   await sb.auth.signOut();
   window.location.href = 'index.html';
 }
 
-// ── DELETE ACCOUNT ──
 async function confirmDelete() {
   const confirmed = confirm('Are you absolutely sure? This will permanently delete your account and cannot be undone.');
   if (!confirmed) return;
@@ -451,7 +354,6 @@ async function confirmDelete() {
   toast('err', '⚠️ Account deletion requires admin action. Please contact us via the Contact page.');
 }
 
-// ── TOAST ──
 function toast(type, msg) {
   const el = document.getElementById('toast');
   document.getElementById('toastMsg').textContent = msg;
