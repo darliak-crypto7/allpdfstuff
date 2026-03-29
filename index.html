@@ -874,6 +874,12 @@ function onSel(e){
 
 // Show the tool picker after file is selected
 function showPicker(files){
+  // Block guests before they can even upload
+  if(!user){
+    toast('err','⭐ Please sign in or create a free account to use our tools');
+    openModal('signup');
+    return;
+  }
   // Accept either single file or array
   if(!Array.isArray(files)) files=[files];
   pendingFile = files;
