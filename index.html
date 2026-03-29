@@ -918,10 +918,19 @@ function pickAndGo(t){
     toast('err','📊 PDF to Excel coming soon! Try PDF to Word instead.');
     return;
   }
-  if(t==='split'&&!user){toast('err','⭐ Sign in free to split PDFs!');openModal('signup');return;}
-  if(t==='pdf-to-jpg'&&!isPro()){toast('err','⭐ PDF to JPG requires a Pro account');openModal('signup');return;}
-  if(['extract-text','repair','unlock','protect-pdf','pdf-to-pdfa','convert-image','page-numbers','ocr-pdf','watermark'].includes(t)&&!isPro()){
-    toast('err','⭐ Pro account required for this tool');openModal('signup');return;
+
+  // ALL tools require a signed-in account
+  if(!user){
+    toast('err','⭐ Please sign in or create a free account to use this tool');
+    openModal('signup');
+    return;
+  }
+
+  // Pro-only tools
+  if(['split','pdf-to-jpg','extract-text','repair','unlock','protect-pdf','pdf-to-pdfa','convert-image','page-numbers','ocr-pdf','watermark'].includes(t)&&!isPro()){
+    toast('err','⭐ This tool requires a Pro account — upgrade to unlock it!');
+    openModal('signup');
+    return;
   }
 
   // Protect PDF needs a password
@@ -995,7 +1004,7 @@ function incLimit(){
 
 async function go(file, allFiles){
   if(tool==='pdf-to-word'&&!user){}
-  if(!chkLimit()){toast('err','📋 Daily limit (5/day) reached — sign up for free or upgrade to Pro!');openModal('signup');return;}
+  if(!chkLimit()){toast('err',isPro()?'📋 Monthly limit (50/month) reached — resets next month!':'📋 Monthly limit (5/month) reached — upgrade to Pro for 50 tasks/month!');openModal('signup');return;}
   const max=user?100*1024*1024:10*1024*1024;
   if(file.size>max){toast('err',user?'❌ Max 100 MB':'❌ Max 10 MB free — upgrade to Pro');return;}
   // For merge, need at least 2 files
