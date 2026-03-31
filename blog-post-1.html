@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>How to Compress a PDF Without Losing Quality | AllPDFStuff</title>
+  <meta name="description" content="Learn how to reduce PDF file size without losing quality. Simple methods for email, uploading, and sharing — all free, right in your browser."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23e8620a'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-size='18' font-family='Georgia,serif' font-style='italic' font-weight='700' fill='white'>P</text></svg>"/>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZP7PTTQBX6"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZP7PTTQBX6');</script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#faf8f4;--bg2:#f3efe8;--bg3:#ede8df;
+      --or:#e8620a;--or2:#f97316;
+      --txt:#1a1714;--txt2:#3d3830;--mut:#8a8070;--mut2:#6b6055;
+      --bdr:rgba(0,0,0,0.08);--obdr:rgba(232,98,10,0.25);--oglow:rgba(232,98,10,0.08);
+      --serif:'Cormorant Garamond',Georgia,serif;
+      --sans:'Inter',system-ui,sans-serif;
+      --shadow:0 1px 3px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.06);
+      --shadow-lg:0 8px 32px rgba(0,0,0,.1);
+    }
+    body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:16px;line-height:1.7;overflow-x:hidden}
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;background:rgba(250,248,244,.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--bdr)}
+    .logo{font-family:var(--serif);font-size:1.45rem;font-weight:600;color:var(--txt);text-decoration:none}.logo em{font-style:italic;color:var(--or)}
+    .nav-links{display:flex;gap:32px;list-style:none}
+    .nav-links a{font-size:.86rem;font-weight:500;color:var(--mut2);text-decoration:none;transition:color .2s}.nav-links a:hover{color:var(--txt)}
+    .btn-pill{background:var(--or);color:#fff;border:none;padding:9px 22px;border-radius:100px;font-family:var(--sans);font-size:.84rem;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:all .2s}.btn-pill:hover{background:var(--or2);transform:translateY(-1px)}
+    .btn-ghost{background:transparent;border:1px solid var(--bdr);color:var(--txt);padding:9px 22px;border-radius:100px;font-family:var(--sans);font-size:.84rem;font-weight:500;cursor:pointer;text-decoration:none;transition:all .2s}.btn-ghost:hover{border-color:var(--or);color:var(--or)}
+    /* ARTICLE */
+    .article-wrap{max-width:760px;margin:0 auto;padding:120px 48px 100px}
+    .back-link{display:inline-flex;align-items:center;gap:6px;font-size:.84rem;color:var(--mut2);text-decoration:none;margin-bottom:40px;transition:color .2s}.back-link:hover{color:var(--or)}
+    .article-meta{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+    .tag{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:100px;background:var(--oglow);color:var(--or);border:1px solid var(--obdr)}
+    .article-date{font-size:.84rem;color:var(--mut)}
+    .article-h1{font-family:var(--serif);font-size:clamp(2rem,5vw,3.4rem);font-weight:600;line-height:1.1;letter-spacing:-.03em;margin-bottom:20px}
+    .article-h1 em{font-style:italic;color:var(--or)}
+    .article-lead{font-size:1.1rem;color:var(--mut2);line-height:1.75;margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid var(--bdr)}
+    .article-body h2{font-family:var(--serif);font-size:1.7rem;font-weight:600;letter-spacing:-.02em;margin:44px 0 14px;line-height:1.2}
+    .article-body h2 em{font-style:italic;color:var(--or)}
+    .article-body h3{font-family:var(--serif);font-size:1.25rem;font-weight:600;margin:28px 0 10px}
+    .article-body p{color:var(--txt2);margin-bottom:18px;line-height:1.75}
+    .article-body ul,.article-body ol{margin:0 0 18px 24px;color:var(--txt2);line-height:1.75}
+    .article-body li{margin-bottom:8px}
+    .article-body strong{color:var(--txt);font-weight:600}
+    .tip-box{background:var(--oglow);border:1px solid var(--obdr);border-radius:14px;padding:20px 24px;margin:28px 0}
+    .tip-box p{margin:0;color:var(--txt2)}
+    .tip-box strong{color:var(--or)}
+    .cta-box{background:linear-gradient(135deg,#fff8f2,#fdf4ec);border:1px solid var(--obdr);border-radius:20px;padding:40px 36px;margin:48px 0;text-align:center}
+    .cta-box h3{font-family:var(--serif);font-size:1.8rem;font-weight:600;font-style:italic;letter-spacing:-.02em;margin-bottom:10px}
+    .cta-box p{color:var(--mut2);font-size:.93rem;margin-bottom:24px}
+    /* FOOTER */
+    footer{background:var(--bg);border-top:1px solid var(--bdr);padding:40px 48px 28px}
+    .ft-bot{display:flex;justify-content:space-between;align-items:center;color:var(--mut);font-size:.78rem;flex-wrap:wrap;gap:10px}
+    .ft-bot a{color:var(--mut);text-decoration:none}.ft-bot a:hover{color:var(--or)}
+    @media(max-width:768px){nav{padding:14px 20px}.nav-links{display:none}.article-wrap{padding:90px 22px 60px}footer{padding:32px 22px 22px}.ft-bot{flex-direction:column;text-align:center}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">All<em>PDF</em>Stuff</a>
+  <ul class="nav-links">
+    <li><a href="index.html#tools">Tools</a></li>
+    <li><a href="index.html#pricing">Pricing</a></li>
+    <li><a href="blog.html">Blog</a></li>
+  </ul>
+  <div style="display:flex;gap:10px">
+    <a href="blog.html" class="btn-ghost">← Blog</a>
+    <a href="index.html#upload" class="btn-pill">Try it free →</a>
+  </div>
+</nav>
+
+<div class="article-wrap">
+  <a href="blog.html" class="back-link">← Back to Blog</a>
+
+  <div class="article-meta">
+    <span class="tag">Guide</span>
+    <span class="article-date">20 March 2026</span>
+  </div>
+
+  <h1 class="article-h1">How to Compress a PDF <em>Without Losing Quality</em></h1>
+
+  <p class="article-lead">Large PDF files are a daily headache — too big to email, too slow to upload, and too heavy for shared drives. The good news? You can dramatically shrink a PDF's file size without sacrificing readability or visual quality. Here's everything you need to know.</p>
+
+  <div class="article-body">
+
+    <h2>Why Do <em>PDFs Get So Large?</em></h2>
+    <p>PDF file size is driven by a few key factors. High-resolution images embedded in a document are the biggest culprit — a single scanned page can be several megabytes on its own. Fonts, embedded graphics, and unnecessary metadata all add up too.</p>
+    <p>Understanding what's making your PDF large is the first step to reducing it effectively. A document that's large because of scanned images needs a different approach than one that's large because of vector graphics or fonts.</p>
+
+    <h2>Method 1: <em>Use an Online Compression Tool</em></h2>
+    <p>The quickest and easiest way to compress a PDF is using a browser-based tool — no software to install, nothing to configure. This is perfect for one-off compressions or when you're working on a device that isn't your own.</p>
+    <p>With <strong>AllPDFStuff's Compress PDF tool</strong>, the process takes under 30 seconds:</p>
+    <ol>
+      <li>Go to AllPDFStuff.com and create a free account</li>
+      <li>Click <strong>Compress PDF</strong> from the tools menu</li>
+      <li>Drop your file into the upload area</li>
+      <li>Download your compressed PDF — done</li>
+    </ol>
+
+    <div class="tip-box">
+      <p><strong>💡 Good to know:</strong> AllPDFStuff uses iLovePDF's compression engine, which intelligently reduces file size while preserving text sharpness and readability. Most PDFs can be reduced by 50–80% without any visible quality loss.</p>
+    </div>
+
+    <h2>Method 2: <em>Reduce Image Resolution Before Converting</em></h2>
+    <p>If you're creating a PDF from a Word document, PowerPoint, or similar, you can reduce the file size before it even becomes a PDF by lowering the image resolution in your source document.</p>
+    <p>In Microsoft Word, go to <strong>File → Options → Advanced</strong> and look for the image compression settings. Setting images to 150 DPI instead of 300 DPI will cut the file size roughly in half with minimal visible difference on screen.</p>
+
+    <h2>Method 3: <em>Remove Unnecessary Elements</em></h2>
+    <p>PDFs can accumulate hidden bloat over time — embedded fonts that aren't needed, colour profiles, metadata, and form fields that are no longer used. Stripping these out can make a surprising difference.</p>
+    <p>Some PDF editors allow you to run a "PDF Optimiser" or "Clean Up" function that removes these invisible elements. Adobe Acrobat has this built in, though it requires a paid subscription.</p>
+
+    <h2>Method 4: <em>Convert to PDF/A for Archiving</em></h2>
+    <p>If you're compressing a PDF for long-term storage rather than sharing, consider converting it to PDF/A format. This is a standardised archival format that strips out elements like JavaScript and embedded videos that add file size but aren't needed for document preservation.</p>
+    <p>AllPDFStuff's <strong>PDF to PDF/A tool</strong> (available on the Pro plan) handles this conversion automatically.</p>
+
+    <h2>How Much Can You <em>Actually Compress a PDF?</em></h2>
+    <p>The amount of compression you'll achieve depends heavily on what's inside the PDF:</p>
+    <ul>
+      <li><strong>Scanned documents:</strong> 60–80% reduction is common</li>
+      <li><strong>Image-heavy presentations:</strong> 40–70% reduction</li>
+      <li><strong>Text-only documents:</strong> 10–30% reduction (there's less to compress)</li>
+      <li><strong>Mixed documents:</strong> 30–60% reduction on average</li>
+    </ul>
+    <p>Don't expect miracles with a PDF that's already been compressed — repeatedly compressing the same file will eventually degrade quality without meaningfully reducing size.</p>
+
+    <h2>When Should You <em>Not Compress?</em></h2>
+    <p>There are a few situations where compression isn't the right move. If you're submitting legal documents, contracts, or anything that might be examined closely, keep the original resolution. Similarly, if the PDF contains technical diagrams or fine print, aggressive compression can make text harder to read.</p>
+
+    <div class="tip-box">
+      <p><strong>✅ Best practice:</strong> Always keep a copy of your original, uncompressed PDF. Compress a copy for sharing, but store the original for your records.</p>
+    </div>
+
+    <h2>The <em>Bottom Line</em></h2>
+    <p>Compressing a PDF doesn't have to be complicated. For most everyday needs — emailing a document, uploading to a portal, sharing via WhatsApp — a free online tool like AllPDFStuff will get the job done in seconds with no quality loss you'll ever notice.</p>
+    <p>The key is matching the method to the situation: use an online tool for speed and convenience, adjust image settings for source documents when you have time, and keep your originals safe.</p>
+
+    <div class="cta-box">
+      <h3>Ready to compress your PDF?</h3>
+      <p>Free to use — no software needed. Files are automatically deleted after 1 hour.</p>
+      <a href="index.html#upload" class="btn-pill" style="font-size:.95rem;padding:12px 28px">Compress PDF free →</a>
+    </div>
+
+    <h2>Related <em>Tools</em></h2>
+    <ul>
+      <li><a href="compress-pdf.html" style="color:var(--or)">Compress PDF</a> — Shrink your PDF file size online</li>
+      <li><a href="merge-pdf.html" style="color:var(--or)">Merge PDF</a> — Combine multiple PDFs into one</li>
+      <li><a href="pdf-to-word.html" style="color:var(--or)">PDF to Word</a> — Convert PDF to editable Word document</li>
+    </ul>
+
+  </div>
+</div>
+
+<footer>
+  <div class="ft-bot">
+    <span>© 2026 AllPDFStuff.com — All rights reserved</span>
+    <div style="display:flex;gap:20px">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

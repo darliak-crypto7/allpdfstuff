@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>5 Ways to Merge PDFs Like a Pro | AllPDFStuff</title>
+  <meta name="description" content="Combining PDF files doesn't have to be difficult. Here are 5 fast, simple methods to merge PDFs — from free online tools to built-in OS features."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23e8620a'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-size='18' font-family='Georgia,serif' font-style='italic' font-weight='700' fill='white'>P</text></svg>"/>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZP7PTTQBX6"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZP7PTTQBX6');</script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#faf8f4;--bg2:#f3efe8;--bg3:#ede8df;
+      --or:#e8620a;--or2:#f97316;
+      --txt:#1a1714;--txt2:#3d3830;--mut:#8a8070;--mut2:#6b6055;
+      --bdr:rgba(0,0,0,0.08);--obdr:rgba(232,98,10,0.25);--oglow:rgba(232,98,10,0.08);
+      --serif:'Cormorant Garamond',Georgia,serif;
+      --sans:'Inter',system-ui,sans-serif;
+      --shadow:0 1px 3px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.06);
+      --shadow-lg:0 8px 32px rgba(0,0,0,.1);
+    }
+    body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:16px;line-height:1.7;overflow-x:hidden}
+    nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;background:rgba(250,248,244,.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--bdr)}
+    .logo{font-family:var(--serif);font-size:1.45rem;font-weight:600;color:var(--txt);text-decoration:none}.logo em{font-style:italic;color:var(--or)}
+    .nav-links{display:flex;gap:32px;list-style:none}
+    .nav-links a{font-size:.86rem;font-weight:500;color:var(--mut2);text-decoration:none;transition:color .2s}.nav-links a:hover{color:var(--txt)}
+    .btn-pill{background:var(--or);color:#fff;border:none;padding:9px 22px;border-radius:100px;font-family:var(--sans);font-size:.84rem;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:all .2s}.btn-pill:hover{background:var(--or2);transform:translateY(-1px)}
+    .btn-ghost{background:transparent;border:1px solid var(--bdr);color:var(--txt);padding:9px 22px;border-radius:100px;font-family:var(--sans);font-size:.84rem;font-weight:500;cursor:pointer;text-decoration:none;transition:all .2s}.btn-ghost:hover{border-color:var(--or);color:var(--or)}
+    .article-wrap{max-width:760px;margin:0 auto;padding:120px 48px 100px}
+    .back-link{display:inline-flex;align-items:center;gap:6px;font-size:.84rem;color:var(--mut2);text-decoration:none;margin-bottom:40px;transition:color .2s}.back-link:hover{color:var(--or)}
+    .article-meta{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+    .tag{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:100px;background:var(--oglow);color:var(--or);border:1px solid var(--obdr)}
+    .article-date{font-size:.84rem;color:var(--mut)}
+    .article-h1{font-family:var(--serif);font-size:clamp(2rem,5vw,3.4rem);font-weight:600;line-height:1.1;letter-spacing:-.03em;margin-bottom:20px}
+    .article-h1 em{font-style:italic;color:var(--or)}
+    .article-lead{font-size:1.1rem;color:var(--mut2);line-height:1.75;margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid var(--bdr)}
+    .article-body h2{font-family:var(--serif);font-size:1.7rem;font-weight:600;letter-spacing:-.02em;margin:44px 0 14px;line-height:1.2}
+    .article-body h2 em{font-style:italic;color:var(--or)}
+    .article-body h3{font-family:var(--serif);font-size:1.25rem;font-weight:600;margin:28px 0 10px}
+    .article-body p{color:var(--txt2);margin-bottom:18px;line-height:1.75}
+    .article-body ul,.article-body ol{margin:0 0 18px 24px;color:var(--txt2);line-height:1.75}
+    .article-body li{margin-bottom:8px}
+    .article-body strong{color:var(--txt);font-weight:600}
+    .method-card{background:var(--bg2);border:1px solid var(--bdr);border-radius:16px;padding:24px 28px;margin:28px 0}
+    .method-card .method-num{font-family:var(--serif);font-size:2.4rem;font-weight:600;font-style:italic;color:var(--or);line-height:1;margin-bottom:8px}
+    .method-card h3{font-family:var(--serif);font-size:1.2rem;font-weight:600;margin-bottom:10px}
+    .method-card p{color:var(--txt2);margin:0;font-size:.93rem}
+    .tip-box{background:var(--oglow);border:1px solid var(--obdr);border-radius:14px;padding:20px 24px;margin:28px 0}
+    .tip-box p{margin:0;color:var(--txt2)}
+    .tip-box strong{color:var(--or)}
+    .cta-box{background:linear-gradient(135deg,#fff8f2,#fdf4ec);border:1px solid var(--obdr);border-radius:20px;padding:40px 36px;margin:48px 0;text-align:center}
+    .cta-box h3{font-family:var(--serif);font-size:1.8rem;font-weight:600;font-style:italic;letter-spacing:-.02em;margin-bottom:10px}
+    .cta-box p{color:var(--mut2);font-size:.93rem;margin-bottom:24px}
+    footer{background:var(--bg);border-top:1px solid var(--bdr);padding:40px 48px 28px}
+    .ft-bot{display:flex;justify-content:space-between;align-items:center;color:var(--mut);font-size:.78rem;flex-wrap:wrap;gap:10px}
+    .ft-bot a{color:var(--mut);text-decoration:none}.ft-bot a:hover{color:var(--or)}
+    @media(max-width:768px){nav{padding:14px 20px}.nav-links{display:none}.article-wrap{padding:90px 22px 60px}footer{padding:32px 22px 22px}.ft-bot{flex-direction:column;text-align:center}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">All<em>PDF</em>Stuff</a>
+  <ul class="nav-links">
+    <li><a href="index.html#tools">Tools</a></li>
+    <li><a href="index.html#pricing">Pricing</a></li>
+    <li><a href="blog.html">Blog</a></li>
+  </ul>
+  <div style="display:flex;gap:10px">
+    <a href="blog.html" class="btn-ghost">← Blog</a>
+    <a href="index.html#upload" class="btn-pill">Try it free →</a>
+  </div>
+</nav>
+
+<div class="article-wrap">
+  <a href="blog.html" class="back-link">← Back to Blog</a>
+
+  <div class="article-meta">
+    <span class="tag">Tips</span>
+    <span class="article-date">15 March 2026</span>
+  </div>
+
+  <h1 class="article-h1">5 Ways to Merge PDFs <em>Like a Pro</em></h1>
+
+  <p class="article-lead">Whether you're combining invoices, reports, contracts, or assignment pages — merging PDFs is one of the most common document tasks around. Here are 5 reliable methods, from the fastest online tools to built-in options on your device.</p>
+
+  <div class="article-body">
+
+    <h2>Why <em>Merge PDFs?</em></h2>
+    <p>Sending one file is always better than sending five. A single merged PDF is easier for the recipient to open, easier to file, and far less likely to result in a missing attachment. It's also the professional standard for job applications, legal submissions, client reports, and anything else where presentation matters.</p>
+    <p>The challenge has always been that merging PDFs used to require expensive desktop software. Not anymore — here are five ways to do it, starting with the simplest.</p>
+
+    <div class="method-card">
+      <div class="method-num">01</div>
+      <h3>Use a Free Online Tool (Fastest)</h3>
+      <p>The quickest approach is dragging your files into a browser-based tool. <strong>AllPDFStuff's Merge PDF tool</strong> lets you drop multiple PDFs at once, and they're combined and ready to download within seconds. No software, no account required for the basic function — and files are deleted after 1 hour for privacy.</p>
+    </div>
+
+    <div class="method-card">
+      <div class="method-num">02</div>
+      <h3>Use Preview on Mac (Built-in, Free)</h3>
+      <p>If you're on a Mac, you already have a PDF merger built in. Open your first PDF in Preview, then go to <strong>View → Thumbnails</strong> to see the page panel on the left. Drag additional PDF files directly into that panel, reorder pages by dragging, then go to <strong>File → Export as PDF</strong> to save your merged file.</p>
+    </div>
+
+    <div class="method-card">
+      <div class="method-num">03</div>
+      <h3>Print to PDF on Windows (Built-in, Free)</h3>
+      <p>Windows doesn't have a dedicated PDF merger, but you can combine PDFs using the built-in <strong>Microsoft Print to PDF</strong> feature. Open each PDF in Edge browser, select all pages, and print them together to a new PDF. It's a workaround rather than a proper merge, but it works for simple documents.</p>
+    </div>
+
+    <div class="method-card">
+      <div class="method-num">04</div>
+      <h3>Use Adobe Acrobat (Most Powerful, Paid)</h3>
+      <p>Adobe Acrobat's <strong>Combine Files</strong> feature is the industry standard — you can merge PDFs, reorder individual pages, add or remove specific pages, and control the output quality. The downside is the cost: Acrobat requires a subscription that starts at around $15–20 per month, which is hard to justify if merging PDFs is an occasional task.</p>
+    </div>
+
+    <div class="method-card">
+      <div class="method-num">05</div>
+      <h3>Use Google Drive (Free with a Google Account)</h3>
+      <p>If you use Google Drive, you can install a free add-on called <strong>PDF Merge</strong> from the Google Workspace Marketplace. Upload your PDFs to Drive, select them, right-click and open with PDF Merge, then download the combined file. It's a few more steps than a dedicated tool but works well if you're already in the Google ecosystem.</p>
+    </div>
+
+    <h2>Which Method <em>Should You Use?</em></h2>
+    <p>The right choice depends on how often you merge PDFs and what device you're on:</p>
+    <ul>
+      <li><strong>Occasional merging on any device</strong> — use a free online tool like AllPDFStuff</li>
+      <li><strong>Mac user who merges regularly</strong> — Preview is built in and excellent</li>
+      <li><strong>Windows user, basic needs</strong> — Print to PDF works in a pinch</li>
+      <li><strong>Professional use with editing needs</strong> — Adobe Acrobat is worth it</li>
+      <li><strong>Already in Google Workspace</strong> — Drive add-on is a solid free option</li>
+    </ul>
+
+    <div class="tip-box">
+      <p><strong>💡 Pro tip:</strong> When using AllPDFStuff to merge PDFs, drop all your files at once — the tool will automatically order them alphabetically. Name your files with numbers at the start (e.g. <strong>01-intro.pdf, 02-main.pdf</strong>) to control the merge order easily.</p>
+    </div>
+
+    <h2>Common <em>Merging Mistakes</em> to Avoid</h2>
+    <p>Even a simple task like merging PDFs has a few pitfalls to watch out for:</p>
+    <ul>
+      <li><strong>Wrong page order</strong> — Always check the order before merging. Once combined, splitting them back out is extra work.</li>
+      <li><strong>Different page sizes</strong> — If your PDFs have mixed page sizes (e.g. A4 and Letter), the merged file may look inconsistent. Standardise sizes first if presentation matters.</li>
+      <li><strong>Password-protected PDFs</strong> — Most tools can't merge locked PDFs. Use AllPDFStuff's Unlock PDF tool first to remove protection, then merge.</li>
+      <li><strong>Keeping originals</strong> — Always keep your original separate files. You might need to reorder or re-merge later.</li>
+    </ul>
+
+    <div class="cta-box">
+      <h3>Merge your PDFs now</h3>
+      <p>Drop multiple files at once and combine them in seconds. Free to use — no software needed.</p>
+      <a href="index.html#upload" class="btn-pill" style="font-size:.95rem;padding:12px 28px">Merge PDFs free →</a>
+    </div>
+
+    <h2>Related <em>Tools</em></h2>
+    <ul>
+      <li><a href="merge-pdf.html" style="color:var(--or)">Merge PDF</a> — Combine multiple PDFs into one file</li>
+      <li><a href="compress-pdf.html" style="color:var(--or)">Compress PDF</a> — Shrink your merged PDF's file size</li>
+      <li><a href="split-pdf.html" style="color:var(--or)">Split PDF</a> — Extract specific pages from a PDF</li>
+    </ul>
+
+  </div>
+</div>
+
+<footer>
+  <div class="ft-bot">
+    <span>© 2026 AllPDFStuff.com — All rights reserved</span>
+    <div style="display:flex;gap:20px">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
