@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Merge PDFs Into One File (Free & Easy) | AllPDFStuff</title>
+  <meta name="description" content="Learn how to merge multiple PDFs into a single document in seconds — no software needed. Step-by-step guide using AllPDFStuff's free online merge tool." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #faf8f4;
+      --cream-dark: #f0ece4;
+      --orange: #e8620a;
+      --orange-light: #fdf0e8;
+      --text: #1a1714;
+      --muted: #6b6560;
+      --border: #e2ddd6;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--cream);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--orange); }
+    .nav-cta {
+      background: var(--orange);
+      color: #fff;
+      text-decoration: none;
+      padding: 0.4rem 1rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* ── LAYOUT ── */
+    .page-wrap {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--orange); }
+    .breadcrumb span { margin: 0 0.4rem; }
+
+    /* ── HEADER ── */
+    .post-header { margin-bottom: 2.5rem; }
+    .post-tag {
+      display: inline-block;
+      background: var(--orange-light);
+      color: var(--orange);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+    .post-meta {
+      font-size: 0.85rem;
+      color: var(--muted);
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    /* ── HERO BANNER ── */
+    .hero-banner {
+      background: linear-gradient(135deg, #fff8f2 0%, var(--orange-light) 100%);
+      border: 1px solid #f5d4b8;
+      border-radius: 12px;
+      padding: 2rem 2rem 2rem 2.5rem;
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .hero-icon { font-size: 3rem; flex-shrink: 0; }
+    .hero-banner p { font-size: 1rem; color: var(--text); margin: 0; }
+    .hero-banner strong { color: var(--orange); }
+
+    /* ── BODY CONTENT ── */
+    .post-body h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 2.5rem 0 0.75rem;
+      line-height: 1.3;
+    }
+    .post-body h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 1.75rem 0 0.5rem;
+    }
+    .post-body p { margin-bottom: 1.1rem; color: #2e2a26; }
+    .post-body a { color: var(--orange); text-decoration: none; font-weight: 500; }
+    .post-body a:hover { text-decoration: underline; }
+
+    /* ── STEPS ── */
+    .steps { margin: 1.5rem 0 2rem; display: flex; flex-direction: column; gap: 1rem; }
+    .step {
+      display: flex;
+      gap: 1.1rem;
+      align-items: flex-start;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.1rem 1.3rem;
+    }
+    .step-num {
+      background: var(--orange);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .step-content strong { display: block; font-size: 0.95rem; margin-bottom: 0.2rem; }
+    .step-content p { margin: 0; font-size: 0.9rem; color: var(--muted); line-height: 1.55; }
+
+    /* ── TIP BOX ── */
+    .tip-box {
+      background: var(--orange-light);
+      border-left: 4px solid var(--orange);
+      border-radius: 0 8px 8px 0;
+      padding: 1rem 1.3rem;
+      margin: 1.5rem 0;
+      font-size: 0.92rem;
+    }
+    .tip-box strong { color: var(--orange); }
+
+    /* ── USE CASES ── */
+    .use-cases {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.75rem;
+      margin: 1rem 0 1.5rem;
+    }
+    .use-case {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.9rem 1rem;
+      font-size: 0.88rem;
+    }
+    .use-case .uc-icon { font-size: 1.3rem; margin-bottom: 0.3rem; }
+    .use-case strong { display: block; font-size: 0.85rem; margin-bottom: 0.15rem; }
+    .use-case p { margin: 0; color: var(--muted); font-size: 0.82rem; line-height: 1.4; }
+
+    /* ── FAQ ── */
+    .faq { margin: 1rem 0 2rem; }
+    .faq-item { border-bottom: 1px solid var(--border); padding: 1rem 0; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.4rem; }
+    .faq-a { font-size: 0.9rem; color: var(--muted); margin: 0; }
+
+    /* ── CTA BLOCK ── */
+    .cta-block {
+      background: var(--text);
+      color: #fff;
+      border-radius: 14px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      margin-top: 3rem;
+    }
+    .cta-block h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      color: #fff;
+    }
+    .cta-block h2 em { color: var(--orange); font-style: normal; }
+    .cta-block p { color: #b0a89e; font-size: 0.95rem; margin-bottom: 1.5rem; }
+    .cta-btn {
+      display: inline-block;
+      background: var(--orange);
+      color: #fff;
+      padding: 0.75rem 2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+    }
+    .cta-btn:hover { opacity: 0.9; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+
+    @media (max-width: 600px) {
+      .hero-banner { flex-direction: column; gap: 0.75rem; padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://www.allpdfstuff.com">All<span>PDF</span>Stuff</a>
+  <a class="nav-cta" href="https://www.allpdfstuff.com/#pricing">Get Pro →</a>
+</nav>
+
+<div class="page-wrap">
+
+  <div class="breadcrumb">
+    <a href="https://www.allpdfstuff.com">Home</a>
+    <span>›</span>
+    <a href="https://www.allpdfstuff.com/blog.html">Blog</a>
+    <span>›</span>
+    How to Merge PDFs Into One File
+  </div>
+
+  <header class="post-header">
+    <div class="post-tag">How-To Guide</div>
+    <h1>How to Merge PDFs Into One File (Free &amp; Easy)</h1>
+    <div class="post-meta">
+      <span>📅 Published March 2026</span>
+      <span>⏱ 3 min read</span>
+      <span>🔗 Merge PDF</span>
+    </div>
+  </header>
+
+  <div class="hero-banner">
+    <div class="hero-icon">🔗</div>
+    <p>Got multiple PDF files that belong together? You can <strong>combine them into a single document in under 30 seconds</strong> — no software, no sign-up required to try it.</p>
+  </div>
+
+  <div class="post-body">
+
+    <p>Whether you're pulling together a multi-page report, combining invoices for a client, or just tidying up a bunch of scanned documents — merging PDFs is one of those tasks you shouldn't have to think twice about. Here's exactly how to do it.</p>
+
+    <h2>Why merge PDFs in the first place?</h2>
+    <p>Sending multiple files when one would do creates friction. Recipients have to open each file separately, things get lost in email threads, and file names like <em>report_final_v3_UPDATED.pdf</em> start multiplying. A single merged PDF is cleaner, easier to share, and simpler to archive.</p>
+
+    <div class="use-cases">
+      <div class="use-case">
+        <div class="uc-icon">📊</div>
+        <strong>Reports & presentations</strong>
+        <p>Combine a cover page, slides, and appendix into one clean file.</p>
+      </div>
+      <div class="use-case">
+        <div class="uc-icon">🧾</div>
+        <strong>Invoices & receipts</strong>
+        <p>Bundle monthly invoices into a single document for accounting.</p>
+      </div>
+      <div class="use-case">
+        <div class="uc-icon">📚</div>
+        <strong>Study notes</strong>
+        <p>Merge lecture PDFs into one file to study from a single place.</p>
+      </div>
+      <div class="use-case">
+        <div class="uc-icon">📝</div>
+        <strong>Applications & forms</strong>
+        <p>Submit a CV, cover letter, and portfolio as one attachment.</p>
+      </div>
+    </div>
+
+    <h2>How to merge PDFs using AllPDFStuff</h2>
+    <p>AllPDFStuff's merge tool runs entirely in your browser — nothing to install, and your files are automatically deleted after one hour.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <strong>Go to AllPDFStuff and create a free account</strong>
+          <p>Head to <a href="https://www.allpdfstuff.com">allpdfstuff.com</a> and sign up free. No credit card needed — a free account gives you 5 merges per month.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <strong>Drop your files into the upload area</strong>
+          <p>Drag and drop multiple PDF files at once directly onto the page, or click to browse and select them. Files up to 10 MB are free; upgrade to Pro for files up to 100 MB.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <strong>Select "Merge PDFs" as your tool</strong>
+          <p>Once your files are uploaded, choose Merge PDF from the tool selector. The tool will automatically detect you've added multiple files.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <strong>Download your merged file</strong>
+          <p>Hit the merge button and your combined PDF will be ready to download in seconds. That's it.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <strong>💡 Pro tip:</strong> The pages in your merged PDF will appear in the same order you uploaded the files. If order matters, rename your files (e.g. 01_cover.pdf, 02_report.pdf) before uploading so they sort correctly.
+    </div>
+
+    <h2>What about file size?</h2>
+    <p>Merging PDFs doesn't automatically make the file smaller — it just combines them. If your merged file ends up too large to email, run it through the <a href="https://www.allpdfstuff.com">Compress PDF</a> tool afterwards to reduce the size without noticeable quality loss.</p>
+
+    <h2>Is it safe to merge PDFs online?</h2>
+    <p>A fair question. With AllPDFStuff, your files are processed securely and automatically deleted from the server after one hour. We don't store, read, or share your documents. If you're dealing with highly sensitive files, that one-hour auto-deletion means nothing lingers on the server.</p>
+
+    <h2>Frequently asked questions</h2>
+    <div class="faq">
+      <div class="faq-item">
+        <p class="faq-q">How many PDFs can I merge at once?</p>
+        <p class="faq-a">You can merge as many files as you need in a single session. Just drop them all into the upload area together.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Will merging PDFs affect the quality of images or text?</p>
+        <p class="faq-a">No. Merging is a lossless process — the content of each file is preserved exactly as-is. Nothing gets re-compressed or downgraded.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Can I merge a Word doc and a PDF together?</p>
+        <p class="faq-a">Not directly — you'd need to convert the Word doc to PDF first. Use the <a href="https://www.allpdfstuff.com">Word to PDF</a> tool, then merge the resulting file with your other PDFs.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Do I need to pay to merge PDFs?</p>
+        <p class="faq-a">Merging is available on the free plan — you get 5 tasks per month at no cost. Need more? Pro gives you 50 tasks per month for $9.99.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">What happens to my files after I download them?</p>
+        <p class="faq-a">All uploaded and processed files are automatically deleted from our servers after one hour. We don't keep copies of your documents.</p>
+      </div>
+    </div>
+
+    <div class="cta-block">
+      <h2>Ready to <em>merge your PDFs?</em></h2>
+      <p>Free to try — no software, no credit card, no fuss.</p>
+      <a class="cta-btn" href="https://www.allpdfstuff.com">Merge PDFs free →</a>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 <a href="https://www.allpdfstuff.com">AllPDFStuff.com</a> · <a href="https://www.allpdfstuff.com/privacy.html">Privacy</a> · <a href="https://www.allpdfstuff.com/terms.html">Terms</a></p>
+</footer>
+
+</body>
+</html>
