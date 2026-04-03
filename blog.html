@@ -132,10 +132,12 @@
   <div class="newsletter">
     <h2>Get PDF tips in your inbox</h2>
     <p>Join our newsletter for monthly PDF tips, guides, and feature updates. No spam, unsubscribe anytime.</p>
-    <div class="nl-form">
-      <input type="email" class="nl-input" placeholder="Your email address" />
-      <button class="nl-btn">Subscribe →</button>
+    <div class="nl-form" id="nlForm">
+      <input type="email" class="nl-input" id="nlEmail" placeholder="Your email address" required />
+      <button class="nl-btn" id="nlBtn" onclick="subscribeNewsletter(event)">Subscribe →</button>
     </div>
+    <div id="nlSuccess" style="display:none; margin-top:16px; color:var(--or); font-weight:600; font-size:.95rem;">✅ You're subscribed! Thanks for joining.</div>
+    <div id="nlError" style="display:none; margin-top:16px; color:#c0392b; font-size:.9rem;">❌ Something went wrong. Please try again or email us directly.</div>
   </div>
 </div>
 
@@ -178,5 +180,43 @@
   </div>
 </footer>
 
+<script>
+async function subscribeNewsletter(e) {
+  e.preventDefault();
+  const email = document.getElementById('nlEmail').value.trim();
+  const btn = document.getElementById('nlBtn');
+  const success = document.getElementById('nlSuccess');
+  const error = document.getElementById('nlError');
+
+  if (!email || !email.includes('@')) {
+    document.getElementById('nlEmail').focus();
+    return;
+  }
+
+  btn.textContent = 'Subscribing…';
+  btn.disabled = true;
+  success.style.display = 'none';
+  error.style.display = 'none';
+
+  try {
+    const res = await fetch('https://formspree.io/f/mvzwnjzr', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ email: email, _subject: 'New Newsletter Subscriber — AllPDFStuff', message: 'New newsletter signup: ' + email })
+    });
+
+    if (res.ok) {
+      document.getElementById('nlForm').style.display = 'none';
+      success.style.display = 'block';
+    } else {
+      throw new Error('Failed');
+    }
+  } catch {
+    btn.textContent = 'Subscribe →';
+    btn.disabled = false;
+    error.style.display = 'block';
+  }
+}
+</script>
 </body>
 </html>
