@@ -938,8 +938,8 @@ function pickAndGo(t){
 
   // Pro-only tools
   if(['split','pdf-to-jpg','extract-text','repair','unlock','protect-pdf','pdf-to-pdfa','convert-image','page-numbers','ocr-pdf','watermark'].includes(t)&&!isPro()){
-    toast('err','⭐ This tool requires a Pro account — upgrade to unlock it!');
-    openModal('signup');
+toast('err','⭐ This is a Pro tool — upgrade your plan to unlock it');
+    closeModal();setTimeout(()=>{window.location.href='#pricing';},300);
     return;
   }
 
