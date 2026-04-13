@@ -7,7 +7,7 @@ import { createClient } from '@supabase/supabase-js';
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 const supabase = createClient(
   process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY  // service role key — bypasses RLS
+  process.env.SUPABASE_SERVICE_ROLE_KEY
 );
 
 export default async function handler(req, res) {
@@ -15,12 +15,20 @@ export default async function handler(req, res) {
     return res.status(405).send('Method Not Allowed');
   }
 
+  // ── Read raw body (required for Stripe signature verification) ────────────
+  const rawBody = await new Promise((resolve, reject) => {
+    let data = '';
+    req.on('data', chunk => { data += chunk; });
+    req.on('end', () => resolve(data));
+    req.on('error', reject);
+  });
+
   const sig = req.headers['stripe-signature'];
   let event;
 
   try {
     event = stripe.webhooks.constructEvent(
-      req.body,
+      rawBody,
       sig,
       process.env.STRIPE_WEBHOOK_SECRET
     );
@@ -29,11 +37,13 @@ export default async function handler(req, res) {
     return res.status(400).send(`Webhook Error: ${err.message}`);
   }
 
+  console.log('Stripe event received:', event.type);
+
   // ── Handle Stripe events ──────────────────────────────────────────────────
 
   switch (event.type) {
 
-    // Customer subscribes or payment succeeds → upgrade to Pro
+    // Customer subscribes → upgrade to Pro
     case 'checkout.session.completed':
     case 'invoice.payment_succeeded': {
       const obj = event.data.object;
@@ -41,7 +51,7 @@ export default async function handler(req, res) {
 
       if (email) {
         await setUserPlan(email, 'pro');
-        console.log(`✅ Upgraded to Pro: ${email}`);
+        console.log(`Upgraded to Pro: ${email}`);
       }
       break;
     }
@@ -50,20 +60,18 @@ export default async function handler(req, res) {
     case 'customer.subscription.deleted':
     case 'invoice.payment_failed': {
       const obj = event.data.object;
-
-      // Get email from customer ID
       const customer = await stripe.customers.retrieve(obj.customer);
       const email = customer.email;
 
       if (email) {
         await setUserPlan(email, 'free');
-        console.log(`⬇️ Downgraded to Free: ${email}`);
+        console.log(`Downgraded to Free: ${email}`);
       }
       break;
     }
 
     default:
-      // Ignore all other events
+      console.log(`Ignored event: ${event.type}`);
       break;
   }
 
@@ -72,7 +80,6 @@ export default async function handler(req, res) {
 
 // ── Helper: update plan in Supabase user metadata ─────────────────────────
 async function setUserPlan(email, plan) {
-  // Find the user by email in Supabase auth
   const { data: { users }, error: listError } = await supabase.auth.admin.listUsers();
 
   if (listError) {
@@ -83,11 +90,10 @@ async function setUserPlan(email, plan) {
   const user = users.find(u => u.email === email);
 
   if (!user) {
-    console.error(`No Supabase user found for email: ${email}`);
+    console.error(`No Supabase user found for: ${email}`);
     return;
   }
 
-  // Update their metadata
   const { error: updateError } = await supabase.auth.admin.updateUserById(
     user.id,
     { user_metadata: { ...user.user_metadata, plan } }
@@ -95,10 +101,12 @@ async function setUserPlan(email, plan) {
 
   if (updateError) {
     console.error('Error updating user plan:', updateError);
+  } else {
+    console.log(`Set plan=${plan} for ${email}`);
   }
 }
 
-// ── Required: disable body parsing so Stripe signature works ─────────────
+// ── Required: disable body parser so we read raw body above ───────────────
 export const config = {
   api: {
     bodyParser: false,
