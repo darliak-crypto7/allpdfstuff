@@ -939,10 +939,20 @@ function selectTool(t){
 
 function isPro(){
   if(!user) return false;
-  // Admin accounts — also verified server-side via Supabase role
+  // Primary check: JWT custom claims set server-side by Supabase hook
+  // These cannot be spoofed from the frontend
+  const session = sb.auth.session ? sb.auth.session() : null;
+  try {
+    const jwt = user.access_token || (sb.auth.currentSession?.access_token);
+    if(jwt){
+      const payload = JSON.parse(atob(jwt.split('.')[1]));
+      if(payload.plan === 'pro' || payload.plan === 'business') return true;
+      if(payload.is_admin === true) return true;
+    }
+  } catch(e){}
+  // Fallback: check user metadata (for admin accounts before hook fires)
   const admins=['darliak7@gmail.com','kongsomd_7@hotmail.com'];
   if(admins.includes(user.email)) return true;
-  // Check plan from user metadata (set by webhook) or app_metadata (set server-side)
   return user.user_metadata?.plan==='pro'
       || user.user_metadata?.plan==='business'
       || user.app_metadata?.plan==='pro';
@@ -959,6 +969,10 @@ function incLimit(){
   const k='pdfu_'+new Date().toDateString();
   const n=parseInt(localStorage.getItem(k)||'0');
   localStorage.setItem(k,n+1);
+  // Record server-side for audit trail (non-blocking)
+  if(user && sb){
+    sb.rpc('check_rate_limit',{p_user_id:user.id,p_action:'pdf_task',p_limit:9999}).catch(()=>{});
+  }
 }
 
 async function go(file, allFiles){
