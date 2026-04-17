@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<div class="t-badge pro">Pro</div><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -8,18 +8,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23e8620a'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-size='18' font-family='Georgia,serif' font-style='italic' font-weight='700' fill='white'>P</text></svg>" />
-
-  <!-- Google Analytics GA4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZP7PTTQBX6"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-ZP7PTTQBX6');
-  </script>
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{
@@ -215,17 +203,7 @@
     @keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
     @keyframes scUp{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
     @media(max-width:1024px){.tools-grid{grid-template-columns:repeat(2,1fr)}.pr-grid{grid-template-columns:repeat(2,1fr);max-width:700px;margin-left:auto;margin-right:auto}.steps{grid-template-columns:1fr}.ft-top{grid-template-columns:1fr 1fr}}
-    /* HAMBURGER MENU */
-    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
-    .hamburger span{display:block;width:22px;height:2px;background:var(--txt);border-radius:2px;transition:all .3s}
-    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-    .hamburger.open span:nth-child(2){opacity:0}
-    .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-    .mob-menu{display:none;position:fixed;top:65px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--bdr);padding:18px 22px;z-index:499;flex-direction:column;gap:4px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
-    .mob-menu.open{display:flex}
-    .mob-menu a{font-size:.95rem;font-weight:500;color:var(--txt2);text-decoration:none;padding:10px 0;border-bottom:1px solid var(--bdr)}
-    .mob-menu a:last-child{border-bottom:none}
-    @media(max-width:768px){nav{padding:15px 22px}.nav-links{display:none}.hamburger{display:flex}.hero{padding:0 22px 52px}.sec,.pr-wrap{padding:76px 22px}.pr-grid{grid-template-columns:1fr!important;max-width:420px}.how-wrap,.up-wrap{padding:76px 22px}.tools-grid{grid-template-columns:1fr}.cta{margin:0 22px 56px;padding:48px 28px}.cta::before{display:none}footer{padding:52px 22px 28px}.ft-top{grid-template-columns:1fr;gap:32px}.ft-bot{flex-direction:column;text-align:center}}
+    @media(max-width:768px){nav{padding:15px 22px}.nav-links{display:none}.hero{padding:0 22px 52px}.sec,.pr-wrap{padding:76px 22px}.pr-grid{grid-template-columns:1fr!important;max-width:420px}.how-wrap,.up-wrap{padding:76px 22px}.tools-grid{grid-template-columns:1fr}.cta{margin:0 22px 56px;padding:48px 28px}.cta::before{display:none}footer{padding:52px 22px 28px}.ft-top{grid-template-columns:1fr;gap:32px}.ft-bot{flex-direction:column;text-align:center}}
 </style>
 </head>
 <body>
@@ -240,20 +218,6 @@
   <div class="nav-r" id="navAuth">
     <button class="btn-ghost" onclick="openModal('login')">Sign in</button>
     <a href="#pricing" class="btn-pill">Get Pro →</a>
-  </div>
-  <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-
-<!-- Mobile menu -->
-<div class="mob-menu" id="mobMenu">
-  <a href="#tools" onclick="closeMobileMenu()">Tools</a>
-  <a href="#pricing" onclick="closeMobileMenu()">Pricing</a>
-  <a href="#how" onclick="closeMobileMenu()">How it works</a>
-  <a href="#" onclick="closeMobileMenu();openModal('login')">Sign in</a>
-  <a href="#pricing" onclick="closeMobileMenu()" style="color:var(--or);font-weight:700">Get Pro →</a>
-</div>
   </div>
 </nav>
 
@@ -276,7 +240,7 @@
     <div class="hero-stats">
       <div><div class="stat-n">15</div><div class="stat-l">PDF Tools</div></div>
       <div><div class="stat-n">100%</div><div class="stat-l">Browser-based</div></div>
-      <div><div class="stat-n">Free</div><div class="stat-l">To get started</div></div>
+      <div><div class="stat-n">Free</div><div class="stat-l">To sign up</div></div>
       <div><div class="stat-n">1hr</div><div class="stat-l">Auto file deletion</div></div>
     </div>
   </div>
@@ -285,8 +249,8 @@
 <!-- MARQUEE -->
 <div class="mq-wrap">
   <div class="mq-track">
-    <span>Compress PDF</span><span>·</span><span>Merge PDF</span><span>·</span><span><b>Free to start</b></span><span>·</span><span>Extract Text</span><span>·</span><span>PDF to JPG ✦Pro</span><span>·</span><span><b>Secure &amp; private</b></span><span>·</span><span>Split PDF ✦Pro</span><span>·</span><span>OCR PDF</span><span>·</span><span>Watermark PDF</span><span>·</span><span>Word to PDF</span><span>·</span><span><b>No software needed</b></span><span>·</span><span>Rotate PDF</span><span>·</span><span><b>Files deleted in 1hr</b></span><span>·</span>
-    <span>Compress PDF</span><span>·</span><span>Merge PDF</span><span>·</span><span><b>Free to start</b></span><span>·</span><span>Extract Text</span><span>·</span><span>PDF to JPG ✦Pro</span><span>·</span><span><b>Secure &amp; private</b></span><span>·</span><span>Split PDF ✦Pro</span><span>·</span><span>OCR PDF</span><span>·</span><span>Watermark PDF</span><span>·</span><span>Word to PDF</span><span>·</span><span><b>No software needed</b></span><span>·</span><span>Rotate PDF</span><span>·</span><span><b>Files deleted in 1hr</b></span><span>·</span>
+    <span>Compress PDF</span><span>·</span><span>Merge PDF</span><span>·</span><span><b>Free to start</b></span><span>·</span><span>Extract Text</span><span>·</span><span>PDF to JPG ✦Pro</span><span>·</span><span><b>Secure &amp; private</b></span><span>·</span><span>Split PDF ✦Pro</span><span>·</span><span>OCR PDF</span><span>·</span><span>Watermark PDF</span><span>·</span><span>Word to PDF</span><span>·</span><span><b>No software needed</b></span><span>·</span><span>Rotate PDF</span><span>·</span><span>PDF to Excel</span><span>·</span><span><b>Files deleted in 1hr</b></span><span>·</span>
+    <span>Compress PDF</span><span>·</span><span>Merge PDF</span><span>·</span><span><b>Free to start</b></span><span>·</span><span>Extract Text</span><span>·</span><span>PDF to JPG ✦Pro</span><span>·</span><span><b>Secure &amp; private</b></span><span>·</span><span>Split PDF ✦Pro</span><span>·</span><span>OCR PDF</span><span>·</span><span>Watermark PDF</span><span>·</span><span>Word to PDF</span><span>·</span><span><b>No software needed</b></span><span>·</span><span>Rotate PDF</span><span>·</span><span>PDF to Excel</span><span>·</span><span><b>Files deleted in 1hr</b></span><span>·</span>
   </div>
 </div>
 
@@ -450,7 +414,7 @@
 
     <div class="drop" id="dropZ" onclick="document.getElementById('fileInput').click()" ondragover="onOver(event)" ondragleave="onLeave()" ondrop="onDrop(event)">
       <div class="drop-ico">📂</div>
-      <h3 id="dropT">Drop your file here to get started</h3>
+      <h3 id="dropT">Sign in to upload your file</h3>
       <p id="dropD">or click to browse · <strong>drop multiple files to merge</strong><br/><small style="font-size:.76rem;color:var(--mut)">Supports PDF, DOC, DOCX · Max 10 MB free · 100 MB Pro</small></p>
       <button class="btn-pill" style="pointer-events:none">Choose File</button>
       <input type="file" id="fileInput" accept=".pdf,.doc,.docx" onchange="onSel(event)" multiple />
@@ -526,14 +490,15 @@
       <div class="pc-price"><sup>$</sup>0</div>
       <div class="pc-per">forever — no credit card</div>
       <ul class="pc-list">
-        <li class="y"><span class="ck">✓</span>5 tasks per month</li>
+        <li class="y"><span class="ck">✓</span>5 tasks per day</li>
         <li class="y"><span class="ck">✓</span>Up to 10 MB per file</li>
         <li class="y"><span class="ck">✓</span>Compress &amp; Merge PDF</li>
         <li class="y"><span class="ck">✓</span>Rotate PDF</li>
         <li class="y"><span class="ck">✓</span>Word to PDF</li>
-        <li><span class="cx">✗</span>Pro tools (OCR, Split, Unlock…)</li>
+        <li><span class="cx">✗</span>PDF to JPG</li>
+        <li><span class="cx">✗</span>Split PDF</li>
+        <li><span class="cx">✗</span>Extract Text</li>
         <li><span class="cx">✗</span>100 MB file limit</li>
-        <li><span class="cx">✗</span>Priority processing</li>
       </ul>
       <button class="btn-ghost" style="width:100%;padding:12px" onclick="openModal('signup')">Get Started Free</button>
     </div>
@@ -543,16 +508,16 @@
       <div class="pc-price"><sup>$</sup>9<span style="font-size:1.5rem;font-style:normal;letter-spacing:0">.99</span></div>
       <div class="pc-per">per month · cancel anytime</div>
       <ul class="pc-list">
-        <li class="y"><span class="ck">✓</span>50 tasks per month</li>
+        <li class="y"><span class="ck">✓</span>Unlimited tasks</li>
         <li class="y"><span class="ck">✓</span>Up to 100 MB per file</li>
         <li class="y"><span class="ck">✓</span>All free tools included</li>
-        <li class="y"><span class="ck">✓</span>PDF to PDF/A</li>
-        <li class="y"><span class="ck">✓</span>OCR PDF</li>
-        <li class="y"><span class="ck">✓</span>Watermark PDF</li>
+        <li class="y"><span class="ck">✓</span>Edit, OCR &amp; Watermark PDF</li>
         <li class="y"><span class="ck">✓</span>PDF to JPG</li>
         <li class="y"><span class="ck">✓</span>Split PDF</li>
         <li class="y"><span class="ck">✓</span>Extract Text (PDF to TXT)</li>
+        
         <li class="y"><span class="ck">✓</span>No watermarks</li>
+        
       </ul>
       <button class="btn-pill" style="width:100%;justify-content:center;font-size:.93rem;padding:12px" onclick="handleSub('pro')">Get Pro →</button>
     </div>
@@ -563,8 +528,8 @@
 <!-- CTA -->
 <div class="cta">
   <div class="cta-l">
-    <h2>Ready to simplify<br/>your PDF workflow?</h2>
-    <p>Fast, simple PDF tools right in your browser. No software to install, no credit card needed — just upload and go.</p>
+    <h2>A quick sign up to start<br/><em>your free account</em></h2>
+    <p>Create your free account in seconds — no credit card needed. Get access to our full suite of PDF tools right in your browser.</p>
   </div>
   <button class="btn-pill" style="font-size:.97rem;padding:14px 32px;flex-shrink:0" onclick="openModal('signup')">Create free account →</button>
 </div>
@@ -642,17 +607,19 @@ async function loadReviews(){
       return;
     }
 
+    // Sanitise text to prevent XSS
+    const esc = (s) => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
     list.innerHTML = `
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin-bottom:12px">
         ${data.map(r => `
           <div class="rev-card">
             <div class="rev-stars">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</div>
-            <p class="rev-text">${r.review}</p>
+            <p class="rev-text">${esc(r.review)}</p>
             <div class="rev-author">
-              <div class="rev-av">${r.name.charAt(0).toUpperCase()}</div>
+              <div class="rev-av">${esc(r.name.charAt(0).toUpperCase())}</div>
               <div>
-                <div class="rev-name">${r.name}</div>
-                ${r.role ? `<div class="rev-role">${r.role}</div>` : ''}
+                <div class="rev-name">${esc(r.name)}</div>
+                ${r.role ? `<div class="rev-role">${esc(r.role)}</div>` : ''}
               </div>
             </div>
           </div>
@@ -663,14 +630,17 @@ async function loadReviews(){
 
 // Submit a new review to Supabase
 async function submitReview(){
-  const name   = document.getElementById('rvName').value.trim();
-  const role   = document.getElementById('rvRole').value.trim();
-  const text   = document.getElementById('rvText').value.trim();
+  const stripHtml = (s) => s.replace(/<[^>]*>/g, '').trim();
+  const name   = stripHtml(document.getElementById('rvName').value);
+  const role   = stripHtml(document.getElementById('rvRole').value);
+  const text   = stripHtml(document.getElementById('rvText').value);
   const msg    = document.getElementById('rvMsg');
 
   if(!_stars){ toast('err','❌ Please select a star rating'); return; }
   if(!name)  { toast('err','❌ Please enter your name');     return; }
+  if(name.length > 80){ toast('err','❌ Name is too long'); return; }
   if(!text)  { toast('err','❌ Please write your review');   return; }
+  if(text.length > 500){ toast('err','❌ Review must be under 500 characters'); return; }
 
   try {
     const { error } = await sb.from('reviews').insert([{
@@ -700,7 +670,7 @@ async function submitReview(){
     msg.style.background = 'rgba(248,113,113,.08)';
     msg.style.border     = '1px solid rgba(248,113,113,.2)';
     msg.style.color      = '#f87171';
-    msg.textContent      = '❌ Something went wrong. Please try again. (' + (e.message || 'Unknown error') + ')';
+    msg.textContent      = '❌ Something went wrong. Please try again.';
   }
 }
 
@@ -721,7 +691,7 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
     <div class="ft-col"><h4>Tools</h4><ul><li><a href="#upload">Compress PDF</a></li><li><a href="#upload">Merge PDF</a></li><li><a href="#upload">Split PDF</a></li><li><a href="#upload">Extract Text</a></li><li><a href="#upload">PDF to JPG</a></li></ul></div>
     <div class="ft-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="#pricing">Pricing</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
-    <div class="ft-col"><h4>Legal</h4><ul><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li><li><a href="cookies.html">Cookie Policy</a></li><li><a href="privacy.html">GDPR</a></li></ul></div>
+    <div class="ft-col"><h4>Legal</h4><ul><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li><li><a href="cookies.html">Cookie Policy</a></li><li><a href="#">GDPR</a></li></ul></div>
   </div>
   <div class="ft-bot"><span>© 2026 AllPDFStuff.com — All rights reserved</span><span>🔒 Files auto-deleted after 1 hour</span></div>
 </footer>
@@ -747,10 +717,6 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="fld"><label>Full name</label><input type="text" id="snm" placeholder="Your name"/></div>
       <div class="fld"><label>Email</label><input type="email" id="sem" placeholder="you@example.com"/></div>
       <div class="fld"><label>Password</label><input type="password" id="spw" placeholder="Min. 8 characters"/></div>
-      <div style="display:flex;align-items:flex-start;gap:10px;margin:12px 0 4px">
-        <input type="checkbox" id="smarketing" style="margin-top:3px;accent-color:var(--or);width:15px;height:15px;flex-shrink:0;cursor:pointer"/>
-        <label for="smarketing" style="font-size:.8rem;color:var(--mut2);line-height:1.5;cursor:pointer">Yes, I'd like to receive updates about new features and tips from AllPDFStuff. You can unsubscribe at any time.</label>
-      </div>
       <button class="btn-pill" style="width:100%;justify-content:center;font-size:.93rem;padding:12px;margin-top:8px" onclick="doSignup()">Create Free Account</button>
       <div class="m-note">Already have an account? <a href="#" onclick="sw('login')">Sign in</a></div>
     </div>
@@ -789,16 +755,7 @@ function getStripe(){
 
 function rNav(){
   const el=document.getElementById('navAuth');
-  if(user){
-    const i=(user.email||'U')[0].toUpperCase();
-    const d=new Date();
-    const k='pdfu_'+d.getFullYear()+'_'+(d.getMonth()+1);
-    const used=parseInt(localStorage.getItem(k)||'0');
-    const pro=isPro();
-    const limit=pro?50:5;
-    const remaining=Math.max(0,limit-used);
-    el.innerHTML=`<div class="u-menu"><div class="u-av" onclick="tDrop()">${i}</div><div class="u-drop" id="uDrop"><div style="padding:9px 11px;font-size:.78rem;color:var(--mut);border-bottom:1px solid var(--bdr);margin-bottom:4px">${remaining} task${remaining!==1?'s':''} left this month</div><a href="account.html">👤 My Account</a><a href="#pricing">⭐ Upgrade</a><div class="udiv"></div><button onclick="doLogout()">🚪 Sign out</button></div></div>`;
-  }
+  if(user){const i=(user.email||'U')[0].toUpperCase();el.innerHTML=`<div class="u-menu"><div class="u-av" onclick="tDrop()">${i}</div><div class="u-drop" id="uDrop"><a href="account.html">👤 My Account</a><a href="#pricing">⭐ Upgrade</a><div class="udiv"></div><button onclick="doLogout()">🚪 Sign out</button></div></div>`;}
   else el.innerHTML=`<button class="btn-ghost" onclick="openModal('login')">Sign in</button><a href="#pricing" class="btn-pill">Get Pro →</a>`;
 }
 function tDrop(){document.getElementById('uDrop')?.classList.toggle('open');}
@@ -830,10 +787,9 @@ async function doLogin(){
 async function doSignup(){
   ha('sok','serr');
   const name=document.getElementById('snm').value.trim(),email=document.getElementById('sem').value.trim(),pass=document.getElementById('spw').value;
-  const marketing=document.getElementById('smarketing').checked;
   if(!name||!email||!pass){sa('serr','Please fill in all fields.');return;}
   if(pass.length<8){sa('serr','Password must be at least 8 characters.');return;}
-  const{error}=await sb.auth.signUp({email,password:pass,options:{data:{full_name:name,marketing_consent:marketing,marketing_consent_date:new Date().toISOString()}}});
+  const{error}=await sb.auth.signUp({email,password:pass,options:{data:{full_name:name}}});
   if(error)sa('serr',error.message);
   else{sa('sok','Account created! Check your email.');toast('ok','🎉 Account created!');}
 }
@@ -878,12 +834,6 @@ function onSel(e){
 
 // Show the tool picker after file is selected
 function showPicker(files){
-  // Block guests before they can even upload
-  if(!user){
-    toast('err','⭐ Please sign in or create a free account to use our tools');
-    openModal('signup');
-    return;
-  }
   // Accept either single file or array
   if(!Array.isArray(files)) files=[files];
   pendingFile = files;
@@ -925,22 +875,18 @@ function applyWatermark(){
 
 function pickAndGo(t){
   if(t==='pdf-to-excel'){
-    toast('err','📊 PDF to Excel coming soon! Try PDF to Word instead.');
+    toast('err','📊 PDF to Excel coming soon!');
     return;
   }
-
-  // ALL tools require a signed-in account
+  // Require sign-in for ALL tools
   if(!user){
-    toast('err','⭐ Please sign in or create a free account to use this tool');
+    toast('err','👤 Please create a free account to use our tools');
     openModal('signup');
     return;
   }
-
-  // Pro-only tools
-  if(['split','pdf-to-jpg','extract-text','repair','unlock','protect-pdf','pdf-to-pdfa','convert-image','page-numbers','ocr-pdf','watermark'].includes(t)&&!isPro()){
-toast('err','⭐ This is a Pro tool — upgrade your plan to unlock it');
-    closeModal();setTimeout(()=>{window.location.href='#pricing';},300);
-    return;
+  if(t==='pdf-to-jpg'&&!isPro()){toast('err','⭐ PDF to JPG requires a Pro account');openModal('signup');return;}
+  if(['extract-text','repair','unlock','protect-pdf','pdf-to-pdfa','convert-image','page-numbers','ocr-pdf','watermark'].includes(t)&&!isPro()){
+    toast('err','⭐ Pro account required for this tool');openModal('signup');return;
   }
 
   // Protect PDF needs a password
@@ -993,29 +939,36 @@ function selectTool(t){
 
 function isPro(){
   if(!user) return false;
-  // Admin accounts always have Pro access
+  // Admin accounts — also verified server-side via Supabase role
   const admins=['darliak7@gmail.com','kongsomd_7@hotmail.com'];
   if(admins.includes(user.email)) return true;
-  return user.user_metadata?.plan==='pro'||user.user_metadata?.plan==='business';
+  // Check plan from user metadata (set by webhook) or app_metadata (set server-side)
+  return user.user_metadata?.plan==='pro'
+      || user.user_metadata?.plan==='business'
+      || user.app_metadata?.plan==='pro';
 }
 function chkLimit(){
-  const d=new Date();
-  const k='pdfu_'+d.getFullYear()+'_'+(d.getMonth()+1);
+  if(isPro())return true; // Pro/Business = unlimited
+  const k='pdfu_'+new Date().toDateString();
   const n=parseInt(localStorage.getItem(k)||'0');
-  if(isPro()) return n<50; // Pro = 50 tasks per month
-  return n<5; // Free = 5 tasks per month
+  if(n>=5)return false; // Block at 5 for free users (guests + free accounts)
+  return true; // Don't increment here — only increment on SUCCESS
 }
 function incLimit(){
-  const d=new Date();
-  const k='pdfu_'+d.getFullYear()+'_'+(d.getMonth()+1);
+  if(isPro())return;
+  const k='pdfu_'+new Date().toDateString();
   const n=parseInt(localStorage.getItem(k)||'0');
   localStorage.setItem(k,n+1);
-  rNav(); // Refresh the task counter in the dropdown immediately after each task
 }
 
 async function go(file, allFiles){
-  if(tool==='pdf-to-word'&&!user){}
-  if(!chkLimit()){toast('err',isPro()?'📋 Monthly limit (50/month) reached — resets next month!':'📋 Monthly limit (5/month) reached — upgrade to Pro for 50 tasks/month!');openModal('signup');return;}
+  if(!user){
+    toast('err','👤 Please create a free account to use our tools');
+    openModal('signup');
+    sh('dropZ');hd('procW');hd('resW');
+    return;
+  }
+  if(!chkLimit()){toast('err','📋 Daily limit (5/day) reached — sign up for free or upgrade to Pro!');openModal('signup');return;}
   const max=user?100*1024*1024:10*1024*1024;
   if(file.size>max){toast('err',user?'❌ Max 100 MB':'❌ Max 10 MB free — upgrade to Pro');return;}
   // For merge, need at least 2 files
@@ -1100,7 +1053,7 @@ async function api(file,t,allFiles){
   return{url:URL.createObjectURL(typedBlob),fn:baseName+'.'+ext};
 }
 
-function resetUp(){pendingFile=null;document.getElementById('dropZ').style.display='block';document.getElementById('toolPicker').style.display='none';hd('procW');hd('resW');document.getElementById('fileInput').value='';document.getElementById('dropT').textContent='Drop your file here to get started';}
+function resetUp(){pendingFile=null;document.getElementById('dropZ').style.display='block';document.getElementById('toolPicker').style.display='none';hd('procW');hd('resW');document.getElementById('fileInput').value='';document.getElementById('dropT').textContent='Sign in or create a free account to get started';}
 async function handleSub(p){
   if(!user){openModal('signup');return;}
   // Redirect to Stripe Payment Link
@@ -1109,14 +1062,6 @@ async function handleSub(p){
   }
 }
 
-function toggleMobileMenu(){
-  document.getElementById('hamburger').classList.toggle('open');
-  document.getElementById('mobMenu').classList.toggle('open');
-}
-function closeMobileMenu(){
-  document.getElementById('hamburger').classList.remove('open');
-  document.getElementById('mobMenu').classList.remove('open');
-}
 function toast(type,msg){const el=document.getElementById('tst');document.getElementById('tmsg').textContent=msg;el.className='toast '+type+' show';setTimeout(()=>el.classList.remove('show'),3500);}
 
 </script>
