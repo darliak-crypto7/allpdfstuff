@@ -6,6 +6,16 @@
   <title>Blog — AllPDFStuff</title>
   <meta name="description" content="Tips, guides and PDF insights. Practical guides to help you work smarter with PDF documents." />
   <link rel="canonical" href="https://www.allpdfstuff.com/blog" />
+  <!-- Open Graph — Fix #17 -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.allpdfstuff.com/blog" />
+  <meta property="og:title" content="Blog — AllPDFStuff" />
+  <meta property="og:description" content="Tips, guides and PDF insights. Practical guides to help you work smarter with PDF documents." />
+  <meta property="og:image" content="https://www.allpdfstuff.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Blog — AllPDFStuff" />
+  <meta name="twitter:description" content="Tips, guides and PDF insights. Practical guides to help you work smarter with PDF documents." />
+  <meta name="twitter:image" content="https://www.allpdfstuff.com/og-image.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -22,18 +32,17 @@
       --sans: 'Inter', system-ui, sans-serif;
     }
     body { background: var(--bg); color: var(--txt); font-family: var(--sans); font-size: 16px; line-height: 1.6; }
-
-    /* NAV */
     nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 48px; background: rgba(250,248,244,.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--bdr); }
     .logo { font-family: var(--serif); font-size: 1.45rem; font-weight: 600; color: var(--txt); text-decoration: none; letter-spacing: .02em; }
     .logo em { font-style: italic; color: var(--or); }
     .nav-links { display: flex; gap: 32px; list-style: none; }
     .nav-links a { font-size: .86rem; font-weight: 500; color: var(--mut2); text-decoration: none; transition: color .2s; }
     .nav-links a:hover { color: var(--or); }
-    .btn-pill { background: var(--or); color: #fff; padding: 10px 24px; border-radius: 100px; font-size: .84rem; font-weight: 700; text-decoration: none; transition: all .2s; }
+    .nav-r { display: flex; align-items: center; gap: 12px; }
+    .btn-ghost { background: transparent; border: 1px solid var(--bdr); color: var(--txt); padding: 9px 22px; border-radius: 100px; font-family: var(--sans); font-size: .84rem; font-weight: 500; cursor: pointer; transition: all .2s; letter-spacing: .02em; }
+    .btn-ghost:hover { border-color: var(--or); color: var(--or); }
+    .btn-pill { background: var(--or); color: #fff; padding: 10px 24px; border-radius: 100px; font-size: .84rem; font-weight: 700; text-decoration: none; transition: all .2s; border: none; cursor: pointer; font-family: var(--sans); }
     .btn-pill:hover { background: var(--or2); transform: translateY(-1px); }
-
-    /* HERO */
     .page-hero { padding: 72px 48px 60px; text-align: center; border-bottom: 1px solid var(--bdr); background: var(--bg2); }
     .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: .84rem; color: var(--mut2); text-decoration: none; margin-bottom: 32px; transition: color .2s; }
     .back-link:hover { color: var(--or); }
@@ -41,11 +50,8 @@
     .page-hero h1 { font-family: var(--serif); font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 600; letter-spacing: -.03em; line-height: 1.1; margin-bottom: 16px; }
     .page-hero h1 em { font-style: italic; color: var(--or); }
     .page-hero p { color: var(--mut2); font-size: 1.05rem; max-width: 480px; margin: 0 auto; line-height: 1.7; }
-
-    /* BLOG GRID */
     .blog-wrap { max-width: 1100px; margin: 0 auto; padding: 72px 48px 96px; }
     .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-
     .blog-card { background: var(--bg); border: 1px solid var(--bdr); border-radius: 20px; padding: 36px 32px; display: flex; flex-direction: column; gap: 16px; box-shadow: var(--shadow); transition: transform .2s, box-shadow .2s; text-decoration: none; color: inherit; }
     .blog-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--obdr); }
     .card-tag { display: inline-flex; align-items: center; gap: 6px; font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--or); background: var(--oglow); border: 1px solid var(--obdr); padding: 4px 12px; border-radius: 100px; width: fit-content; }
@@ -53,8 +59,6 @@
     .card-title { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; line-height: 1.25; letter-spacing: -.01em; color: var(--txt); }
     .card-desc { font-size: .88rem; color: var(--mut2); line-height: 1.65; flex: 1; }
     .card-cta { display: inline-flex; align-items: center; gap: 6px; font-size: .84rem; font-weight: 600; color: var(--or); margin-top: 4px; }
-
-    /* NEWSLETTER */
     .newsletter { background: linear-gradient(135deg, #fff8f2, #fdf4ec); border: 1px solid var(--obdr); border-radius: 20px; padding: 52px 48px; text-align: center; margin-top: 64px; }
     .newsletter h2 { font-family: var(--serif); font-size: 1.9rem; font-weight: 600; font-style: italic; margin-bottom: 10px; letter-spacing: -.02em; }
     .newsletter p { color: var(--mut2); font-size: .94rem; margin-bottom: 24px; }
@@ -63,8 +67,6 @@
     .nl-input:focus { border-color: var(--or); }
     .nl-btn { background: var(--or); color: #fff; border: none; padding: 12px 28px; border-radius: 100px; font-family: var(--sans); font-size: .9rem; font-weight: 700; cursor: pointer; transition: all .2s; }
     .nl-btn:hover { background: var(--or2); transform: translateY(-1px); }
-
-    /* FOOTER */
     footer { background: var(--bg); border-top: 1px solid var(--bdr); padding: 56px 48px 28px; }
     .ft-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 40px; border-bottom: 1px solid var(--bdr); }
     .ft-logo { font-family: var(--serif); font-size: 1.45rem; font-weight: 600; text-decoration: none; color: var(--txt); margin-bottom: 10px; display: block; }
@@ -75,13 +77,13 @@
     .ft-col a { color: var(--mut2); text-decoration: none; font-size: .86rem; transition: color .2s; }
     .ft-col a:hover { color: var(--or); }
     .ft-bot { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; color: var(--mut); font-size: .78rem; flex-wrap: wrap; gap: 8px; }
-
     @media (max-width: 1024px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } .ft-top { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 768px) { nav { padding: 16px 20px; } .nav-links { display: none; } .page-hero { padding: 48px 20px 40px; } .blog-wrap { padding: 48px 20px 64px; } .blog-grid { grid-template-columns: 1fr; } .newsletter { padding: 36px 24px; } footer { padding: 40px 20px 24px; } .ft-top { grid-template-columns: 1fr; gap: 28px; } .ft-bot { flex-direction: column; text-align: center; } }
   </style>
 </head>
 <body>
 
+<!-- Fix #18: Added Sign in button to nav -->
 <nav>
   <a href="/" class="logo">All<em>PDF</em>Stuff</a>
   <ul class="nav-links">
@@ -90,7 +92,10 @@
     <li><a href="/about.html">About</a></li>
     <li><a href="/contact.html">Contact</a></li>
   </ul>
-  <a href="/" class="btn-pill">Get Pro →</a>
+  <div class="nav-r">
+    <a href="/" class="btn-ghost">← Back to Tools</a>
+    <a href="/#pricing" class="btn-pill">Get Pro →</a>
+  </div>
 </nav>
 
 <div class="page-hero">
@@ -147,13 +152,14 @@
       <a href="/" class="ft-logo">All<em>PDF</em>Stuff</a>
       <p>The fastest, simplest way to work with PDFs online. Professional tools for everyone.</p>
     </div>
+    <!-- Fix #11: Footer tool links now point to /#upload instead of non-existent pages -->
     <div class="ft-col">
       <h4>Tools</h4>
       <ul>
-        <li><a href="/compress-pdf">Compress PDF</a></li>
-        <li><a href="/merge-pdf">Merge PDF</a></li>
-        <li><a href="/split-pdf">Split PDF</a></li>
-        <li><a href="/pdf-to-word">PDF to Word</a></li>
+        <li><a href="/#upload">Compress PDF</a></li>
+        <li><a href="/#upload">Merge PDF</a></li>
+        <li><a href="/#upload">Split PDF</a></li>
+        <li><a href="/#upload">PDF to JPG</a></li>
       </ul>
     </div>
     <div class="ft-col">
@@ -171,6 +177,7 @@
         <li><a href="/privacy.html">Privacy Policy</a></li>
         <li><a href="/terms.html">Terms of Service</a></li>
         <li><a href="/cookies.html">Cookie Policy</a></li>
+        <li><a href="/gdpr.html">GDPR</a></li>
       </ul>
     </div>
   </div>
