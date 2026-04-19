@@ -23,7 +23,6 @@
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:16px;line-height:1.6;overflow-x:hidden}
-/* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(250,248,244,.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--bdr)}
 .logo{font-family:var(--serif);font-size:1.4rem;font-weight:600;color:var(--txt);text-decoration:none!important}.logo em{font-style:italic;color:var(--or)}
 .nav-links{display:flex;gap:32px;list-style:none}
@@ -31,7 +30,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:cen
 .nav-r{display:flex;gap:12px;align-items:center}
 .btn-ghost{background:transparent;border:1px solid var(--bdr);color:var(--txt);padding:9px 22px;border-radius:100px;font-family:var(--sans);font-size:.83rem;font-weight:500;cursor:pointer;transition:all .2s;text-decoration:none!important;display:inline-flex;align-items:center}.btn-ghost:hover{border-color:var(--or);color:var(--or)}
 .btn-pill{background:var(--or);color:#fff;border:none;padding:9px 22px;border-radius:100px;font-family:var(--sans);font-size:.83rem;font-weight:700;cursor:pointer;text-decoration:none!important;display:inline-flex;align-items:center;gap:6px;transition:all .2s}.btn-pill:hover{background:var(--or2);transform:translateY(-1px)}
-/* HERO */
 .page-hero{padding:140px 48px 80px;background:var(--bg2);border-bottom:1px solid var(--bdr);position:relative;overflow:hidden}
 .hero-ghost{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--serif);font-size:clamp(100px,16vw,220px);font-weight:700;font-style:italic;color:rgba(232,98,10,.045);white-space:nowrap;pointer-events:none;user-select:none;letter-spacing:-.04em;line-height:1}
 .hero-inner{max-width:760px;position:relative;z-index:1}
@@ -40,10 +38,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:cen
 .page-hero h1{font-family:var(--serif);font-size:clamp(2.6rem,5.5vw,5.5rem);font-weight:600;letter-spacing:-.03em;line-height:1.05;margin-bottom:22px}
 .page-hero h1 em{font-style:italic;color:var(--or)}
 .page-hero .lead{color:var(--mut2);font-size:1rem;max-width:500px;line-height:1.75}
-/* MAIN LAYOUT */
 .founder-wrap{padding:80px 48px 100px;max-width:1100px;margin:0 auto}
 .founder-layout{display:grid;grid-template-columns:1fr 360px;gap:72px;align-items:start}
-/* CONTENT */
 .section{margin-bottom:2.8rem}
 .label{font-family:'DM Sans',sans-serif;font-size:.7rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--or);margin-bottom:.9rem;display:flex;align-items:center;gap:10px}
 .label::after{content:'';flex:1;height:1px;background:var(--bdr);max-width:40px}
@@ -68,7 +64,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:cen
 .founder-photo{width:100%;aspect-ratio:1;border-radius:20px;object-fit:cover;object-position:center top;display:block;border:1px solid var(--bdr);box-shadow:var(--shadow)}
 .sign-name{font-family:'Lora',serif;font-size:1.25rem;font-style:italic;color:var(--txt);line-height:1.2}
 .sign-role{font-family:'DM Sans',sans-serif;font-size:.75rem;color:var(--mut);letter-spacing:.06em;margin-top:3px}
-/* SIDEBAR */
 .sidebar-card{background:var(--bg);border:1px solid var(--bdr);border-radius:20px;padding:30px;box-shadow:var(--shadow);margin-bottom:20px}
 .sidebar-card h3{font-family:var(--serif);font-size:1.1rem;font-weight:600;letter-spacing:-.01em;margin-bottom:18px}
 .stat-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--bdr)}
@@ -79,12 +74,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:cen
 .quick-links a{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--bg2);border-radius:10px;text-decoration:none!important;font-size:.85rem;color:var(--txt2);transition:all .2s;border:1px solid transparent}
 .quick-links a:hover{border-color:var(--obdr);color:var(--or);background:var(--accent-light)}
 .quick-links a span{font-size:1.1rem}
-/* CTA */
 .about-cta{margin:0 48px 80px;border-radius:24px;background:linear-gradient(135deg,#fff8f2,#fdf4ec);border:1px solid var(--obdr);padding:64px 60px;display:flex;align-items:center;justify-content:space-between;gap:36px;flex-wrap:wrap;box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
 .about-cta::before{content:'PDF';position:absolute;right:-20px;top:50%;transform:translateY(-50%);font-family:var(--serif);font-size:180px;font-weight:700;font-style:italic;color:rgba(232,98,10,.06);pointer-events:none;line-height:1;user-select:none}
 .about-cta h2{font-family:var(--serif);font-size:clamp(1.7rem,3vw,2.8rem);font-weight:600;font-style:italic;letter-spacing:-.03em;line-height:1.1;margin-bottom:10px}
 .about-cta p{color:var(--mut2);font-size:.92rem;max-width:400px;line-height:1.65}
-/* FOOTER */
 footer{background:var(--bg);border-top:1px solid var(--bdr);padding:52px 48px 28px}
 .ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;padding-bottom:40px;border-bottom:1px solid var(--bdr)}
 .ft-logo{font-family:var(--serif);font-size:1.4rem;font-weight:600;text-decoration:none!important;color:var(--txt);margin-bottom:10px;display:block}.ft-logo em{font-style:italic;color:var(--or)}
@@ -102,16 +95,16 @@ footer{background:var(--bg);border-top:1px solid var(--bdr);padding:52px 48px 28
 </head>
 <body>
 <nav>
-  <a href="index.html" class="logo">All<em>PDF</em>Stuff</a>
+  <a href="/" class="logo">All<em>PDF</em>Stuff</a>
   <ul class="nav-links">
-    <li><a href="index.html#tools">Tools</a></li>
-    <li><a href="index.html#pricing">Pricing</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="contact.html">Contact</a></li>
+    <li><a href="/#tools">Tools</a></li>
+    <li><a href="/#pricing">Pricing</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/contact.html">Contact</a></li>
   </ul>
   <div class="nav-r">
-    <a href="index.html" class="btn-ghost">← Back to Tools</a>
-    <a href="index.html#pricing" class="btn-pill">Get Pro →</a>
+    <a href="/" class="btn-ghost">← Back to Tools</a>
+    <a href="/#pricing" class="btn-pill">Get Pro →</a>
   </div>
 </nav>
 
@@ -195,10 +188,10 @@ footer{background:var(--bg);border-top:1px solid var(--bdr);padding:52px 48px 28
       <div class="sidebar-card">
         <h3>🔗 Quick links</h3>
         <ul class="quick-links">
-          <li><a href="index.html#upload"><span>🗜️</span> Try a PDF tool</a></li>
-          <li><a href="index.html#pricing"><span>⭐</span> View pricing</a></li>
-          <li><a href="contact.html"><span>✉️</span> Get in touch</a></li>
-          <li><a href="privacy.html"><span>🔒</span> Privacy Policy</a></li>
+          <li><a href="/#upload"><span>🗜️</span> Try a PDF tool</a></li>
+          <li><a href="/#pricing"><span>⭐</span> View pricing</a></li>
+          <li><a href="/contact.html"><span>✉️</span> Get in touch</a></li>
+          <li><a href="/privacy.html"><span>🔒</span> Privacy Policy</a></li>
         </ul>
       </div>
     </div>
@@ -211,33 +204,33 @@ footer{background:var(--bg);border-top:1px solid var(--bdr);padding:52px 48px 28
     <h2>Ready to give it a try?</h2>
     <p>Create your free account, upload your file, and get started.</p>
   </div>
-  <a href="index.html#pricing" class="btn-pill" style="font-size:.95rem;padding:13px 30px;flex-shrink:0">Create free account →</a>
+  <a href="/#pricing" class="btn-pill" style="font-size:.95rem;padding:13px 30px;flex-shrink:0">Create free account →</a>
 </div>
 
 <!-- FOOTER -->
 <footer>
   <div class="ft-top">
     <div class="ft-brand">
-      <a href="index.html" class="ft-logo">All<em>PDF</em>Stuff</a>
+      <a href="/" class="ft-logo">All<em>PDF</em>Stuff</a>
       <p>The fastest, simplest way to work with PDFs online. Professional tools for everyone, right in your browser.</p>
     </div>
     <div class="ft-col"><h4>Tools</h4><ul>
-      <li><a href="index.html#upload">Compress PDF</a></li>
-      <li><a href="index.html#upload">Merge PDF</a></li>
-      <li><a href="index.html#upload">Split PDF</a></li>
-      <li><a href="index.html#upload">Extract Text</a></li>
-      <li><a href="index.html#upload">PDF to JPG</a></li>
+      <li><a href="/#upload">Compress PDF</a></li>
+      <li><a href="/#upload">Merge PDF</a></li>
+      <li><a href="/#upload">Split PDF</a></li>
+      <li><a href="/#upload">Extract Text</a></li>
+      <li><a href="/#upload">PDF to JPG</a></li>
     </ul></div>
     <div class="ft-col"><h4>Company</h4><ul>
-      <li><a href="about.html">About</a></li>
-      <li><a href="index.html#pricing">Pricing</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/#pricing">Pricing</a></li>
+      <li><a href="/blog.html">Blog</a></li>
+      <li><a href="/contact.html">Contact</a></li>
     </ul></div>
     <div class="ft-col"><h4>Legal</h4><ul>
-      <li><a href="privacy.html">Privacy Policy</a></li>
-      <li><a href="terms.html">Terms of Service</a></li>
-      <li><a href="cookies.html">Cookie Policy</a></li>
+      <li><a href="/privacy.html">Privacy Policy</a></li>
+      <li><a href="/terms.html">Terms of Service</a></li>
+      <li><a href="/cookies.html">Cookie Policy</a></li>
     </ul></div>
   </div>
   <div class="ft-bot">
