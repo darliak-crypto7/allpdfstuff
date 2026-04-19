@@ -4,6 +4,15 @@
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Meet the Founder — AllPDFStuff</title>
 <meta name="description" content="AllPDFStuff was built by someone who just needed it to work. Read Darlia's story."/>
+<!-- Open Graph — Fix #17 -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.allpdfstuff.com/about" />
+<meta property="og:title" content="Meet the Founder — AllPDFStuff" />
+<meta property="og:description" content="AllPDFStuff was built by someone who just needed it to work. Read Darlia's story." />
+<meta property="og:image" content="https://www.allpdfstuff.com/og-image.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Meet the Founder — AllPDFStuff" />
+<meta name="twitter:description" content="AllPDFStuff was built by someone who just needed it to work." />
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700;900&family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
@@ -61,7 +70,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:cen
 .sign-avatar{width:54px;height:54px;background:linear-gradient(135deg,var(--or),var(--or2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.6rem;font-weight:700;font-style:italic;color:#fff;flex-shrink:0}
 .founder-avatar-large{width:100%;aspect-ratio:1;max-width:220px;margin:0 auto;border-radius:50%;background:linear-gradient(135deg,var(--or),var(--or2));display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:clamp(4rem,10vw,7rem);font-weight:700;font-style:italic;color:#fff;box-shadow:0 12px 40px rgba(232,98,10,.25);border:4px solid rgba(255,255,255,.3);}
 .founder-photo-wrap{margin-bottom:24px}
-.founder-photo{width:100%;aspect-ratio:1;border-radius:20px;object-fit:cover;object-position:center top;display:block;border:1px solid var(--bdr);box-shadow:var(--shadow)}
 .sign-name{font-family:'Lora',serif;font-size:1.25rem;font-style:italic;color:var(--txt);line-height:1.2}
 .sign-role{font-family:'DM Sans',sans-serif;font-size:.75rem;color:var(--mut);letter-spacing:.06em;margin-top:3px}
 .sidebar-card{background:var(--bg);border:1px solid var(--bdr);border-radius:20px;padding:30px;box-shadow:var(--shadow);margin-bottom:20px}
@@ -108,7 +116,6 @@ footer{background:var(--bg);border-top:1px solid var(--bdr);padding:52px 48px 28
   </div>
 </nav>
 
-<!-- HERO -->
 <div class="page-hero">
   <div class="hero-ghost">Darlia</div>
   <div class="hero-inner fade-in">
@@ -118,10 +125,8 @@ footer{background:var(--bg);border-top:1px solid var(--bdr);padding:52px 48px 28
   </div>
 </div>
 
-<!-- CONTENT -->
 <div class="founder-wrap">
   <div class="founder-layout">
-    <!-- LEFT -->
     <div class="founder-content fade-in">
       <div class="section">
         <div class="label">The story</div>
@@ -172,7 +177,6 @@ footer{background:var(--bg);border-top:1px solid var(--bdr);padding:52px 48px 28
         </div>
       </div>
     </div>
-    <!-- RIGHT SIDEBAR -->
     <div class="fade-in-2">
       <div class="founder-photo-wrap">
         <div class="founder-avatar-large">D</div>
@@ -198,7 +202,6 @@ footer{background:var(--bg);border-top:1px solid var(--bdr);padding:52px 48px 28
   </div>
 </div>
 
-<!-- CTA -->
 <div class="about-cta">
   <div>
     <h2>Ready to give it a try?</h2>
@@ -207,7 +210,6 @@ footer{background:var(--bg);border-top:1px solid var(--bdr);padding:52px 48px 28
   <a href="/#pricing" class="btn-pill" style="font-size:.95rem;padding:13px 30px;flex-shrink:0">Create free account →</a>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="ft-top">
     <div class="ft-brand">
@@ -231,6 +233,7 @@ footer{background:var(--bg);border-top:1px solid var(--bdr);padding:52px 48px 28
       <li><a href="/privacy.html">Privacy Policy</a></li>
       <li><a href="/terms.html">Terms of Service</a></li>
       <li><a href="/cookies.html">Cookie Policy</a></li>
+      <li><a href="/gdpr.html">GDPR</a></li>
     </ul></div>
   </div>
   <div class="ft-bot">
