@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AllPDFStuff — Every PDF Tool You'll Ever Need</title>
   <meta name="description" content="Convert, merge, split, compress and edit PDF files online. Fast, secure, and easy to use." />
+  <!-- Open Graph — Fix #17 -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.allpdfstuff.com/" />
+  <meta property="og:title" content="AllPDFStuff — Every PDF Tool You'll Ever Need" />
+  <meta property="og:description" content="Convert, compress, merge, split and edit PDF files right in your browser. No software. No fuss. Fast, secure, free to start." />
+  <meta property="og:image" content="https://www.allpdfstuff.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AllPDFStuff — Every PDF Tool You'll Ever Need" />
+  <meta name="twitter:description" content="Convert, compress, merge, split and edit PDF files right in your browser. No software. No fuss." />
+  <meta name="twitter:image" content="https://www.allpdfstuff.com/og-image.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
@@ -456,7 +466,6 @@
         <li class="y"><span class="ck">✓</span>Compress &amp; Merge PDF</li>
         <li class="y"><span class="ck">✓</span>Rotate PDF</li>
         <li class="y"><span class="ck">✓</span>Word to PDF</li>
-        <li><span class="cx">✗</span>PDF to JPG</li>
         <li><span class="cx">✗</span>Split PDF</li>
         <li><span class="cx">✗</span>Extract Text</li>
         <li><span class="cx">✗</span>100 MB file limit (Pro only)</li>
@@ -503,12 +512,12 @@
     <p style="color:var(--mut2);font-size:.86rem;margin-bottom:28px">Share your experience with AllPDFStuff</p>
     <div style="margin-bottom:18px">
       <label style="display:block;font-size:.8rem;font-weight:700;color:var(--mut2);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px">YOUR RATING</label>
-      <div id="starPicker" style="display:flex;gap:6px;font-size:2rem;cursor:pointer">
-        <span onclick="setStars(1)" style="color:rgba(0,0,0,0.08);transition:color .15s">★</span>
-        <span onclick="setStars(2)" style="color:rgba(0,0,0,0.08);transition:color .15s">★</span>
-        <span onclick="setStars(3)" style="color:rgba(0,0,0,0.08);transition:color .15s">★</span>
-        <span onclick="setStars(4)" style="color:rgba(0,0,0,0.08);transition:color .15s">★</span>
-        <span onclick="setStars(5)" style="color:rgba(0,0,0,0.08);transition:color .15s">★</span>
+      <div id="starPicker" role="radiogroup" aria-label="Star rating" style="display:flex;gap:6px;font-size:2rem;cursor:pointer">
+        <span role="radio" aria-label="1 star" aria-checked="false" tabindex="0" onclick="setStars(1)" onkeydown="if(event.key==='Enter'||event.key===' ')setStars(1)" style="color:rgba(0,0,0,0.08);transition:color .15s">★</span>
+        <span role="radio" aria-label="2 stars" aria-checked="false" tabindex="0" onclick="setStars(2)" onkeydown="if(event.key==='Enter'||event.key===' ')setStars(2)" style="color:rgba(0,0,0,0.08);transition:color .15s">★</span>
+        <span role="radio" aria-label="3 stars" aria-checked="false" tabindex="0" onclick="setStars(3)" onkeydown="if(event.key==='Enter'||event.key===' ')setStars(3)" style="color:rgba(0,0,0,0.08);transition:color .15s">★</span>
+        <span role="radio" aria-label="4 stars" aria-checked="false" tabindex="0" onclick="setStars(4)" onkeydown="if(event.key==='Enter'||event.key===' ')setStars(4)" style="color:rgba(0,0,0,0.08);transition:color .15s">★</span>
+        <span role="radio" aria-label="5 stars" aria-checked="false" tabindex="0" onclick="setStars(5)" onkeydown="if(event.key==='Enter'||event.key===' ')setStars(5)" style="color:rgba(0,0,0,0.08);transition:color .15s">★</span>
       </div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
@@ -536,6 +545,7 @@ function setStars(n){
   _stars = n;
   document.querySelectorAll('#starPicker span').forEach((s,i)=>{
     s.style.color = i < n ? '#f59e0b' : 'rgba(0,0,0,0.08)';
+    s.setAttribute('aria-checked', i < n ? 'true' : 'false');
   });
 }
 async function loadReviews(){
@@ -881,6 +891,34 @@ async function handleSub(p){
   if(p==='pro'){ window.location.href='https://buy.stripe.com/4gM00kf9Igxo2798NX1ck00'; }
 }
 function toast(type,msg){const el=document.getElementById('tst');document.getElementById('tmsg').textContent=msg;el.className='toast '+type+' show';setTimeout(()=>el.classList.remove('show'),3500);}
+</script>
+
+<!-- COOKIE CONSENT BANNER — Fix #25 -->
+<div id="cookieBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9998;background:var(--bg);border-top:1px solid var(--bdr);padding:18px 48px;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;box-shadow:0 -4px 24px rgba(0,0,0,.08)">
+  <div style="flex:1;min-width:260px">
+    <p style="font-size:.86rem;color:var(--txt2);line-height:1.6">
+      🍪 We use essential cookies to keep you signed in, plus optional analytics to improve the site.
+      <a href="/cookies.html" style="color:var(--or);text-decoration:none;font-weight:500">Cookie Policy</a> ·
+      <a href="/privacy.html" style="color:var(--or);text-decoration:none;font-weight:500">Privacy Policy</a>
+    </p>
+  </div>
+  <div style="display:flex;gap:10px;flex-shrink:0">
+    <button onclick="setCookiePref('essential')" style="background:transparent;border:1px solid var(--bdr);color:var(--mut2);padding:9px 20px;border-radius:100px;font-family:var(--sans);font-size:.82rem;font-weight:500;cursor:pointer;transition:all .2s">Essential only</button>
+    <button onclick="setCookiePref('all')" style="background:var(--or);color:#fff;border:none;padding:9px 22px;border-radius:100px;font-family:var(--sans);font-size:.82rem;font-weight:700;cursor:pointer;transition:all .2s">Accept all</button>
+  </div>
+</div>
+<script>
+(function(){
+  if(!localStorage.getItem('cookie_pref')){
+    var b=document.getElementById('cookieBanner');
+    if(b)b.style.display='flex';
+  }
+})();
+function setCookiePref(pref){
+  localStorage.setItem('cookie_pref',pref);
+  var b=document.getElementById('cookieBanner');
+  if(b)b.style.display='none';
+}
 </script>
 </body>
 </html>
