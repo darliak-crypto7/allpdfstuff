@@ -3,6 +3,16 @@
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Contact — AllPDFStuff</title>
+  <meta name="description" content="Get in touch with the AllPDFStuff team. We respond within 24–48 hours." />
+  <!-- Open Graph — Fix #17 -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.allpdfstuff.com/contact" />
+  <meta property="og:title" content="Contact — AllPDFStuff" />
+  <meta property="og:description" content="Have a question or feature request? Get in touch with the AllPDFStuff team." />
+  <meta property="og:image" content="https://www.allpdfstuff.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Contact — AllPDFStuff" />
+  <meta name="twitter:description" content="Have a question or feature request? Get in touch with the AllPDFStuff team." />
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,500;1,600;1,700&family=Satoshi:wght@300;400;500;700;900&display=swap" rel="stylesheet"/>
@@ -15,8 +25,9 @@
     .logo{font-family:var(--serif);font-size:1.4rem;font-weight:600;color:var(--txt);text-decoration:none}.logo em{font-style:italic;color:var(--or)}
     .nav-links{display:flex;gap:32px;list-style:none}
     .nav-links a{font-size:.85rem;font-weight:500;color:var(--mut2);text-decoration:none;transition:color .2s}.nav-links a:hover{color:var(--txt)}
+    .nav-r{display:flex;align-items:center;gap:12px}
+    .btn-ghost{background:transparent;border:1px solid var(--bdr);color:var(--txt);padding:9px 22px;border-radius:100px;font-family:var(--sans);font-size:.83rem;font-weight:500;cursor:pointer;transition:all .2s;text-decoration:none;display:inline-flex;align-items:center}.btn-ghost:hover{border-color:var(--or);color:var(--or)}
     .btn-pill{background:var(--or);color:#fff;border:none;padding:9px 22px;border-radius:100px;font-family:var(--sans);font-size:.83rem;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:all .2s}.btn-pill:hover{background:var(--or2);transform:translateY(-1px)}
-    /* HERO */
     .page-hero{padding:140px 48px 72px;background:var(--bg2);border-bottom:1px solid var(--bdr);position:relative;overflow:hidden}
     .hero-ghost{position:absolute;top:40%;left:50%;transform:translate(-50%,-50%);font-family:var(--serif);font-size:clamp(100px,16vw,220px);font-weight:700;font-style:italic;color:rgba(232,98,10,.04);white-space:nowrap;pointer-events:none;user-select:none;letter-spacing:-.04em;line-height:1}
     .eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--or);margin-bottom:16px;display:flex;align-items:center;gap:10px}
@@ -24,9 +35,7 @@
     .page-hero h1{font-family:var(--serif);font-size:clamp(2.8rem,6vw,6rem);font-weight:600;letter-spacing:-.03em;line-height:1.0;margin-bottom:20px;position:relative;z-index:1}
     .page-hero h1 em{font-style:italic;color:var(--or)}
     .page-hero .lead{color:var(--mut2);font-size:1rem;max-width:480px;line-height:1.75;position:relative;z-index:1}
-    /* CONTACT LAYOUT */
     .contact-wrap{max-width:1100px;margin:0 auto;padding:80px 48px 100px;display:grid;grid-template-columns:1fr 1.6fr;gap:72px;align-items:start}
-    /* CONTACT INFO SIDE */
     .contact-info h2{font-family:var(--serif);font-size:2rem;font-weight:600;letter-spacing:-.02em;margin-bottom:16px}
     .contact-info h2 em{font-style:italic;color:var(--or)}
     .contact-info > p{color:var(--mut2);font-size:.93rem;line-height:1.75;margin-bottom:32px}
@@ -37,7 +46,6 @@
     .info-card a:hover{color:var(--or)}
     .response-note{background:linear-gradient(135deg,#fff8f2,#fdf4ec);border:1px solid var(--obdr);border-radius:14px;padding:18px 20px;margin-top:24px;font-size:.87rem;color:var(--mut2)}
     .response-note strong{color:var(--txt);display:block;margin-bottom:4px}
-    /* CONTACT FORM */
     .contact-form{background:var(--bg);border:1px solid var(--bdr);border-radius:24px;padding:44px;box-shadow:var(--shadow-lg)}
     .contact-form h3{font-family:var(--serif);font-size:1.6rem;font-weight:600;font-style:italic;margin-bottom:6px;letter-spacing:-.02em}
     .contact-form .form-sub{color:var(--mut2);font-size:.87rem;margin-bottom:28px}
@@ -53,12 +61,11 @@
     .submit-btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
     .form-note{font-size:.76rem;color:var(--mut);text-align:center;margin-top:12px;line-height:1.55}
     .form-note a{color:var(--or);text-decoration:none}
-    /* SUCCESS STATE */
+    /* Fix #13: success-state hidden by default */
     .success-state{display:none;text-align:center;padding:48px 20px}
     .success-ico{font-size:3.5rem;margin-bottom:16px}
     .success-state h3{font-family:var(--serif);font-size:1.8rem;font-weight:600;font-style:italic;margin-bottom:10px}
     .success-state p{color:var(--mut2);font-size:.93rem;max-width:320px;margin:0 auto 24px}
-    /* FOOTER */
     footer{background:var(--bg);border-top:1px solid var(--bdr);padding:48px 48px 28px}
     .ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid var(--bdr)}
     .ft-logo{font-family:var(--serif);font-size:1.4rem;font-weight:600;text-decoration:none;color:var(--txt);margin-bottom:10px;display:block}.ft-logo em{font-style:italic;color:var(--or)}
@@ -72,93 +79,78 @@
   </style>
 </head>
 <body>
+
+<!-- Fix #18: Added Sign in button + root-relative paths -->
 <nav>
-  <a href="index.html" class="logo">All<em>PDF</em>Stuff</a>
-  <ul class="nav-links"><li><a href="../index.html#tools">Tools</a></li><li><a href="../index.html#pricing">Pricing</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul>
-  <a href="index.html" class="btn-pill">← Back to Tools</a>
+  <a href="/" class="logo">All<em>PDF</em>Stuff</a>
+  <ul class="nav-links">
+    <li><a href="/#tools">Tools</a></li>
+    <li><a href="/#pricing">Pricing</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-r">
+    <a href="/" class="btn-ghost">← Back to Tools</a>
+    <a href="/#pricing" class="btn-pill">Get Pro →</a>
+  </div>
 </nav>
 
-<!-- ═══════════════════════════════════════
-     HERO — ✏️ EDIT: Change headline/tagline
-     ═══════════════════════════════════════ -->
 <div class="page-hero">
   <div class="hero-ghost">Hello</div>
   <div class="eyebrow">Get in Touch</div>
   <h1>We'd love to<br/><em>hear from you</em></h1>
-  <!-- ✏️ EDIT: Change this tagline -->
   <p class="lead">Have a question, a feature request, or just want to say hi? Send us a message and we'll get back to you.</p>
 </div>
 
 <div class="contact-wrap">
 
-  <!-- ═══════════════════════════════════════
-       CONTACT INFO — ✏️ EDIT all details below
-       ═══════════════════════════════════════ -->
   <div class="contact-info">
     <h2>Let's <em>talk</em></h2>
-    <!-- ✏️ EDIT: Change this paragraph -->
     <p>We're a small team and we read every message. Whether it's a support question, billing issue, or product feedback — we're here.</p>
 
-    <!-- ✏️ EDIT: Update email address -->
     <div class="info-card">
       <div class="info-ico">📧</div>
       <div>
         <h4>Email</h4>
-        <!-- ✏️ EDIT: Replace with your real email -->
         <a href="mailto:support@allpdfstuff.com" style="color:var(--or);font-weight:500;font-size:.93rem;text-decoration:none">support@allpdfstuff.com</a>
         <p style="font-size:.78rem;color:var(--mut);margin-top:3px">We'll get back to you within 1–2 business days</p>
         <p style="font-size:.78rem;color:var(--mut);margin-top:3px">Use the form below to get in touch</p>
       </div>
     </div>
 
-    <!-- ✏️ EDIT: Update or remove location -->
     <div class="info-card">
       <div class="info-ico">🌍</div>
       <div>
         <h4>Location</h4>
-        <!-- ✏️ EDIT: Replace with your real location, or remove this card -->
         <p>Based online — serving customers worldwide</p>
       </div>
     </div>
 
-    <!-- ✏️ EDIT: Add/remove social links -->
+    <!-- Fix #20: Replaced "Social: Coming soon" with a useful links section -->
     <div class="info-card">
-      <div class="info-ico">💬</div>
+      <div class="info-ico">🔗</div>
       <div>
-        <h4>Social</h4>
-        <p>
-          <!-- ✏️ EDIT: Add your real social links -->
-          <!-- <a href="https://twitter.com/yourhandle" target="_blank">Twitter / X</a> · -->
-          <!-- <a href="https://linkedin.com/company/yourpage" target="_blank">LinkedIn</a> -->
-          Coming soon
+        <h4>Quick Links</h4>
+        <p style="display:flex;flex-direction:column;gap:6px;margin-top:4px">
+          <a href="/about.html">About AllPDFStuff</a>
+          <a href="/#pricing">View pricing plans</a>
+          <a href="/privacy.html">Privacy Policy</a>
+          <a href="/gdpr.html">GDPR &amp; data rights</a>
         </p>
       </div>
     </div>
 
     <div class="response-note">
-      <!-- ✏️ EDIT: Update response time -->
       <strong>⏱️ Response time</strong>
       We aim to reply to all messages within 24–48 hours on business days.
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════
-       CONTACT FORM
-       
-       HOW TO MAKE THIS FORM WORK:
-       1. Go to formspree.io and create a free account
-       2. Create a new form and get your Form ID
-       3. Replace "mvzwnjzr" in the action below with your real ID
-          e.g. action="https://formspree.io/f/xyzabcde"
-       4. That's it! Formspree will email you on every submission.
-       Free plan: 50 submissions/month
-       ═══════════════════════════════════════ -->
   <div class="contact-form">
     <div id="formSection">
       <h3>Send us a message</h3>
       <p class="form-sub">Fill in the form below and we'll get back to you as soon as possible.</p>
 
-      <!-- ✏️ REPLACE mvzwnjzr with your Formspree form ID -->
       <form id="contactForm" action="https://formspree.io/f/mvzwnjzr" method="POST" onsubmit="handleSubmit(event)">
 
         <div class="two-fld">
@@ -177,7 +169,6 @@
           <input type="email" id="email" name="email" placeholder="you@example.com" required/>
         </div>
 
-        <!-- ✏️ EDIT: Customise these topic options to match your business -->
         <div class="fld">
           <label for="topic">Topic</label>
           <select id="topic" name="topic">
@@ -200,13 +191,13 @@
         <button type="submit" class="submit-btn" id="submitBtn">Send Message →</button>
 
         <p class="form-note">
-          By submitting this form you agree to our <a href="privacy.html">Privacy Policy</a>.
+          By submitting this form you agree to our <a href="/privacy.html">Privacy Policy</a>.
           We will only use your information to respond to your enquiry.
         </p>
       </form>
     </div>
 
-    <!-- SUCCESS MESSAGE (shown after form submission) -->
+    <!-- Fix #13: success-state hidden by CSS (display:none), only shown by JS on success -->
     <div class="success-state" id="successState">
       <div class="success-ico">✅</div>
       <h3>Message sent!</h3>
@@ -219,10 +210,10 @@
 
 <footer>
   <div class="ft-top">
-    <div class="ft-brand"><a href="index.html" class="ft-logo">All<em>PDF</em>Stuff</a><p>The fastest, simplest way to work with PDFs online. Professional tools for everyone.</p></div>
-    <div class="ft-col"><h4>Tools</h4><ul><li><a href="../index.html#upload">Compress PDF</a></li><li><a href="../index.html#upload">Merge PDF</a></li><li><a href="../index.html#upload">Split PDF</a></li><li><a href="../index.html#upload">PDF to Word</a></li></ul></div>
-    <div class="ft-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="../index.html#pricing">Pricing</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
-    <div class="ft-col"><h4>Legal</h4><ul><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li><li><a href="cookies.html">Cookie Policy</a></li></ul></div>
+    <div class="ft-brand"><a href="/" class="ft-logo">All<em>PDF</em>Stuff</a><p>The fastest, simplest way to work with PDFs online. Professional tools for everyone.</p></div>
+    <div class="ft-col"><h4>Tools</h4><ul><li><a href="/#upload">Compress PDF</a></li><li><a href="/#upload">Merge PDF</a></li><li><a href="/#upload">Split PDF</a></li><li><a href="/#upload">PDF to Word</a></li></ul></div>
+    <div class="ft-col"><h4>Company</h4><ul><li><a href="/about.html">About</a></li><li><a href="/#pricing">Pricing</a></li><li><a href="/blog.html">Blog</a></li><li><a href="/contact.html">Contact</a></li></ul></div>
+    <div class="ft-col"><h4>Legal</h4><ul><li><a href="/privacy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Service</a></li><li><a href="/cookies.html">Cookie Policy</a></li><li><a href="/gdpr.html">GDPR</a></li></ul></div>
   </div>
   <div class="ft-bot"><span>© 2026 AllPDFStuff.com — All rights reserved</span><span>🔒 Files auto-deleted after 1 hour</span></div>
 </footer>
@@ -247,4 +238,16 @@ async function handleSubmit(e) {
     }
   } catch(err) {
     btn.disabled = false;
-    b
+    btn.textContent = 'Send Message →';
+    alert('Something went wrong. Please email support@allpdfstuff.com directly.');
+  }
+}
+
+function resetForm() {
+  document.getElementById('formSection').style.display = 'block';
+  document.getElementById('successState').style.display = 'none';
+  document.getElementById('contactForm').reset();
+}
+</script>
+</body>
+</html>
