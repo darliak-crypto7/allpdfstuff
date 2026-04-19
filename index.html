@@ -367,7 +367,7 @@
         <button class="pill" onclick="pickAndGo('ocr-pdf')">🔍 OCR PDF ✦Pro</button>
         <button class="pill" onclick="pickAndGo('watermark')">💧 Watermark PDF ✦Pro</button>
       </div>
-      <p style="text-align:center;margin-top:16px;font-size:.8rem;color:var(--mut)">Wrong file? <a href="#" onclick="cancelPick();return false;" style="color:var(--or);text-decoration:none">Choose a different file</a></p>
+      <p style="text-align:center;margin-top:16px;font-size:.8rem;color:var(--mut)">Wrong file? <a href="javascript:void(0)" onclick="cancelPick()" style="color:var(--or);text-decoration:none">Choose a different file</a></p>
     </div>
 
     <div id="watermarkPanel" style="display:none;background:var(--bg);border:1px solid var(--bdr);border-radius:20px;padding:28px;margin-bottom:24px;box-shadow:var(--shadow-lg)">
@@ -614,8 +614,8 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="fld"><label>Email</label><input type="email" id="lem" placeholder="you@example.com"/></div>
       <div class="fld"><label>Password</label><input type="password" id="lpw" placeholder="Your password"/></div>
       <button class="btn-pill" style="width:100%;justify-content:center;font-size:.93rem;padding:12px;margin-top:8px" onclick="doLogin()">Sign In</button>
-      <div class="m-note">No account? <a href="#" onclick="sw('signup')">Sign up free</a></div>
-      <div class="m-note" style="margin-top:4px"><a href="#" onclick="doForgotPassword()" style="color:#999;font-size:0.82rem">Forgot your password?</a></div>
+      <div class="m-note">No account? <a href="javascript:void(0)" onclick="sw('signup')">Sign up free</a></div>
+      <div class="m-note" style="margin-top:4px"><a href="javascript:void(0)" onclick="doForgotPassword()" style="color:#999;font-size:0.82rem">Forgot your password?</a></div>
     </div>
     <div id="spane" style="display:none">
       <h2>Create account</h2>
@@ -625,7 +625,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="fld"><label>Email</label><input type="email" id="sem" placeholder="you@example.com"/></div>
       <div class="fld"><label>Password</label><input type="password" id="spw" placeholder="Min. 8 characters"/></div>
       <button class="btn-pill" style="width:100%;justify-content:center;font-size:.93rem;padding:12px;margin-top:8px" onclick="doSignup()">Create Free Account</button>
-      <div class="m-note">Already have an account? <a href="#" onclick="sw('login')">Sign in</a></div>
+      <div class="m-note">Already have an account? <a href="javascript:void(0)" onclick="sw('login')">Sign in</a></div>
     </div>
   </div>
 </div>
@@ -647,6 +647,13 @@ document.addEventListener('DOMContentLoaded', function() {
   sb.auth.onAuthStateChange((_,s)=>{user=s?.user||null;rNav();});
   sb.auth.getSession().then(({data:{session}})=>{user=session?.user||null;rNav();});
   document.getElementById('ov').addEventListener('click',e=>{if(e.target===document.getElementById('ov'))closeModal();});
+  // Fix #25: Auto-open signup modal if ?action=signup in URL
+  const _urlParams = new URLSearchParams(window.location.search);
+  if(_urlParams.get('action') === 'signup'){
+    openModal('signup');
+    // Clean URL without reload
+    history.replaceState(null, '', '/');
+  }
 });
 function getStripe(){
   if(!_stripe){
