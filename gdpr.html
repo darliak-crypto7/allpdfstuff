@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GDPR Rights — AllPDFStuff</title>
+  <meta name="description" content="Your GDPR data rights explained. AllPDFStuff is committed to protecting your personal data under the General Data Protection Regulation." />
+  <link rel="canonical" href="https://www.allpdfstuff.com/gdpr" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #faf8f4; --bg2: #f3efe8; --bg3: #ede8df;
+      --txt: #1a1714; --txt2: #3d3830; --mut: #8a8070; --mut2: #6b6055;
+      --or: #e8620a; --or2: #f97316;
+      --bdr: rgba(0,0,0,0.08); --obdr: rgba(232,98,10,0.25); --oglow: rgba(232,98,10,0.08);
+      --shadow: 0 1px 3px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.06);
+      --shadow-lg: 0 8px 32px rgba(0,0,0,.1);
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Inter', system-ui, sans-serif;
+    }
+    body { background: var(--bg); color: var(--txt); font-family: var(--sans); font-size: 16px; line-height: 1.6; }
+    nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 48px; background: rgba(250,248,244,.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--bdr); }
+    .logo { font-family: var(--serif); font-size: 1.45rem; font-weight: 600; color: var(--txt); text-decoration: none; letter-spacing: .02em; }
+    .logo em { font-style: italic; color: var(--or); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { font-size: .86rem; font-weight: 500; color: var(--mut2); text-decoration: none; transition: color .2s; }
+    .nav-links a:hover { color: var(--or); }
+    .btn-ghost { background: transparent; border: 1px solid var(--bdr); color: var(--txt); padding: 9px 22px; border-radius: 100px; font-size: .83rem; font-weight: 500; text-decoration: none; transition: all .2s; display: inline-flex; align-items: center; }
+    .btn-ghost:hover { border-color: var(--or); color: var(--or); }
+    .page-hero { padding: 72px 48px 52px; border-bottom: 1px solid var(--bdr); background: var(--bg2); }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: .84rem; color: var(--mut2); text-decoration: none; margin-bottom: 28px; transition: color .2s; }
+    .back-link:hover { color: var(--or); }
+    .eyebrow { font-size: .75rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--or); margin-bottom: 14px; }
+    .page-hero h1 { font-family: var(--serif); font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 600; letter-spacing: -.03em; line-height: 1.1; margin-bottom: 14px; }
+    .page-hero h1 em { font-style: italic; color: var(--or); }
+    .page-hero .meta { color: var(--mut); font-size: .84rem; }
+    .page-hero .summary-box { margin-top: 24px; background: var(--bg); border: 1px solid var(--obdr); border-radius: 14px; padding: 18px 22px; max-width: 640px; font-size: .88rem; color: var(--txt2); line-height: 1.65; }
+    .page-hero .summary-box strong { color: var(--or); }
+    .content-wrap { max-width: 780px; margin: 0 auto; padding: 64px 48px 96px; }
+    h2 { font-family: var(--serif); font-size: 1.65rem; font-weight: 600; letter-spacing: -.02em; margin: 2.8rem 0 1rem; color: var(--txt); }
+    h2:first-child { margin-top: 0; }
+    p { color: var(--txt2); font-size: .93rem; line-height: 1.75; margin-bottom: 1rem; }
+    ul { color: var(--txt2); font-size: .93rem; line-height: 1.75; margin-bottom: 1.2rem; padding-left: 1.4rem; }
+    ul li { margin-bottom: .5rem; }
+    ul li strong { color: var(--txt); font-weight: 600; }
+    a { color: var(--or); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .rights-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 1.4rem 0 2rem; }
+    .right-card { background: var(--bg); border: 1px solid var(--bdr); border-radius: 14px; padding: 20px 22px; }
+    .right-card .right-icon { font-size: 1.4rem; margin-bottom: 8px; }
+    .right-card .right-title { font-family: var(--serif); font-size: 1.05rem; font-weight: 600; color: var(--txt); margin-bottom: 6px; }
+    .right-card p { font-size: .84rem; color: var(--mut2); margin-bottom: 0; line-height: 1.6; }
+    .cta-block { background: linear-gradient(135deg, #fff8f2, #fdf4ec); border: 1px solid var(--obdr); border-radius: 18px; padding: 36px 40px; margin-top: 2.8rem; text-align: center; }
+    .cta-block h3 { font-family: var(--serif); font-size: 1.5rem; font-weight: 600; font-style: italic; margin-bottom: 10px; }
+    .cta-block p { font-size: .9rem; color: var(--mut2); margin-bottom: 20px; }
+    .btn-pill { background: var(--or); color: #fff; border: none; padding: 11px 26px; border-radius: 100px; font-size: .88rem; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: all .2s; cursor: pointer; }
+    .btn-pill:hover { background: var(--or2); transform: translateY(-1px); text-decoration: none; }
+    footer { background: var(--bg); border-top: 1px solid var(--bdr); padding: 56px 48px 28px; }
+    .ft-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 40px; border-bottom: 1px solid var(--bdr); }
+    .ft-logo { font-family: var(--serif); font-size: 1.45rem; font-weight: 600; text-decoration: none; color: var(--txt); margin-bottom: 10px; display: block; }
+    .ft-logo em { font-style: italic; color: var(--or); }
+    .ft-brand p { color: var(--mut); font-size: .86rem; line-height: 1.7; max-width: 220px; }
+    .ft-col h4 { font-size: .74rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--mut); margin-bottom: 16px; }
+    .ft-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; padding-left: 0; margin-bottom: 0; }
+    .ft-col a { color: var(--mut2); text-decoration: none; font-size: .86rem; transition: color .2s; }
+    .ft-col a:hover { color: var(--or); }
+    .ft-bot { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; color: var(--mut); font-size: .78rem; flex-wrap: wrap; gap: 8px; }
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; } .nav-links { display: none; }
+      .page-hero { padding: 48px 20px 40px; }
+      .content-wrap { padding: 48px 20px 64px; }
+      .rights-grid { grid-template-columns: 1fr; }
+      footer { padding: 40px 20px 24px; }
+      .ft-top { grid-template-columns: 1fr; gap: 28px; }
+      .ft-bot { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">All<em>PDF</em>Stuff</a>
+  <ul class="nav-links">
+    <li><a href="/#tools">Tools</a></li>
+    <li><a href="/#pricing">Pricing</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/contact.html">Contact</a></li>
+  </ul>
+  <a href="/" class="btn-ghost">← Back to Tools</a>
+</nav>
+
+<div class="page-hero">
+  <a href="/" class="back-link">← Back to AllPDFStuff</a>
+  <div class="eyebrow">Legal</div>
+  <h1>Your <em>GDPR Rights</em></h1>
+  <p class="meta">Last updated: April 2026 · Effective date: 20 March 2026</p>
+  <div class="summary-box">
+    <strong>In plain English:</strong> If you're in the EU, EEA, or UK, you have specific rights over your personal data. You can request access, correction, deletion, or a copy of your data at any time. We respond within 30 days.
+  </div>
+</div>
+
+<div class="content-wrap">
+
+  <p>If you are located in the European Union (EU), European Economic Area (EEA), or the United Kingdom (UK), you have specific rights under the General Data Protection Regulation (GDPR) and UK GDPR regarding your personal data held by AllPDFStuff.</p>
+
+  <h2>Your Rights at a Glance</h2>
+
+  <div class="rights-grid">
+    <div class="right-card">
+      <div class="right-icon">📋</div>
+      <div class="right-title">Right of Access</div>
+      <p>Request a copy of the personal data we hold about you, including how and why we process it.</p>
+    </div>
+    <div class="right-card">
+      <div class="right-icon">✏️</div>
+      <div class="right-title">Right to Rectification</div>
+      <p>Request correction of inaccurate or incomplete personal data we hold about you.</p>
+    </div>
+    <div class="right-card">
+      <div class="right-icon">🗑️</div>
+      <div class="right-title">Right to Erasure</div>
+      <p>Request deletion of your personal data — the "right to be forgotten" — subject to legal obligations.</p>
+    </div>
+    <div class="right-card">
+      <div class="right-icon">⏸️</div>
+      <div class="right-title">Right to Restriction</div>
+      <p>Request that we limit how we process your data in certain circumstances.</p>
+    </div>
+    <div class="right-card">
+      <div class="right-icon">📦</div>
+      <div class="right-title">Right to Data Portability</div>
+      <p>Receive your personal data in a structured, machine-readable format to transfer to another service.</p>
+    </div>
+    <div class="right-card">
+      <div class="right-icon">🚫</div>
+      <div class="right-title">Right to Object</div>
+      <p>Object to processing based on legitimate interests or for direct marketing purposes at any time.</p>
+    </div>
+    <div class="right-card">
+      <div class="right-icon">↩️</div>
+      <div class="right-title">Right to Withdraw Consent</div>
+      <p>Where processing is based on your consent, you may withdraw it at any time without affecting prior processing.</p>
+    </div>
+    <div class="right-card">
+      <div class="right-icon">🤖</div>
+      <div class="right-title">Automated Decision-Making</div>
+      <p>You have the right not to be subject to solely automated decisions that significantly affect you.</p>
+    </div>
+  </div>
+
+  <h2>How to Exercise Your Rights</h2>
+  <p>To submit a data rights request, please contact us via our <a href="/contact.html">Contact page</a> and select "Privacy &amp; data" as the topic. Please include:</p>
+  <ul>
+    <li>Your full name and the email address associated with your account</li>
+    <li>The specific right you wish to exercise</li>
+    <li>Any relevant details to help us locate your data</li>
+  </ul>
+  <p>We will acknowledge your request within 72 hours and respond in full within <strong>30 days</strong>. In complex cases, we may extend this by a further two months and will notify you accordingly.</p>
+
+  <h2>File Data — Special Notice</h2>
+  <p>Any PDF or document files you upload for processing are <strong>automatically and permanently deleted from our servers within 1 hour</strong> of processing. We do not retain, read, analyse, or share the contents of your uploaded files beyond what is necessary to perform the requested operation. As a result, we are unable to retrieve or provide copies of previously uploaded files.</p>
+
+  <h2>Verification of Identity</h2>
+  <p>To protect your privacy, we may need to verify your identity before fulfilling a data request. We may ask you to confirm your email address or provide other identifying information. We will not charge a fee for reasonable requests.</p>
+
+  <h2>Right to Lodge a Complaint</h2>
+  <p>If you are unhappy with how we have handled your data or your request, you have the right to lodge a complaint with your national supervisory authority:</p>
+  <ul>
+    <li><strong>UK:</strong> <a href="https://ico.org.uk" target="_blank" rel="noopener noreferrer">Information Commissioner's Office (ICO)</a> — ico.org.uk</li>
+    <li><strong>EU:</strong> Contact your national data protection authority. A full list is available at <a href="https://edpb.europa.eu/about-edpb/about-edpb/members_en" target="_blank" rel="noopener noreferrer">edpb.europa.eu</a></li>
+  </ul>
+
+  <h2>Data Controller</h2>
+  <p>AllPDFStuff operates <a href="https://www.allpdfstuff.com">allpdfstuff.com</a> and acts as the data controller for personal data collected through the site. For all privacy and data protection queries, please use our <a href="/contact.html">Contact page</a>.</p>
+  <p>For full details on how we collect, use and store your personal data, please read our <a href="/privacy.html">Privacy Policy</a>.</p>
+
+  <div class="cta-block">
+    <h3>Have a data request?</h3>
+    <p>Get in touch and we'll respond within 30 days.</p>
+    <a href="/contact.html" class="btn-pill">Contact Us →</a>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-top">
+    <div class="ft-brand">
+      <a href="/" class="ft-logo">All<em>PDF</em>Stuff</a>
+      <p>The fastest, simplest way to work with PDFs online. Professional tools for everyone.</p>
+    </div>
+    <div class="ft-col">
+      <h4>Tools</h4>
+      <ul>
+        <li><a href="/#upload">Compress PDF</a></li>
+        <li><a href="/#upload">Merge PDF</a></li>
+        <li><a href="/#upload">Split PDF</a></li>
+        <li><a href="/#upload">PDF to JPG</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/#pricing">Pricing</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="/privacy.html">Privacy Policy</a></li>
+        <li><a href="/terms.html">Terms of Service</a></li>
+        <li><a href="/cookies.html">Cookie Policy</a></li>
+        <li><a href="/gdpr.html">GDPR</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <span>© 2026 AllPDFStuff.com — All rights reserved</span>
+    <span>🔒 Files auto-deleted after 1 hour</span>
+  </div>
+</footer>
+
+</body>
+</html>
