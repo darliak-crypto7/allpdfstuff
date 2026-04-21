@@ -615,7 +615,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="fld"><label>Password</label><input type="password" id="lpw" placeholder="Your password"/></div>
       <button class="btn-pill" style="width:100%;justify-content:center;font-size:.93rem;padding:12px;margin-top:8px" onclick="doLogin()">Sign In</button>
       <div class="m-note">No account? <a href="javascript:void(0)" onclick="sw('signup')">Sign up free</a></div>
-      <div class="m-note" style="margin-top:4px"><a href="javascript:void(0)" onclick="doForgotPassword()" style="color:#999;font-size:0.82rem">Forgot your password?</a></div>
+      <div class="m-note" style="margin-top:4px"><a href="javascript:void(0)" onclick="sw('forgot')" style="color:#999;font-size:0.82rem">Forgot your password?</a></div>
     </div>
     <div id="spane" style="display:none">
       <h2>Create account</h2>
@@ -626,6 +626,14 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="fld"><label>Password</label><input type="password" id="spw" placeholder="Min. 8 characters"/></div>
       <button class="btn-pill" style="width:100%;justify-content:center;font-size:.93rem;padding:12px;margin-top:8px" onclick="doSignup()">Create Free Account</button>
       <div class="m-note">Already have an account? <a href="javascript:void(0)" onclick="sw('login')">Sign in</a></div>
+    </div>
+    <div id="fpane" style="display:none">
+      <h2>Reset password</h2>
+      <p class="sub">Enter your email and we'll send you a reset link</p>
+      <div class="al al-ok" id="fok"></div><div class="al al-err" id="ferr"></div>
+      <div class="fld"><label>Email</label><input type="email" id="fem" placeholder="you@example.com"/></div>
+      <button class="btn-pill" style="width:100%;justify-content:center;font-size:.93rem;padding:12px;margin-top:8px" onclick="doForgotPassword()">Send Reset Email</button>
+      <div class="m-note"><a href="javascript:void(0)" onclick="sw('login')" style="color:var(--or)">← Back to sign in</a></div>
     </div>
   </div>
 </div>
@@ -671,23 +679,31 @@ function tDrop(){document.getElementById('uDrop')?.classList.toggle('open');}
 document.addEventListener('click',e=>{if(!e.target.closest('.u-menu'))document.getElementById('uDrop')?.classList.remove('open');});
 function openModal(t){document.getElementById('ov').classList.add('open');sw(t);}
 function closeModal(){document.getElementById('ov').classList.remove('open');}
-function sw(t){document.getElementById('lpane').style.display=t==='login'?'block':'none';document.getElementById('spane').style.display=t==='signup'?'block':'none';}
+function sw(t){document.getElementById('lpane').style.display=t==='login'?'block':'none';document.getElementById('spane').style.display=t==='signup'?'block':'none';document.getElementById('fpane').style.display=t==='forgot'?'block':'none';}
 function sa(id,msg){const el=document.getElementById(id);el.textContent=msg;el.style.display='block';}
 function ha(...ids){ids.forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='none';});}
 async function doForgotPassword(){
-  const email = document.getElementById('lem').value.trim();
-  if(!email){sa('lerr','Please enter your email address first.');return;}
-  const{error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:'https://www.allpdfstuff.com/account.html'});
-  if(error)sa('lerr',error.message);
-  else{ha('lerr');sa('lok','✅ Password reset email sent! Check your inbox.');}
+  const email = document.getElementById('fem').value.trim();
+  if(!email){sa('ferr','Please enter your email address.');return;}
+  const{error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:'https://www.allpdfstuff.com/reset-password.html'});
+  if(error)sa('ferr',error.message);
+  else{ha('ferr');sa('fok','✅ Reset email sent! Check your inbox.');document.getElementById('fem').value='';}
 }
 async function doLogin(){
   ha('lok','lerr');
   const email=document.getElementById('lem').value.trim(),pass=document.getElementById('lpw').value;
   if(!email||!pass){sa('lerr','Please fill in all fields.');return;}
   const{error}=await sb.auth.signInWithPassword({email,password:pass});
-  if(error)sa('lerr',error.message);
-  else{sa('lok','Signed in!');setTimeout(closeModal,1100);toast('ok','✅ Welcome back!');}
+  if(error){
+    const msg = error.message || '';
+    if(msg.toLowerCase().includes('security purposes') || msg.toLowerCase().includes('rate limit')){
+      sa('lerr','⏳ Please wait a moment before trying again.');
+    } else if(msg.toLowerCase().includes('invalid login') || msg.toLowerCase().includes('invalid credentials')){
+      sa('lerr','Incorrect email or password. Please try again.');
+    } else {
+      sa('lerr', msg || 'Something went wrong. Please try again.');
+    }
+  } else {sa('lok','Signed in!');setTimeout(closeModal,1100);toast('ok','✅ Welcome back!');}
 }
 async function doSignup(){
   ha('sok','serr');
@@ -695,8 +711,20 @@ async function doSignup(){
   if(!name||!email||!pass){sa('serr','Please fill in all fields.');return;}
   if(pass.length<8){sa('serr','Password must be at least 8 characters.');return;}
   const{error}=await sb.auth.signUp({email,password:pass,options:{data:{full_name:name}}});
-  if(error)sa('serr',error.message);
-  else{sa('sok','Account created! Check your email.');toast('ok','🎉 Account created!');}
+  if(error){
+    // Make rate limit errors human-friendly
+    const msg = error.message || '';
+    if(msg.toLowerCase().includes('security purposes') || msg.toLowerCase().includes('rate limit') || msg.toLowerCase().includes('after')){
+      sa('serr','⏳ Please wait a moment before trying again, then click "Create Free Account".');
+    } else if(msg.toLowerCase().includes('already registered') || msg.toLowerCase().includes('already been registered')){
+      sa('serr','An account with this email already exists. Try signing in instead.');
+    } else {
+      sa('serr', msg || 'Something went wrong. Please try again.');
+    }
+  } else {
+    sa('sok','Account created! Check your email to confirm.');
+    toast('ok','🎉 Account created!');
+  }
 }
 async function doLogout(){await sb.auth.signOut();toast('ok','👋 Signed out');}
 function selectTool(t){
