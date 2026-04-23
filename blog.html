@@ -4,226 +4,497 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blog — AllPDFStuff</title>
-  <meta name="description" content="Tips, guides and PDF insights. Practical guides to help you work smarter with PDF documents." />
-  <link rel="canonical" href="https://www.allpdfstuff.com/blog" />
-  <!-- Open Graph — Fix #17 -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.allpdfstuff.com/blog" />
-  <meta property="og:title" content="Blog — AllPDFStuff" />
-  <meta property="og:description" content="Tips, guides and PDF insights. Practical guides to help you work smarter with PDF documents." />
-  <meta property="og:image" content="https://www.allpdfstuff.com/og-image.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Blog — AllPDFStuff" />
-  <meta name="twitter:description" content="Tips, guides and PDF insights. Practical guides to help you work smarter with PDF documents." />
-  <meta name="twitter:image" content="https://www.allpdfstuff.com/og-image.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <meta name="description" content="Tips, guides and PDF insights. Practical guides to help you work smarter with PDF documents. From quick tips to deep dives." />
+  <link rel="canonical" href="https://www.allpdfstuff.com/blog.html" />
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      --bg: #faf8f4; --bg2: #f3efe8; --bg3: #ede8df;
-      --txt: #1a1714; --txt2: #3d3830; --mut: #8a8070; --mut2: #6b6055;
-      --or: #e8620a; --or2: #f97316;
-      --bdr: rgba(0,0,0,0.08); --obdr: rgba(232,98,10,0.25); --oglow: rgba(232,98,10,0.08);
-      --shadow: 0 1px 3px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.06);
-      --shadow-lg: 0 8px 32px rgba(0,0,0,.1);
-      --serif: 'Cormorant Garamond', Georgia, serif;
-      --sans: 'Inter', system-ui, sans-serif;
+      --black: #0a0a0a;
+      --white: #ffffff;
+      --gray-50: #f9f9f8;
+      --gray-100: #f0efec;
+      --gray-200: #e2e1dc;
+      --gray-400: #a09e97;
+      --gray-600: #6b6963;
+      --gray-800: #2c2b28;
+      --blue: #2563eb;
+      --blue-light: #eff6ff;
+      --blue-dark: #1d4ed8;
+      --green: #16a34a;
+      --green-light: #f0fdf4;
+      --amber-light: #fffbeb;
+      --font-display: 'Lora', Georgia, 'Times New Roman', serif;
+      --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --radius: 10px;
+      --radius-sm: 6px;
     }
-    body { background: var(--bg); color: var(--txt); font-family: var(--sans); font-size: 16px; line-height: 1.6; }
-    nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 48px; background: rgba(250,248,244,.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--bdr); }
-    .logo { font-family: var(--serif); font-size: 1.45rem; font-weight: 600; color: var(--txt); text-decoration: none; letter-spacing: .02em; }
-    .logo em { font-style: italic; color: var(--or); }
-    .nav-links { display: flex; gap: 32px; list-style: none; }
-    .nav-links a { font-size: .86rem; font-weight: 500; color: var(--mut2); text-decoration: none; transition: color .2s; }
-    .nav-links a:hover { color: var(--or); }
-    .nav-r { display: flex; align-items: center; gap: 12px; }
-    .btn-ghost { background: transparent; border: 1px solid var(--bdr); color: var(--txt); padding: 9px 22px; border-radius: 100px; font-family: var(--sans); font-size: .84rem; font-weight: 500; cursor: pointer; transition: all .2s; letter-spacing: .02em; }
-    .btn-ghost:hover { border-color: var(--or); color: var(--or); }
-    .btn-pill { background: var(--or); color: #fff; padding: 10px 24px; border-radius: 100px; font-size: .84rem; font-weight: 700; text-decoration: none; transition: all .2s; border: none; cursor: pointer; font-family: var(--sans); }
-    .btn-pill:hover { background: var(--or2); transform: translateY(-1px); }
-    .page-hero { padding: 72px 48px 60px; text-align: center; border-bottom: 1px solid var(--bdr); background: var(--bg2); }
-    .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: .84rem; color: var(--mut2); text-decoration: none; margin-bottom: 32px; transition: color .2s; }
-    .back-link:hover { color: var(--or); }
-    .eyebrow { font-size: .75rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--or); margin-bottom: 16px; }
-    .page-hero h1 { font-family: var(--serif); font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 600; letter-spacing: -.03em; line-height: 1.1; margin-bottom: 16px; }
-    .page-hero h1 em { font-style: italic; color: var(--or); }
-    .page-hero p { color: var(--mut2); font-size: 1.05rem; max-width: 480px; margin: 0 auto; line-height: 1.7; }
-    .blog-wrap { max-width: 1100px; margin: 0 auto; padding: 72px 48px 96px; }
-    .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-    .blog-card { background: var(--bg); border: 1px solid var(--bdr); border-radius: 20px; padding: 36px 32px; display: flex; flex-direction: column; gap: 16px; box-shadow: var(--shadow); transition: transform .2s, box-shadow .2s; text-decoration: none; color: inherit; }
-    .blog-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--obdr); }
-    .card-tag { display: inline-flex; align-items: center; gap: 6px; font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--or); background: var(--oglow); border: 1px solid var(--obdr); padding: 4px 12px; border-radius: 100px; width: fit-content; }
-    .card-date { font-size: .8rem; color: var(--mut); }
-    .card-title { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; line-height: 1.25; letter-spacing: -.01em; color: var(--txt); }
-    .card-desc { font-size: .88rem; color: var(--mut2); line-height: 1.65; flex: 1; }
-    .card-cta { display: inline-flex; align-items: center; gap: 6px; font-size: .84rem; font-weight: 600; color: var(--or); margin-top: 4px; }
-    .newsletter { background: linear-gradient(135deg, #fff8f2, #fdf4ec); border: 1px solid var(--obdr); border-radius: 20px; padding: 52px 48px; text-align: center; margin-top: 64px; }
-    .newsletter h2 { font-family: var(--serif); font-size: 1.9rem; font-weight: 600; font-style: italic; margin-bottom: 10px; letter-spacing: -.02em; }
-    .newsletter p { color: var(--mut2); font-size: .94rem; margin-bottom: 24px; }
-    .nl-form { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
-    .nl-input { background: var(--bg); border: 1px solid var(--bdr); color: var(--txt); padding: 12px 20px; border-radius: 100px; font-family: var(--sans); font-size: .9rem; width: 280px; outline: none; transition: border-color .2s; }
-    .nl-input:focus { border-color: var(--or); }
-    .nl-btn { background: var(--or); color: #fff; border: none; padding: 12px 28px; border-radius: 100px; font-family: var(--sans); font-size: .9rem; font-weight: 700; cursor: pointer; transition: all .2s; }
-    .nl-btn:hover { background: var(--or2); transform: translateY(-1px); }
-    footer { background: var(--bg); border-top: 1px solid var(--bdr); padding: 56px 48px 28px; }
-    .ft-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 40px; border-bottom: 1px solid var(--bdr); }
-    .ft-logo { font-family: var(--serif); font-size: 1.45rem; font-weight: 600; text-decoration: none; color: var(--txt); margin-bottom: 10px; display: block; }
-    .ft-logo em { font-style: italic; color: var(--or); }
-    .ft-brand p { color: var(--mut); font-size: .86rem; line-height: 1.7; max-width: 220px; }
-    .ft-col h4 { font-size: .74rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--mut); margin-bottom: 16px; }
-    .ft-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .ft-col a { color: var(--mut2); text-decoration: none; font-size: .86rem; transition: color .2s; }
-    .ft-col a:hover { color: var(--or); }
-    .ft-bot { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; color: var(--mut); font-size: .78rem; flex-wrap: wrap; gap: 8px; }
-    @media (max-width: 1024px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } .ft-top { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 768px) { nav { padding: 16px 20px; } .nav-links { display: none; } .page-hero { padding: 48px 20px 40px; } .blog-wrap { padding: 48px 20px 64px; } .blog-grid { grid-template-columns: 1fr; } .newsletter { padding: 36px 24px; } footer { padding: 40px 20px 24px; } .ft-top { grid-template-columns: 1fr; gap: 28px; } .ft-bot { flex-direction: column; text-align: center; } }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--black);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav.site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--gray-200);
+      padding: 0 2rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--black);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-logo em { font-style: italic; color: var(--blue); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      color: var(--gray-600);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--black); }
+
+    .nav-links a.active { color: var(--black); font-weight: 500; }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 2rem 2rem;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--blue);
+      text-decoration: none;
+      margin-bottom: 2rem;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--blue-dark); }
+
+    .page-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 4vw, 38px);
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--black);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    h1 em { font-style: italic; color: var(--blue); }
+
+    .page-subtitle {
+      font-size: 16px;
+      color: var(--gray-600);
+      font-weight: 300;
+      max-width: 520px;
+    }
+
+    /* ── BLOG GRID ── */
+    .blog-grid-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 1rem 2rem 3rem;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 1.5rem;
+    }
+
+    /* ── BLOG CARD ── */
+    .blog-card {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      background: var(--white);
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+    }
+
+    .blog-card:hover {
+      border-color: var(--blue);
+      box-shadow: 0 4px 20px rgba(37, 99, 235, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .card-icon {
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 20px;
+      letter-spacing: 0.03em;
+    }
+
+    .badge-blue  { background: var(--blue-light); color: var(--blue-dark); }
+    .badge-green { background: var(--green-light); color: var(--green); }
+    .badge-amber { background: var(--amber-light); color: #92400e; }
+    .badge-gray  { background: var(--gray-100); color: var(--gray-600); }
+
+    .card-date {
+      font-size: 12px;
+      color: var(--gray-400);
+      margin-left: auto;
+    }
+
+    .card-title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--black);
+      line-height: 1.3;
+      margin-bottom: 0.625rem;
+      letter-spacing: -0.01em;
+    }
+
+    .card-excerpt {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--gray-600);
+      font-weight: 300;
+      flex: 1;
+      margin-bottom: 1.25rem;
+    }
+
+    .card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--blue);
+      transition: gap 0.2s;
+    }
+
+    .blog-card:hover .card-cta { gap: 8px; }
+
+    /* ── NEWSLETTER ── */
+    .newsletter-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 2rem 4rem;
+    }
+
+    .newsletter-box {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .newsletter-text h2 {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 4px;
+    }
+
+    .newsletter-text p {
+      font-size: 14px;
+      color: var(--gray-600);
+      font-weight: 300;
+    }
+
+    .newsletter-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--black);
+      color: var(--white);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 10px 20px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+
+    .newsletter-btn:hover { background: var(--blue); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black);
+      color: #a0a0a0;
+      padding: 2rem;
+    }
+
+    .footer-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--white);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .footer-logo em { font-style: italic; color: var(--blue); }
+
+    .footer-tagline {
+      font-size: 13px;
+      color: #6b6b6b;
+      max-width: 220px;
+      line-height: 1.5;
+    }
+
+    .footer-col h4 {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: #6b6b6b;
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-col li { margin-bottom: 6px; }
+
+    .footer-col a {
+      font-size: 13px;
+      color: #a0a0a0;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover { color: var(--white); }
+
+    .footer-bottom {
+      max-width: 860px;
+      margin: 1.5rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid #1f1f1f;
+      font-size: 12px;
+      color: #5a5a5a;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav.site-nav { padding: 0 1rem; }
+      .nav-links { gap: 1rem; }
+      .page-header, .blog-grid-wrap, .newsletter-wrap { padding-left: 1rem; padding-right: 1rem; }
+      .blog-grid { grid-template-columns: 1fr; }
+      .newsletter-box { flex-direction: column; align-items: flex-start; }
+      .footer-inner { flex-direction: column; }
+    }
   </style>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 </head>
+
 <body>
 
-<!-- Fix #18: Added Sign in button to nav -->
-<nav>
-  <a href="/" class="logo">All<em>PDF</em>Stuff</a>
-  <ul class="nav-links">
-    <li><a href="/#tools">Tools</a></li>
-    <li><a href="/#pricing">Pricing</a></li>
-    <li><a href="/about.html">About</a></li>
-    <li><a href="/contact.html">Contact</a></li>
-  </ul>
-  <div class="nav-r">
-    <a href="/" class="btn-ghost">← Back to Tools</a>
-    <a href="/#pricing" class="btn-pill">Get Pro →</a>
-  </div>
-</nav>
+  <!-- NAV -->
+  <nav class="site-nav">
+    <a href="https://www.allpdfstuff.com/index.html" class="nav-logo">All<em>PDF</em>Stuff</a>
+    <ul class="nav-links">
+      <li><a href="https://www.allpdfstuff.com/index.html#tools">Tools</a></li>
+      <li><a href="https://www.allpdfstuff.com/index.html#pricing">Pricing</a></li>
+      <li><a href="https://www.allpdfstuff.com/about.html">About</a></li>
+      <li><a href="https://www.allpdfstuff.com/contact.html">Contact</a></li>
+    </ul>
+  </nav>
 
-<div class="page-hero">
-  <a href="/" class="back-link">← Back to Tools</a>
-  <div class="eyebrow">Blog</div>
-  <h1>Tips, guides &amp;<br><em>PDF insights</em></h1>
-  <p>Practical guides to help you work smarter with PDF documents. From quick tips to deep dives.</p>
-</div>
-
-<div class="blog-wrap">
-  <div class="blog-grid">
-
-    <a href="/blog-post-1" class="blog-card">
-      <div class="card-tag">📄 PDF Guide</div>
-      <div class="card-date">20 March 2026</div>
-      <div class="card-title">How to Compress a PDF Without Losing Quality</div>
-      <div class="card-desc">Large PDF files can be a nightmare to email or upload. In this guide, we walk you through the best methods to reduce PDF file size while keeping your document looking sharp.</div>
-      <div class="card-cta">Read article →</div>
-    </a>
-
-    <a href="/blog-how-to-merge-pdfs" class="blog-card">
-      <div class="card-tag">🔗 Merge Tips</div>
-      <div class="card-date">15 March 2026</div>
-      <div class="card-title">5 Ways to Merge PDFs Like a Pro</div>
-      <div class="card-desc">Whether you're combining invoices, reports, or contracts — merging PDFs is a daily task for most office workers. Here are 5 fast methods.</div>
-      <div class="card-cta">Read article →</div>
-    </a>
-
-    <a href="/blog-repair-pdf" class="blog-card">
-      <div class="card-tag">🔧 PDF Repair</div>
-      <div class="card-date">2 April 2026</div>
-      <div class="card-title">How to Repair a Damaged or Corrupted PDF File</div>
-      <div class="card-desc">PDF won't open? Learn how to repair a damaged or corrupted PDF file — step-by-step methods that actually work. Fix broken PDFs fast, no software download needed.</div>
-      <div class="card-cta">Read article →</div>
-    </a>
-
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <a href="https://www.allpdfstuff.com/index.html" class="back-link">← Back to Tools</a>
+    <p class="page-label">Blog</p>
+    <h1>Tips, guides &amp; <em>PDF insights</em></h1>
+    <p class="page-subtitle">Practical guides to help you work smarter with PDF documents. From quick tips to deep dives.</p>
   </div>
 
-  <div class="newsletter">
-    <h2>Get PDF tips in your inbox</h2>
-    <p>Join our newsletter for monthly PDF tips, guides, and feature updates. No spam, unsubscribe anytime.</p>
-    <div class="nl-form" id="nlForm">
-      <input type="email" class="nl-input" id="nlEmail" placeholder="Your email address" required />
-      <button class="nl-btn" id="nlBtn" onclick="subscribeNewsletter(event)">Subscribe →</button>
+  <!-- BLOG GRID -->
+  <div class="blog-grid-wrap">
+    <div class="blog-grid">
+
+      <!-- CARD 1 -->
+      <a href="https://www.allpdfstuff.com/blog-post-1.html" class="blog-card">
+        <div class="card-top">
+          <span class="card-icon">📄</span>
+          <span class="badge badge-blue">PDF</span>
+          <span class="badge badge-gray">Guide</span>
+          <span class="card-date">20 March 2026</span>
+        </div>
+        <p class="card-title">How to Compress a PDF Without Losing Quality</p>
+        <p class="card-excerpt">Large PDF files can be a nightmare to email or upload. In this guide, we walk you through the best methods to reduce PDF file size while keeping your document looking sharp.</p>
+        <span class="card-cta">Read article →</span>
+      </a>
+
+      <!-- CARD 2 -->
+      <a href="https://www.allpdfstuff.com/blog-post-2.html" class="blog-card">
+        <div class="card-top">
+          <span class="card-icon">🔗</span>
+          <span class="badge badge-green">Merge</span>
+          <span class="badge badge-gray">Tips</span>
+          <span class="card-date">15 March 2026</span>
+        </div>
+        <p class="card-title">5 Ways to Merge PDFs Like a Pro</p>
+        <p class="card-excerpt">Whether you're combining invoices, reports, or contracts — merging PDFs is a daily task for most office workers. Here are 5 fast methods.</p>
+        <span class="card-cta">Read article →</span>
+      </a>
+
+      <!-- CARD 3 -->
+      <a href="https://www.allpdfstuff.com/blog-post-3.html" class="blog-card">
+        <div class="card-top">
+          <span class="card-icon">📊</span>
+          <span class="badge badge-amber">Excel</span>
+          <span class="badge badge-gray">Tutorial</span>
+          <span class="card-date">10 March 2026</span>
+        </div>
+        <p class="card-title">PDF to Excel: Extract Tables Perfectly Every Time</p>
+        <p class="card-excerpt">Converting PDF tables to editable Excel spreadsheets used to require expensive software. Not anymore. Here's how to do it in seconds.</p>
+        <span class="card-cta">Read article →</span>
+      </a>
+
+      <!-- CARD 4 — NEW -->
+      <a href="https://www.allpdfstuff.com/blog-post-4.html" class="blog-card">
+        <div class="card-top">
+          <span class="card-icon">🔒</span>
+          <span class="badge badge-blue">Security</span>
+          <span class="badge badge-gray">Guide</span>
+          <span class="card-date">23 April 2026</span>
+        </div>
+        <p class="card-title">Best PDF Protection Tools for Self-Employed Professionals</p>
+        <p class="card-excerpt">Discover how Protect PDF, watermarks, and PDF/A archiving help sole traders and contractors secure loan contracts, invoices, and business documents every day.</p>
+        <span class="card-cta">Read article →</span>
+      </a>
+
     </div>
-    <div id="nlSuccess" style="display:none; margin-top:16px; color:var(--or); font-weight:600; font-size:.95rem;">✅ You're subscribed! Thanks for joining.</div>
-    <div id="nlError" style="display:none; margin-top:16px; color:#c0392b; font-size:.9rem;">❌ Something went wrong. Please try again or email us directly.</div>
   </div>
-</div>
 
-<footer>
-  <div class="ft-top">
-    <div class="ft-brand">
-      <a href="/" class="ft-logo">All<em>PDF</em>Stuff</a>
-      <p>The fastest, simplest way to work with PDFs online. Professional tools for everyone.</p>
-    </div>
-    <!-- Fix #11: Footer tool links now point to /#upload instead of non-existent pages -->
-    <div class="ft-col">
-      <h4>Tools</h4>
-      <ul>
-        <li><a href="/#upload">Compress PDF</a></li>
-        <li><a href="/#upload">Merge PDF</a></li>
-        <li><a href="/#upload">Split PDF</a></li>
-        <li><a href="/#upload">PDF to JPG</a></li>
-      </ul>
-    </div>
-    <div class="ft-col">
-      <h4>Company</h4>
-      <ul>
-        <li><a href="/about.html">About</a></li>
-        <li><a href="/#pricing">Pricing</a></li>
-        <li><a href="/blog.html">Blog</a></li>
-        <li><a href="/contact.html">Contact</a></li>
-      </ul>
-    </div>
-    <div class="ft-col">
-      <h4>Legal</h4>
-      <ul>
-        <li><a href="/privacy.html">Privacy Policy</a></li>
-        <li><a href="/terms.html">Terms of Service</a></li>
-        <li><a href="/cookies.html">Cookie Policy</a></li>
-        <li><a href="/gdpr.html">GDPR</a></li>
-      </ul>
+  <!-- NEWSLETTER -->
+  <div class="newsletter-wrap">
+    <div class="newsletter-box">
+      <div class="newsletter-text">
+        <h2>Get PDF tips in your inbox</h2>
+        <p>Join our newsletter for monthly PDF tips, guides, and feature updates. No spam, unsubscribe anytime.</p>
+      </div>
+      <a href="https://www.allpdfstuff.com/contact.html" class="newsletter-btn">Subscribe →</a>
     </div>
   </div>
-  <div class="ft-bot">
-    <span>© 2026 AllPDFStuff.com — All rights reserved</span>
-    <span>🔒 Files auto-deleted after 1 hour</span>
-  </div>
-</footer>
 
-<script>
-async function subscribeNewsletter(e) {
-  e.preventDefault();
-  const email = document.getElementById('nlEmail').value.trim();
-  const btn = document.getElementById('nlBtn');
-  const success = document.getElementById('nlSuccess');
-  const error = document.getElementById('nlError');
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <a href="https://www.allpdfstuff.com/index.html" class="footer-logo">All<em>PDF</em>Stuff</a>
+        <p class="footer-tagline">The fastest, simplest way to work with PDFs online. Professional tools for everyone.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Tools</h4>
+        <ul>
+          <li><a href="https://www.allpdfstuff.com/index.html#upload">Compress PDF</a></li>
+          <li><a href="https://www.allpdfstuff.com/index.html#upload">Merge PDF</a></li>
+          <li><a href="https://www.allpdfstuff.com/index.html#upload">Split PDF</a></li>
+          <li><a href="https://www.allpdfstuff.com/index.html#upload">PDF to Word</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="https://www.allpdfstuff.com/about.html">About</a></li>
+          <li><a href="https://www.allpdfstuff.com/index.html#pricing">Pricing</a></li>
+          <li><a href="https://www.allpdfstuff.com/blog.html">Blog</a></li>
+          <li><a href="https://www.allpdfstuff.com/contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="https://www.allpdfstuff.com/privacy.html">Privacy Policy</a></li>
+          <li><a href="https://www.allpdfstuff.com/terms.html">Terms of Service</a></li>
+          <li><a href="https://www.allpdfstuff.com/cookies.html">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 AllPDFStuff.com — All rights reserved 🔒 Files auto-deleted after 1 hour
+    </div>
+  </footer>
 
-  if (!email || !email.includes('@')) {
-    document.getElementById('nlEmail').focus();
-    return;
-  }
-
-  btn.textContent = 'Subscribing…';
-  btn.disabled = true;
-  success.style.display = 'none';
-  error.style.display = 'none';
-
-  try {
-    const res = await fetch('https://formspree.io/f/mvzwnjzr', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ email: email, _subject: 'New Newsletter Subscriber — AllPDFStuff', message: 'New newsletter signup: ' + email })
-    });
-
-    if (res.ok) {
-      document.getElementById('nlForm').style.display = 'none';
-      success.style.display = 'block';
-    } else {
-      throw new Error('Failed');
-    }
-  } catch {
-    btn.textContent = 'Subscribe →';
-    btn.disabled = false;
-    error.style.display = 'block';
-  }
-}
-</script>
 </body>
 </html>
