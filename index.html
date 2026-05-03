@@ -1,26 +1,29 @@
-<div class="t-badge pro">Pro</div><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AllPDFStuff — Every PDF Tool You'll Ever Need</title>
   <meta name="description" content="Convert, merge, split, compress and edit PDF files online. Fast, secure, and easy to use." />
-  <!-- Open Graph — Fix #17 -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.allpdfstuff.com/" />
-  <meta property="og:title" content="AllPDFStuff — Every PDF Tool You'll Ever Need" />
-  <meta property="og:description" content="Convert, compress, merge, split and edit PDF files right in your browser. No software. No fuss. Fast, secure, free to start." />
-  <meta property="og:image" content="https://www.allpdfstuff.com/og-image.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="AllPDFStuff — Every PDF Tool You'll Ever Need" />
-  <meta name="twitter:description" content="Convert, compress, merge, split and edit PDF files right in your browser. No software. No fuss." />
-  <meta name="twitter:image" content="https://www.allpdfstuff.com/og-image.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23e8620a'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-size='18' font-family='Georgia,serif' font-style='italic' font-weight='700' fill='white'>P</text></svg>" />
+
+  <!-- Google Analytics GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZP7PTTQBX6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ZP7PTTQBX6');
+  </script>
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{
+      /* ── LIGHT THEME ── */
       --bg:#faf8f4;--bg2:#f3efe8;--bg3:#ede8df;--bg4:#e5dfd4;
       --or:#e8620a;--or2:#f97316;--or3:#fb923c;
       --txt:#1a1714;--txt2:#3d3830;--mut:#8a8070;--mut2:#6b6055;
@@ -33,6 +36,8 @@
     html{scroll-behavior:smooth}
     body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:16px;line-height:1.6;overflow-x:hidden}
     body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9997;opacity:.5}
+
+    /* NAV */
     nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;background:rgba(250,248,244,.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--bdr)}
     .logo{font-family:var(--serif);font-size:1.45rem;font-weight:600;letter-spacing:.02em;color:var(--txt);text-decoration:none}
     .logo em{font-style:italic;color:var(--or)}
@@ -44,6 +49,8 @@
     .btn-ghost:hover{border-color:var(--or);color:var(--or)}
     .btn-pill{background:var(--or);color:#fff;border:none;padding:10px 24px;border-radius:100px;font-family:var(--sans);font-size:.84rem;font-weight:700;cursor:pointer;transition:all .2s;text-decoration:none;display:inline-flex;align-items:center;gap:6px;letter-spacing:.02em}
     .btn-pill:hover{background:var(--or2);transform:translateY(-1px);box-shadow:0 8px 28px rgba(232,98,10,.28)}
+
+    /* HERO */
     .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 48px 72px;position:relative;overflow:hidden}
     .hero-ghost{position:absolute;top:45%;left:50%;transform:translate(-50%,-50%);font-family:var(--serif);font-size:clamp(140px,20vw,300px);font-weight:700;font-style:italic;color:rgba(232,98,10,.055);white-space:nowrap;pointer-events:none;user-select:none;letter-spacing:-.04em;line-height:1;z-index:0}
     .hero-content{position:relative;z-index:1}
@@ -57,11 +64,15 @@
     .hero-stats{display:flex;gap:44px;padding-top:52px;border-top:1px solid var(--bdr);margin-top:52px;animation:fadeUp .7s ease .22s both;flex-wrap:wrap}
     .stat-n{font-family:var(--serif);font-size:2.7rem;font-weight:600;font-style:italic;color:var(--or);line-height:1;letter-spacing:-.02em}
     .stat-l{font-size:.78rem;color:var(--mut2);margin-top:4px;letter-spacing:.04em}
+
+    /* MARQUEE */
     .mq-wrap{overflow:hidden;border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);background:var(--bg3);padding:18px 0}
     .mq-track{display:flex;animation:mq 26s linear infinite;width:max-content}
     .mq-track span{font-family:var(--serif);font-style:italic;font-size:1.25rem;font-weight:500;color:var(--mut);white-space:nowrap;padding:0 28px}
     .mq-track span b{color:var(--or);font-style:normal;font-weight:600}
     @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    /* TOOLS */
     .sec{padding:110px 48px;max-width:1280px;margin:0 auto}
     .sec-eye{display:flex;align-items:center;gap:14px;font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--or);margin-bottom:22px}
     .sec-eye::after{content:'';flex:1;height:1px;background:var(--bdr);max-width:80px}
@@ -83,6 +94,8 @@
     .tag-f{background:rgba(74,222,128,.1);color:#4ade80;border:1px solid rgba(74,222,128,.15)}
     .tag-p{background:var(--oglow);color:var(--or);border:1px solid var(--obdr)}
     .t-arr{width:30px;height:30px;border-radius:50%;border:1px solid var(--bdr);display:flex;align-items:center;justify-content:center;font-size:.83rem;transition:transform .2s;color:var(--mut2)}
+
+    /* UPLOAD */
     .up-wrap{background:var(--bg2);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);padding:96px 48px}    .up-inner{max-width:740px;margin:0 auto}
     .pills{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:34px}
     .pill{background:var(--bg);border:1px solid var(--bdr);color:var(--mut2);padding:9px 18px;border-radius:100px;font-family:var(--sans);font-size:.83rem;font-weight:500;cursor:pointer;transition:all .2s;box-shadow:var(--shadow)}
@@ -101,6 +114,8 @@
     .res-ico{font-size:3.2rem}
     .res-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:6px}
     @keyframes spin{to{transform:rotate(360deg)}}
+
+    /* HOW */
     .how-wrap{background:var(--bg2);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);padding:110px 48px}
     .how-inner{max-width:1100px;margin:0 auto}
     .how-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:72px;position:relative}
@@ -114,6 +129,7 @@
     .how-step p{color:var(--mut2);font-size:.86rem;line-height:1.7;max-width:240px}
     .how-tag{display:inline-block;margin-top:16px;font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:4px 13px;border-radius:100px;background:var(--oglow);color:var(--or);border:1px solid var(--obdr)}
     @media(max-width:768px){.how-wrap{padding:76px 22px}.how-steps{grid-template-columns:1fr;gap:48px}.how-steps::before{display:none}.how-step{flex-direction:row;text-align:left;gap:24px;align-items:flex-start}.how-icon-wrap{width:72px;height:72px;flex-shrink:0;margin-bottom:0}.how-icon{font-size:1.7rem}.how-step p{max-width:none}}
+/* REVIEWS */
 .rev-wrap{padding:110px 48px;max-width:1280px;margin:0 auto}
 .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:60px}
 .rev-card{background:var(--bg);border:1px solid var(--bdr);border-radius:20px;padding:36px 32px;display:flex;flex-direction:column;gap:16px;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s}
@@ -132,6 +148,8 @@
 .rev-divider{width:1px;height:56px;background:var(--bdr)}
 @media(max-width:1024px){.rev-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:768px){.rev-wrap{padding:76px 22px}.rev-grid{grid-template-columns:1fr}.rev-summary{padding:28px 22px;gap:28px}.rev-divider{display:none}}
+
+    /* PRICING */
     .pr-wrap{padding:110px 48px;max-width:1180px;margin:0 auto}
     .pr-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:60px;max-width:860px;margin-left:auto;margin-right:auto}
     .pc{background:var(--bg);border:1px solid var(--bdr);border-radius:20px;padding:42px 34px;position:relative;transition:all .2s;box-shadow:var(--shadow)}
@@ -147,10 +165,13 @@
     .pc-list li:last-child{border-bottom:none}
     .pc-list li.y{color:var(--txt)}
     .ck{color:var(--or);flex-shrink:0}.cx{color:var(--mut);flex-shrink:0}
+    /* CTA */
     .cta{margin:0 48px 72px;border-radius:26px;background:linear-gradient(135deg,#fff8f2,#fdf4ec,#fff8f2);border:1px solid var(--obdr);padding:76px 68px;display:flex;align-items:center;justify-content:space-between;gap:36px;position:relative;overflow:hidden;flex-wrap:wrap;box-shadow:var(--shadow-lg)}
     .cta::before{content:'PDF';position:absolute;right:-30px;top:50%;transform:translateY(-50%);font-family:var(--serif);font-size:200px;font-weight:700;font-style:italic;color:rgba(232,98,10,.07);pointer-events:none;letter-spacing:-.05em;line-height:1;user-select:none}
     .cta-l h2{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,3.2rem);font-weight:600;font-style:italic;letter-spacing:-.03em;line-height:1.1;margin-bottom:12px}
     .cta-l p{color:var(--mut2);font-size:.93rem;max-width:400px;line-height:1.65}
+
+    /* FOOTER */
     footer{background:var(--bg);border-top:1px solid var(--bdr);padding:68px 48px 34px}
     .ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:52px;padding-bottom:52px;border-bottom:1px solid var(--bdr)}
     .ft-logo{font-family:var(--serif);font-size:1.45rem;font-weight:600;text-decoration:none;color:var(--txt);margin-bottom:14px;display:block}
@@ -161,6 +182,7 @@
     .ft-col a{color:var(--mut2);text-decoration:none!important;font-size:.86rem;transition:color .2s}
     .ft-col a:hover{color:var(--or)}
     .ft-bot{display:flex;justify-content:space-between;align-items:center;padding-top:28px;color:var(--mut);font-size:.78rem;flex-wrap:wrap;gap:10px}
+    /* MODAL */
     .overlay{position:fixed;inset:0;background:rgba(26,23,20,.6);backdrop-filter:blur(12px);z-index:9999;display:none;align-items:center;justify-content:center}
     .overlay.open{display:flex}
     .modal{background:var(--bg);border:1px solid var(--bdr);border-radius:26px;padding:50px 42px;width:100%;max-width:430px;position:relative;animation:scUp .22s ease;box-shadow:var(--shadow-lg)}
@@ -177,6 +199,7 @@
     .al-err{background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.2);color:#f87171}
     .m-note{text-align:center;margin-top:16px;font-size:.83rem;color:var(--mut)}
     .m-note a{color:var(--or);text-decoration:none!important}
+    /* USER MENU */
     .u-menu{position:relative}
     .u-av{width:36px;height:36px;background:var(--or);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.88rem;color:#000;cursor:pointer}
     .u-drop{position:absolute;top:calc(100% + 10px);right:0;background:var(--bg);border:1px solid var(--bdr);border-radius:13px;padding:6px;min-width:170px;display:none;z-index:300;box-shadow:var(--shadow-lg)}
@@ -184,6 +207,7 @@
     .u-drop a,.u-drop button{display:flex;align-items:center;gap:7px;padding:9px 11px;border-radius:7px;text-decoration:none!important;color:var(--txt);font-size:.83rem;background:none;border:none;width:100%;cursor:pointer;font-family:var(--sans);transition:background .15s}
     .u-drop a:hover,.u-drop button:hover{background:var(--bg2)}
     .udiv{height:1px;background:var(--bdr);margin:4px 0}
+    /* TOAST */
     .toast{position:fixed;bottom:22px;right:22px;background:var(--bg);border:1px solid var(--bdr);border-radius:13px;padding:13px 18px;font-size:.86rem;z-index:9999;display:flex;align-items:center;gap:9px;transform:translateY(68px);opacity:0;transition:all .3s;max-width:310px;box-shadow:var(--shadow-lg)}
     .toast.show{transform:translateY(0);opacity:1}
     .toast.ok{border-color:rgba(74,222,128,.22)}
@@ -191,7 +215,17 @@
     @keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
     @keyframes scUp{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
     @media(max-width:1024px){.tools-grid{grid-template-columns:repeat(2,1fr)}.pr-grid{grid-template-columns:repeat(2,1fr);max-width:700px;margin-left:auto;margin-right:auto}.steps{grid-template-columns:1fr}.ft-top{grid-template-columns:1fr 1fr}}
-    @media(max-width:768px){nav{padding:15px 22px}.nav-links{display:none}.hero{padding:0 22px 52px}.sec,.pr-wrap{padding:76px 22px}.pr-grid{grid-template-columns:1fr!important;max-width:420px}.how-wrap,.up-wrap{padding:76px 22px}.tools-grid{grid-template-columns:1fr}.cta{margin:0 22px 56px;padding:48px 28px}.cta::before{display:none}footer{padding:52px 22px 28px}.ft-top{grid-template-columns:1fr;gap:32px}.ft-bot{flex-direction:column;text-align:center}}
+    /* HAMBURGER MENU */
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+    .hamburger span{display:block;width:22px;height:2px;background:var(--txt);border-radius:2px;transition:all .3s}
+    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .hamburger.open span:nth-child(2){opacity:0}
+    .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    .mob-menu{display:none;position:fixed;top:65px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--bdr);padding:18px 22px;z-index:499;flex-direction:column;gap:4px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+    .mob-menu.open{display:flex}
+    .mob-menu a{font-size:.95rem;font-weight:500;color:var(--txt2);text-decoration:none;padding:10px 0;border-bottom:1px solid var(--bdr)}
+    .mob-menu a:last-child{border-bottom:none}
+    @media(max-width:768px){nav{padding:15px 22px}.nav-links{display:none}.hamburger{display:flex}.hero{padding:0 22px 52px}.sec,.pr-wrap{padding:76px 22px}.pr-grid{grid-template-columns:1fr!important;max-width:420px}.how-wrap,.up-wrap{padding:76px 22px}.tools-grid{grid-template-columns:1fr}.cta{margin:0 22px 56px;padding:48px 28px}.cta::before{display:none}footer{padding:52px 22px 28px}.ft-top{grid-template-columns:1fr;gap:32px}.ft-bot{flex-direction:column;text-align:center}}
 </style>
 </head>
 <body>
@@ -206,6 +240,20 @@
   <div class="nav-r" id="navAuth">
     <button class="btn-ghost" onclick="openModal('login')">Sign in</button>
     <a href="#pricing" class="btn-pill">Get Pro →</a>
+  </div>
+  <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mob-menu" id="mobMenu">
+  <a href="#tools" onclick="closeMobileMenu()">Tools</a>
+  <a href="#pricing" onclick="closeMobileMenu()">Pricing</a>
+  <a href="#how" onclick="closeMobileMenu()">How it works</a>
+  <a href="#" onclick="closeMobileMenu();openModal('login')">Sign in</a>
+  <a href="#pricing" onclick="closeMobileMenu()" style="color:var(--or);font-weight:700">Get Pro →</a>
+</div>
   </div>
 </nav>
 
@@ -228,7 +276,7 @@
     <div class="hero-stats">
       <div><div class="stat-n">15</div><div class="stat-l">PDF Tools</div></div>
       <div><div class="stat-n">100%</div><div class="stat-l">Browser-based</div></div>
-      <div><div class="stat-n">Free</div><div class="stat-l">To sign up</div></div>
+      <div><div class="stat-n">Free</div><div class="stat-l">To get started</div></div>
       <div><div class="stat-n">1hr</div><div class="stat-l">Auto file deletion</div></div>
     </div>
   </div>
@@ -237,8 +285,8 @@
 <!-- MARQUEE -->
 <div class="mq-wrap">
   <div class="mq-track">
-    <span>Compress PDF</span><span>·</span><span>Merge PDF</span><span>·</span><span><b>Free to start</b></span><span>·</span><span>Extract Text</span><span>·</span><span>PDF to JPG ✦Pro</span><span>·</span><span><b>Secure &amp; private</b></span><span>·</span><span>Split PDF ✦Pro</span><span>·</span><span>OCR PDF</span><span>·</span><span>Watermark PDF</span><span>·</span><span>Word to PDF</span><span>·</span><span><b>No software needed</b></span><span>·</span><span>Rotate PDF</span><span>·</span><span>PDF to Excel</span><span>·</span><span><b>Files deleted in 1hr</b></span><span>·</span>
-    <span>Compress PDF</span><span>·</span><span>Merge PDF</span><span>·</span><span><b>Free to start</b></span><span>·</span><span>Extract Text</span><span>·</span><span>PDF to JPG ✦Pro</span><span>·</span><span><b>Secure &amp; private</b></span><span>·</span><span>Split PDF ✦Pro</span><span>·</span><span>OCR PDF</span><span>·</span><span>Watermark PDF</span><span>·</span><span>Word to PDF</span><span>·</span><span><b>No software needed</b></span><span>·</span><span>Rotate PDF</span><span>·</span><span>PDF to Excel</span><span>·</span><span><b>Files deleted in 1hr</b></span><span>·</span>
+    <span>Compress PDF</span><span>·</span><span>Merge PDF</span><span>·</span><span><b>Free to start</b></span><span>·</span><span>Extract Text</span><span>·</span><span>PDF to JPG ✦Pro</span><span>·</span><span><b>Secure &amp; private</b></span><span>·</span><span>Split PDF ✦Pro</span><span>·</span><span>OCR PDF</span><span>·</span><span>Watermark PDF</span><span>·</span><span>Word to PDF</span><span>·</span><span><b>No software needed</b></span><span>·</span><span>Rotate PDF</span><span>·</span><span><b>Files deleted in 1hr</b></span><span>·</span>
+    <span>Compress PDF</span><span>·</span><span>Merge PDF</span><span>·</span><span><b>Free to start</b></span><span>·</span><span>Extract Text</span><span>·</span><span>PDF to JPG ✦Pro</span><span>·</span><span><b>Secure &amp; private</b></span><span>·</span><span>Split PDF ✦Pro</span><span>·</span><span>OCR PDF</span><span>·</span><span>Watermark PDF</span><span>·</span><span>Word to PDF</span><span>·</span><span><b>No software needed</b></span><span>·</span><span>Rotate PDF</span><span>·</span><span><b>Files deleted in 1hr</b></span><span>·</span>
   </div>
 </div>
 
@@ -348,6 +396,7 @@
     <h2 class="sec-h" style="text-align:center;margin-bottom:10px">Drop your file &amp; <em>go</em></h2>
     <p class="sec-sub" style="text-align:center;margin:0 auto 36px">Upload your file first — then pick what to do with it.</p>
 
+    <!-- Tool picker shown AFTER file is dropped -->
     <div id="toolPicker" style="display:none;background:var(--bg);border:1px solid var(--bdr);border-radius:20px;padding:28px;margin-bottom:24px;box-shadow:var(--shadow-lg)">
       <p style="font-family:var(--serif);font-size:1.3rem;font-weight:600;font-style:italic;margin-bottom:18px;text-align:center">What do you want to do with <span id="pickerFileName" style="color:var(--or)">your file</span>?</p>
       <div style="display:flex;flex-wrap:wrap;gap:9px;justify-content:center">
@@ -367,9 +416,10 @@
         <button class="pill" onclick="pickAndGo('ocr-pdf')">🔍 OCR PDF ✦Pro</button>
         <button class="pill" onclick="pickAndGo('watermark')">💧 Watermark PDF ✦Pro</button>
       </div>
-      <p style="text-align:center;margin-top:16px;font-size:.8rem;color:var(--mut)">Wrong file? <a href="javascript:void(0)" onclick="cancelPick()" style="color:var(--or);text-decoration:none">Choose a different file</a></p>
+      <p style="text-align:center;margin-top:16px;font-size:.8rem;color:var(--mut)">Wrong file? <a href="#" onclick="cancelPick();return false;" style="color:var(--or);text-decoration:none">Choose a different file</a></p>
     </div>
 
+    <!-- WATERMARK PANEL -->
     <div id="watermarkPanel" style="display:none;background:var(--bg);border:1px solid var(--bdr);border-radius:20px;padding:28px;margin-bottom:24px;box-shadow:var(--shadow-lg)">
       <p style="font-family:var(--serif);font-size:1.3rem;font-weight:600;font-style:italic;margin-bottom:18px;text-align:center">💧 Add Watermark to <span style="color:var(--or)" id="wmFileName">your file</span></p>
       <div style="max-width:420px;margin:0 auto">
@@ -400,7 +450,7 @@
 
     <div class="drop" id="dropZ" onclick="document.getElementById('fileInput').click()" ondragover="onOver(event)" ondragleave="onLeave()" ondrop="onDrop(event)">
       <div class="drop-ico">📂</div>
-      <h3 id="dropT">Sign in to upload your file</h3>
+      <h3 id="dropT">Drop your file here to get started</h3>
       <p id="dropD">or click to browse · <strong>drop multiple files to merge</strong><br/><small style="font-size:.76rem;color:var(--mut)">Supports PDF, DOC, DOCX · Max 10 MB free · 100 MB Pro</small></p>
       <button class="btn-pill" style="pointer-events:none">Choose File</button>
       <input type="file" id="fileInput" accept=".pdf,.doc,.docx" onchange="onSel(event)" multiple />
@@ -427,28 +477,43 @@
   <div class="how-inner">
     <div class="sec-eye">How it works</div>
     <h2 class="sec-h" style="text-align:center">Three steps.<br/><em>That's all it takes.</em></h2>
+
     <div class="how-steps">
+
       <div class="how-step">
-        <div class="how-icon-wrap"><span class="how-step-num">1</span><span class="how-icon">🎯</span></div>
+        <div class="how-icon-wrap">
+          <span class="how-step-num">1</span>
+          <span class="how-icon">🎯</span>
+        </div>
         <h3>Pick your tool</h3>
         <p>Choose from 15 PDF tools — compress, merge, split, convert and more. Create a free account to get started.</p>
         <span class="how-tag">Free to start</span>
       </div>
+
       <div class="how-step">
-        <div class="how-icon-wrap"><span class="how-step-num">2</span><span class="how-icon">📂</span></div>
+        <div class="how-icon-wrap">
+          <span class="how-step-num">2</span>
+          <span class="how-icon">📂</span>
+        </div>
         <h3>Drop your file</h3>
         <p>Drag and drop or click to browse. Files up to 10 MB are free. Upgrade to Pro for files up to 100 MB.</p>
         <span class="how-tag">Works in your browser</span>
       </div>
+
       <div class="how-step">
-        <div class="how-icon-wrap"><span class="how-step-num">3</span><span class="how-icon">⚡</span></div>
+        <div class="how-icon-wrap">
+          <span class="how-step-num">3</span>
+          <span class="how-icon">⚡</span>
+        </div>
         <h3>Download instantly</h3>
         <p>Your file is processed in seconds. Download it right away. All files are automatically deleted after 1 hour.</p>
         <span class="how-tag">Auto-deleted in 1hr</span>
       </div>
+
     </div>
   </div>
 </div>
+
 
 <!-- PRICING -->
 <div class="pr-wrap" id="pricing">
@@ -461,14 +526,14 @@
       <div class="pc-price"><sup>$</sup>0</div>
       <div class="pc-per">forever — no credit card</div>
       <ul class="pc-list">
-        <li class="y"><span class="ck">✓</span>5 tasks per day</li>
+        <li class="y"><span class="ck">✓</span>5 tasks per month</li>
         <li class="y"><span class="ck">✓</span>Up to 10 MB per file</li>
         <li class="y"><span class="ck">✓</span>Compress &amp; Merge PDF</li>
         <li class="y"><span class="ck">✓</span>Rotate PDF</li>
         <li class="y"><span class="ck">✓</span>Word to PDF</li>
-        <li><span class="cx">✗</span>Split PDF</li>
-        <li><span class="cx">✗</span>Extract Text</li>
-        <li><span class="cx">✗</span>100 MB file limit (Pro only)</li>
+        <li><span class="cx">✗</span>Pro tools (OCR, Split, Unlock…)</li>
+        <li><span class="cx">✗</span>100 MB file limit</li>
+        <li><span class="cx">✗</span>Priority processing</li>
       </ul>
       <button class="btn-ghost" style="width:100%;padding:12px" onclick="openModal('signup')">Get Started Free</button>
     </div>
@@ -478,10 +543,12 @@
       <div class="pc-price"><sup>$</sup>9<span style="font-size:1.5rem;font-style:normal;letter-spacing:0">.99</span></div>
       <div class="pc-per">per month · cancel anytime</div>
       <ul class="pc-list">
-        <li class="y"><span class="ck">✓</span>Unlimited tasks</li>
+        <li class="y"><span class="ck">✓</span>50 tasks per month</li>
         <li class="y"><span class="ck">✓</span>Up to 100 MB per file</li>
         <li class="y"><span class="ck">✓</span>All free tools included</li>
-        <li class="y"><span class="ck">✓</span>Edit, OCR &amp; Watermark PDF</li>
+        <li class="y"><span class="ck">✓</span>PDF to PDF/A</li>
+        <li class="y"><span class="ck">✓</span>OCR PDF</li>
+        <li class="y"><span class="ck">✓</span>Watermark PDF</li>
         <li class="y"><span class="ck">✓</span>PDF to JPG</li>
         <li class="y"><span class="ck">✓</span>Split PDF</li>
         <li class="y"><span class="ck">✓</span>Extract Text (PDF to TXT)</li>
@@ -489,14 +556,15 @@
       </ul>
       <button class="btn-pill" style="width:100%;justify-content:center;font-size:.93rem;padding:12px" onclick="handleSub('pro')">Get Pro →</button>
     </div>
+
   </div>
 </div>
 
 <!-- CTA -->
 <div class="cta">
   <div class="cta-l">
-    <h2>A quick sign up to start<br/><em>your free account</em></h2>
-    <p>Create your free account in seconds — no credit card needed. Get access to our full suite of PDF tools right in your browser.</p>
+    <h2>Ready to simplify<br/>your PDF workflow?</h2>
+    <p>Fast, simple PDF tools right in your browser. No software to install, no credit card needed — just upload and go.</p>
   </div>
   <button class="btn-pill" style="font-size:.97rem;padding:14px 32px;flex-shrink:0" onclick="openModal('signup')">Create free account →</button>
 </div>
@@ -506,20 +574,26 @@
   <div class="sec-eye">Customer Reviews</div>
   <h2 class="sec-h">What do you think of<br/><em>AllPDFStuff?</em></h2>
   <p class="sec-sub">We'd love to hear your feedback. Leave a review and help others discover us.</p>
+
+  <!-- Approved reviews display -->
   <div id="reviewsList" style="margin-bottom:48px"></div>
+
+  <!-- Submit form -->
   <div style="background:var(--bg);border:1px solid var(--bdr);border-radius:20px;padding:42px;max-width:620px;margin:0 auto;box-shadow:var(--shadow)">
     <h3 style="font-family:var(--serif);font-size:1.6rem;font-weight:600;font-style:italic;margin-bottom:6px;letter-spacing:-.02em">Leave a Review</h3>
     <p style="color:var(--mut2);font-size:.86rem;margin-bottom:28px">Share your experience with AllPDFStuff</p>
+
     <div style="margin-bottom:18px">
       <label style="display:block;font-size:.8rem;font-weight:700;color:var(--mut2);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px">YOUR RATING</label>
-      <div id="starPicker" role="radiogroup" aria-label="Star rating" style="display:flex;gap:6px;font-size:2rem;cursor:pointer">
-        <span role="radio" aria-label="1 star" aria-checked="false" tabindex="0" onclick="setStars(1)" onkeydown="if(event.key==='Enter'||event.key===' ')setStars(1)" style="color:rgba(0,0,0,0.08);transition:color .15s">★</span>
-        <span role="radio" aria-label="2 stars" aria-checked="false" tabindex="0" onclick="setStars(2)" onkeydown="if(event.key==='Enter'||event.key===' ')setStars(2)" style="color:rgba(0,0,0,0.08);transition:color .15s">★</span>
-        <span role="radio" aria-label="3 stars" aria-checked="false" tabindex="0" onclick="setStars(3)" onkeydown="if(event.key==='Enter'||event.key===' ')setStars(3)" style="color:rgba(0,0,0,0.08);transition:color .15s">★</span>
-        <span role="radio" aria-label="4 stars" aria-checked="false" tabindex="0" onclick="setStars(4)" onkeydown="if(event.key==='Enter'||event.key===' ')setStars(4)" style="color:rgba(0,0,0,0.08);transition:color .15s">★</span>
-        <span role="radio" aria-label="5 stars" aria-checked="false" tabindex="0" onclick="setStars(5)" onkeydown="if(event.key==='Enter'||event.key===' ')setStars(5)" style="color:rgba(0,0,0,0.08);transition:color .15s">★</span>
+      <div id="starPicker" style="display:flex;gap:6px;font-size:2rem;cursor:pointer">
+        <span onclick="setStars(1)" style="color:rgba(0,0,0,0.08);transition:color .15s">★</span>
+        <span onclick="setStars(2)" style="color:rgba(0,0,0,0.08);transition:color .15s">★</span>
+        <span onclick="setStars(3)" style="color:rgba(0,0,0,0.08);transition:color .15s">★</span>
+        <span onclick="setStars(4)" style="color:rgba(0,0,0,0.08);transition:color .15s">★</span>
+        <span onclick="setStars(5)" style="color:rgba(0,0,0,0.08);transition:color .15s">★</span>
       </div>
     </div>
+
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
       <div>
         <label style="display:block;font-size:.8rem;font-weight:700;color:var(--mut2);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px">YOUR NAME</label>
@@ -530,24 +604,29 @@
         <input id="rvRole" type="text" placeholder="e.g. Designer, London" style="width:100%;background:var(--bg2);border:1px solid var(--bdr);color:var(--txt);padding:11px 14px;border-radius:11px;font-family:var(--sans);font-size:.9rem;outline:none;box-sizing:border-box"/>
       </div>
     </div>
+
     <div style="margin-bottom:22px">
       <label style="display:block;font-size:.8rem;font-weight:700;color:var(--mut2);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px">YOUR REVIEW</label>
       <textarea id="rvText" rows="4" placeholder="Tell us what you think..." style="width:100%;background:var(--bg2);border:1px solid var(--bdr);color:var(--txt);padding:11px 14px;border-radius:11px;font-family:var(--sans);font-size:.9rem;outline:none;resize:vertical;box-sizing:border-box"></textarea>
     </div>
+
     <button onclick="submitReview()" style="background:var(--or);color:#fff;border:none;padding:13px 32px;border-radius:100px;font-family:var(--sans);font-size:.9rem;font-weight:700;cursor:pointer;transition:all .2s">Submit Review →</button>
     <div id="rvMsg" style="display:none;margin-top:14px;padding:11px 14px;border-radius:11px;font-size:.86rem"></div>
   </div>
 </section>
 
 <script>
+// ── REVIEWS ──────────────────────────────────────────
 let _stars = 0;
+
 function setStars(n){
   _stars = n;
   document.querySelectorAll('#starPicker span').forEach((s,i)=>{
     s.style.color = i < n ? '#f59e0b' : 'rgba(0,0,0,0.08)';
-    s.setAttribute('aria-checked', i < n ? 'true' : 'false');
   });
 }
+
+// Load and display approved reviews
 async function loadReviews(){
   const list = document.getElementById('reviewsList');
   if(!sb) return;
@@ -557,35 +636,79 @@ async function loadReviews(){
       .select('name,role,rating,review,created_at')
       .eq('approved', true)
       .order('created_at', { ascending: false });
-    if(error || !data || data.length === 0){ list.innerHTML = ''; return; }
-    const esc = (s) => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
-    list.innerHTML = `<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin-bottom:12px">${data.map(r => `<div class="rev-card"><div class="rev-stars">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</div><p class="rev-text">${esc(r.review)}</p><div class="rev-author"><div class="rev-av">${esc(r.name.charAt(0).toUpperCase())}</div><div><div class="rev-name">${esc(r.name)}</div>${r.role ? `<div class="rev-role">${esc(r.role)}</div>` : ''}</div></div></div>`).join('')}</div>`;
+
+    if(error || !data || data.length === 0){
+      list.innerHTML = '';
+      return;
+    }
+
+    list.innerHTML = `
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin-bottom:12px">
+        ${data.map(r => `
+          <div class="rev-card">
+            <div class="rev-stars">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</div>
+            <p class="rev-text">${r.review}</p>
+            <div class="rev-author">
+              <div class="rev-av">${r.name.charAt(0).toUpperCase()}</div>
+              <div>
+                <div class="rev-name">${r.name}</div>
+                ${r.role ? `<div class="rev-role">${r.role}</div>` : ''}
+              </div>
+            </div>
+          </div>
+        `).join('')}
+      </div>`;
   } catch(e){ list.innerHTML = ''; }
 }
+
+// Submit a new review to Supabase
 async function submitReview(){
-  const stripHtml = (s) => s.replace(/<[^>]*>/g, '').trim();
-  const name = stripHtml(document.getElementById('rvName').value);
-  const role = stripHtml(document.getElementById('rvRole').value);
-  const text = stripHtml(document.getElementById('rvText').value);
-  const msg  = document.getElementById('rvMsg');
+  const name   = document.getElementById('rvName').value.trim();
+  const role   = document.getElementById('rvRole').value.trim();
+  const text   = document.getElementById('rvText').value.trim();
+  const msg    = document.getElementById('rvMsg');
+
   if(!_stars){ toast('err','❌ Please select a star rating'); return; }
   if(!name)  { toast('err','❌ Please enter your name');     return; }
-  if(name.length > 80){ toast('err','❌ Name is too long'); return; }
   if(!text)  { toast('err','❌ Please write your review');   return; }
-  if(text.length > 500){ toast('err','❌ Review must be under 500 characters'); return; }
+
   try {
-    const { error } = await sb.from('reviews').insert([{ name, role: role || null, rating: _stars, review: text, approved: false }]);
+    const { error } = await sb.from('reviews').insert([{
+      name,
+      role: role || null,
+      rating: _stars,
+      review: text,
+      approved: false
+    }]);
+
     if(error) throw error;
-    msg.style.display = 'block'; msg.style.background = 'rgba(74,222,128,.08)'; msg.style.border = '1px solid rgba(74,222,128,.2)'; msg.style.color = '#4ade80';
-    msg.textContent = '✅ Thank you! Your review has been submitted and is pending approval.';
-    document.getElementById('rvName').value = ''; document.getElementById('rvRole').value = ''; document.getElementById('rvText').value = ''; setStars(0);
+
+    msg.style.display    = 'block';
+    msg.style.background = 'rgba(74,222,128,.08)';
+    msg.style.border     = '1px solid rgba(74,222,128,.2)';
+    msg.style.color      = '#4ade80';
+    msg.textContent      = '✅ Thank you! Your review has been submitted and is pending approval.';
+
+    // Clear form
+    document.getElementById('rvName').value = '';
+    document.getElementById('rvRole').value = '';
+    document.getElementById('rvText').value = '';
+    setStars(0);
+
   } catch(e){
-    msg.style.display = 'block'; msg.style.background = 'rgba(248,113,113,.08)'; msg.style.border = '1px solid rgba(248,113,113,.2)'; msg.style.color = '#f87171';
-    msg.textContent = '❌ Something went wrong. Please try again.';
+    msg.style.display    = 'block';
+    msg.style.background = 'rgba(248,113,113,.08)';
+    msg.style.border     = '1px solid rgba(248,113,113,.2)';
+    msg.style.color      = '#f87171';
+    msg.textContent      = '❌ Something went wrong. Please try again. (' + (e.message || 'Unknown error') + ')';
   }
 }
+
+// Load reviews once Supabase is ready
 document.addEventListener('DOMContentLoaded', () => {
-  const checkSb = setInterval(() => { if(sb){ clearInterval(checkSb); loadReviews(); } }, 200);
+  const checkSb = setInterval(() => {
+    if(sb){ clearInterval(checkSb); loadReviews(); }
+  }, 200);
 });
 </script>
 
@@ -597,8 +720,8 @@ document.addEventListener('DOMContentLoaded', () => {
       <p>The fastest, simplest way to work with PDFs online. Professional tools for everyone, right in your browser.</p>
     </div>
     <div class="ft-col"><h4>Tools</h4><ul><li><a href="#upload">Compress PDF</a></li><li><a href="#upload">Merge PDF</a></li><li><a href="#upload">Split PDF</a></li><li><a href="#upload">Extract Text</a></li><li><a href="#upload">PDF to JPG</a></li></ul></div>
-    <div class="ft-col"><h4>Company</h4><ul><li><a href="/about.html">About</a></li><li><a href="#pricing">Pricing</a></li><li><a href="/blog.html">Blog</a></li><li><a href="/contact.html">Contact</a></li></ul></div>
-    <div class="ft-col"><h4>Legal</h4><ul><li><a href="/privacy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Service</a></li><li><a href="/cookies.html">Cookie Policy</a></li><li><a href="/gdpr.html">GDPR</a></li></ul></div>
+    <div class="ft-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="#pricing">Pricing</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="ft-col"><h4>Legal</h4><ul><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li><li><a href="cookies.html">Cookie Policy</a></li><li><a href="privacy.html">GDPR</a></li></ul></div>
   </div>
   <div class="ft-bot"><span>© 2026 AllPDFStuff.com — All rights reserved</span><span>🔒 Files auto-deleted after 1 hour</span></div>
 </footer>
@@ -614,8 +737,8 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="fld"><label>Email</label><input type="email" id="lem" placeholder="you@example.com"/></div>
       <div class="fld"><label>Password</label><input type="password" id="lpw" placeholder="Your password"/></div>
       <button class="btn-pill" style="width:100%;justify-content:center;font-size:.93rem;padding:12px;margin-top:8px" onclick="doLogin()">Sign In</button>
-      <div class="m-note">No account? <a href="javascript:void(0)" onclick="sw('signup')">Sign up free</a></div>
-      <div class="m-note" style="margin-top:4px"><a href="javascript:void(0)" onclick="sw('forgot')" style="color:#999;font-size:0.82rem">Forgot your password?</a></div>
+      <div class="m-note">No account? <a href="#" onclick="sw('signup')">Sign up free</a></div>
+      <div class="m-note" style="margin-top:4px"><a href="#" onclick="doForgotPassword()" style="color:#999;font-size:0.82rem">Forgot your password?</a></div>
     </div>
     <div id="spane" style="display:none">
       <h2>Create account</h2>
@@ -624,16 +747,12 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="fld"><label>Full name</label><input type="text" id="snm" placeholder="Your name"/></div>
       <div class="fld"><label>Email</label><input type="email" id="sem" placeholder="you@example.com"/></div>
       <div class="fld"><label>Password</label><input type="password" id="spw" placeholder="Min. 8 characters"/></div>
+      <div style="display:flex;align-items:flex-start;gap:10px;margin:12px 0 4px">
+        <input type="checkbox" id="smarketing" style="margin-top:3px;accent-color:var(--or);width:15px;height:15px;flex-shrink:0;cursor:pointer"/>
+        <label for="smarketing" style="font-size:.8rem;color:var(--mut2);line-height:1.5;cursor:pointer">Yes, I'd like to receive updates about new features and tips from AllPDFStuff. You can unsubscribe at any time.</label>
+      </div>
       <button class="btn-pill" style="width:100%;justify-content:center;font-size:.93rem;padding:12px;margin-top:8px" onclick="doSignup()">Create Free Account</button>
-      <div class="m-note">Already have an account? <a href="javascript:void(0)" onclick="sw('login')">Sign in</a></div>
-    </div>
-    <div id="fpane" style="display:none">
-      <h2>Reset password</h2>
-      <p class="sub">Enter your email and we'll send you a reset link</p>
-      <div class="al al-ok" id="fok"></div><div class="al al-err" id="ferr"></div>
-      <div class="fld"><label>Email</label><input type="email" id="fem" placeholder="you@example.com"/></div>
-      <button class="btn-pill" style="width:100%;justify-content:center;font-size:.93rem;padding:12px;margin-top:8px" onclick="doForgotPassword()">Send Reset Email</button>
-      <div class="m-note"><a href="javascript:void(0)" onclick="sw('login')" style="color:var(--or)">← Back to sign in</a></div>
+      <div class="m-note">Already have an account? <a href="#" onclick="sw('login')">Sign in</a></div>
     </div>
   </div>
 </div>
@@ -643,25 +762,20 @@ document.addEventListener('DOMContentLoaded', () => {
 <script src="https://js.stripe.com/v3/"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+// ── Globals accessible to onclick= handlers ──
 let sb = null;
 let _stripe = null;
 let user = null;
 let tool = 'compress';
-const PRO = [];
+const PRO = []; // pdf-to-word available to all logged-in users
 
+// ── Init libraries once DOM + scripts are ready ──
 document.addEventListener('DOMContentLoaded', function() {
   const {createClient} = supabase;
   sb = createClient('https://pzimfguaqqcktokwwdeq.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB6aW1mZ3VhcXFja3Rva3d3ZGVxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM3OTQ4MTEsImV4cCI6MjA4OTM3MDgxMX0.OoxZQ4J0xltJYsa6T7Z0IlCueZGHgvEF97EJDO3LUaY');
   sb.auth.onAuthStateChange((_,s)=>{user=s?.user||null;rNav();});
   sb.auth.getSession().then(({data:{session}})=>{user=session?.user||null;rNav();});
   document.getElementById('ov').addEventListener('click',e=>{if(e.target===document.getElementById('ov'))closeModal();});
-  // Fix #25: Auto-open signup modal if ?action=signup in URL
-  const _urlParams = new URLSearchParams(window.location.search);
-  if(_urlParams.get('action') === 'signup'){
-    openModal('signup');
-    // Clean URL without reload
-    history.replaceState(null, '', '/');
-  }
 });
 function getStripe(){
   if(!_stripe){
@@ -670,67 +784,74 @@ function getStripe(){
   }
   return _stripe;
 }
+
+
+
 function rNav(){
   const el=document.getElementById('navAuth');
-  if(user){const i=(user.email||'U')[0].toUpperCase();el.innerHTML=`<div class="u-menu"><div class="u-av" onclick="tDrop()">${i}</div><div class="u-drop" id="uDrop"><a href="account.html">👤 My Account</a><a href="#pricing">⭐ Upgrade</a><div class="udiv"></div><button onclick="doLogout()">🚪 Sign out</button></div></div>`;}
+  if(user){
+    const i=(user.email||'U')[0].toUpperCase();
+    const d=new Date();
+    const k='pdfu_'+d.getFullYear()+'_'+(d.getMonth()+1);
+    const used=parseInt(localStorage.getItem(k)||'0');
+    const pro=isPro();
+    const limit=pro?50:5;
+    const remaining=Math.max(0,limit-used);
+    el.innerHTML=`<div class="u-menu"><div class="u-av" onclick="tDrop()">${i}</div><div class="u-drop" id="uDrop"><div style="padding:9px 11px;font-size:.78rem;color:var(--mut);border-bottom:1px solid var(--bdr);margin-bottom:4px">${remaining} task${remaining!==1?'s':''} left this month</div><a href="account.html">👤 My Account</a><a href="#pricing">⭐ Upgrade</a><div class="udiv"></div><button onclick="doLogout()">🚪 Sign out</button></div></div>`;
+  }
   else el.innerHTML=`<button class="btn-ghost" onclick="openModal('login')">Sign in</button><a href="#pricing" class="btn-pill">Get Pro →</a>`;
 }
 function tDrop(){document.getElementById('uDrop')?.classList.toggle('open');}
 document.addEventListener('click',e=>{if(!e.target.closest('.u-menu'))document.getElementById('uDrop')?.classList.remove('open');});
+
 function openModal(t){document.getElementById('ov').classList.add('open');sw(t);}
 function closeModal(){document.getElementById('ov').classList.remove('open');}
-function sw(t){document.getElementById('lpane').style.display=t==='login'?'block':'none';document.getElementById('spane').style.display=t==='signup'?'block':'none';document.getElementById('fpane').style.display=t==='forgot'?'block':'none';}
+function sw(t){document.getElementById('lpane').style.display=t==='login'?'block':'none';document.getElementById('spane').style.display=t==='signup'?'block':'none';}
+
 function sa(id,msg){const el=document.getElementById(id);el.textContent=msg;el.style.display='block';}
 function ha(...ids){ids.forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='none';});}
+
 async function doForgotPassword(){
-  const email = document.getElementById('fem').value.trim();
-  if(!email){sa('ferr','Please enter your email address.');return;}
-  const{error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:'https://www.allpdfstuff.com/reset-password.html'});
-  if(error)sa('ferr',error.message);
-  else{ha('ferr');sa('fok','✅ Reset email sent! Check your inbox.');document.getElementById('fem').value='';}
+  const email = document.getElementById('lem').value.trim();
+  if(!email){sa('lerr','Please enter your email address first.');return;}
+  const{error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:'https://www.allpdfstuff.com/account.html'});
+  if(error)sa('lerr',error.message);
+  else{ha('lerr');sa('lok','✅ Password reset email sent! Check your inbox.');} 
 }
+
 async function doLogin(){
   ha('lok','lerr');
   const email=document.getElementById('lem').value.trim(),pass=document.getElementById('lpw').value;
   if(!email||!pass){sa('lerr','Please fill in all fields.');return;}
   const{error}=await sb.auth.signInWithPassword({email,password:pass});
-  if(error){
-    const msg = error.message || '';
-    if(msg.toLowerCase().includes('security purposes') || msg.toLowerCase().includes('rate limit')){
-      sa('lerr','⏳ Please wait a moment before trying again.');
-    } else if(msg.toLowerCase().includes('invalid login') || msg.toLowerCase().includes('invalid credentials')){
-      sa('lerr','Incorrect email or password. Please try again.');
-    } else {
-      sa('lerr', msg || 'Something went wrong. Please try again.');
-    }
-  } else {sa('lok','Signed in!');setTimeout(closeModal,1100);toast('ok','✅ Welcome back!');}
+  if(error)sa('lerr',error.message);
+  else{sa('lok','Signed in!');setTimeout(closeModal,1100);toast('ok','✅ Welcome back!');}
 }
 async function doSignup(){
   ha('sok','serr');
   const name=document.getElementById('snm').value.trim(),email=document.getElementById('sem').value.trim(),pass=document.getElementById('spw').value;
+  const marketing=document.getElementById('smarketing').checked;
   if(!name||!email||!pass){sa('serr','Please fill in all fields.');return;}
   if(pass.length<8){sa('serr','Password must be at least 8 characters.');return;}
-  const{error}=await sb.auth.signUp({email,password:pass,options:{data:{full_name:name}}});
-  if(error){
-    // Make rate limit errors human-friendly
-    const msg = error.message || '';
-    if(msg.toLowerCase().includes('security purposes') || msg.toLowerCase().includes('rate limit') || msg.toLowerCase().includes('after')){
-      sa('serr','⏳ Please wait a moment before trying again, then click "Create Free Account".');
-    } else if(msg.toLowerCase().includes('already registered') || msg.toLowerCase().includes('already been registered')){
-      sa('serr','An account with this email already exists. Try signing in instead.');
-    } else {
-      sa('serr', msg || 'Something went wrong. Please try again.');
-    }
-  } else {
-    sa('sok','Account created! Check your email to confirm.');
-    toast('ok','🎉 Account created!');
-  }
+  const{error}=await sb.auth.signUp({email,password:pass,options:{data:{full_name:name,marketing_consent:marketing,marketing_consent_date:new Date().toISOString()}}});
+  if(error)sa('serr',error.message);
+  else{sa('sok','Account created! Check your email.');toast('ok','🎉 Account created!');}
 }
 async function doLogout(){await sb.auth.signOut();toast('ok','👋 Signed out');}
+
 function selectTool(t){
   tool=t;
   document.querySelectorAll('.pill').forEach(b=>b.classList.toggle('on',b.dataset.tool===t));
-  const lbl={compress:'Click to upload your PDF to compress',merge:'Click to upload PDFs to merge',split:'Click to upload your PDF to split','pdf-to-jpg':'Click to upload your PDF to convert to JPG','word-to-pdf':'Click to upload your Word document',rotate:'Click to upload your PDF to rotate','extract-text':'Click to upload your PDF to extract text','page-numbers':'Click to upload your PDF to add page numbers','ocr-pdf':'Click to upload your scanned PDF',watermark:'Click to upload your PDF to watermark','remove-watermark':'Click to upload your PDF to remove watermark',repair:'Click to upload your damaged PDF to repair',unlock:'Click to upload your password-protected PDF','protect-pdf':'Click to upload your PDF to password protect','pdf-to-pdfa':'Click to upload your PDF to convert to PDF/A','convert-image':'Click to upload your image to convert to PDF','pdf-to-excel':'Click to upload your PDF → Excel'};
+  const lbl={compress:'Click to upload your PDF to compress',merge:'Click to upload PDFs to merge',split:'Click to upload your PDF to split','pdf-to-jpg':'Click to upload your PDF to convert to JPG','word-to-pdf':'Click to upload your Word document',rotate:'Click to upload your PDF to rotate','extract-text':'Click to upload your PDF to extract text',
+       'page-numbers':'Click to upload your PDF to add page numbers',
+       'ocr-pdf':'Click to upload your scanned PDF',
+       watermark:'Click to upload your PDF to watermark',
+       'remove-watermark':'Click to upload your PDF to remove watermark',
+       repair:'Click to upload your damaged PDF to repair',
+       unlock:'Click to upload your password-protected PDF',
+       'protect-pdf':'Click to upload your PDF to password protect',
+       'pdf-to-pdfa':'Click to upload your PDF to convert to PDF/A',
+       'convert-image':'Click to upload your image to convert to PDF','pdf-to-excel':'Click to upload your PDF → Excel'};
   document.getElementById('dropT').textContent=lbl[t]||'Click to upload';
   document.getElementById('fileInput').accept=t==='convert-image'?'.jpg,.jpeg,.png,.tiff,.gif,.bmp':'.pdf';
   sh('dropZ');hd('procW');hd('resW');
@@ -738,7 +859,10 @@ function selectTool(t){
 function sh(id){const el=document.getElementById(id);el.style.display='block';}
 function hd(id){document.getElementById(id).style.display='none';}
 function shf(id){document.getElementById(id).style.display='flex';}
+
+// Pending file waiting for tool selection
 let pendingFile = null;
+
 function onOver(e){e.preventDefault();document.getElementById('dropZ').classList.add('over');}
 function onLeave(){document.getElementById('dropZ').classList.remove('over');}
 function onDrop(e){
@@ -751,12 +875,22 @@ function onSel(e){
   const files=Array.from(e.target.files);
   if(files.length>0) showPicker(files);
 }
+
+// Show the tool picker after file is selected
 function showPicker(files){
+  // Block guests before they can even upload
+  if(!user){
+    toast('err','⭐ Please sign in or create a free account to use our tools');
+    openModal('signup');
+    return;
+  }
+  // Accept either single file or array
   if(!Array.isArray(files)) files=[files];
   pendingFile = files;
   const count = files.length;
   const name = count>1 ? count+' files selected' : (files[0].name.length>30 ? files[0].name.substring(0,27)+'...' : files[0].name);
   document.getElementById('pickerFileName').textContent = name;
+  // If multiple files dropped, auto-select merge
   if(count>1){
     document.querySelectorAll('#toolPicker .pill').forEach(b=>b.classList.remove('on'));
     const mergeBtn=document.querySelector('#toolPicker .pill[onclick*="merge"]');
@@ -767,11 +901,14 @@ function showPicker(files){
   document.getElementById('procW').style.display = 'none';
   document.getElementById('resW').style.display = 'none';
 }
+
+// User picks a tool from the picker
 function cancelWatermark(){
   document.getElementById('watermarkPanel').style.display='none';
   document.getElementById('dropZ').style.display='block';
   pendingFile=null;
 }
+
 function applyWatermark(){
   const txt = document.getElementById('wmText').value.trim();
   if(!txt){toast('err','❌ Please enter watermark text');return;}
@@ -785,13 +922,28 @@ function applyWatermark(){
     go(files[0]);
   }
 }
+
 function pickAndGo(t){
-  if(t==='pdf-to-excel'){ toast('err','📊 PDF to Excel coming soon!'); return; }
-  if(!user){ toast('err','👤 Please create a free account to use our tools'); openModal('signup'); return; }
-  if(t==='pdf-to-jpg'&&!isPro()){toast('err','⭐ PDF to JPG requires a Pro account');openModal('signup');return;}
-  if(['extract-text','repair','unlock','protect-pdf','pdf-to-pdfa','convert-image','page-numbers','ocr-pdf','watermark'].includes(t)&&!isPro()){
-    toast('err','⭐ Pro account required for this tool');openModal('signup');return;
+  if(t==='pdf-to-excel'){
+    toast('err','📊 PDF to Excel coming soon! Try PDF to Word instead.');
+    return;
   }
+
+  // ALL tools require a signed-in account
+  if(!user){
+    toast('err','⭐ Please sign in or create a free account to use this tool');
+    openModal('signup');
+    return;
+  }
+
+  // Pro-only tools
+  if(['split','pdf-to-jpg','extract-text','repair','unlock','protect-pdf','pdf-to-pdfa','convert-image','page-numbers','ocr-pdf','watermark'].includes(t)&&!isPro()){
+toast('err','⭐ This is a Pro tool — upgrade your plan to unlock it');
+    closeModal();setTimeout(()=>{window.location.href='#pricing';},300);
+    return;
+  }
+
+  // Protect PDF needs a password
   if(t==='protect-pdf'){
     const pw=prompt('Set a password for this PDF:','');
     if(!pw) return;
@@ -799,11 +951,14 @@ function pickAndGo(t){
     document.getElementById('toolPicker').style.display='none';
     if(pendingFile){
       const files=Array.isArray(pendingFile)?pendingFile:[pendingFile];
+      const f=files[0];
+      // store password temporarily on the go call
       window._protectPw=pw;
-      go(files[0]);
+      go(f);
     }
     return;
   }
+  // Watermark needs text input — show panel instead of processing immediately
   if(t==='watermark'){
     tool = t;
     document.getElementById('toolPicker').style.display='none';
@@ -821,6 +976,8 @@ function pickAndGo(t){
     else go(files[0]);
   }
 }
+
+// Cancel - go back to drop zone
 function cancelPick(){
   pendingFile = null;
   document.getElementById('toolPicker').style.display = 'none';
@@ -828,67 +985,79 @@ function cancelPick(){
   document.getElementById('dropZ').style.display = 'block';
   document.getElementById('fileInput').value = '';
 }
-function selectTool(t){ tool = t; }
+
+// Legacy selectTool kept for tool cards
+function selectTool(t){
+  tool = t;
+}
+
 function isPro(){
   if(!user) return false;
-  try {
-    const jwt = user.access_token || (sb.auth.currentSession?.access_token);
-    if(jwt){
-      const payload = JSON.parse(atob(jwt.split('.')[1]));
-      if(payload.plan === 'pro' || payload.plan === 'business') return true;
-      if(payload.is_admin === true) return true;
-    }
-  } catch(e){}
+  // Admin accounts always have Pro access
   const admins=['darliak7@gmail.com','kongsomd_7@hotmail.com'];
   if(admins.includes(user.email)) return true;
-  return user.user_metadata?.plan==='pro' || user.user_metadata?.plan==='business' || user.app_metadata?.plan==='pro';
+  return user.user_metadata?.plan==='pro'||user.user_metadata?.plan==='business';
 }
 function chkLimit(){
-  if(isPro())return true;
-  const k='pdfu_'+new Date().toDateString();
+  const d=new Date();
+  const k='pdfu_'+d.getFullYear()+'_'+(d.getMonth()+1);
   const n=parseInt(localStorage.getItem(k)||'0');
-  if(n>=5)return false;
-  return true;
+  if(isPro()) return n<50; // Pro = 50 tasks per month
+  return n<5; // Free = 5 tasks per month
 }
 function incLimit(){
-  if(isPro())return;
-  const k='pdfu_'+new Date().toDateString();
+  const d=new Date();
+  const k='pdfu_'+d.getFullYear()+'_'+(d.getMonth()+1);
   const n=parseInt(localStorage.getItem(k)||'0');
   localStorage.setItem(k,n+1);
-  if(user && sb){ sb.rpc('check_rate_limit',{p_user_id:user.id,p_action:'pdf_task',p_limit:9999}).catch(()=>{}); }
+  rNav(); // Refresh the task counter in the dropdown immediately after each task
 }
+
 async function go(file, allFiles){
-  if(!user){ toast('err','👤 Please create a free account to use our tools'); openModal('signup'); sh('dropZ');hd('procW');hd('resW'); return; }
-  if(!chkLimit()){toast('err','📋 Daily limit (5/day) reached — sign up for free or upgrade to Pro!');openModal('signup');return;}
+  if(tool==='pdf-to-word'&&!user){}
+  if(!chkLimit()){toast('err',isPro()?'📋 Monthly limit (50/month) reached — resets next month!':'📋 Monthly limit (5/month) reached — upgrade to Pro for 50 tasks/month!');openModal('signup');return;}
   const max=user?100*1024*1024:10*1024*1024;
   if(file.size>max){toast('err',user?'❌ Max 100 MB':'❌ Max 10 MB free — upgrade to Pro');return;}
-  if(tool==='merge'&&(!allFiles||allFiles.length<2)){ toast('err','❌ Merge needs 2+ PDF files — please drop multiple files at once'); sh('dropZ');hd('procW');hd('resW'); return; }
+  // For merge, need at least 2 files
+  if(tool==='merge'&&(!allFiles||allFiles.length<2)){
+    toast('err','❌ Merge needs 2+ PDF files — please drop multiple files at once');
+    sh('dropZ');hd('procW');hd('resW');
+    return;
+  }
   hd('dropZ');shf('procW');hd('resW');
   try{
     const r=await api(file,tool,allFiles);
     hd('procW');shf('resW');
     document.getElementById('dlBtn').href=r.url;
     document.getElementById('dlBtn').download=r.fn;
-    incLimit();
+    incLimit(); // Only count successful tasks
     toast('ok','✅ Done!');
   }catch(err){hd('procW');sh('dropZ');toast('err','❌ '+(err.message||'Processing failed'));}
 }
+
 async function api(file,t,allFiles){
   const PUB='project_public_c3a9e8f2fc9c20c33b807c9d9f7d1402_tcQsF71c39ce96546f15007dffd2d86e6d2dd';
   const BASE='https://api.ilovepdf.com';
   const map={compress:'compress',merge:'merge',split:'split','pdf-to-jpg':'pdfjpg','word-to-pdf':'officepdf',rotate:'rotate','extract-text':'extract',repair:'repair',unlock:'unlock','protect-pdf':'protect','pdf-to-pdfa':'pdfa','convert-image':'imagepdf','page-numbers':'pagenumber','ocr-pdf':'pdfocr',watermark:'watermark','remove-watermark':'watermark'};
   const at=map[t]||'compress';
+
+  // Step 1: Auth
   const authResp=await fetch(BASE+'/v1/auth',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({public_key:PUB})});
   const authData=await authResp.json();
   if(!authData.token)throw new Error('Auth failed: '+JSON.stringify(authData));
   const token=authData.token;
+
+  // Step 2: Start task
   const startResp=await fetch(BASE+'/v1/start/'+at,{headers:{'Authorization':'Bearer '+token}});
   const startData=await startResp.json();
   if(!startData.task)throw new Error('Start failed: '+JSON.stringify(startData));
   const {server,task}=startData;
+
+  // Step 3: Upload file(s)
   const filesToUpload=(t==='merge'&&allFiles&&allFiles.length>1)?allFiles:[file];
   const uploadedFiles=[];
   for(const f of filesToUpload){
+    // Sanitize filename — iLovePDF 500s on long or special-char filenames
     const safeName = f.name.replace(/[^a-zA-Z0-9._-]/g,'_').substring(0,50) || 'document.pdf';
     const fd=new FormData();
     fd.append('task',task);
@@ -898,7 +1067,13 @@ async function api(file,t,allFiles){
     if(!upData.server_filename)throw new Error('Upload failed: '+JSON.stringify(upData));
     uploadedFiles.push({server_filename:upData.server_filename,filename:safeName});
   }
-  const processFiles=uploadedFiles.map(f=>{ const obj={server_filename:f.server_filename,filename:f.filename}; if(t==='rotate') obj.rotate=90; return obj; });
+
+  // Step 4: Process — build clean files array with tool-specific params
+  const processFiles=uploadedFiles.map(f=>{
+    const obj={server_filename:f.server_filename,filename:f.filename};
+    if(t==='rotate') obj.rotate=90;
+    return obj;
+  });
   const body={task:task,tool:at,files:processFiles};
   if(t==='pdf-to-word') body.outputformat='docx';
   if(t==='word-to-pdf') body.outputformat='pdf';
@@ -910,9 +1085,13 @@ async function api(file,t,allFiles){
   if(t==='page-numbers'){body.facing_pages=false;body.vertical_position='bottom';body.horizontal_position='center';body.font_size=14;body.font_color='#000000';}
   const prResp=await fetch('https://'+server+'/v1/process',{method:'POST',headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify(body)});
   if(!prResp.ok){const e=await prResp.text();throw new Error('Process failed: '+e);}
+
+  // Step 5: Download
   const dlResp=await fetch('https://'+server+'/v1/download/'+task,{headers:{'Authorization':'Bearer '+token}});
   if(!dlResp.ok)throw new Error('Download failed: '+dlResp.status);
   const blob=await dlResp.blob();
+
+  // Step 6: Return correct file type
   const extMap={'extract-text':'txt','repair':'pdf','unlock':'pdf','protect-pdf':'pdf','pdf-to-pdfa':'pdf','convert-image':'pdf','page-numbers':'pdf','ocr-pdf':'pdf',watermark:'pdf','remove-watermark':'pdf','pdf-to-excel':'xlsx','pdf-to-jpg':'zip','split':'zip','merge':'pdf','compress':'pdf','rotate':'pdf','word-to-pdf':'pdf'};
   const ext=extMap[t]||'pdf';
   const mimeMap={txt:'text/plain',jpg:'image/jpeg',docx:'application/vnd.openxmlformats-officedocument.wordprocessingml.document',xlsx:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',zip:'application/zip',pdf:'application/pdf'};
@@ -920,40 +1099,26 @@ async function api(file,t,allFiles){
   const baseName=file.name.replace(/\.[^/.]+$/,'');
   return{url:URL.createObjectURL(typedBlob),fn:baseName+'.'+ext};
 }
-function resetUp(){pendingFile=null;document.getElementById('dropZ').style.display='block';document.getElementById('toolPicker').style.display='none';hd('procW');hd('resW');document.getElementById('fileInput').value='';document.getElementById('dropT').textContent='Sign in or create a free account to get started';}
+
+function resetUp(){pendingFile=null;document.getElementById('dropZ').style.display='block';document.getElementById('toolPicker').style.display='none';hd('procW');hd('resW');document.getElementById('fileInput').value='';document.getElementById('dropT').textContent='Drop your file here to get started';}
 async function handleSub(p){
   if(!user){openModal('signup');return;}
-  if(p==='pro'){ window.location.href='https://buy.stripe.com/4gM00kf9Igxo2798NX1ck00'; }
+  // Redirect to Stripe Payment Link
+  if(p==='pro'){
+    window.location.href='https://buy.stripe.com/4gM00kf9Igxo2798NX1ck00';
+  }
+}
+
+function toggleMobileMenu(){
+  document.getElementById('hamburger').classList.toggle('open');
+  document.getElementById('mobMenu').classList.toggle('open');
+}
+function closeMobileMenu(){
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('mobMenu').classList.remove('open');
 }
 function toast(type,msg){const el=document.getElementById('tst');document.getElementById('tmsg').textContent=msg;el.className='toast '+type+' show';setTimeout(()=>el.classList.remove('show'),3500);}
-</script>
 
-<!-- COOKIE CONSENT BANNER — Fix #25 -->
-<div id="cookieBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9998;background:var(--bg);border-top:1px solid var(--bdr);padding:18px 48px;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;box-shadow:0 -4px 24px rgba(0,0,0,.08)">
-  <div style="flex:1;min-width:260px">
-    <p style="font-size:.86rem;color:var(--txt2);line-height:1.6">
-      🍪 We use essential cookies to keep you signed in, plus optional analytics to improve the site.
-      <a href="/cookies.html" style="color:var(--or);text-decoration:none;font-weight:500">Cookie Policy</a> ·
-      <a href="/privacy.html" style="color:var(--or);text-decoration:none;font-weight:500">Privacy Policy</a>
-    </p>
-  </div>
-  <div style="display:flex;gap:10px;flex-shrink:0">
-    <button onclick="setCookiePref('essential')" style="background:transparent;border:1px solid var(--bdr);color:var(--mut2);padding:9px 20px;border-radius:100px;font-family:var(--sans);font-size:.82rem;font-weight:500;cursor:pointer;transition:all .2s">Essential only</button>
-    <button onclick="setCookiePref('all')" style="background:var(--or);color:#fff;border:none;padding:9px 22px;border-radius:100px;font-family:var(--sans);font-size:.82rem;font-weight:700;cursor:pointer;transition:all .2s">Accept all</button>
-  </div>
-</div>
-<script>
-(function(){
-  if(!localStorage.getItem('cookie_pref')){
-    var b=document.getElementById('cookieBanner');
-    if(b)b.style.display='flex';
-  }
-})();
-function setCookiePref(pref){
-  localStorage.setItem('cookie_pref',pref);
-  var b=document.getElementById('cookieBanner');
-  if(b)b.style.display='none';
-}
 </script>
 </body>
 </html>
