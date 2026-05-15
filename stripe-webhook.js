@@ -1,5 +1,5 @@
 // api/stripe-webhook.js
-// Vercel serverless function — receives Stripe events and updates Supabase
+// Vercel serverless function — receives Stripe events and updates Supabase user plan
 // Events handled:
 //   checkout.session.completed     → user paid → set Pro
 //   invoice.payment_succeeded      → subscription renewed → keep Pro
@@ -10,11 +10,9 @@ import Stripe from 'stripe';
 import { createClient } from '@supabase/supabase-js';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-
-// Use service role key — bypasses RLS so we can write to subscriptions
 const supabase = createClient(
   process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY
+  process.env.SUPABASE_SERVICE_ROLE_KEY  // service role key — bypasses RLS
 );
 
 export default async function handler(req, res) {
@@ -49,64 +47,64 @@ export default async function handler(req, res) {
   try {
     switch (event.type) {
 
-      // ── User completes checkout → upgrade to Pro ──────────────
+      // ── User completes checkout → upgrade to Pro ──────────────────────────
       case 'checkout.session.completed': {
         const session = event.data.object;
+        // client_reference_id = Supabase user ID (set by our handleSub function)
+        const supabaseUserId = session.client_reference_id;
         const email = session.customer_email || session.customer_details?.email;
-        const stripeCustomerId = session.customer;
-        const stripeSubscriptionId = session.subscription;
 
-        if (email) {
-          await setUserPlan(email, 'pro', stripeCustomerId, stripeSubscriptionId);
-          console.log(`✅ Upgraded to Pro: ${email}`);
+        if (supabaseUserId) {
+          // Best case: upgrade directly by user ID (no email lookup needed)
+          await setUserPlanById(supabaseUserId, 'pro');
+          console.log(`✅ Upgraded to Pro by user ID: ${supabaseUserId}`);
+        } else if (email) {
+          // Fallback: find user by email
+          await setUserPlanByEmail(email, 'pro');
+          console.log(`✅ Upgraded to Pro by email: ${email}`);
+        } else {
+          console.error('checkout.session.completed: no user ID or email found');
         }
         break;
       }
 
-      // ── Subscription renewed → keep Pro ───────────────────────
+      // ── Subscription renewed → keep Pro ──────────────────────────────────
       case 'invoice.payment_succeeded': {
         const invoice = event.data.object;
-        // Only process subscription invoices (not one-off charges)
-        if (invoice.subscription) {
-          const customer = await stripe.customers.retrieve(invoice.customer);
-          const email = customer.email;
-          if (email) {
-            // Get subscription details for period end
-            const subscription = await stripe.subscriptions.retrieve(invoice.subscription);
-            await setUserPlan(
-              email, 'pro',
-              invoice.customer,
-              invoice.subscription,
-              subscription.current_period_end
-            );
-            console.log(`✅ Renewed Pro: ${email}`);
-          }
+        // Only handle subscription invoices, not one-off charges
+        if (!invoice.subscription) break;
+
+        const customer = await stripe.customers.retrieve(invoice.customer);
+        const email = customer.email;
+        if (email) {
+          await setUserPlanByEmail(email, 'pro');
+          console.log(`✅ Renewed Pro: ${email}`);
         }
         break;
       }
 
-      // ── Subscription cancelled → downgrade to Free ─────────────
+      // ── Subscription cancelled → downgrade to Free ────────────────────────
       case 'customer.subscription.deleted': {
         const subscription = event.data.object;
         const customer = await stripe.customers.retrieve(subscription.customer);
         const email = customer.email;
         if (email) {
-          await setUserPlan(email, 'free', subscription.customer, subscription.id);
-          console.log(`⬇️ Downgraded to Free: ${email}`);
+          await setUserPlanByEmail(email, 'free');
+          console.log(`⬇️ Downgraded to Free (cancelled): ${email}`);
         }
         break;
       }
 
-      // ── Payment failed → downgrade to Free ────────────────────
+      // ── Payment failed → downgrade to Free ───────────────────────────────
       case 'invoice.payment_failed': {
         const invoice = event.data.object;
-        if (invoice.subscription) {
-          const customer = await stripe.customers.retrieve(invoice.customer);
-          const email = customer.email;
-          if (email) {
-            await setUserPlan(email, 'free', invoice.customer, invoice.subscription);
-            console.log(`❌ Payment failed, downgraded: ${email}`);
-          }
+        if (!invoice.subscription) break;
+
+        const customer = await stripe.customers.retrieve(invoice.customer);
+        const email = customer.email;
+        if (email) {
+          await setUserPlanByEmail(email, 'free');
+          console.log(`❌ Payment failed, downgraded: ${email}`);
         }
         break;
       }
@@ -116,65 +114,52 @@ export default async function handler(req, res) {
     }
   } catch (err) {
     console.error('Error processing webhook:', err.message);
-    // Still return 200 so Stripe doesn't retry — log the error
+    // Return 200 anyway so Stripe doesn't keep retrying
     return res.status(200).json({ received: true, error: err.message });
   }
 
   res.status(200).json({ received: true });
 }
 
-// ── Update user plan in BOTH user_metadata AND subscriptions table ─────────
-async function setUserPlan(email, plan, stripeCustomerId, stripeSubscriptionId, periodEnd) {
-  // 1. Find the Supabase user by email
+// ── Update plan directly by Supabase user ID (fastest, most reliable) ────────
+async function setUserPlanById(userId, plan) {
+  const { data: user, error: fetchError } = await supabase.auth.admin.getUserById(userId);
+  if (fetchError || !user) {
+    console.error(`Cannot find user by ID ${userId}:`, fetchError?.message);
+    return;
+  }
+
+  const { error } = await supabase.auth.admin.updateUserById(
+    userId,
+    { user_metadata: { ...user.user_metadata, plan } }
+  );
+  if (error) console.error('Error updating plan by ID:', error.message);
+  else console.log(`Plan set to '${plan}' for user ID ${userId}`);
+}
+
+// ── Update plan by email (fallback for renewal/cancellation events) ───────────
+async function setUserPlanByEmail(email, plan) {
   const { data: { users }, error: listError } = await supabase.auth.admin.listUsers({ perPage: 1000 });
   if (listError) {
-    console.error('Error listing users:', listError);
-    throw listError;
+    console.error('Error listing users:', listError.message);
+    return;
   }
 
   const user = users.find(u => u.email?.toLowerCase() === email.toLowerCase());
   if (!user) {
     console.error(`No Supabase user found for email: ${email}`);
-    return; // Don't throw — user might not have signed up yet
+    return;
   }
 
-  // 2. Update user_metadata so JWT hook picks it up on next login
-  const { error: metaError } = await supabase.auth.admin.updateUserById(
+  const { error } = await supabase.auth.admin.updateUserById(
     user.id,
     { user_metadata: { ...user.user_metadata, plan } }
   );
-  if (metaError) {
-    console.error('Error updating user_metadata:', metaError);
-    throw metaError;
-  }
-
-  // 3. Upsert subscriptions table for full audit trail
-  const subscriptionData = {
-    user_id: user.id,
-    stripe_customer_id: stripeCustomerId || null,
-    stripe_subscription_id: stripeSubscriptionId || null,
-    plan,
-    status: plan === 'pro' ? 'active' : 'inactive',
-    updated_at: new Date().toISOString(),
-  };
-
-  if (periodEnd) {
-    subscriptionData.current_period_end = new Date(periodEnd * 1000).toISOString();
-  }
-
-  const { error: subError } = await supabase
-    .from('subscriptions')
-    .upsert(subscriptionData, { onConflict: 'user_id' });
-
-  if (subError) {
-    console.error('Error upserting subscription:', subError);
-    throw subError;
-  }
-
-  console.log(`Plan set to '${plan}' for user ${user.id} (${email})`);
+  if (error) console.error('Error updating plan by email:', error.message);
+  else console.log(`Plan set to '${plan}' for user ${user.id} (${email})`);
 }
 
-// Required: disable Vercel body parser so we can read raw body for Stripe sig
+// ── Required: disable body parsing so Stripe signature verification works ─────
 export const config = {
   api: {
     bodyParser: false,
