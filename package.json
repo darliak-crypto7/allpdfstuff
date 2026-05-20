@@ -1,9 +1,12 @@
 {
   "name": "allpdfstuff",
   "version": "1.0.0",
-  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
   "dependencies": {
-    "stripe": "^14.21.0",
-    "@supabase/supabase-js": "^2.43.4"
+    "stripe": "^14.0.0"
   }
 }
