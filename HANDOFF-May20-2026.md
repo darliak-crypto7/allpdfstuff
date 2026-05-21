@@ -234,6 +234,73 @@ const map = {
 
 ---
 
+## ✅ STRIPE WEBHOOK — VERIFIED MAY 20, 2026
+
+### Vercel Environment Variables — All Confirmed ✅
+| Variable | Status | Last Updated |
+|---|---|---|
+| `STRIPE_WEBHOOK_SECRET` | ✅ Set | May 15 |
+| `STRIPE_SECRET_KEY` | ✅ Set | May 15 |
+| `SUPABASE_SERVICE_ROLE_KEY` | ✅ Set | May 15 |
+| `SUPABASE_URL` | ✅ Set | Mar 29 |
+
+### Stripe Webhook Endpoint — Confirmed Active ✅
+| Field | Value |
+|---|---|
+| Name | AllPDFStuff Pro Webhook |
+| URL | `https://www.allpdfstuff.com/api/stripe-webhook` |
+| Status | ✅ Active |
+| Events | 4 events configured |
+| Error rate | **0%** |
+
+### End-to-End Flow — Tested & Confirmed ✅
+```
+Customer pays → Stripe fires webhook → Vercel function runs
+→ Signature verified → Supabase user found
+→ user_metadata.plan = 'pro' ✅
+→ subscriptions table upserted ✅
+→ User logs in → JWT = pro → Pro tools unlock ✅
+```
+
+---
+
+## ✅ USER ACCOUNT FIX — MAY 20, 2026
+
+### Anna Zeidan (azeidan26@gmail.com) — Fixed ✅
+
+**Issue found:** `user_metadata.plan = 'pro'` but `subscriptions` table showed `plan = 'free'`
+with no Stripe customer ID — data mismatch from before webhook was working.
+
+**Actions taken:**
+| # | Action | Result |
+|---|---|---|
+| 1 | Updated `subscriptions.plan` → `pro` | ✅ Done |
+| 2 | Updated `subscriptions.status` → `active` | ✅ Done |
+| 3 | Added `stripe_customer_id = 'cus_UKNG1IHgEXfeT7'` | ✅ Done |
+
+**Final state:**
+| Field | Value |
+|---|---|
+| `user_metadata.plan` | `pro` ✅ |
+| `subscriptions.plan` | `pro` ✅ |
+| `subscriptions.status` | `active` ✅ |
+| `stripe_customer_id` | `cus_UKNG1IHgEXfeT7` ✅ |
+
+Anna now has full Pro access with complete Stripe linkage. Cancellation/renewal webhooks will work correctly for her account.
+
+### All Users — Current State
+| User | Plan | Stripe Linked |
+|---|---|---|
+| Anna Zeidan | Pro ✅ | `cus_UKNG1IHgEXfeT7` ✅ |
+| Winnie | Free | — |
+| Ruby | Free | — |
+| Ken | Free | — |
+| Scott Dargan | Free | — |
+| darliak7@gmail.com | Admin bypass | — |
+| kongsomd_7@hotmail.com | Admin bypass | — |
+
+---
+
 ## PENDING ITEMS & NEXT STEPS
 
 | Priority | Item | Notes |
@@ -241,10 +308,8 @@ const map = {
 | 🔴 HIGH | Complete email mailbox setup | DNS propagating — go to privateemail.com → create `support@allpdfstuff.com` mailbox once live |
 | 🔴 HIGH | Set up email on iPhone | Use `mail.privateemail.com` IMAP/SMTP settings above — after DNS |
 | 🔴 HIGH | Set up Gmail Send As | Use `mail.privateemail.com` SMTP settings above — after DNS |
-| 🔴 HIGH | Verify Stripe webhook env vars | Confirm `STRIPE_SECRET_KEY` and `STRIPE_WEBHOOK_SECRET` are set in Vercel → Settings → Environment Variables |
-| 🔴 HIGH | Test Stripe webhook end-to-end | Use Stripe CLI: `stripe listen --forward-to https://www.allpdfstuff.com/api/stripe-webhook` |
-| 🟡 MED | 2 unapproved reviews awaiting | Anna (Melbourne) and Sherley — go to Supabase → Table Editor → reviews → set approved=true |
 | 🟡 MED | About page founder photo | Replace orange D circle with real photo. Upload to GitHub → update about.html img src |
+| 🟡 MED | Submit 5 SEO pages to Google Search Console | /compress-pdf, /merge-pdf, /split-pdf, /pdf-to-word, /word-to-pdf |
 | 🟢 LOW | Blog posts | blog.html exists but has no content |
 | 🟢 LOW | Upgrade to Vercel Pro | For Observability Plus — anomaly alerts, custom queries, 30-day log retention |
 
@@ -283,4 +348,4 @@ Claude will have everything it needs to diagnose and fix issues immediately.
 
 ⚠️ **CONFIDENTIAL — Keep this document private. Do not share publicly.**
 
-*Last updated: May 20, 2026 | AllPDFStuff.com | Maintained by Darlia via Natural Mind Concepts*
+*Last updated: May 21, 2026 (end of session) | AllPDFStuff.com | Maintained by Darlia via Natural Mind Concepts*
