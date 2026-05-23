@@ -1,245 +1,274 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Meet the Founder — AllPDFStuff</title>
-<meta name="description" content="AllPDFStuff was built by someone who just needed it to work. Read Darlia's story."/>
-<!-- Open Graph — Fix #17 -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.allpdfstuff.com/about" />
-<meta property="og:title" content="Meet the Founder — AllPDFStuff" />
-<meta property="og:description" content="AllPDFStuff was built by someone who just needed it to work. Read Darlia's story." />
-<meta property="og:image" content="https://www.allpdfstuff.com/og-image.png" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Meet the Founder — AllPDFStuff" />
-<meta name="twitter:description" content="AllPDFStuff was built by someone who just needed it to work." />
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700;900&family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#faf8f4;--bg2:#f3efe8;--bg3:#ede8df;
-  --or:#e8620a;--or2:#f97316;
-  --txt:#1a1714;--txt2:#3d3830;
-  --mut:#8a8070;--mut2:#6b6055;
-  --bdr:rgba(0,0,0,0.08);--obdr:rgba(232,98,10,0.25);--oglow:rgba(232,98,10,0.08);
-  --serif:'Cormorant Garamond',Georgia,serif;
-  --sans:'Inter',system-ui,sans-serif;
-  --shadow:0 1px 3px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.06);
-  --shadow-lg:0 8px 32px rgba(0,0,0,.1);
-  --accent-light:#fff3ed;
-}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:16px;line-height:1.6;overflow-x:hidden}
-nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(250,248,244,.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--bdr)}
-.logo{font-family:var(--serif);font-size:1.4rem;font-weight:600;color:var(--txt);text-decoration:none!important}.logo em{font-style:italic;color:var(--or)}
-.nav-links{display:flex;gap:32px;list-style:none}
-.nav-links a{font-size:.85rem;font-weight:500;color:var(--mut2);text-decoration:none!important;transition:color .2s}.nav-links a:hover{color:var(--txt)}
-.nav-r{display:flex;gap:12px;align-items:center}
-.btn-ghost{background:transparent;border:1px solid var(--bdr);color:var(--txt);padding:9px 22px;border-radius:100px;font-family:var(--sans);font-size:.83rem;font-weight:500;cursor:pointer;transition:all .2s;text-decoration:none!important;display:inline-flex;align-items:center}.btn-ghost:hover{border-color:var(--or);color:var(--or)}
-.btn-pill{background:var(--or);color:#fff;border:none;padding:9px 22px;border-radius:100px;font-family:var(--sans);font-size:.83rem;font-weight:700;cursor:pointer;text-decoration:none!important;display:inline-flex;align-items:center;gap:6px;transition:all .2s}.btn-pill:hover{background:var(--or2);transform:translateY(-1px)}
-.page-hero{padding:140px 48px 80px;background:var(--bg2);border-bottom:1px solid var(--bdr);position:relative;overflow:hidden}
-.hero-ghost{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--serif);font-size:clamp(100px,16vw,220px);font-weight:700;font-style:italic;color:rgba(232,98,10,.045);white-space:nowrap;pointer-events:none;user-select:none;letter-spacing:-.04em;line-height:1}
-.hero-inner{max-width:760px;position:relative;z-index:1}
-.hero-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--or);margin-bottom:18px;display:flex;align-items:center;gap:10px}
-.hero-eyebrow::before{content:'';display:block;width:24px;height:1px;background:var(--or)}
-.page-hero h1{font-family:var(--serif);font-size:clamp(2.6rem,5.5vw,5.5rem);font-weight:600;letter-spacing:-.03em;line-height:1.05;margin-bottom:22px}
-.page-hero h1 em{font-style:italic;color:var(--or)}
-.page-hero .lead{color:var(--mut2);font-size:1rem;max-width:500px;line-height:1.75}
-.founder-wrap{padding:80px 48px 100px;max-width:1100px;margin:0 auto}
-.founder-layout{display:grid;grid-template-columns:1fr 360px;gap:72px;align-items:start}
-.section{margin-bottom:2.8rem}
-.label{font-family:'DM Sans',sans-serif;font-size:.7rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--or);margin-bottom:.9rem;display:flex;align-items:center;gap:10px}
-.label::after{content:'';flex:1;height:1px;background:var(--bdr);max-width:40px}
-.story-block{display:flex;flex-direction:column;gap:1.1rem}
-.story-block p{font-family:'DM Sans',sans-serif;font-size:.95rem;line-height:1.85;color:var(--txt2)}
-.story-block p.lead-quote{font-family:'Lora',serif;font-size:1.12rem;font-style:italic;color:var(--mut2);line-height:1.75}
-.story-block p em{font-style:italic;color:var(--txt)}
-.highlight-bar{background:var(--accent-light);border-left:3px solid var(--or);border-radius:0 10px 10px 0;padding:1.1rem 1.4rem;margin:2rem 0}
-.highlight-bar p{font-family:'Lora',serif;font-size:1.02rem;font-style:italic;color:var(--or);line-height:1.65}
-.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:.6rem}
-.pillar{background:var(--bg2);border:1px solid var(--bdr);border-radius:14px;padding:1.1rem;display:flex;flex-direction:column;gap:7px}
-.pillar-icon{width:30px;height:30px;border-radius:9px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;margin-bottom:2px}
-.pillar-title{font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:500;color:var(--txt)}
-.pillar-desc{font-family:'DM Sans',sans-serif;font-size:.75rem;color:var(--mut2);line-height:1.55}
-.membership-note{font-family:'DM Sans',sans-serif;font-size:.84rem;color:var(--mut2);line-height:1.65;margin-top:1.4rem;padding-top:1.4rem;border-top:1px solid var(--bdr)}
-.closing{font-family:'DM Sans',sans-serif;font-size:.95rem;line-height:1.85;color:var(--txt2)}
-.closing strong{color:var(--or);font-weight:500}
-.sign-off{margin-top:2.4rem;padding-top:2rem;border-top:1px solid var(--bdr);display:flex;align-items:center;gap:18px}
-.sign-avatar{width:54px;height:54px;background:linear-gradient(135deg,var(--or),var(--or2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.6rem;font-weight:700;font-style:italic;color:#fff;flex-shrink:0}
-.founder-avatar-large{width:100%;aspect-ratio:1;max-width:220px;margin:0 auto;border-radius:50%;background:linear-gradient(135deg,var(--or),var(--or2));display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:clamp(4rem,10vw,7rem);font-weight:700;font-style:italic;color:#fff;box-shadow:0 12px 40px rgba(232,98,10,.25);border:4px solid rgba(255,255,255,.3);}
-.founder-photo-wrap{margin-bottom:24px}
-.sign-name{font-family:'Lora',serif;font-size:1.25rem;font-style:italic;color:var(--txt);line-height:1.2}
-.sign-role{font-family:'DM Sans',sans-serif;font-size:.75rem;color:var(--mut);letter-spacing:.06em;margin-top:3px}
-.sidebar-card{background:var(--bg);border:1px solid var(--bdr);border-radius:20px;padding:30px;box-shadow:var(--shadow);margin-bottom:20px}
-.sidebar-card h3{font-family:var(--serif);font-size:1.1rem;font-weight:600;letter-spacing:-.01em;margin-bottom:18px}
-.stat-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--bdr)}
-.stat-row:last-child{border-bottom:none}
-.stat-row .s-label{font-size:.82rem;color:var(--mut2)}
-.stat-row .s-val{font-family:var(--serif);font-size:1.1rem;font-weight:600;font-style:italic;color:var(--or)}
-.quick-links{list-style:none;display:flex;flex-direction:column;gap:8px}
-.quick-links a{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--bg2);border-radius:10px;text-decoration:none!important;font-size:.85rem;color:var(--txt2);transition:all .2s;border:1px solid transparent}
-.quick-links a:hover{border-color:var(--obdr);color:var(--or);background:var(--accent-light)}
-.quick-links a span{font-size:1.1rem}
-.about-cta{margin:0 48px 80px;border-radius:24px;background:linear-gradient(135deg,#fff8f2,#fdf4ec);border:1px solid var(--obdr);padding:64px 60px;display:flex;align-items:center;justify-content:space-between;gap:36px;flex-wrap:wrap;box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
-.about-cta::before{content:'PDF';position:absolute;right:-20px;top:50%;transform:translateY(-50%);font-family:var(--serif);font-size:180px;font-weight:700;font-style:italic;color:rgba(232,98,10,.06);pointer-events:none;line-height:1;user-select:none}
-.about-cta h2{font-family:var(--serif);font-size:clamp(1.7rem,3vw,2.8rem);font-weight:600;font-style:italic;letter-spacing:-.03em;line-height:1.1;margin-bottom:10px}
-.about-cta p{color:var(--mut2);font-size:.92rem;max-width:400px;line-height:1.65}
-footer{background:var(--bg);border-top:1px solid var(--bdr);padding:52px 48px 28px}
-.ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;padding-bottom:40px;border-bottom:1px solid var(--bdr)}
-.ft-logo{font-family:var(--serif);font-size:1.4rem;font-weight:600;text-decoration:none!important;color:var(--txt);margin-bottom:10px;display:block}.ft-logo em{font-style:italic;color:var(--or)}
-.ft-brand p{color:var(--mut);font-size:.84rem;line-height:1.7;max-width:230px}
-.ft-col h4{font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin-bottom:14px}
-.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
-.ft-col a{color:var(--mut2);text-decoration:none!important;font-size:.84rem;transition:color .2s}.ft-col a:hover{color:var(--or)}
-.ft-bot{display:flex;justify-content:space-between;align-items:center;padding-top:24px;color:var(--mut);font-size:.77rem;flex-wrap:wrap;gap:10px}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-.fade-in{animation:fadeUp .6s ease both}
-.fade-in-2{animation:fadeUp .6s ease .15s both}
-@media(max-width:1024px){.founder-layout{grid-template-columns:1fr}.pillars{grid-template-columns:1fr 1fr}}
-@media(max-width:768px){nav{padding:14px 20px}.nav-links{display:none}.page-hero{padding:100px 22px 60px}.founder-wrap{padding:52px 22px 72px}.about-cta{margin:0 22px 60px;padding:44px 28px}.about-cta::before{display:none}.pillars{grid-template-columns:1fr}footer{padding:44px 22px 24px}.ft-top{grid-template-columns:1fr;gap:28px}.ft-bot{flex-direction:column;text-align:center}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us — AllPDFStuff</title>
+  <meta name="description" content="Learn about AllPDFStuff — the fastest, simplest way to work with PDFs online. Our mission, story, and the team behind the tools." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23e8620a'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-size='18' font-family='Georgia,serif' font-style='italic' font-weight='700' fill='white'>P</text></svg>" />
+
+  <!-- Google Analytics GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZP7PTTQBX6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ZP7PTTQBX6');
+  </script>
+
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#faf8f4;--bg2:#f3efe8;--bg3:#ede8df;--bg4:#e5dfd4;
+      --or:#e8620a;--or2:#f97316;--or3:#fb923c;
+      --txt:#1a1714;--txt2:#3d3830;--mut:#8a8070;--mut2:#6b6055;
+      --bdr:rgba(0,0,0,0.08);--obdr:rgba(232,98,10,0.25);--oglow:rgba(232,98,10,0.08);
+      --serif:'Cormorant Garamond',Georgia,serif;
+      --sans:'Inter',system-ui,sans-serif;
+      --shadow:0 1px 3px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.06);
+      --shadow-lg:0 8px 32px rgba(0,0,0,.1);
+    }
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:16px;line-height:1.6;overflow-x:hidden}
+    body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9997;opacity:.5}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;background:rgba(250,248,244,.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--bdr)}
+    .logo{font-family:var(--serif);font-size:1.45rem;font-weight:600;letter-spacing:.02em;color:var(--txt);text-decoration:none}
+    .logo em{font-style:italic;color:var(--or)}
+    .nav-links{display:flex;gap:36px;list-style:none}
+    .nav-links a{font-size:.86rem;font-weight:500;color:var(--mut2);text-decoration:none;letter-spacing:.03em;transition:color .2s}
+    .nav-links a:hover{color:var(--txt)}
+    .nav-r{display:flex;align-items:center;gap:12px}
+    .btn-ghost{background:transparent;border:1px solid var(--bdr);color:var(--txt);padding:9px 22px;border-radius:100px;font-family:var(--sans);font-size:.84rem;font-weight:500;cursor:pointer;transition:all .2s;letter-spacing:.02em;text-decoration:none;display:inline-flex;align-items:center}
+    .btn-ghost:hover{border-color:var(--or);color:var(--or)}
+    .btn-pill{background:var(--or);color:#fff;border:none;padding:10px 24px;border-radius:100px;font-family:var(--sans);font-size:.84rem;font-weight:700;cursor:pointer;transition:all .2s;text-decoration:none;display:inline-flex;align-items:center;gap:6px;letter-spacing:.02em}
+    .btn-pill:hover{background:var(--or2);transform:translateY(-1px);box-shadow:0 8px 28px rgba(232,98,10,.28)}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+    .hamburger span{display:block;width:22px;height:2px;background:var(--txt);border-radius:2px;transition:all .3s}
+    .mob-menu{display:none;position:fixed;top:65px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--bdr);padding:18px 22px;z-index:499;flex-direction:column;gap:4px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+    .mob-menu.open{display:flex}
+    .mob-menu a{font-size:.95rem;font-weight:500;color:var(--txt2);text-decoration:none;padding:10px 0;border-bottom:1px solid var(--bdr)}
+    .mob-menu a:last-child{border-bottom:none}
+
+    /* PAGE HERO */
+    .page-hero{padding:160px 48px 80px;max-width:1100px;margin:0 auto;animation:fadeUp .7s ease both}
+    .eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:.76rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--or);margin-bottom:28px}
+    .eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--or)}
+    .page-hero h1{font-family:var(--serif);font-size:clamp(3rem,7vw,6.5rem);font-weight:600;line-height:1.0;letter-spacing:-.03em;margin-bottom:28px}
+    .page-hero h1 em{font-style:italic;color:var(--or)}
+    .page-hero p.lead{color:var(--mut2);font-size:1.1rem;max-width:560px;line-height:1.8}
+
+    /* SECTIONS */
+    .about-wrap{max-width:1100px;margin:0 auto;padding:0 48px 100px}
+    .about-section{padding:72px 0;border-top:1px solid var(--bdr)}
+    .sec-eye{display:flex;align-items:center;gap:14px;font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--or);margin-bottom:22px}
+    .sec-eye::after{content:'';flex:1;height:1px;background:var(--bdr);max-width:80px}
+    .sec-h{font-family:var(--serif);font-size:clamp(2rem,4vw,3.5rem);font-weight:600;letter-spacing:-.03em;line-height:1.05;margin-bottom:20px}
+    .sec-h em{font-style:italic;color:var(--or)}
+    .prose{color:var(--mut2);font-size:.97rem;line-height:1.85;max-width:680px}
+    .prose p+p{margin-top:1.2em}
+
+    /* TWO-COL LAYOUT */
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+    .two-col.flip .col-text{order:2}
+    .two-col.flip .col-visual{order:1}
+    .col-visual{background:var(--bg2);border:1px solid var(--bdr);border-radius:24px;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:6rem;font-style:italic;color:rgba(232,98,10,.18);font-weight:700;overflow:hidden;position:relative}
+    .col-visual::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--oglow),transparent 60%)}
+
+    /* VALUES */
+    .values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:52px}
+    .val-card{background:var(--bg);border:1px solid var(--bdr);border-radius:20px;padding:34px 28px;transition:transform .2s,box-shadow .2s;box-shadow:var(--shadow)}
+    .val-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+    .val-ico{font-size:2rem;margin-bottom:18px}
+    .val-card h3{font-family:var(--serif);font-size:1.3rem;font-weight:600;letter-spacing:-.01em;margin-bottom:10px}
+    .val-card p{font-size:.86rem;color:var(--mut2);line-height:1.7}
+
+    /* STATS BAND */
+    .stats-band{background:var(--bg2);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);padding:64px 48px}
+    .stats-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;text-align:center}
+    .stat-n{font-family:var(--serif);font-size:3rem;font-weight:600;font-style:italic;color:var(--or);line-height:1;letter-spacing:-.02em}
+    .stat-l{font-size:.8rem;color:var(--mut2);margin-top:6px;letter-spacing:.04em}
+
+    /* BADGE SECTION */
+    .badge-section{padding:72px 0;border-top:1px solid var(--bdr);display:flex;align-items:center;gap:48px;flex-wrap:wrap}
+    .badge-text h3{font-family:var(--serif);font-size:1.6rem;font-weight:600;letter-spacing:-.02em;margin-bottom:8px}
+    .badge-text p{color:var(--mut2);font-size:.9rem;line-height:1.7;max-width:420px}
+
+    /* FOOTER */
+    footer{background:var(--bg);border-top:1px solid var(--bdr);padding:68px 48px 34px}
+    .ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:52px;padding-bottom:52px;border-bottom:1px solid var(--bdr)}
+    .ft-logo{font-family:var(--serif);font-size:1.45rem;font-weight:600;text-decoration:none;color:var(--txt);margin-bottom:14px;display:block}
+    .ft-logo em{font-style:italic;color:var(--or)}
+    .ft-brand p{color:var(--mut);font-size:.86rem;line-height:1.7;max-width:250px}
+    .ft-col h4{font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin-bottom:18px}
+    .ft-col ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+    .ft-col a{color:var(--mut2);text-decoration:none!important;font-size:.86rem;transition:color .2s}
+    .ft-col a:hover{color:var(--or)}
+    .ft-bot{display:flex;justify-content:space-between;align-items:center;padding-top:28px;color:var(--mut);font-size:.78rem;flex-wrap:wrap;gap:10px}
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+
+    @media(max-width:1024px){.values-grid{grid-template-columns:repeat(2,1fr)}.stats-inner{grid-template-columns:repeat(2,1fr)}.ft-top{grid-template-columns:1fr 1fr}}
+    @media(max-width:768px){
+      nav{padding:15px 22px}.nav-links{display:none}.hamburger{display:flex}
+      .page-hero{padding:130px 22px 60px}
+      .about-wrap{padding:0 22px 80px}
+      .two-col{grid-template-columns:1fr;gap:36px}
+      .two-col.flip .col-text{order:1}.two-col.flip .col-visual{order:2}
+      .values-grid{grid-template-columns:1fr}
+      .stats-band{padding:52px 22px}.stats-inner{grid-template-columns:repeat(2,1fr)}
+      .badge-section{flex-direction:column;gap:28px}
+      footer{padding:52px 22px 28px}.ft-top{grid-template-columns:1fr;gap:32px}.ft-bot{flex-direction:column;text-align:center}
+    }
+  </style>
 </head>
 <body>
+
 <nav>
   <a href="/" class="logo">All<em>PDF</em>Stuff</a>
   <ul class="nav-links">
     <li><a href="/#tools">Tools</a></li>
     <li><a href="/#pricing">Pricing</a></li>
-    <li><a href="/about.html">About</a></li>
-    <li><a href="/contact.html">Contact</a></li>
+    <li><a href="/#how">How it works</a></li>
   </ul>
   <div class="nav-r">
-    <a href="/" class="btn-ghost">← Back to Tools</a>
+    <a href="/" class="btn-ghost">← Back to app</a>
     <a href="/#pricing" class="btn-pill">Get Pro →</a>
   </div>
+  <button class="hamburger" id="hamburger" onclick="document.getElementById('mobMenu').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
+<!-- Mobile menu -->
+<div class="mob-menu" id="mobMenu">
+  <a href="/#tools">Tools</a>
+  <a href="/#pricing">Pricing</a>
+  <a href="/#how">How it works</a>
+  <a href="/" style="color:var(--or);font-weight:700">← Back to app</a>
+</div>
+
+<!-- PAGE HERO -->
 <div class="page-hero">
-  <div class="hero-ghost">Darlia</div>
-  <div class="hero-inner fade-in">
-    <div class="hero-eyebrow">Meet the Founder</div>
-    <h1>Built by someone who<br/><em>just needed it to work.</em></h1>
-    <p class="lead">A simple tool for everyday people — students, busy professionals, and anyone who's ever felt overwhelmed by complicated software.</p>
+  <div class="eyebrow">Our story</div>
+  <h1>Built for people who<br/>work with <em>PDFs</em></h1>
+  <p class="lead">AllPDFStuff was born from a simple frustration — why should working with a PDF require downloading bloatware, signing up for subscriptions, or uploading sensitive files to questionable services?</p>
+</div>
+
+<!-- STATS BAND -->
+<div class="stats-band">
+  <div class="stats-inner">
+    <div><div class="stat-n">15+</div><div class="stat-l">PDF Tools</div></div>
+    <div><div class="stat-n">100%</div><div class="stat-l">Browser-based</div></div>
+    <div><div class="stat-n">1 hr</div><div class="stat-l">Auto file deletion</div></div>
+    <div><div class="stat-n">Free</div><div class="stat-l">To get started</div></div>
   </div>
 </div>
 
-<div class="founder-wrap">
-  <div class="founder-layout">
-    <div class="founder-content fade-in">
-      <div class="section">
-        <div class="label">The story</div>
-        <div class="story-block">
-          <p class="lead-quote">"I'm not a tech person. And for the longest time, that made managing my documents a real headache."</p>
-          <p>Like a lot of people, I spent too much time jumping between different websites just to do basic things with my files — merge a PDF here, convert a document there. Some tools were confusing to navigate, and others were just harder to use than they needed to be.</p>
-          <p>I kept thinking: <em>why isn't there something simpler?</em> Something that just works, without the learning curve, without making me feel like I need a degree in IT just to get things done.</p>
+<!-- MAIN CONTENT -->
+<div class="about-wrap">
+
+  <!-- MISSION -->
+  <div class="about-section">
+    <div class="two-col">
+      <div class="col-text">
+        <div class="sec-eye">Our mission</div>
+        <h2 class="sec-h">Simple tools.<br/><em>Serious</em> results.</h2>
+        <div class="prose">
+          <p>We believe the best tools get out of your way. AllPDFStuff gives you a full suite of professional PDF capabilities — compress, merge, split, convert, extract, watermark, and more — without the friction of desktop software or enterprise subscriptions.</p>
+          <p>Everything runs in your browser. Nothing is stored longer than it needs to be. Your files are automatically deleted after one hour. That's not a marketing claim — it's how the platform is built.</p>
         </div>
       </div>
-      <div class="highlight-bar">
-        <p>"I wanted to build something I was genuinely proud of — and something I would actually use myself."</p>
-      </div>
-      <div class="section">
-        <div class="label">What I set out to build</div>
-        <div class="pillars">
-          <div class="pillar">
-            <div class="pillar-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7L5.5 10.5L12 4" stroke="#e8620a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div class="pillar-title">Simple & clear</div>
-            <div class="pillar-desc">No confusing menus. If you can click a button, you can use AllPDFStuff.</div>
-          </div>
-          <div class="pillar">
-            <div class="pillar-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5" stroke="#e8620a" stroke-width="1.6"/><path d="M7 4.5V7L8.5 8.5" stroke="#e8620a" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-            <div class="pillar-title">Time-friendly</div>
-            <div class="pillar-desc">Built for people who are busy. Get in, get it done, get on with your day.</div>
-          </div>
-          <div class="pillar">
-            <div class="pillar-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2L8.8 5.5H12.5L9.5 7.8L10.8 11.5L7 9L3.2 11.5L4.5 7.8L1.5 5.5H5.2L7 2Z" stroke="#e8620a" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
-            <div class="pillar-title">Accessible to all</div>
-            <div class="pillar-desc">No tech skills needed — if you can use the internet, you can use this.</div>
-          </div>
-        </div>
-        <div class="membership-note">
-          There is a small monthly membership fee to help cover running costs and keep the site going. Thank you so much for your support — it genuinely means a lot.
-        </div>
-      </div>
-      <div class="section">
-        <div class="label">My hope for you</div>
-        <p class="closing">I built AllPDFStuff with one simple goal: that <strong>you'd leave feeling like things were easy</strong>. Not just "fine" — actually easy. The kind of easy that makes you smile a little, because for once, the software got out of your way and just helped you.</p>
-        <br/>
-        <p class="closing">If you find it useful, I'd love for you to come back. And if there's ever something you wish it could do, I'm all ears — because this tool was born from exactly that kind of wish.</p>
-        <p class="closing" style="margin-top:1rem">Thank you for being here. I hope AllPDFStuff makes your day just a little bit easier.</p>
-      </div>
-      <div class="sign-off">
-        <div class="sign-avatar">D</div>
-        <div>
-          <div class="sign-name">— Darlia</div>
-          <div class="sign-role">Founder, AllPDFStuff</div>
-        </div>
-      </div>
-    </div>
-    <div class="fade-in-2">
-      <div class="founder-photo-wrap">
-        <div class="founder-avatar-large">D</div>
-      </div>
-      <div class="sidebar-card">
-        <h3>📊 AllPDFStuff by numbers</h3>
-        <div class="stat-row"><span class="s-label">PDF tools available</span><span class="s-val">15</span></div>
-        <div class="stat-row"><span class="s-label">Free daily tasks</span><span class="s-val">5</span></div>
-        <div class="stat-row"><span class="s-label">Max file size (Pro)</span><span class="s-val">100 MB</span></div>
-        <div class="stat-row"><span class="s-label">Files auto-deleted</span><span class="s-val">1 hour</span></div>
-        <div class="stat-row"><span class="s-label">Account required?</span><span class="s-val">Yes</span></div>
-      </div>
-      <div class="sidebar-card">
-        <h3>🔗 Quick links</h3>
-        <ul class="quick-links">
-          <li><a href="/#upload"><span>🗜️</span> Try a PDF tool</a></li>
-          <li><a href="/#pricing"><span>⭐</span> View pricing</a></li>
-          <li><a href="/contact.html"><span>✉️</span> Get in touch</a></li>
-          <li><a href="/privacy.html"><span>🔒</span> Privacy Policy</a></li>
-        </ul>
-      </div>
+      <div class="col-visual">PDF</div>
     </div>
   </div>
-</div>
 
-<div class="about-cta">
-  <div>
-    <h2>Ready to give it a try?</h2>
-    <p>Create your free account, upload your file, and get started.</p>
+  <!-- PRIVACY -->
+  <div class="about-section">
+    <div class="two-col flip">
+      <div class="col-text">
+        <div class="sec-eye">Privacy first</div>
+        <h2 class="sec-h">Your files are<br/><em>yours</em> alone.</h2>
+        <div class="prose">
+          <p>We take file privacy seriously. Uploaded documents are processed securely, never shared with third parties, and automatically purged from our servers within 60 minutes of processing. We don't train models on your data or analyze your content.</p>
+          <p>For users who need guaranteed zero retention, our Pro plan supports direct browser-side processing for select tools — meaning your file never leaves your device at all.</p>
+        </div>
+      </div>
+      <div class="col-visual">🔒</div>
+    </div>
   </div>
-  <a href="/?action=signup" class="btn-pill" style="font-size:.95rem;padding:13px 30px;flex-shrink:0">Create free account →</a>
-</div>
 
+  <!-- VALUES -->
+  <div class="about-section">
+    <div class="sec-eye">What we stand for</div>
+    <h2 class="sec-h">Our <em>values</em></h2>
+    <div class="values-grid">
+      <div class="val-card">
+        <div class="val-ico">⚡</div>
+        <h3>Speed above all</h3>
+        <p>Every tool is engineered to be fast. No loading screens. No queues. Results in seconds, not minutes.</p>
+      </div>
+      <div class="val-card">
+        <div class="val-ico">🔓</div>
+        <h3>Accessible by default</h3>
+        <p>Core tools are free, always. We believe professional-grade PDF tools shouldn't be locked behind a paywall for everyday use.</p>
+      </div>
+      <div class="val-card">
+        <div class="val-ico">🛡️</div>
+        <h3>Privacy by design</h3>
+        <p>Auto-deletion, minimal data collection, and transparent processing. We build trust into every part of the product.</p>
+      </div>
+      <div class="val-card">
+        <div class="val-ico">🧩</div>
+        <h3>Simplicity wins</h3>
+        <p>Drag, drop, done. We obsess over removing friction so you can focus on what actually matters.</p>
+      </div>
+      <div class="val-card">
+        <div class="val-ico">🌐</div>
+        <h3>Works everywhere</h3>
+        <p>No installs. No operating system lock-in. If you have a browser, you have AllPDFStuff — on any device.</p>
+      </div>
+      <div class="val-card">
+        <div class="val-ico">📈</div>
+        <h3>Always improving</h3>
+        <p>We ship new tools and improvements regularly, driven by what our users actually ask for.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BADGE SECTION -->
+  <div class="badge-section">
+    <div class="badge-text">
+      <h3>Featured on SaaS Browser</h3>
+      <p>AllPDFStuff is listed on SaaS Browser — a curated directory of the best SaaS tools on the web. We're proud to be recognised alongside top-tier productivity tools.</p>
+    </div>
+    <a href="https://saasbrowser.com/en/saas/1517856/allpdfstuff" target="_blank" rel="noopener">
+      <img src="https://static-files.saasbrowser.com/saas-browser-badge-16.svg" alt="AllPDFStuff - SaaS database" width="200" />
+    </a>
+  </div>
+
+</div><!-- /about-wrap -->
+
+<!-- FOOTER -->
 <footer>
   <div class="ft-top">
     <div class="ft-brand">
       <a href="/" class="ft-logo">All<em>PDF</em>Stuff</a>
       <p>The fastest, simplest way to work with PDFs online. Professional tools for everyone, right in your browser.</p>
+      <a href="https://saasbrowser.com/en/saas/1517856/allpdfstuff" target="_blank" rel="noopener" style="display:inline-block;margin-top:16px"><img src="https://static-files.saasbrowser.com/saas-browser-badge-16.svg" alt="AllPDFStuff - SaaS database" width="200" /></a>
     </div>
-    <div class="ft-col"><h4>Tools</h4><ul>
-      <li><a href="/#upload">Compress PDF</a></li>
-      <li><a href="/#upload">Merge PDF</a></li>
-      <li><a href="/#upload">Split PDF</a></li>
-      <li><a href="/#upload">Extract Text</a></li>
-      <li><a href="/#upload">PDF to JPG</a></li>
-    </ul></div>
-    <div class="ft-col"><h4>Company</h4><ul>
-      <li><a href="/about.html">About</a></li>
-      <li><a href="/#pricing">Pricing</a></li>
-      <li><a href="/blog.html">Blog</a></li>
-      <li><a href="/contact.html">Contact</a></li>
-    </ul></div>
-    <div class="ft-col"><h4>Legal</h4><ul>
-      <li><a href="/privacy.html">Privacy Policy</a></li>
-      <li><a href="/terms.html">Terms of Service</a></li>
-      <li><a href="/cookies.html">Cookie Policy</a></li>
-      <li><a href="/gdpr.html">GDPR</a></li>
-    </ul></div>
+    <div class="ft-col"><h4>Tools</h4><ul><li><a href="/#upload">Compress PDF</a></li><li><a href="/#upload">Merge PDF</a></li><li><a href="/#upload">Split PDF</a></li><li><a href="/#upload">Extract Text</a></li><li><a href="/#upload">PDF to JPG</a></li></ul></div>
+    <div class="ft-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="/#pricing">Pricing</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="ft-col"><h4>Legal</h4><ul><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li><li><a href="cookies.html">Cookie Policy</a></li><li><a href="privacy.html">GDPR</a></li></ul></div>
   </div>
-  <div class="ft-bot">
-    <span>© 2026 AllPDFStuff.com — All rights reserved</span>
-    <span>🔒 Files auto-deleted after 1 hour</span>
-  </div>
+  <div class="ft-bot"><span>© 2026 AllPDFStuff.com — All rights reserved</span><span>🔒 Files auto-deleted after 1 hour</span></div>
 </footer>
+
 </body>
 </html>
