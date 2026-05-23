@@ -718,6 +718,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <div class="ft-brand">
       <a href="/" class="ft-logo">All<em>PDF</em>Stuff</a>
       <p>The fastest, simplest way to work with PDFs online. Professional tools for everyone, right in your browser.</p>
+      <a href="https://saasbrowser.com/en/saas/1517856/allpdfstuff" target="_blank" rel="noopener" style="display:inline-block;margin-top:16px"><img src="https://static-files.saasbrowser.com/saas-browser-badge-16.svg" alt="AllPDFStuff - SaaS database" width="200" /></a>
     </div>
     <div class="ft-col"><h4>Tools</h4><ul><li><a href="#upload">Compress PDF</a></li><li><a href="#upload">Merge PDF</a></li><li><a href="#upload">Split PDF</a></li><li><a href="#upload">Extract Text</a></li><li><a href="#upload">PDF to JPG</a></li></ul></div>
     <div class="ft-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="#pricing">Pricing</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
@@ -1103,12 +1104,9 @@ async function api(file,t,allFiles){
 function resetUp(){pendingFile=null;document.getElementById('dropZ').style.display='block';document.getElementById('toolPicker').style.display='none';hd('procW');hd('resW');document.getElementById('fileInput').value='';document.getElementById('dropT').textContent='Drop your file here to get started';}
 async function handleSub(p){
   if(!user){openModal('signup');return;}
-  // Redirect to Stripe Payment Link with user's email + Supabase ID pre-filled
-  // client_reference_id lets the webhook find the exact Supabase user who paid
+  // Redirect to Stripe Payment Link
   if(p==='pro'){
-    const email=encodeURIComponent(user.email||'');
-    const uid=encodeURIComponent(user.id||'');
-    window.location.href=`https://buy.stripe.com/4gM00kf9Igxo2798NX1ck00?prefilled_email=${email}&client_reference_id=${uid}`;
+    window.location.href='https://buy.stripe.com/4gM00kf9Igxo2798NX1ck00';
   }
 }
 
