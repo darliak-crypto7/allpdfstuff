@@ -467,8 +467,7 @@
       <p>Your processed file has been prepared for download</p>
       <div class="res-btns">
         <a id="dlBtn" href="#" class="btn-pill" download style="font-size:.93rem;padding:12px 26px">⬇︎ Download</a>
-        <button class="btn-ghost" onclick="resetUp()">Process another</button>
-      </div>
+        <button class="btn-ghost" onclick="resetUp()">Process another</button></div><p id="resSignupNudge" style="display:none;margin-top:16px;font-size:.83rem;color:var(--mut2)">💾 <a href="#" onclick="openModal('signup');return false;" style="color:var(--or);font-weight:600;text-decoration:none">Create a free account</a> to save your history and unlock more tasks.</p>
     </div>
   </div>
 </div>
@@ -487,7 +486,7 @@
           <span class="how-icon">🎯</span>
         </div>
         <h3>Pick your tool</h3>
-        <p>Choose from 15 PDF tools — compress, merge, split, convert and more. Create a free account to get started.</p>
+        <p>Choose from 15 PDF tools — compress, merge, split, convert and more. Free tools work instantly, no account needed.</p>
         <span class="how-tag">Free to start</span>
       </div>
 
@@ -880,12 +879,6 @@ function onSel(e){
 
 // Show the tool picker after file is selected
 function showPicker(files){
-  // Block guests before they can even upload
-  if(!user){
-    toast('err','⭐ Please sign in or create a free account to use our tools');
-    openModal('signup');
-    return;
-  }
   // Accept either single file or array
   if(!Array.isArray(files)) files=[files];
   pendingFile = files;
@@ -928,13 +921,6 @@ function applyWatermark(){
 function pickAndGo(t){
   if(t==='pdf-to-excel'){
     toast('err','📊 PDF to Excel coming soon! Try PDF to Word instead.');
-    return;
-  }
-
-  // ALL tools require a signed-in account
-  if(!user){
-    toast('err','⭐ Please sign in or create a free account to use this tool');
-    openModal('signup');
     return;
   }
 
@@ -1033,7 +1019,7 @@ async function go(file, allFiles){
     document.getElementById('dlBtn').href=r.url;
     document.getElementById('dlBtn').download=r.fn;
     incLimit(); // Only count successful tasks
-    toast('ok','✅ Done!');
+    toast('ok','✅ Done!');document.getElementById('resSignupNudge').style.display = user ? 'none' : 'block';
   }catch(err){hd('procW');sh('dropZ');toast('err','❌ '+(err.message||'Processing failed'));}
 }
 
@@ -1102,7 +1088,7 @@ async function api(file,t,allFiles){
   return{url:URL.createObjectURL(typedBlob),fn:baseName+'.'+ext};
 }
 
-function resetUp(){pendingFile=null;document.getElementById('dropZ').style.display='block';document.getElementById('toolPicker').style.display='none';hd('procW');hd('resW');document.getElementById('fileInput').value='';document.getElementById('dropT').textContent='Drop your file here to get started';}
+function resetUp(){pendingFile=null;document.getElementById('dropZ').style.display='block';document.getElementById('toolPicker').style.display='none';hd('procW');hd('resW');hd('resSignupNudge');document.getElementById('fileInput').value='';document.getElementById('dropT').textContent='Drop your file here to get started';}
 async function handleSub(p){
   if(!user){openModal('signup');return;}
   // Redirect to Stripe Payment Link
