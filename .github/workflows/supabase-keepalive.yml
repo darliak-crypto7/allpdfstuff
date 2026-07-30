@@ -1,0 +1,26 @@
+name: Supabase Keepalive - allpdfstuff.com
+
+# Prevents the Supabase Free-tier project from auto-pausing after 7 days
+# of inactivity by making a real read request to the project's REST API
+# twice a week.
+
+on:
+  schedule:
+    - cron: '0 9 * * 1,4'   # 9:00 AM UTC every Monday and Thursday
+  workflow_dispatch:         # lets you trigger it manually from the Actions tab to test
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Supabase project (allpdfstuff.com)
+        run: |
+          HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://pzimfguaqqcktokwwdeq.supabase.co/rest/v1/reviews?select=id&limit=1" \
+            -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}")
+          echo "Supabase responded with HTTP $HTTP_CODE"
+          if [ "$HTTP_CODE" -ge 500 ]; then
+            echo "::error::Supabase ping failed with server error $HTTP_CODE"
+            exit 1
+          fi
