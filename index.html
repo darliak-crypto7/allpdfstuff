@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AllPDFStuff — Every PDF Tool You'll Ever Need</title>
   <meta name="description" content="Convert, merge, split, compress and edit PDF files online. Fast, secure, and easy to use." />
-  <link rel="canonical" href="https://www.allpdfstuff.com/" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
@@ -297,91 +296,91 @@
   <h2 class="sec-h">Everything PDF,<br/><em>in one place</em></h2>
   <p class="sec-sub">AllPDFStuff was created because working with PDFs shouldn't require expensive software or a computer science degree. Every day, millions of people need to compress a file to send via email, convert a document, or merge reports together — tasks that should take seconds, not require an expensive $400+ per year subscription.</p>
   <div class="tools-grid">
-    <a href="/compress-pdf.html" class="t-card">
+    <a href="#upload" class="t-card" onclick="selectTool('compress')">
       <div class="t-num">01</div><div class="t-ico">🗜️</div>
       <div class="t-name">Compress PDF</div>
       <div class="t-desc">Shrink file size without losing quality. Perfect for email attachments.</div>
       <div class="t-foot"><span class="tag tag-f">Free</span><div class="t-arr">↗</div></div>
     </a>
-    <a href="/merge-pdf.html" class="t-card">
+    <a href="#upload" class="t-card" onclick="selectTool('merge')">
       <div class="t-num">02</div><div class="t-ico">🔗</div>
       <div class="t-name">Merge PDF</div>
       <div class="t-desc">Combine multiple PDFs into a single document instantly.</div>
       <div class="t-foot"><span class="tag tag-f">Free</span><div class="t-arr">↗</div></div>
     </a>
-    <a href="/split-pdf.html" class="t-card">
+    <a href="#upload" class="t-card" onclick="selectTool('split')">
       <div class="t-num">03</div><div class="t-ico">✂️</div>
       <div class="t-name">Split PDF</div>
       <div class="t-desc">Extract pages or divide your PDF into multiple separate files.</div>
       <div class="t-foot"><span class="tag tag-p">Pro</span><div class="t-arr">↗</div></div>
     </a>
-    <a href="/pdf-to-jpg.html" class="t-card">
+    <a href="#upload" class="t-card" onclick="selectTool('pdf-to-jpg')">
       <div class="t-num">04</div><div class="t-ico">🖼️</div>
       <div class="t-name">PDF to JPG</div>
       <div class="t-desc">Convert PDF pages to high-quality JPG images in seconds.</div>
       <div class="t-foot"><span class="tag tag-p">Pro</span><div class="t-arr">↗</div></div>
     </a>
-    <a href="/word-to-pdf.html" class="t-card">
+    <a href="#upload" class="t-card" onclick="selectTool('word-to-pdf')">
       <div class="t-num">05</div><div class="t-ico">📄</div>
       <div class="t-name">Word to PDF</div>
       <div class="t-desc">Convert .doc and .docx files to PDF while preserving layout perfectly.</div>
       <div class="t-foot"><span class="tag tag-f">Free</span><div class="t-arr">↗</div></div>
     </a>
-    <a href="/rotate-pdf.html" class="t-card">
+    <a href="#upload" class="t-card" onclick="selectTool('rotate')">
       <div class="t-num">06</div><div class="t-ico">🔄</div>
       <div class="t-name">Rotate PDF</div>
       <div class="t-desc">Fix page orientation on any PDF with a single click.</div>
       <div class="t-foot"><span class="tag tag-f">Free</span><div class="t-arr">↗</div></div>
     </a>
-    <a href="/extract-text-from-pdf.html" class="t-card">
+    <a href="#upload" class="t-card" onclick="selectTool('extract-text')">
       <div class="t-num">07</div><div class="t-ico">📃</div>
       <div class="t-name">Extract Text</div>
       <div class="t-desc">Extract all text from a PDF and save it as a TXT file.</div>
       <div class="t-foot"><span class="tag tag-p">Pro</span><div class="t-arr">↗</div></div>
     </a>
-    <a href="/repair-pdf.html" class="t-card">
+    <a href="#upload" class="t-card" onclick="selectTool('repair')">
       <div class="t-num">08</div><div class="t-ico">🔧</div>
       <div class="t-name">Repair PDF</div>
       <div class="t-desc">Repair a corrupted or broken PDF file instantly.</div>
       <div class="t-foot"><span class="tag tag-p">Pro</span><div class="t-arr">↗</div></div>
     </a>
-    <a href="/unlock-pdf.html" class="t-card">
+    <a href="#upload" class="t-card" onclick="selectTool('unlock')">
       <div class="t-num">09</div><div class="t-ico">🔓</div>
       <div class="t-name">Unlock PDF</div>
       <div class="t-desc">Remove PDF password security for reading and editing.</div>
       <div class="t-foot"><span class="tag tag-p">Pro</span><div class="t-arr">↗</div></div>
     </a>
-    <a href="/protect-pdf.html" class="t-card">
+    <a href="#upload" class="t-card" onclick="selectTool('protect-pdf')">
       <div class="t-num">10</div><div class="t-ico">🔒</div>
       <div class="t-name">Protect PDF</div>
       <div class="t-desc">Encrypt your PDF with a password to prevent unauthorised access.</div>
       <div class="t-foot"><span class="tag tag-p">Pro</span><div class="t-arr">↗</div></div>
     </a>
-    <a href="/pdf-to-pdfa.html" class="t-card">
+    <a href="#upload" class="t-card" onclick="selectTool('pdf-to-pdfa')">
       <div class="t-num">11</div><div class="t-ico">📋</div>
       <div class="t-name">PDF to PDF/A</div>
       <div class="t-desc">Convert PDF to PDF/A format for long-term archiving and compliance.</div>
       <div class="t-foot"><span class="tag tag-p">Pro</span><div class="t-arr">↗</div></div>
     </a>
-    <a href="/image-to-pdf.html" class="t-card">
+    <a href="#upload" class="t-card" onclick="selectTool('convert-image')">
       <div class="t-num">12</div><div class="t-ico">🖼️</div>
       <div class="t-name">Convert Image</div>
       <div class="t-desc">Convert images to PDF — JPG, PNG, TIFF and more.</div>
       <div class="t-foot"><span class="tag tag-p">Pro</span><div class="t-arr">↗</div></div>
     </a>
-    <a href="/add-page-numbers-to-pdf.html" class="t-card">
+    <a href="#upload" class="t-card" onclick="selectTool('page-numbers')">
       <div class="t-num">13</div><div class="t-ico">🔢</div>
       <div class="t-name">Page Numbers</div>
       <div class="t-desc">Insert page numbers into your PDF in your preferred style.</div>
       <div class="t-foot"><span class="tag tag-p">Pro</span><div class="t-arr">↗</div></div>
     </a>
-    <a href="/ocr-pdf.html" class="t-card">
+    <a href="#upload" class="t-card" onclick="selectTool('ocr-pdf')">
       <div class="t-num">14</div><div class="t-ico">🔍</div>
       <div class="t-name">OCR PDF</div>
       <div class="t-desc">Convert a scanned PDF into a searchable, editable PDF.</div>
       <div class="t-foot"><span class="tag tag-p">Pro</span><div class="t-arr">↗</div></div>
     </a>
-    <a href="/watermark-pdf.html" class="t-card">
+    <a href="#upload" class="t-card" onclick="selectTool('watermark')">
       <div class="t-num">15</div><div class="t-ico">💧</div>
       <div class="t-name">Watermark PDF</div>
       <div class="t-desc">Insert a text or image-based watermark to PDF documents.</div>
@@ -467,7 +466,8 @@
       <p>Your processed file has been prepared for download</p>
       <div class="res-btns">
         <a id="dlBtn" href="#" class="btn-pill" download style="font-size:.93rem;padding:12px 26px">⬇︎ Download</a>
-        <button class="btn-ghost" onclick="resetUp()">Process another</button></div><p id="resSignupNudge" style="display:none;margin-top:16px;font-size:.83rem;color:var(--mut2)">💾 <a href="#" onclick="openModal('signup');return false;" style="color:var(--or);font-weight:600;text-decoration:none">Create a free account</a> to save your history and unlock more tasks.</p>
+        <button class="btn-ghost" onclick="resetUp()">Process another</button>
+      </div>
     </div>
   </div>
 </div>
@@ -486,7 +486,7 @@
           <span class="how-icon">🎯</span>
         </div>
         <h3>Pick your tool</h3>
-        <p>Choose from 15 PDF tools — compress, merge, split, convert and more. Free tools work instantly, no account needed.</p>
+        <p>Choose from 15 PDF tools — compress, merge, split, convert and more. Create a free account to get started.</p>
         <span class="how-tag">Free to start</span>
       </div>
 
@@ -718,9 +718,8 @@ document.addEventListener('DOMContentLoaded', () => {
     <div class="ft-brand">
       <a href="/" class="ft-logo">All<em>PDF</em>Stuff</a>
       <p>The fastest, simplest way to work with PDFs online. Professional tools for everyone, right in your browser.</p>
-      <a href="https://saasbrowser.com/en/saas/1517856/allpdfstuff" target="_blank" rel="noopener" style="display:inline-block;margin-top:16px"><img src="https://static-files.saasbrowser.com/saas-browser-badge-16.svg" alt="AllPDFStuff - SaaS database" width="200" /></a>
     </div>
-    <div class="ft-col"><h4>Tools</h4><ul><li><a href="/compress-pdf.html">Compress PDF</a></li><li><a href="/merge-pdf.html">Merge PDF</a></li><li><a href="/split-pdf.html">Split PDF</a></li><li><a href="/extract-text-from-pdf.html">Extract Text</a></li><li><a href="/pdf-to-jpg.html">PDF to JPG</a></li></ul></div>
+    <div class="ft-col"><h4>Tools</h4><ul><li><a href="#upload">Compress PDF</a></li><li><a href="#upload">Merge PDF</a></li><li><a href="#upload">Split PDF</a></li><li><a href="#upload">Extract Text</a></li><li><a href="#upload">PDF to JPG</a></li></ul></div>
     <div class="ft-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="#pricing">Pricing</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
     <div class="ft-col"><h4>Legal</h4><ul><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li><li><a href="cookies.html">Cookie Policy</a></li><li><a href="privacy.html">GDPR</a></li></ul></div>
   </div>
@@ -817,7 +816,7 @@ async function doForgotPassword(){
   if(!email){sa('lerr','Please enter your email address first.');return;}
   const{error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:'https://www.allpdfstuff.com/account.html'});
   if(error)sa('lerr',error.message);
-  else{ha('lerr');sa('lok','✅ Password reset email sent! Check your inbox.');} 
+  else{ha('lerr');sa('lok','✅ Password reset email sent! Check your inbox.');}
 }
 
 async function doLogin(){
@@ -879,6 +878,12 @@ function onSel(e){
 
 // Show the tool picker after file is selected
 function showPicker(files){
+  // Block guests before they can even upload
+  if(!user){
+    toast('err','⭐ Please sign in or create a free account to use our tools');
+    openModal('signup');
+    return;
+  }
   // Accept either single file or array
   if(!Array.isArray(files)) files=[files];
   pendingFile = files;
@@ -921,6 +926,13 @@ function applyWatermark(){
 function pickAndGo(t){
   if(t==='pdf-to-excel'){
     toast('err','📊 PDF to Excel coming soon! Try PDF to Word instead.');
+    return;
+  }
+
+  // ALL tools require a signed-in account
+  if(!user){
+    toast('err','⭐ Please sign in or create a free account to use this tool');
+    openModal('signup');
     return;
   }
 
@@ -1019,7 +1031,7 @@ async function go(file, allFiles){
     document.getElementById('dlBtn').href=r.url;
     document.getElementById('dlBtn').download=r.fn;
     incLimit(); // Only count successful tasks
-    toast('ok','✅ Done!');document.getElementById('resSignupNudge').style.display = user ? 'none' : 'block';
+    toast('ok','✅ Done!');
   }catch(err){hd('procW');sh('dropZ');toast('err','❌ '+(err.message||'Processing failed'));}
 }
 
@@ -1045,8 +1057,17 @@ async function api(file,t,allFiles){
   const filesToUpload=(t==='merge'&&allFiles&&allFiles.length>1)?allFiles:[file];
   const uploadedFiles=[];
   for(const f of filesToUpload){
-    // Sanitize filename — iLovePDF 500s on long or special-char filenames
-    const safeName = f.name.replace(/[^a-zA-Z0-9._-]/g,'_').substring(0,50) || 'document.pdf';
+    // Sanitize filename — iLovePDF 500s on long or special-char filenames.
+    // IMPORTANT: preserve the extension separately before truncating the base
+    // name, otherwise a long filename gets cut off mid-name and loses its
+    // extension entirely — which iLovePDF rejects as "File extension not
+    // supported" (InvalidExtension), even though the file itself is fine.
+    const dotIdx = f.name.lastIndexOf('.');
+    const rawExt = dotIdx > -1 ? f.name.slice(dotIdx) : '';
+    const safeExt = (rawExt.replace(/[^a-zA-Z0-9.]/g,'').substring(0,10)) || '.pdf';
+    const rawBase = dotIdx > -1 ? f.name.slice(0, dotIdx) : f.name;
+    const safeBase = rawBase.replace(/[^a-zA-Z0-9._-]/g,'_').substring(0,40) || 'document';
+    const safeName = safeBase + safeExt;
     const fd=new FormData();
     fd.append('task',task);
     fd.append('file',f,safeName);
@@ -1088,7 +1109,7 @@ async function api(file,t,allFiles){
   return{url:URL.createObjectURL(typedBlob),fn:baseName+'.'+ext};
 }
 
-function resetUp(){pendingFile=null;document.getElementById('dropZ').style.display='block';document.getElementById('toolPicker').style.display='none';hd('procW');hd('resW');hd('resSignupNudge');document.getElementById('fileInput').value='';document.getElementById('dropT').textContent='Drop your file here to get started';}
+function resetUp(){pendingFile=null;document.getElementById('dropZ').style.display='block';document.getElementById('toolPicker').style.display='none';hd('procW');hd('resW');document.getElementById('fileInput').value='';document.getElementById('dropT').textContent='Drop your file here to get started';}
 async function handleSub(p){
   if(!user){openModal('signup');return;}
   // Redirect to Stripe Payment Link
