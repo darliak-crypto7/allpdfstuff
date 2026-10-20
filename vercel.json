@@ -3,12 +3,25 @@
   "functions": {
     "api/stripe-webhook.js": {
       "maxDuration": 30
+    },
+    "api/keepalive.js": {
+      "maxDuration": 10
     }
   },
   "routes": [
     {
       "src": "/api/stripe-webhook",
       "dest": "/api/stripe-webhook.js"
+    },
+    {
+      "src": "/api/keepalive",
+      "dest": "/api/keepalive.js"
+    }
+  ],
+  "crons": [
+    {
+      "path": "/api/keepalive",
+      "schedule": "0 3 * * *"
     }
   ]
 }
