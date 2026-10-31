@@ -183,4 +183,25 @@
     <priority>0.9</priority>
   </url>
 
+  <url>
+    <loc>https://www.allpdfstuff.com/blog-how-to-merge-pdfs.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://www.allpdfstuff.com/blog-post-4.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://www.allpdfstuff.com/blog-repair-pdf.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
 </urlset>
