@@ -95,7 +95,7 @@
 
     <!-- Fix #22: pdfu_[date] is localStorage, NOT a cookie — moved to dedicated section -->
     <div class="highlight-box" style="margin-top:16px">
-      <strong>📦 Note on Browser Storage (not cookies):</strong> <code>pdfu_[date]</code> is stored in your browser's <em>localStorage</em> — it is <strong>not</strong> a cookie. It tracks your daily free usage count (5 tasks/day) and automatically expires after 24 hours. You can clear it at any time via your browser's developer tools or by clearing site data for allpdfstuff.com.
+      <strong>📦 Note on Browser Storage (not cookies):</strong> <code>pdfu_[year]_[month]</code> is stored in your browser's <em>localStorage</em> — it is <strong>not</strong> a cookie. It tracks your monthly task count (5 per month on the free plan) and stops being used when the month ends. You can clear it at any time via your browser's developer tools or by clearing site data for allpdfstuff.com.
     </div>
 
     <h3>2.2 Functional Cookies</h3>
@@ -121,7 +121,7 @@
     <p>In addition to cookies, we use your browser's localStorage for certain site functionality. Unlike cookies, localStorage data is never sent to our servers — it stays entirely on your device.</p>
     <table>
       <tr><th>Key Name</th><th>Purpose</th><th>Expires</th></tr>
-      <tr><td><code>pdfu_[date]</code></td><td>Tracks your daily free task count (up to 5/day for free accounts). The key name includes today's date, so it automatically becomes unused the next day.</td><td>Automatically unused after 24 hours; cleared when you clear site data</td></tr>
+      <tr><td><code>pdfu_[year]_[month]</code></td><td>Tracks your monthly task count (up to 5 per month on the free plan). The key name includes the year and month, so it automatically becomes unused the next month.</td><td>Unused after the month ends; cleared when you clear site data</td></tr>
       <tr><td><code>cookie_pref</code></td><td>Stores your cookie consent choice ("essential" or "all") so the consent banner doesn't appear on every visit.</td><td>Until you clear site data</td></tr>
     </table>
     <p>You can clear localStorage at any time by going to your browser's developer tools → Application → Local Storage → allpdfstuff.com → Clear.</p>

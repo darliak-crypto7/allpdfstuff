@@ -8,20 +8,22 @@
       "maxDuration": 10
     }
   },
-  "routes": [
-    {
-      "src": "/api/stripe-webhook",
-      "dest": "/api/stripe-webhook.js"
-    },
-    {
-      "src": "/api/keepalive",
-      "dest": "/api/keepalive.js"
-    }
-  ],
   "crons": [
     {
       "path": "/api/keepalive",
       "schedule": "0 3 * * *"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+      ]
     }
   ]
 }
