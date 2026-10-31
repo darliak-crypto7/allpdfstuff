@@ -21,7 +21,7 @@ TOOLS = [
     dict(
         id="compress", slug="compress-pdf", name="Compress PDF", icon="🗜️", badge="Free",
         title="Compress PDF Online Free – Reduce File Size Without Losing Quality | AllPDFStuff",
-        meta="Shrink large PDF files in seconds, right in your browser. No software, no email size limits. Free to start — compress PDFs for email, upload, or archiving.",
+        meta="Shrink large PDF files in seconds, online. No software, no email size limits. Free to start — compress PDFs for email, upload, or archiving.",
         h1_pre="Compress PDF files", h1_em="without losing quality",
         intro="Big PDF bouncing back from an email server? Drop it in and get a smaller file in seconds — no installs, no watermarks, no waiting.",
         features=[
@@ -33,13 +33,13 @@ TOOLS = [
             ("Does compressing a PDF reduce its quality?", "Our compression is tuned to remove redundant data and re-encode images efficiently, so text stays sharp and images stay legible. For most everyday documents you won't notice a visual difference."),
             ("Is there a file size limit?", "Free accounts can compress files up to 10 MB; Pro accounts get up to 100 MB per file plus a higher monthly task allowance."),
             ("What happens to my file after I download it?", "Uploaded files are automatically deleted from our servers within one hour of processing — we don't keep copies."),
-            ("Do I need to install anything?", "No. Everything runs in your browser. There's nothing to download or install on your computer."),
+            ("Do I need to install anything?", "No. There's nothing to download or install: AllPDFStuff is a website, and your files are processed securely online on your computer."),
         ],
     ),
     dict(
         id="merge", slug="merge-pdf", name="Merge PDF", icon="🔗", badge="Free",
         title="Merge PDF Files Online Free – Combine Multiple PDFs Into One | AllPDFStuff",
-        meta="Combine two or more PDF files into a single document in seconds. Drag, drop, and download — free, fast, and works right in your browser.",
+        meta="Combine two or more PDF files into a single document in seconds. Drag, drop, and download — free, fast, and works online.",
         h1_pre="Merge multiple PDFs", h1_em="into one file",
         intro="Combine reports, statements, or scanned pages into a single, easy-to-share document — in the order you drop them.",
         features=[
@@ -57,7 +57,7 @@ TOOLS = [
     dict(
         id="split", slug="split-pdf", name="Split PDF", icon="✂️", badge="Pro",
         title="Split PDF Online – Extract or Divide Pages Into Separate Files | AllPDFStuff",
-        meta="Pull out specific pages or break a large PDF into multiple smaller files. Fast, browser-based PDF splitting — no software required.",
+        meta="Pull out specific pages or break a large PDF into multiple smaller files. Fast, online PDF splitting — no software required.",
         h1_pre="Split a PDF", h1_em="into separate files",
         intro="Pull out the pages you need, or divide a long document into smaller, shareable files — without opening a desktop app.",
         features=[
@@ -93,7 +93,7 @@ TOOLS = [
     dict(
         id="word-to-pdf", slug="word-to-pdf", name="Word to PDF", icon="📄", badge="Free",
         title="Word to PDF Converter Online Free – Convert DOC & DOCX to PDF | AllPDFStuff",
-        meta="Convert Word documents (.doc, .docx) to PDF while preserving your exact layout, fonts, and formatting. Free, fast, browser-based.",
+        meta="Convert Word documents (.doc, .docx) to PDF while preserving your exact layout, fonts, and formatting. Free, fast, online.",
         h1_pre="Convert Word documents", h1_em="to PDF",
         intro="Turn a .doc or .docx file into a clean, shareable PDF that looks the same on every device — fonts, spacing, and formatting intact.",
         features=[
@@ -129,7 +129,7 @@ TOOLS = [
     dict(
         id="extract-text", slug="extract-text-from-pdf", name="Extract Text", icon="📃", badge="Pro",
         title="Extract Text From PDF Online – Convert PDF to TXT | AllPDFStuff",
-        meta="Pull all the text out of a PDF and save it as a plain .txt file. Useful for copying content into other documents or systems. Fast and browser-based.",
+        meta="Pull all the text out of a PDF and save it as a plain .txt file. Useful for copying content into other documents or systems. Fast and online.",
         h1_pre="Extract all the text", h1_em="from a PDF",
         intro="Need the raw text out of a PDF — for a script, a database, or just to copy into another document? Extract it in seconds.",
         features=[
@@ -147,7 +147,7 @@ TOOLS = [
     dict(
         id="repair", slug="repair-pdf", name="Repair PDF", icon="🔧", badge="Pro",
         title="Repair PDF Online – Fix Corrupted or Broken PDF Files | AllPDFStuff",
-        meta="Fix a PDF that won't open, looks corrupted, or throws errors. Repair damaged PDF files in seconds, right in your browser.",
+        meta="Fix a PDF that won't open, looks corrupted, or throws errors. Repair damaged PDF files in seconds, online.",
         h1_pre="Repair a corrupted", h1_em="PDF file",
         intro="PDF won't open, or throwing an error? Upload it and we'll attempt to rebuild it into a working file.",
         features=[
@@ -165,7 +165,7 @@ TOOLS = [
     dict(
         id="unlock", slug="unlock-pdf", name="Unlock PDF", icon="🔓", badge="Pro",
         title="Unlock PDF Online – Remove Password From a PDF File | AllPDFStuff",
-        meta="Remove password protection from a PDF you own so you can read, edit, or print it freely. Fast and secure, right in your browser.",
+        meta="Remove password protection from a PDF you own so you can read, edit, or print it freely. Fast and secure, online.",
         h1_pre="Remove password protection", h1_em="from a PDF",
         intro="Own a password-protected PDF and need to read, edit, or print it freely? Unlock it in seconds.",
         features=[
@@ -183,7 +183,7 @@ TOOLS = [
     dict(
         id="protect-pdf", slug="protect-pdf", name="Protect PDF", icon="🔒", badge="Pro",
         title="Password Protect PDF Online – Encrypt Your PDF Files | AllPDFStuff",
-        meta="Add a password to a PDF to prevent unauthorized viewing or editing. Encrypt sensitive documents in seconds, right in your browser.",
+        meta="Add a password to a PDF to prevent unauthorized viewing or editing. Encrypt sensitive documents in seconds, online.",
         h1_pre="Password protect", h1_em="your PDF",
         intro="Sending something sensitive? Add a password so only the people you share it with can open the file.",
         features=[
@@ -201,7 +201,7 @@ TOOLS = [
     dict(
         id="pdf-to-pdfa", slug="pdf-to-pdfa", name="PDF to PDF/A", icon="📋", badge="Pro",
         title="Convert PDF to PDF/A Online – Archival Format for Compliance | AllPDFStuff",
-        meta="Convert any PDF into the PDF/A archival standard for long-term storage and regulatory compliance. Fast, browser-based conversion.",
+        meta="Convert any PDF into the PDF/A archival standard for long-term storage and regulatory compliance. Fast, online conversion.",
         h1_pre="Convert PDF to", h1_em="PDF/A for archiving",
         intro="Need a document in the PDF/A standard for long-term retention or a compliance requirement? Convert it in one step.",
         features=[
@@ -219,7 +219,7 @@ TOOLS = [
     dict(
         id="convert-image", slug="image-to-pdf", name="Image to PDF", icon="🖼️", badge="Pro",
         title="Image to PDF Converter Online – Convert JPG, PNG & More to PDF | AllPDFStuff",
-        meta="Convert JPG, PNG, TIFF, and other image formats into a PDF document. Combine multiple images into one file, right in your browser.",
+        meta="Convert JPG, PNG, TIFF, and other image formats into a PDF document. Combine multiple images into one file, online.",
         h1_pre="Convert images", h1_em="to PDF",
         intro="Turn photos, scans, or screenshots into a single, shareable PDF document.",
         features=[
@@ -237,7 +237,7 @@ TOOLS = [
     dict(
         id="page-numbers", slug="add-page-numbers-to-pdf", name="Page Numbers", icon="🔢", badge="Pro",
         title="Add Page Numbers to PDF Online – Number Every Page Automatically | AllPDFStuff",
-        meta="Insert page numbers into any PDF automatically. Choose position and style — fast, browser-based, no software required.",
+        meta="Insert page numbers into any PDF automatically. Choose position and style — fast, online, no software required.",
         h1_pre="Add page numbers", h1_em="to your PDF",
         intro="Make a long document easier to navigate and reference — add page numbers automatically, no manual editing required.",
         features=[
@@ -329,7 +329,7 @@ def footer_html():
   <div class="ft-top">
     <div class="ft-brand">
       <a href="/" class="ft-logo">All<em>PDF</em>Stuff</a>
-      <p>The fastest, simplest way to work with PDFs online. Professional tools for everyone, right in your browser.</p>
+      <p>The fastest, simplest way to work with PDFs online. Professional tools for everyone, online.</p>
       <a href="https://saasbrowser.com/en/saas/1517856/allpdfstuff" target="_blank" rel="noopener" style="display:inline-block;margin-top:16px"><img src="https://static-files.saasbrowser.com/saas-browser-badge-16.svg" alt="AllPDFStuff - SaaS database" width="200" /></a>
     </div>
     <div class="ft-col"><h4>Tools</h4><ul><li><a href="/compress-pdf.html">Compress PDF</a></li><li><a href="/merge-pdf.html">Merge PDF</a></li><li><a href="/split-pdf.html">Split PDF</a></li><li><a href="/extract-text-from-pdf.html">Extract Text</a></li><li><a href="/pdf-to-jpg.html">PDF to JPG</a></li></ul></div>
@@ -465,7 +465,7 @@ def other_tools_html(current_id):
     return """<div class="sec">
   <div class="sec-eye">More tools</div>
   <h2 class="sec-h">Explore <em>other tools</em></h2>
-  <p class="sec-sub">All 15 PDF tools live in one place — browser-based, fast, and free to start.</p>
+  <p class="sec-sub">All 15 PDF tools live in one place — online, fast, and free to start.</p>
   <div class="tools-grid" style="grid-template-columns:repeat(3,1fr)">
 """ + "\n".join(cards) + """
   </div>
@@ -581,7 +581,7 @@ def page_html(t):
         <div class="how-icon-wrap"><span class="how-step-num">2</span><span class="how-icon">📂</span></div>
         <h3>Drop your file</h3>
         <p>Drag and drop or click to browse. Files up to 10 MB are free; Pro unlocks 100 MB.</p>
-        <span class="how-tag">Works in your browser</span>
+        <span class="how-tag">Nothing to install</span>
       </div>
       <div class="how-step">
         <div class="how-icon-wrap"><span class="how-step-num">3</span><span class="how-icon">⚡</span></div>
