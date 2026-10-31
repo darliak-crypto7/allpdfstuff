@@ -33,7 +33,7 @@ TOOLS = [
             ("Does compressing a PDF reduce its quality?", "Our compression is tuned to remove redundant data and re-encode images efficiently, so text stays sharp and images stay legible. For most everyday documents you won't notice a visual difference."),
             ("Is there a file size limit?", "Free accounts can compress files up to 10 MB; Pro accounts get up to 100 MB per file plus a higher monthly task allowance."),
             ("What happens to my file after I download it?", "Uploaded files are automatically deleted from our servers within one hour of processing — we don't keep copies."),
-            ("Do I need to install anything?", "No. There's nothing to download or install: AllPDFStuff is a website, and your files are processed securely online on your computer."),
+            ("Do I need to install anything?", "No. There's nothing to download or install: AllPDFStuff is a website, and your files are processed securely online and deleted within an hour."),
         ],
     ),
     dict(
